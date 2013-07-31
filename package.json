@@ -1,0 +1,37 @@
+{
+    "name": "csscomb",
+    "description": "Tool for sorting CSS properties",
+    "version": "0.0.0",
+    "homepage": "http://csscomb.com/",
+    "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
+    "repository": "https://github.com/mishanga/csscomb.js",
+    "contributors": [
+        {
+            "name": "Slava Oliyanchuk",
+            "email": "miripiruni@gmail.com",
+            "url": "http://miripiruni.org/"
+        },
+        {
+            "name": "Mikhail Troshev",
+            "email": "mishanga@yandex-team.ru",
+            "url": "http://mishanga.pro/"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "commander": "1.1.1"
+    },
+    "devDependencies": {
+        "jshint-groups": "0.5.1",
+        "jshint": "2.1.7",
+        "jscs": "1.0.2"
+    },
+    "bin": {
+        "csscomb": "./bin/csscomb"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/jshint-groups; ./node_modules/.bin/jscs ."
+    }
+}
