@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
-    "description": "Tool for sorting CSS properties",
-    "version": "0.0.0",
+    "description": "Tool for beautify CSS",
+    "version": "0.0.1",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/mishanga/csscomb.js",
