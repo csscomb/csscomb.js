@@ -1,7 +1,12 @@
 {
+    "exclude": [
+        ".git/**",
+        "node_modules/**"
+    ],
     "colon-space": true,
     "rule-indent": true,
     "stick-brace": "\n",
+    "strip-spaces": true,
     "sort-order": [
         [
             "position",
