@@ -21,7 +21,11 @@
         "node": ">= 0.8.0"
     },
     "dependencies": {
-        "commander": "1.1.1"
+        "commander": "1.1.1",
+        "cssp": "1.0.6",
+        "minimatch": "0.2.12",
+        "vow": "0.3.7",
+        "vow-fs": "0.1.13"
     },
     "devDependencies": {
         "jshint-groups": "0.5.1",
