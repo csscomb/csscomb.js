@@ -8,28 +8,28 @@ div{
       top:0;
     }
     div p em{
-        font-style:italic;
-        border-bottom:1px solid red;
-}
-
+        font-style:italic;  
+        border-bottom:1px solid red;  
+}  
+    
 /* Фигурные скобки. Вариант 2 */
 div
 {
   padding:0;
   margin:0;
 }
-  div p
+  div p  
   {
     font-size:1px;
-      top:0;
+      top:0;  
   }
     div p em
     {
-        font-style:italic;/* inline comment*/
+        font-style:italic;/* inline comment*/  
         border-bottom:1px solid red;
     }
 
-/* Фигурные скобки. Вариант 3 */
+/* Фигурные скобки. Вариант 3 */  
 div {
   padding:0;
   margin:0;
