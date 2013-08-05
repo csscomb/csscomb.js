@@ -33,6 +33,8 @@ Example configuration:
 ```javascript
 {
     "exclude": ["node_modules/**"],
+    "colon-space": true,
+    "stick-brace": true,
     "strip-spaces": true
 }
 ```
