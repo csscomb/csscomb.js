@@ -1,10 +1,10 @@
 {
     "name": "csscomb",
     "description": "Tool for beautify CSS",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
-    "repository": "https://github.com/mishanga/csscomb.js",
+    "repository": "https://github.com/csscomb/csscomb.js",
     "contributors": [
         {
             "name": "Slava Oliyanchuk",
@@ -18,7 +18,7 @@
         }
     ],
     "engines": {
-        "node": ">= 0.8.0"
+        "node": "0.8 | 0.10"
     },
     "dependencies": {
         "commander": "1.1.1",
