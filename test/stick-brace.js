@@ -17,26 +17,30 @@ describe('options/stick-brace', function() {
         comb.configure({ 'stick-brace': true });
         assert.equal(
             comb.processString(
-                'a { color: red }\n' +
-                'b{color:blue}\n' +
-                'i \t\t \n{font:0/0 a}'
+                'a { color: red }' +
+                'a{color:red}' +
+                'a \t\t \n{color:red}' +
+                'a /* foo */ {color:red}'
             ),
-            'a { color: red }\n' +
-            'b {color:blue}\n' +
-            'i {font:0/0 a}'
+            'a { color: red }' +
+            'a {color:red}' +
+            'a {color:red}' +
+            'a /* foo */ {color:red}'
         );
     });
     it('Valid String value should set equal space after brace', function() {
         comb.configure({ 'stick-brace': '\n' });
         assert.equal(
             comb.processString(
-                'a { color: red }\n' +
-                'b{color:blue}\n' +
-                'i \t\t \n{font:0/0 a}'
+                'a { color: red }' +
+                'a{color:red}' +
+                'a \t\t \n{color:red}' +
+                'a /* foo */ {color:red}'
             ),
-            'a\n{ color: red }\n' +
-            'b\n{color:blue}\n' +
-            'i\n{font:0/0 a}'
+            'a\n{ color: red }' +
+            'a\n{color:red}' +
+            'a\n{color:red}' +
+            'a /* foo */\n{color:red}'
         );
     });
 });

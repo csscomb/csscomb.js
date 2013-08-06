@@ -18,12 +18,12 @@ describe('options/strip-space', function() {
         assert.equal(
             comb.processString(
                 'a { color: red }   \n' +
-                'b{color:blue}\t  \n' +
-                'i {font:0/0 a}'
+                'a{color:red}\t /* foobar */ \n' +
+                'a {color:red}'
             ),
             'a { color: red }\n' +
-            'b{color:blue}\n' +
-            'i {font:0/0 a}\n'
+            'a{color:red}\t /* foobar */\n' +
+            'a {color:red}\n'
         );
     });
 });
