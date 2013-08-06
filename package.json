@@ -30,12 +30,13 @@
     "devDependencies": {
         "jshint-groups": "0.5.1",
         "jshint": "2.1.7",
-        "jscs": "1.0.2"
+        "jscs": "1.0.2",
+        "mocha": "1.11.0"
     },
     "bin": {
         "csscomb": "./bin/csscomb"
     },
     "scripts": {
-        "test": "./node_modules/.bin/jshint-groups; ./node_modules/.bin/jscs ."
+        "test": "./node_modules/.bin/jshint-groups . && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha -u bdd -R spec"
     }
 }
