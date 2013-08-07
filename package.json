@@ -1,20 +1,20 @@
 {
     "name": "csscomb",
     "description": "Tool for beautify CSS",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
-    "contributors": [
-        {
-            "name": "Slava Oliyanchuk",
-            "email": "miripiruni@gmail.com",
-            "url": "http://miripiruni.org/"
-        },
+    "maintainers": [
         {
             "name": "Mikhail Troshev",
             "email": "mishanga@yandex-team.ru",
-            "url": "http://mishanga.pro/"
+            "web": "http://mishanga.pro/"
+        },
+        {
+            "name": "Slava Oliyanchuk",
+            "email": "miripiruni@gmail.com",
+            "web": "http://miripiruni.org/"
         }
     ],
     "engines": {
@@ -30,12 +30,14 @@
     "devDependencies": {
         "jshint-groups": "0.5.1",
         "jshint": "2.1.7",
-        "jscs": "1.0.2"
+        "jscs": "1.0.2",
+        "mocha": "1.11.0"
     },
+    "main": "./lib/csscomb.js",
     "bin": {
         "csscomb": "./bin/csscomb"
     },
     "scripts": {
-        "test": "./node_modules/.bin/jshint-groups; ./node_modules/.bin/jscs ."
+        "test": "./node_modules/.bin/jshint-groups . && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha -u bdd -R spec"
     }
 }
