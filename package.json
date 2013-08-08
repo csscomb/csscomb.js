@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
     "description": "Tool for beautify CSS",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
