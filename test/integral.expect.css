@@ -47,7 +47,7 @@ div
 {
         /* upline comment*/
         font-style: italic;
-        border-bottom: 1px solid red
+        border-bottom: 1px solid red; /* trololo */ /* trololo */
     }
 
     a
@@ -55,4 +55,4 @@ div
 top: 0;/* ololo */margin: 0;}
     b
 {
-top: 0/* trololo */;margin: 0}
+top: 0/* trololo */;margin: 0;}
