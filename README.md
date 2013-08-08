@@ -35,7 +35,8 @@ Example configuration:
     "exclude": ["node_modules/**"],
     "colon-space": true,
     "stick-brace": true,
-    "strip-spaces": true
+    "strip-spaces": true,
+    "always-semicolon": true
 }
 ```
 
