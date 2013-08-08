@@ -18,11 +18,13 @@ describe('options/stick-brace', function() {
         assert.equal(
             comb.processString(
                 'a { color: red }' +
+                'a,\nb /* i */\n{ color: red }' +
                 'a{color:red}' +
                 'a \t\t \n{color:red}' +
                 'a /* foo */ {color:red}'
             ),
             'a { color: red }' +
+            'a,\nb /* i */ { color: red }' +
             'a {color:red}' +
             'a {color:red}' +
             'a /* foo */ {color:red}'
@@ -33,11 +35,13 @@ describe('options/stick-brace', function() {
         assert.equal(
             comb.processString(
                 'a { color: red }' +
+                'a, b /* i */ { color: red }' +
                 'a{color:red}' +
                 'a \t\t \n{color:red}' +
                 'a /* foo */ {color:red}'
             ),
             'a\n{ color: red }' +
+            'a, b /* i */\n{ color: red }' +
             'a\n{color:red}' +
             'a\n{color:red}' +
             'a /* foo */\n{color:red}'
