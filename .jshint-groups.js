@@ -7,7 +7,7 @@ module.exports = {
         immed: true,
         indent: 4,
         latedef: true,
-        maxdepth: 4,
+        maxdepth: 5,
         maxlen: 120,
         maxparams: 4,
         newcap: true,
@@ -22,8 +22,14 @@ module.exports = {
     groups: {
         js: {
             options: { node: true },
-            includes: ['**/*.js'],
-            excludes: ['node_modules/**/*.js']
+            includes: ['lib/*.js']
+        },
+        test: {
+            options: {
+                node: true,
+                predef: ['describe', 'beforeEach', 'it']
+            },
+            includes: ['test/*.js']
         }
     }
 };
