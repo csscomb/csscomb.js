@@ -38,6 +38,6 @@
         "csscomb": "./bin/csscomb"
     },
     "scripts": {
-        "test": "./node_modules/.bin/jshint-groups . && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha -u bdd -R spec"
+        "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha -u bdd -R spec"
     }
 }
