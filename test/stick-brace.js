@@ -16,35 +16,25 @@ describe('options/stick-brace', function() {
     it('True Boolean value should set 1 space after brace', function() {
         comb.configure({ 'stick-brace': true });
         assert.equal(
-            comb.processString(
-                'a { color: red }' +
-                'a,\nb /* i */\n{ color: red }' +
-                'a{color:red}' +
-                'a \t\t \n{color:red}' +
-                'a /* foo */ {color:red}'
-            ),
-            'a { color: red }' +
-            'a,\nb /* i */ { color: red }' +
-            'a {color:red}' +
-            'a {color:red}' +
-            'a /* foo */ {color:red}'
+            comb.processString('a{color:red }'),
+            'a {color:red \n}'
         );
     });
     it('Valid String value should set equal space after brace', function() {
         comb.configure({ 'stick-brace': '\n' });
         assert.equal(
             comb.processString(
-                'a { color: red }' +
-                'a, b /* i */ { color: red }' +
-                'a{color:red}' +
-                'a \t\t \n{color:red}' +
-                'a /* foo */ {color:red}'
+                'a{ color: red }' +
+                'a, b /* i */ { color: red; }' +
+                'a \t\t \n{color:red\n \n}' +
+                'a /* foo */ {color:red ; \n \n\t}' +
+                '@media all { .input__control { color: #000;\n \n }\t}'
             ),
-            'a\n{ color: red }' +
-            'a, b /* i */\n{ color: red }' +
-            'a\n{color:red}' +
-            'a\n{color:red}' +
-            'a /* foo */\n{color:red}'
+            'a\n{ color: red \n}' +
+            'a, b /* i */\n{ color: red;\n}' +
+            'a\n{color:red\n \n\n}' +
+            'a /* foo */\n{color:red ;\n}' +
+            '@media all\n{ .input__control\n{ color: #000;\n}\n}'
         );
     });
 });
