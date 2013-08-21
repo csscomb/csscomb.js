@@ -17,7 +17,7 @@ describe('options/stick-brace', function() {
         comb.configure({ 'stick-brace': true });
         assert.equal(
             comb.processString('a{color:red }'),
-            'a {color:red \n}'
+            'a {color:red }'
         );
     });
     it('Valid String value should set equal space after brace', function() {
@@ -27,14 +27,14 @@ describe('options/stick-brace', function() {
                 'a{ color: red }' +
                 'a, b /* i */ { color: red; }' +
                 'a \t\t \n{color:red\n \n}' +
-                'a /* foo */ {color:red ; \n \n\t}' +
+                'a /* foo */ {color:red ;\n}' +
                 '@media all { .input__control { color: #000;\n \n }\t}'
             ),
-            'a\n{ color: red \n}' +
-            'a, b /* i */\n{ color: red;\n}' +
-            'a\n{color:red\n \n\n}' +
+            'a\n{ color: red }' +
+            'a, b /* i */\n{ color: red; }' +
+            'a\n{color:red\n \n}' +
             'a /* foo */\n{color:red ;\n}' +
-            '@media all\n{ .input__control\n{ color: #000;\n}\n}'
+            '@media all\n{ .input__control\n{ color: #000;\n \n }\t}'
         );
     });
 });
