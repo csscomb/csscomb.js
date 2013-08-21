@@ -15,6 +15,32 @@ a, b, i /* foobar */
         border-bottom: 1px solid red;
 }
 
+@media all /* media */
+{ /* foobar */
+.input__control
+{
+    color: #000;
+    font-size: 100%;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}}
+
+@media screen and (min-width: 35em) /* screen */,
+       print and (min-width: 40em) /* print */
+{ /* foobar */
+.input__control
+{
+    -moz-box-sizing: border-box;
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    padding: 0.4em 0;
+}
+}
+
 /* Фигурные скобки. Вариант 2 */
 div
 {
