@@ -1,30 +1,30 @@
 /* Фигурные скобки. Вариант 1 */
 a, b, i /* foobar */
 {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
   }
   div p
 {
     font-size: 1px;
-      top: 0;
+    top: 0;
     }
     div p em
 {
-        font-style: italic;
-        border-bottom: 1px solid red;
+    font-style: italic;
+    border-bottom: 1px solid red;
 }
 
 @media all /* media */
 { /* foobar */
 .input__control
 {
-    color: #000;
-    font-size: 100%;
-    margin: 0;
-    position: relative;
-    width: 100%;
-    z-index: 3;
+        color: #000;
+        font-size: 100%;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        z-index: 3;
 }}
 
 @media screen and (min-width: 35em) /* screen */,
@@ -32,53 +32,56 @@ a, b, i /* foobar */
 { /* foobar */
 .input__control
 {
-    -moz-box-sizing: border-box;
-    background: none;
-    border: 0;
-    box-sizing: border-box;
-    outline: 0;
-    padding: 0.4em 0;
+        -moz-box-sizing: border-box;
+        background: none;
+        border: 0;
+        box-sizing: border-box;
+        outline: 0;
+        padding: 0.4em 0;
 }
 }
 
 /* Фигурные скобки. Вариант 2 */
 div
 {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
   div p
 {
     font-size: 1px;
-      top: 0;
+    top: 0;
   }
     div p em
 {
-        font-style: italic;/* inline comment*/
-        border-bottom: 1px solid red;
+    font-style: italic;/* inline comment*/
+    border-bottom: 1px solid red;
     }
 
 /* Фигурные скобки. Вариант 3 */
 div
 {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 /* foo */  div p
 {
     font-size: 1px;
-      top: 0;
+    top: 0;
   }
     div p em
 {
         /* upline comment*/
-        font-style: italic;
-        border-bottom: 1px solid red; /* trololo */ /* trololo */
+    font-style: italic;
+
+    border-bottom: 1px solid red; /* trololo */ /* trololo */
     }
 
     a
 {
-top: 0;/* ololo */margin: 0;}
+    top: 0;/* ololo */
+    margin: 0;}
     b
 {
-top: 0/* trololo */;margin: 0;}
+    top: 0/* trololo */;
+    margin: 0;}
