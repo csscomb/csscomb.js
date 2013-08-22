@@ -5,10 +5,27 @@
     ],
     "colon-space": true,
     "rule-indent": true,
+    "block-indent": true,
     "stick-brace": "\n",
     "strip-spaces": true,
     "always-semicolon": true,
     "sort-order": [
+        [
+            "font",
+            "font-family",
+            "font-size",
+            "font-weight",
+            "font-style",
+            "font-variant",
+            "font-size-adjust",
+            "font-stretch",
+            "font-effect",
+            "font-emphasize",
+            "font-emphasize-position",
+            "font-emphasize-style",
+            "font-smooth",
+            "line-height"
+        ],
         [
             "position",
             "z-index",
@@ -302,22 +319,6 @@
             "filter:progid:DXImageTransform.Microsoft.gradient",
             "-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient",
             "text-shadow"
-        ],
-        [
-            "font",
-            "font-family",
-            "font-size",
-            "font-weight",
-            "font-style",
-            "font-variant",
-            "font-size-adjust",
-            "font-stretch",
-            "font-effect",
-            "font-emphasize",
-            "font-emphasize-position",
-            "font-emphasize-style",
-            "font-smooth",
-            "line-height"
         ]
     ]
 }

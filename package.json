@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
     "description": "Tool for beautify CSS",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "commander": "1.1.1",
-        "cssp": "1.0.6",
+        "gonzales": "1.0.6",
         "minimatch": "0.2.12",
         "vow": "0.3.7",
         "vow-fs": "0.1.13"

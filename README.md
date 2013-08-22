@@ -34,6 +34,8 @@ Example configuration:
 {
     "exclude": ["node_modules/**"],
     "colon-space": true,
+    "rule-indent": true,
+    "block-indent": true,
     "stick-brace": true,
     "strip-spaces": true,
     "always-semicolon": true
@@ -46,4 +48,6 @@ Run `npm test` for tests.
 
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
-* http://www.codebeautifier.com/
+* http://www.codebeautifier.com
+* https://github.com/css/gonzales
+* https://github.com/css/csso
