@@ -17,6 +17,8 @@
         "return",
         "catch"
     ],
+    "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true },
+    "disallowSpacesInFunctionExpression": { "beforeOpeningRoundBrace": true },
     "disallowMultipleVarDecl": true,
     "disallowLeftStickedOperators": [
         "?",
@@ -60,14 +62,15 @@
         "string"
     ],
     "disallowKeywords": ["with"],
-    "disallowMulipleLineBreaks": true,
     "disallowKeywordsOnNewLine": ["else", "catch"],
     "requireLineFeedAtFileEnd": true,
     "validateJSDoc": {
         "checkParamNames": true,
+        "checkRedundantParams": true,
         "requireParamTypes": true
     },
     "requireSpacesInsideObjectBrackets": "all",
     "disallowSpacesInsideArrayBrackets": true,
-    "disallowSpaceAfterObjectKeys": true
+    "disallowSpaceAfterObjectKeys": true,
+    "disallowQuotedKeysInObjects": true
 }

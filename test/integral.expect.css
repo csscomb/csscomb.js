@@ -9,7 +9,6 @@
         background: -moz-linear-gradient(top, rgba(0,0,0,0.2) 0, rgba(0,0,0,0.4) 100%);
         background: -o-linear-gradient(top, rgba(0,0,0,0.2) 0,rgba(0,0,0,0.4) 100%);
         background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0,rgba(0,0,0,0.4) 100%);
-
         -moz-box-shadow: 0 1px 0 rgba(0,0,0,.07);
         box-shadow: 0 1px 0 rgba(0,0,0,.07);
     }
@@ -35,17 +34,19 @@
 /* Фигурные скобки. Вариант 1 */
 a, b, i /* foobar */
 {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 div p
 {
     font-size: 1px;
+
     top: 0;
 }
 div p em
 {
     font-style: italic;
+
     border-bottom: 1px solid red;
 }
 
@@ -67,12 +68,15 @@ div p em
 { /* foobar */
     .input__control
     {
-        color: #000;
         font-size: 100%;
-        margin: 0;
+
         position: relative;
-        width: 100%;
         z-index: 3;
+
+        width: 100%;
+        margin: 0;
+
+        color: #000;
     }
 }
 
@@ -82,41 +86,45 @@ div p em
     .input__control
     {
         -moz-box-sizing: border-box;
-        background: none;
-        border: 0;
         box-sizing: border-box;
-        outline: 0;
         padding: 0.4em 0;
+
+        border: 0;
+        outline: 0;
+        background: none;
     }
 }
 
 /* Фигурные скобки. Вариант 2 */
 div
 {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 div p
 {
     font-size: 1px;
+
     top: 0;
 }
 div p em
 {
     font-style: italic;/* inline comment*/
+
     border-bottom: 1px solid red;
 }
 
 /* Фигурные скобки. Вариант 3 */
 div
 {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 /* foo */
 div p
 {
     font-size: 1px;
+
     top: 0;
 }
 div p em
@@ -130,10 +138,12 @@ div p em
 a
 {
     top: 0;/* ololo */
+
     margin: 0;
 }
 b
 {
     top: 0/* trololo */;
+
     margin: 0;
 }
