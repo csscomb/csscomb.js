@@ -30,7 +30,7 @@
     "devDependencies": {
         "jshint-groups": "0.5.1",
         "jshint": "2.1.7",
-        "jscs": "1.0.2",
+        "jscs": "1.0.5",
         "mocha": "1.11.0"
     },
     "main": "./lib/csscomb.js",
