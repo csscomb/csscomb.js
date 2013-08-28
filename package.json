@@ -17,6 +17,16 @@
             "web": "http://miripiruni.org/"
         }
     ],
+    "contributors": [
+        {
+            "name": "Sergey Puzankov",
+            "email": "puzankov@yandex-team.ru"
+        },
+        {
+            "name": "Denis Payase",
+            "email": "lostsoul@yandex-team.ru"
+        }
+    ],
     "engines": {
         "node": "0.8 | 0.10"
     },
