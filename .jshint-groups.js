@@ -22,7 +22,7 @@ module.exports = {
     groups: {
         js: {
             options: { node: true },
-            includes: ['lib/*.js']
+            includes: ['lib/**/*.js']
         },
         test: {
             options: {
