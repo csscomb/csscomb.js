@@ -34,6 +34,7 @@ Example configuration:
 {
     "exclude": ["node_modules/**"],
     "colon-space": true,
+    "color-case": "lower",
     "rule-indent": true,
     "block-indent": true,
     "stick-brace": true,
