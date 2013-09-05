@@ -137,6 +137,20 @@ a { color: #FFF }
 a { color: #fff }
 ```
 
+### color-shorthand
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "color-shorthand": true }`
+
+```css
+/* before */
+b { color: #ffcc00 }
+
+/* after */
+b { color: #fc0 }
+```
+
 ## Tests
 
 Run `npm test` for tests.
