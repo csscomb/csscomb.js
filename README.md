@@ -34,16 +34,16 @@ Example configuration:
 ```json
 {
     "exclude": ["node_modules/**"],
+    "always-semicolon": true,
+    "block-indent": true,
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
     "leading-zero": false,
     "rule-indent": true,
-    "block-indent": true,
     "stick-brace": true,
     "strip-spaces": true,
-    "unitless-zero": true,
-    "always-semicolon": true
+    "unitless-zero": true
 }
 ```
 

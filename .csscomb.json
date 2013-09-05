@@ -3,16 +3,16 @@
         ".git/**",
         "node_modules/**"
     ],
+    "always-semicolon": true,
+    "block-indent": true,
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
     "leading-zero": false,
     "rule-indent": true,
-    "block-indent": true,
     "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
-    "always-semicolon": true,
     "sort-order": [
         [
             "font",
