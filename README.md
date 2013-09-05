@@ -98,18 +98,18 @@ a { color:red }
 a { color: red }
 ```
 
-Example: `{ "colon-space": ":\n        " }`
+Example: `{ "colon-space": ":\n\t\t" }`
 
 ```css
 /* before */
 a {
-    color: red;
+  color: red;
 }
 
 /* after */
 a {
-    color:
-        red;
+  color:
+    red;
 }
 ```
 
