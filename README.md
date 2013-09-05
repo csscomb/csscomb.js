@@ -38,6 +38,7 @@ Example configuration:
     "block-indent": true,
     "stick-brace": true,
     "strip-spaces": true,
+    "unitless-zero": true,
     "always-semicolon": true
 }
 ```

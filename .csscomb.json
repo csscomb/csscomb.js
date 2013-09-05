@@ -4,6 +4,7 @@
         "node_modules/**"
     ],
     "colon-space": true,
+    "unitless-zero": true,
     "rule-indent": true,
     "block-indent": true,
     "stick-brace": "\n",
