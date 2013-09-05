@@ -83,6 +83,7 @@ a { color: red }
 ```
 
 ### colon-space
+
 Available values:
   * `{Boolean}` true (means `after`)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
@@ -121,6 +122,19 @@ a { color: red }
 
 /* after */
 a { color:red }
+```
+
+### color-case
+
+Available values: `{String}` `lower` or `upper`
+
+Example: `{ "color-case": "lower" }`
+```css
+/* before */
+a { color: #FFF }
+
+/* after */
+a { color: #fff }
 ```
 
 ## Tests
