@@ -193,6 +193,23 @@ a {
   margin:0 }
 ```
 
+### stick-brace
+
+Available values:
+  * `{Boolean}` true (means 1 spaces)
+  * `{String}` of whitespace characters (`/[ \t\n]*/`)
+
+Example: `{ "stick-brace": "\n" }`
+
+```css
+/* before */
+a { color:red }
+
+/* after */
+a
+{ color:red }
+```
+
 ## Tests
 
 Run `npm test` for tests.
