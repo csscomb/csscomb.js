@@ -219,6 +219,20 @@ Example: `{ "strip-spaces": true }`
 Before: `a { color: red }   \nb { font-weight: normal }`
 After: `a { color: red }\nb { font-weight: normal }\n`
 
+### unitless-zero
+
+Available value: `{Boolean}` `true`
+
+Example: `{ "unitless-zero": true }`
+
+```css
+/* before */
+img { border: 0px }
+
+/* after */
+img { border: 0 }
+```
+
 ## Tests
 
 Run `npm test` for tests.
