@@ -301,7 +301,8 @@ Thanks for assistance and contributions:
 [@miripiruni](https://github.com/miripiruni),
 [@puzankov](https://github.com/puzankov),
 [@L0stSoul](https://github.com/L0stSoul),
-[@ignovak](https://github.com/ignovak)
+[@ignovak](https://github.com/ignovak),
+[@kizu](https://github.com/kizu)
 
 ## License
 
