@@ -198,6 +198,51 @@ a {
   margin:0 }
 ```
 
+### sort-order
+
+**Note**: you can use an example of [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) to set your own sort order
+
+Available values:
+  * `{Array}` of rules
+  * `{Array}` of arrays of rules for groups separation
+
+Example: `{ "sort-order": [ "margin", "padding" ] }`
+
+```css
+/* before */
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/* after */
+p {
+    margin: 0;
+    padding: 0;
+}
+```
+
+Example: `{ "sort-order": [ [ "margin", "padding" ], [ "border", "background" ] ] }`
+
+```css
+/* before */
+p {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* after */
+p {
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    background: none;
+}
+```
+
 ### stick-brace
 
 Available values:
