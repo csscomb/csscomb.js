@@ -1,5 +1,5 @@
 /* foobar */
-@media all and (min-width:0px)
+@media all and (min-width:0)
 {
     /* :before — бордер */
     .radio-button_theme_normal .radio-button__radio:before
@@ -50,7 +50,7 @@ div p em
     border-bottom: 1px solid red;
 }
 
-@media all and (min-width:0px)
+@media all and (min-width:0)
 {
     /* В нажатом состоянии смещается вниз на 1px вся кнопка, текст не смещается */
     .button_pressed_yes.button_shadow_yes
