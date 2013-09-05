@@ -210,6 +210,15 @@ a
 { color:red }
 ```
 
+### strip-spaces
+
+Available value: `{Boolean}` true
+
+Example: `{ "strip-spaces": true }`
+
+Before: `a { color: red }   \nb { font-weight: normal }`
+After: `a { color: red }\nb { font-weight: normal }\n`
+
 ## Tests
 
 Run `npm test` for tests.
