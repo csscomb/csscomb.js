@@ -54,6 +54,7 @@ Example configuration:
 Available value: `{Boolean}` true
 
 Example: `{ "always-semicolon": true }`
+
 ```css
 /* before */
 a { color: red }
@@ -70,6 +71,7 @@ Available values:
   * `{String}` of space characters (`/[ \t]*`)
 
 Example: `{ "block-indent": 2 }`
+
 ```css
 /* before */
   a { color: red }
@@ -129,6 +131,7 @@ a { color:red }
 Available values: `{String}` `lower` or `upper`
 
 Example: `{ "color-case": "lower" }`
+
 ```css
 /* before */
 a { color: #FFF }
@@ -149,6 +152,20 @@ b { color: #ffcc00 }
 
 /* after */
 b { color: #fc0 }
+```
+
+### leading-zero
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "leading-zero": false }`
+
+```css
+/* before */
+p { padding: 0.5em }
+
+/* after */
+p { padding: .5em }
 ```
 
 ## Tests
