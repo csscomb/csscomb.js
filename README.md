@@ -31,7 +31,6 @@ To run `csscomb`, you can use the following command from the project root:
 `csscomb` is configured using `.csscomb.json` file, located in the project root.
 
 Example configuration:
-
 ```json
 {
     "exclude": ["node_modules/**"],
@@ -42,6 +41,55 @@ Example configuration:
     "strip-spaces": true,
     "always-semicolon": true
 }
+```
+
+## Options
+
+### always-semicolon
+
+Available value: `{Boolean}` true
+
+Example: `{ "always-semicolon": true }`
+```css
+/* before */
+a { color: red }
+
+/* after */
+a { color: red; }
+```
+
+### block-indent
+
+Available values:
+  * `{Boolean}` true
+  * `{Number}` of spaces
+  * `{String}` of space characters (`/[ \t]*`)
+
+Example: `{ "block-indent": 2 }`
+```css
+/* before */
+  a { color: red }
+  @media all { a { color: green } }
+
+/* after */
+a { color: red }
+@media all {
+  a { color: green }
+}
+```
+
+### colon-space
+Available values:
+  * `{Boolean}` true (means `after`)
+  * `{String}`: `before`, `after` or `both`
+
+Example: `{ "colon-space": true }`
+```css
+/* before */
+a { color:red }
+
+/* after */
+a { color: red }
 ```
 
 ## Tests
