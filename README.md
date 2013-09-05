@@ -1,6 +1,11 @@
 # CSSCOMB [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 
 CSSComb is a coding style formatter for CSS.
+You can easily write your own [configuration](#configuration) to make your style sheets beautiful and consistent.
+
+The main feature is the [sorting properties](#sort-order) in specific order.
+It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
+This is the new JavaScript version, based on powerful CSS parser [Gonzales](https://github.com/css/gonzales).
 
 ## Installation
 
@@ -28,7 +33,7 @@ To run `csscomb`, you can use the following command from the project root:
 
 ## Configuration
 
-`csscomb` is configured using `.csscomb.json` file, located in the project root.
+`csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) file, located in the project root.
 
 Example configuration:
 ```json
