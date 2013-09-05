@@ -65,10 +65,12 @@ a { color: red; }
 
 ### block-indent
 
+**Note**: better to use with [rule-indent](#rule-indent)
+
 Available values:
-  * `{Boolean}` true
+  * `{Boolean}` true (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]/*`)
+  * `{String}` of whitespace characters (`/[ \t]*/`)
 
 Example: `{ "block-indent": 2 }`
 
@@ -78,9 +80,11 @@ Example: `{ "block-indent": 2 }`
   @media all { a { color: green } }
 
 /* after */
-a { color: red }
+a { color: red
+}
 @media all {
-  a { color: green }
+  a { color: green
+  }
 }
 ```
 
@@ -166,6 +170,27 @@ p { padding: 0.5em }
 
 /* after */
 p { padding: .5em }
+```
+
+### rule-indent
+
+**Note**: better to use with [block-indent](#block-indent)
+
+Available values:
+  * `{Boolean}` true (means 4 spaces)
+  * `{Number}` of spaces
+  * `{String}` of whitespace characters (`/[ \t]*/`)
+
+Example: `{ "rule-indent": 2 }`
+
+```css
+/* before */
+a { color:red; margin:0 }
+
+/* after */
+a {
+  color:red;
+  margin:0 }
 ```
 
 ## Tests
