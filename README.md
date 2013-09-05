@@ -1,6 +1,11 @@
 # CSSCOMB [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 
 CSSComb is a coding style formatter for CSS.
+You can easily write your own [configuration](#configuration) to make your style sheets beautiful and consistent.
+
+The main feature is the [sorting properties](#sort-order) in specific order.
+It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
+This is the new JavaScript version, based on powerful CSS parser [Gonzales](https://github.com/css/gonzales).
 
 ## Installation
 
@@ -28,7 +33,7 @@ To run `csscomb`, you can use the following command from the project root:
 
 ## Configuration
 
-`csscomb` is configured using `.csscomb.json` file, located in the project root.
+`csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) file, located in the project root.
 
 Example configuration:
 ```json
@@ -54,6 +59,7 @@ Example configuration:
 Available value: `{Boolean}` true
 
 Example: `{ "always-semicolon": true }`
+
 ```css
 /* before */
 a { color: red }
@@ -64,25 +70,31 @@ a { color: red; }
 
 ### block-indent
 
+**Note**: better to use with [rule-indent](#rule-indent)
+
 Available values:
-  * `{Boolean}` true
+  * `{Boolean}` true (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of space characters (`/[ \t]*`)
+  * `{String}` of whitespace characters (`/[ \t]*/`)
 
 Example: `{ "block-indent": 2 }`
+
 ```css
 /* before */
   a { color: red }
   @media all { a { color: green } }
 
 /* after */
-a { color: red }
+a { color: red
+}
 @media all {
-  a { color: green }
+  a { color: green
+  }
 }
 ```
 
 ### colon-space
+
 Available values:
   * `{Boolean}` true (means `after`)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
@@ -121,6 +133,154 @@ a { color: red }
 
 /* after */
 a { color:red }
+```
+
+### color-case
+
+Available values: `{String}` `lower` or `upper`
+
+Example: `{ "color-case": "lower" }`
+
+```css
+/* before */
+a { color: #FFF }
+
+/* after */
+a { color: #fff }
+```
+
+### color-shorthand
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "color-shorthand": true }`
+
+```css
+/* before */
+b { color: #ffcc00 }
+
+/* after */
+b { color: #fc0 }
+```
+
+### leading-zero
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "leading-zero": false }`
+
+```css
+/* before */
+p { padding: 0.5em }
+
+/* after */
+p { padding: .5em }
+```
+
+### rule-indent
+
+**Note**: better to use with [block-indent](#block-indent)
+
+Available values:
+  * `{Boolean}` true (means 4 spaces)
+  * `{Number}` of spaces
+  * `{String}` of whitespace characters (`/[ \t]*/`)
+
+Example: `{ "rule-indent": 2 }`
+
+```css
+/* before */
+a { color:red; margin:0 }
+
+/* after */
+a {
+  color:red;
+  margin:0 }
+```
+
+### sort-order
+
+**Note**: you can use an example of [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) to set your own sort order
+
+Available values:
+  * `{Array}` of rules
+  * `{Array}` of arrays of rules for groups separation
+
+Example: `{ "sort-order": [ "margin", "padding" ] }`
+
+```css
+/* before */
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/* after */
+p {
+    margin: 0;
+    padding: 0;
+}
+```
+
+Example: `{ "sort-order": [ [ "margin", "padding" ], [ "border", "background" ] ] }`
+
+```css
+/* before */
+p {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* after */
+p {
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    background: none;
+}
+```
+
+### stick-brace
+
+Available values:
+  * `{Boolean}` true (means 1 spaces)
+  * `{String}` of whitespace characters (`/[ \t\n]*/`)
+
+Example: `{ "stick-brace": "\n" }`
+
+```css
+/* before */
+a { color:red }
+
+/* after */
+a
+{ color:red }
+```
+
+### strip-spaces
+
+Available value: `{Boolean}` true
+
+Example: `{ "strip-spaces": true }`
+
+Before: `a { color: red }   \nb { font-weight: normal }`
+After: `a { color: red }\nb { font-weight: normal }\n`
+
+### unitless-zero
+
+Available value: `{Boolean}` `true`
+
+Example: `{ "unitless-zero": true }`
+
+```css
+/* before */
+img { border: 0px }
+
+/* after */
+img { border: 0 }
 ```
 
 ## Tests
