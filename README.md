@@ -85,15 +85,42 @@ a { color: red }
 ### colon-space
 Available values:
   * `{Boolean}` true (means `after`)
-  * `{String}`: `before`, `after` or `both`
+  * `{String}`: `before`, `after`, `both` or any combination of whitespaces
+  and/or a colon (` `, `: `, `\t:\n\t` etc.)
 
 Example: `{ "colon-space": true }`
+
 ```css
 /* before */
 a { color:red }
 
 /* after */
 a { color: red }
+```
+
+Example: `{ "colon-space": ":\n\t\t" }`
+
+```css
+/* before */
+a {
+  color: red;
+}
+
+/* after */
+a {
+  color:
+    red;
+}
+```
+
+Example: `{ "colon-space": ":" }`
+
+```css
+/* before */
+a { color: red }
+
+/* after */
+a { color:red }
 ```
 
 ## Tests
