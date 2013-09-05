@@ -17,10 +17,10 @@
     .radio-button_theme_normal .radio-button__radio:after
     {
         background: #fFf;
-        background: -webkit-linear-gradient(top, #Fff 0,#eeE 100%);
+        background: -webkit-linear-gradient(top, #FffFff 0,#eeeeEe 100%);
         background: -moz-linear-gradient(top, #fff 0, #eEe 100%);
         background: -o-linear-gradient(top, #fff 0,#eee 100%);
-        background: linear-gradient(to bottom, #fff 0,#eEe 100%);
+        background: linear-gradient(to bottom, #ffffff 0,#eeEeee 100%);
     }
 
     /* _focused_yes */
