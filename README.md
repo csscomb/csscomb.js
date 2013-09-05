@@ -68,7 +68,7 @@ a { color: red; }
 Available values:
   * `{Boolean}` true
   * `{Number}` of spaces
-  * `{String}` of space characters (`/[ \t]*`)
+  * `{String}` of whitespace characters (`/[ \t]/*`)
 
 Example: `{ "block-indent": 2 }`
 
