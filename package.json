@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
     "description": "Tool for beautify CSS",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
@@ -25,6 +25,14 @@
         {
             "name": "Denis Payase",
             "email": "lostsoul@yandex-team.ru"
+        },
+        {
+            "name": "Igor Novak",
+            "email": "bezengi@gmail.com"
+        },
+        {
+            "name": "Roman Komarov",
+            "email": "kizmarh@ya.ru"
         }
     ],
     "engines": {

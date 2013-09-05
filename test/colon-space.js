@@ -77,4 +77,56 @@ describe('options/colon-space', function() {
             'a {color : red}'
         );
     });
+    it('`  ` value should set two spaces after colon', function() {
+        comb.configure({ 'colon-space': '  ' });
+        assert.equal(
+            comb.processString(
+                'a { color: red }' +
+                'a{color:red}' +
+                'a {color : red}'
+            ),
+            'a { color:  red }' +
+            'a{color:  red}' +
+            'a {color:  red}'
+        );
+    });
+    it('`:` value should set no space around colon', function() {
+        comb.configure({ 'colon-space': ':' });
+        assert.equal(
+            comb.processString(
+                'a { color: red }' +
+                'a{color:red}' +
+                'a {color : red}'
+            ),
+            'a { color:red }' +
+            'a{color:red}' +
+            'a {color:red}'
+        );
+    });
+    it('`\n:` value should set a newline before colon', function() {
+        comb.configure({ 'colon-space': '\n:' });
+        assert.equal(
+            comb.processString(
+                'a { color: red }' +
+                'a{color:red}' +
+                'a {color : red}'
+            ),
+            'a { color\n:red }' +
+            'a{color\n:red}' +
+            'a {color\n:red}'
+        );
+    });
+    it('`\t:\t` value should set tabs around colon', function() {
+        comb.configure({ 'colon-space': '\t:\t' });
+        assert.equal(
+            comb.processString(
+                'a { color: red }' +
+                'a{color:red}' +
+                'a {color : red}'
+            ),
+            'a { color\t:\tred }' +
+            'a{color\t:\tred}' +
+            'a {color\t:\tred}'
+        );
+    });
 });
