@@ -63,6 +63,10 @@ Thanks for assistance and contributions:
 [@puzankov](https://github.com/puzankov),
 [@L0stSoul](https://github.com/L0stSoul)
 
+## License
+
+This software is released under the terms of the [MIT license](https://github.com/csscomb/csscomb.js/blob/master/LICENSE).
+
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
