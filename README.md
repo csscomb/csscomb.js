@@ -1,19 +1,21 @@
-# Tool for beautify CSS
+# CSSCOMB [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
+
+CSSComb is a coding style formatter for CSS.
 
 ## Installation
 
-```
+```bash
 npm install csscomb
 ```
 
 To run `csscomb`, you can use the following command from the project root:
 
-```
+```bash
 ./node_modules/.bin/csscomb path[ path[...]]
 ```
 
-```
-$ ./node_modules/.bin/csscomb --help
+```bash
+./node_modules/.bin/csscomb --help
 
   Usage: csscomb [options] <file ...>
 
@@ -30,7 +32,7 @@ $ ./node_modules/.bin/csscomb --help
 
 Example configuration:
 
-```javascript
+```json
 {
     "exclude": ["node_modules/**"],
     "colon-space": true,
@@ -46,8 +48,22 @@ Example configuration:
 
 Run `npm test` for tests.
 
+## Contributing
+
+Anyone and everyone is welcome to contribute. Please take a moment to
+review the [guidelines for contributing](CONTRIBUTE.md).
+
+## Authors
+
+[@mishanga](https://github.com/mishanga)
+
+Thanks for assistance and contributions:
+
+[@miripiruni](https://github.com/miripiruni),
+[@puzankov](https://github.com/puzankov),
+[@L0stSoul](https://github.com/L0stSoul)
+
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
-* http://www.codebeautifier.com
 * https://github.com/css/gonzales
 * https://github.com/css/csso
