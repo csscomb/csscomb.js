@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.10 - 2013-09-06
+- Option: color-case
+- Option: color-shorthand
+- Option: leading-zero
+- Option: unitless-zero
+- Option update: colon-space
+- Contributors added: @kizu and @ignovak
+- Readme updated
+- Licence added
+- Contributing info added
+- Changelog added
+
 ## 0.0.9 - 2013-08-28
 - Option: sort-order
 - Sort order config fix
