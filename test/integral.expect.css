@@ -135,7 +135,7 @@ div p em
     border-bottom: 1px solid red; /* trololo */ /* trololo */
 }
 
-a
+a:not(b)
 {
     top: 0;/* ololo */
 
