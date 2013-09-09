@@ -8,7 +8,7 @@ describe('options/element-case', function() {
         comb = new Comb();
     });
 
-    it('Invalid String should not change space around colon', function() {
+    it('Invalid String should not change case of elements', function() {
         comb.configure({ 'element-case': 'foobar' });
         assert.equal(
             comb.processString(
