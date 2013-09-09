@@ -8,6 +8,7 @@
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
+    "element-case": "lower",
     "leading-zero": false,
     "rule-indent": true,
     "stick-brace": "\n",
