@@ -281,7 +281,8 @@ Available value: `{Boolean}` true
 
 Example: `{ "strip-spaces": true }`
 
-Before: `a { color: red }   \nb { font-weight: normal }`
+Before:
+```a { color: red } \nb { font-weight: normal }\n\n\n`
 After: `a { color: red }\nb { font-weight: normal }\n`
 
 ### unitless-zero
