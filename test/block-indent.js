@@ -23,7 +23,7 @@ describe('options/block-indent', function() {
     it('True Boolean value should set 4 spaces indent', function() {
         comb.configure({ 'block-indent': true });
         assert.equal(
-            comb.processString(' \n a { color: red }  @media all { .input__control { color: #000;\n}\n}'),
+            comb.processString(' \n a { color: red }  @media all {.input__control { color: #000;\n}\n}'),
             ' \na { color: red \n}\n@media all {\n    .input__control { color: #000;\n    }\n}'
         );
     });

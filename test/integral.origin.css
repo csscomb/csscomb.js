@@ -1,7 +1,5 @@
 /* foobar */
-@media all and (min-width:0px) {
-    /* :before — бордер */
-    .radio-button_theme_normal .radio-button__radio:before
+@media all and (min-width:0px) {.radio-button_theme_normal .radio-button__radio:before
     {
         background: rgba(0,0,0,0.4);
         background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0,rgba(0,0,0,0.4) 100%);
