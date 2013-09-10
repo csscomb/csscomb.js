@@ -44,6 +44,7 @@ Example configuration:
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
+    "element-case": "lower",
     "leading-zero": false,
     "rule-indent": true,
     "stick-brace": true,
@@ -163,6 +164,20 @@ b { color: #ffcc00 }
 b { color: #fc0 }
 ```
 
+### element-case
+
+Available values: `{String}` `lower` or `upper`
+
+Example: `{ "element-case": "upper" }`
+
+```css
+/* before */
+li > a { color: red }
+
+/* after */
+LI > A { color: red }
+```
+
 ### leading-zero
 
 Available values: `{Boolean}` `true` or `false`
@@ -266,7 +281,8 @@ Available value: `{Boolean}` true
 
 Example: `{ "strip-spaces": true }`
 
-Before: `a { color: red }   \nb { font-weight: normal }`
+Before:
+```a { color: red } \nb { font-weight: normal }\n\n\n`
 After: `a { color: red }\nb { font-weight: normal }\n`
 
 ### unitless-zero

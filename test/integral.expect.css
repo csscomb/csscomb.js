@@ -1,7 +1,6 @@
 /* foobar */
 @media all and (min-width:0)
 {
-    /* :before — бордер */
     .radio-button_theme_normal .radio-button__radio:before
     {
         background: rgba(0,0,0,.4);
@@ -135,7 +134,7 @@ div p em
     border-bottom: 1px solid red; /* trololo */ /* trololo */
 }
 
-a
+a:not(b)
 {
     top: 0;/* ololo */
 

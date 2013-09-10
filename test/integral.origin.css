@@ -1,7 +1,5 @@
 /* foobar */
-@media all and (min-width:0px) {
-    /* :before — бордер */
-    .radio-button_theme_normal .radio-button__radio:before
+@media all and (min-width:0px) {.radio-button_theme_normal .radio-button__radio:before
     {
         background: rgba(0,0,0,0.4);
         background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0,rgba(0,0,0,0.4) 100%);
@@ -110,14 +108,14 @@ div {
     font-size:1px;
       top:0
   }
-    div p em {
+    div P EM {
         /* upline comment*/
         font-style:italic;
         
         border-bottom:1px solid red /* trololo */ /* trololo */
     }
 
-    a{
+    a:not(B){
 top: 0;/* ololo */margin :0;}
     b
         {
