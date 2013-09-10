@@ -103,7 +103,7 @@ describe('options/colon-space', function() {
             'a {color:red}'
         );
     });
-    it('`\n:` value should set a newline before colon', function() {
+    it('`\\n:` value should set a newline before colon', function() {
         comb.configure({ 'colon-space': '\n:' });
         assert.equal(
             comb.processString(
@@ -116,7 +116,7 @@ describe('options/colon-space', function() {
             'a {color\n:red}'
         );
     });
-    it('`\t:\t` value should set tabs around colon', function() {
+    it('`\\t:\\t` value should set tabs around colon', function() {
         comb.configure({ 'colon-space': '\t:\t' });
         assert.equal(
             comb.processString(
