@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.11 - 2013-09-10
+- Option: element-case
+- Fixed block-indent bug with space after at-rule opening brace
+- Fixed JSDoc
+- Fixed colon-space description
+
 ## 0.0.10 - 2013-09-06
 - Option: color-case
 - Option: color-shorthand
