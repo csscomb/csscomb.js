@@ -165,6 +165,44 @@ b { color: #ffcc00 }
 b { color: #fc0 }
 ```
 
+### combinator-space
+
+Available values:
+  * `{Boolean}`: `true` sets one space, `false` removes the spaces.
+  * `{String}`: any combination of whitespaces.
+  * `{Array}` with two `{String}` values: for setting left and right whitespace.
+
+Example: `{ "combinator-space": true }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a > b { color: red }
+```
+
+Example: `{ "combinator-space": "" }`
+
+```css
+/* before */
+a > b { color: red }
+
+/* after */
+a>b { color: red }
+```
+
+Example: `{ "combinator-space": [" ", "\n"] }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a >
+b { color: red }
+```
+
 ### element-case
 
 Available values: `{String}` `lower` or `upper`
