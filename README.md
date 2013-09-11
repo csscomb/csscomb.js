@@ -40,6 +40,8 @@ Example configuration:
 ```json
 {
     "exclude": ["node_modules/**"],
+    "verbose": true,
+
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
@@ -55,6 +57,25 @@ Example configuration:
 ```
 
 ## Options
+
+### verbose
+
+Available value: `{Boolean}` true
+
+Config mode: `{ "verbose": true }`
+```bash
+$ ./bin/csscomb ./test
+./test/integral.expect.css
+./test/integral.origin.css
+2 files processed
+94 ms spent
+```
+
+CLI mode:
+```bash
+$ ./bin/csscomb ./test --verbose
+$ ./bin/csscomb ./test -v
+```
 
 ### always-semicolon
 
