@@ -104,11 +104,11 @@ div {
   padding:0;
   margin:0;
 }
-/* foo */  div p {
+/* foo */  div~p {
     font-size:1px;
       top:0
   }
-    div P EM {
+    div> P +EM {
         /* upline comment*/
         font-style:italic;
         

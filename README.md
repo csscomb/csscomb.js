@@ -1,4 +1,5 @@
-# CSSCOMB [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
+# CSSComb [![CSSComb](logo.png)](http://csscomb.com/)
+[![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 
 CSSComb is a coding style formatter for CSS.
 You can easily write your own [configuration](#configuration) to make your style sheets beautiful and consistent.
@@ -164,6 +165,44 @@ b { color: #ffcc00 }
 b { color: #fc0 }
 ```
 
+### combinator-space
+
+Available values:
+  * `{Boolean}`: `true` sets one space, `false` removes the spaces.
+  * `{String}`: any combination of whitespaces.
+  * `{Array}` with two `{String}` values: for setting left and right whitespace.
+
+Example: `{ "combinator-space": true }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a > b { color: red }
+```
+
+Example: `{ "combinator-space": "" }`
+
+```css
+/* before */
+a > b { color: red }
+
+/* after */
+a>b { color: red }
+```
+
+Example: `{ "combinator-space": [" ", "\n"] }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a >
+b { color: red }
+```
+
 ### element-case
 
 Available values: `{String}` `lower` or `upper`
@@ -281,8 +320,8 @@ Available value: `{Boolean}` true
 
 Example: `{ "strip-spaces": true }`
 
-Before:
-```a { color: red } \nb { font-weight: normal }\n\n\n`
+Before: `a { color: red } \nb { font-weight: normal }\n\n\n`
+
 After: `a { color: red }\nb { font-weight: normal }\n`
 
 ### unitless-zero
@@ -318,7 +357,8 @@ Thanks for assistance and contributions:
 [@puzankov](https://github.com/puzankov),
 [@L0stSoul](https://github.com/L0stSoul),
 [@ignovak](https://github.com/ignovak),
-[@kizu](https://github.com/kizu)
+[@kizu](https://github.com/kizu),
+[@anton-rudeshko](https://github.com/anton-rudeshko)
 
 ## License
 

@@ -28,7 +28,9 @@ git checkout -b <topic-branch-name>
 4. Patches and features will not be accepted without tests.
    Run `npm test` to check that all tests pass after you've made changes.
 
-5. Locally rebase the upstream development branch into your topic branch:
+5. Update the `README.md` if there were corresponding changes or new options.
+
+6. Locally rebase the upstream development branch into your topic branch:
 ```bash
 git pull --rebase upstream dev
 ```
@@ -38,7 +40,7 @@ git pull --rebase upstream dev
 git push origin <topic-branch-name>
 ```
 
-8. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description.
+8. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) to a `dev` branch with a clear title and description.
 
 <a name="maintainers"></a>
 ## Maintainers
