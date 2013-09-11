@@ -120,13 +120,13 @@ div
     padding: 0;
 }
 /* foo */
-div p
+div ~ p
 {
     font-size: 1px;
 
     top: 0;
 }
-div p em
+div > p + em
 {
         /* upline comment*/
     font-style: italic;
