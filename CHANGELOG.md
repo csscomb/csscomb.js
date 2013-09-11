@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.13 - 2013-09-12
+- Fixed failing on empty files (#66)
+
 ## 0.0.12 - 2013-09-11
 - Option: combinator-space
 - Readme update
