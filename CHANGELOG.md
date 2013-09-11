@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.12 - 2013-09-11
+- Option: combinator-space
+- Readme update
+- Some CLI fixes
+- Contributor added: @anton-rudeshko
+
 ## 0.0.11 - 2013-09-10
 - Option: element-case
 - Fixed block-indent bug with space after at-rule opening brace
