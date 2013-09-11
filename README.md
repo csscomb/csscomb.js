@@ -1,4 +1,5 @@
-# CSSCOMB [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
+# CSSComb [![CSSComb](logo.png)](http://csscomb.com/)
+[![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 
 CSSComb is a coding style formatter for CSS.
 You can easily write your own [configuration](#configuration) to make your style sheets beautiful and consistent.
