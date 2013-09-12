@@ -66,10 +66,12 @@ Available value: `{Boolean}` `true`
 Config mode: `{ "verbose": true }`
 ```bash
 $ ./bin/csscomb ./test
-./test/integral.expect.css
-./test/integral.origin.css
+✓ test/integral.origin.css
+  test/integral.expect.css
+
 2 files processed
-94 ms spent
+1 file fixed
+96 ms spent
 ```
 
 CLI mode:
