@@ -6,21 +6,28 @@ describe('options/stick-brace', function() {
     beforeEach(function() {
         comb = new Comb();
     });
-    it('Invalid String should not change space after brace', function() {
+    it('Invalid String should not change space before brace', function() {
         comb.configure({ 'stick-brace': 'foobar' });
         assert.equal(
             comb.processString('a { color: red }'),
             'a { color: red }'
         );
     });
-    it('True Boolean value should set 1 space after brace', function() {
+    it('True Boolean value should set 1 space before brace', function() {
         comb.configure({ 'stick-brace': true });
         assert.equal(
             comb.processString('a{color:red }'),
             'a {color:red }'
         );
     });
-    it('Valid String value should set equal space after brace', function() {
+    it('Valid Number value should set equal space before brace', function() {
+        comb.configure({ 'stick-brace': 0 });
+        assert.equal(
+            comb.processString('a {color:red }'),
+            'a{color:red }'
+        );
+    });
+    it('Valid String value should set equal space before brace', function() {
         comb.configure({ 'stick-brace': '\n' });
         assert.equal(
             comb.processString(

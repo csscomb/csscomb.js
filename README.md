@@ -61,7 +61,7 @@ Example configuration:
 
 ### verbose
 
-Available value: `{Boolean}` true
+Available value: `{Boolean}` `true`
 
 Config mode: `{ "verbose": true }`
 ```bash
@@ -80,7 +80,7 @@ $ ./bin/csscomb ./test -v
 
 ### always-semicolon
 
-Available value: `{Boolean}` true
+Available value: `{Boolean}` `true`
 
 Example: `{ "always-semicolon": true }`
 
@@ -97,9 +97,9 @@ a { color: red; }
 **Note**: better to use with [rule-indent](#rule-indent)
 
 Available values:
-  * `{Boolean}` true (means 4 spaces)
+  * `{Boolean}` `true` (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]*/`)
+  * `{String}` of whitespace characters (`/[ \t]+/`)
 
 Example: `{ "block-indent": 2 }`
 
@@ -120,7 +120,7 @@ a { color: red
 ### colon-space
 
 Available values:
-  * `{Boolean}` true (means `after`)
+  * `{Boolean}` `true` (means `after`)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
   and/or a colon (` `, `: `, `\t:\n\t` etc.)
 
@@ -270,9 +270,9 @@ p { padding: .5em }
 **Note**: better to use with [block-indent](#block-indent)
 
 Available values:
-  * `{Boolean}` true (means 4 spaces)
+  * `{Boolean}` `true` (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]*/`)
+  * `{String}` of whitespace characters (`/[ \t]+/`)
 
 Example: `{ "rule-indent": 2 }`
 
@@ -334,8 +334,9 @@ p {
 ### stick-brace
 
 Available values:
-  * `{Boolean}` true (means 1 spaces)
-  * `{String}` of whitespace characters (`/[ \t\n]*/`)
+  * `{Boolean}` `true` (means 1 space)
+  * `{Number}` of spaces
+  * `{String}` of whitespace characters (`/[ \t\n]+/`)
 
 Example: `{ "stick-brace": "\n" }`
 
@@ -350,7 +351,7 @@ a
 
 ### strip-spaces
 
-Available value: `{Boolean}` true
+Available value: `{Boolean}` `true`
 
 Example: `{ "strip-spaces": true }`
 

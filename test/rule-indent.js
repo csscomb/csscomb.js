@@ -6,14 +6,14 @@ describe('options/rule-indent', function() {
     beforeEach(function() {
         comb = new Comb();
     });
-    it('Invalid Number value should not change space after brace', function() {
+    it('Invalid Number value should not change rule indent', function() {
         comb.configure({ 'rule-indent': 3.5 });
         assert.equal(
             comb.processString('a {\n color: red }'),
             'a {\n color: red }'
         );
     });
-    it('Invalid String value should not change space after brace', function() {
+    it('Invalid String value should not change rule indent', function() {
         comb.configure({ 'rule-indent': 'foobar' });
         assert.equal(
             comb.processString('a {\n color: red }'),
@@ -27,14 +27,14 @@ describe('options/rule-indent', function() {
             'a {\n    color: red }'
         );
     });
-    it('Valid Number value should set equal space after brace', function() {
+    it('Valid Number value should set equal space indent', function() {
         comb.configure({ 'rule-indent': 3 });
         assert.equal(
             comb.processString('a {\n color: red }'),
             'a {\n   color: red }'
         );
     });
-    it('Valid String value should set equal space after brace', function() {
+    it('Valid String value should set equal indent', function() {
         comb.configure({ 'rule-indent': '\t' });
         assert.equal(
             comb.processString(
