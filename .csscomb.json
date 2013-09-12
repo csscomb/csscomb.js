@@ -10,6 +10,7 @@
     "color-shorthand": true,
     "combinator-space": true,
     "element-case": "lower",
+    "eof-newline": true,
     "leading-zero": false,
     "rule-indent": true,
     "stick-brace": "\n",

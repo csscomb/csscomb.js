@@ -48,6 +48,7 @@ Example configuration:
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
+    "eof-newline": true,
     "leading-zero": false,
     "rule-indent": true,
     "stick-brace": true,
@@ -238,6 +239,18 @@ li > a { color: red }
 LI > A { color: red }
 ```
 
+### eof-newline
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "eof-newline": true }`
+
+`a { color: red }` &rarr; `a { color: red }\n`
+
+Example: `{ "eof-newline": false }`
+
+`a { color: red }\n` &rarr; `a { color: red }`
+
 ### leading-zero
 
 Available values: `{Boolean}` `true` or `false`
@@ -341,9 +354,9 @@ Available value: `{Boolean}` true
 
 Example: `{ "strip-spaces": true }`
 
-Before: `a { color: red } \nb { font-weight: normal }\n\n\n`
+`a { color: red } \n \n \n` &rarr; `a { color: red }\n`
 
-After: `a { color: red }\nb { font-weight: normal }\n`
+`a { color: red }\t` &rarr; `a { color: red }`
 
 ### unitless-zero
 
