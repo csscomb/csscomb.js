@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.14 - 2013-09-12
+- Option: eof-newline (#55)
+- Verbose option (#62)
+- Some refactoring
+
 ## 0.0.13 - 2013-09-12
 - Fixed failing on empty files (#66)
 
