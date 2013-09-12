@@ -40,12 +40,15 @@ Example configuration:
 ```json
 {
     "exclude": ["node_modules/**"],
+    "verbose": true,
+
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
+    "eof-newline": true,
     "leading-zero": false,
     "rule-indent": true,
     "stick-brace": true,
@@ -56,9 +59,30 @@ Example configuration:
 
 ## Options
 
+### verbose
+
+Available value: `{Boolean}` `true`
+
+Config mode: `{ "verbose": true }`
+```bash
+$ ./bin/csscomb ./test
+✓ test/integral.origin.css
+  test/integral.expect.css
+
+2 files processed
+1 file fixed
+96 ms spent
+```
+
+CLI mode:
+```bash
+$ ./bin/csscomb ./test --verbose
+$ ./bin/csscomb ./test -v
+```
+
 ### always-semicolon
 
-Available value: `{Boolean}` true
+Available value: `{Boolean}` `true`
 
 Example: `{ "always-semicolon": true }`
 
@@ -75,9 +99,9 @@ a { color: red; }
 **Note**: better to use with [rule-indent](#rule-indent)
 
 Available values:
-  * `{Boolean}` true (means 4 spaces)
+  * `{Boolean}` `true` (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]*/`)
+  * `{String}` of whitespace characters (`/[ \t]+/`)
 
 Example: `{ "block-indent": 2 }`
 
@@ -98,7 +122,7 @@ a { color: red
 ### colon-space
 
 Available values:
-  * `{Boolean}` true (means `after`)
+  * `{Boolean}` `true` (means `after`)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
   and/or a colon (` `, `: `, `\t:\n\t` etc.)
 
@@ -217,6 +241,18 @@ li > a { color: red }
 LI > A { color: red }
 ```
 
+### eof-newline
+
+Available values: `{Boolean}` `true` or `false`
+
+Example: `{ "eof-newline": true }`
+
+`a { color: red }` &rarr; `a { color: red }\n`
+
+Example: `{ "eof-newline": false }`
+
+`a { color: red }\n` &rarr; `a { color: red }`
+
 ### leading-zero
 
 Available values: `{Boolean}` `true` or `false`
@@ -236,9 +272,9 @@ p { padding: .5em }
 **Note**: better to use with [block-indent](#block-indent)
 
 Available values:
-  * `{Boolean}` true (means 4 spaces)
+  * `{Boolean}` `true` (means 4 spaces)
   * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]*/`)
+  * `{String}` of whitespace characters (`/[ \t]+/`)
 
 Example: `{ "rule-indent": 2 }`
 
@@ -300,8 +336,9 @@ p {
 ### stick-brace
 
 Available values:
-  * `{Boolean}` true (means 1 spaces)
-  * `{String}` of whitespace characters (`/[ \t\n]*/`)
+  * `{Boolean}` `true` (means 1 space)
+  * `{Number}` of spaces
+  * `{String}` of whitespace characters (`/[ \t\n]+/`)
 
 Example: `{ "stick-brace": "\n" }`
 
@@ -316,13 +353,13 @@ a
 
 ### strip-spaces
 
-Available value: `{Boolean}` true
+Available value: `{Boolean}` `true`
 
 Example: `{ "strip-spaces": true }`
 
-Before: `a { color: red } \nb { font-weight: normal }\n\n\n`
+`a { color: red } \n \n \n` &rarr; `a { color: red }\n`
 
-After: `a { color: red }\nb { font-weight: normal }\n`
+`a { color: red }\t` &rarr; `a { color: red }`
 
 ### unitless-zero
 
