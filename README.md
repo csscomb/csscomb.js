@@ -42,6 +42,7 @@ Example configuration:
     "exclude": ["node_modules/**"],
     "verbose": true,
 
+    "remove-empty-rulesets": true,
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
@@ -87,6 +88,14 @@ CLI mode:
 $ ./bin/csscomb ./test --verbose
 $ ./bin/csscomb ./test -v
 ```
+
+### remove-empty-rulesets
+
+Available values: `{Boolean}` `true`
+
+Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
+
+`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
 ### always-semicolon
 
