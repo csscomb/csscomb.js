@@ -59,6 +59,14 @@ Example configuration:
 
 ## Options
 
+### exclude
+
+Available values: `{String[]}`
+
+Array of [Ant path patterns](http://ant.apache.org/manual/dirtasks.html#patterns) to exclude.
+
+Example: `{ "exclude": ["node_modules/**"] }` - exclude all files and directories under `node_modules` dir.
+
 ### verbose
 
 Available value: `{Boolean}` `true`
