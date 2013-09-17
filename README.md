@@ -405,3 +405,4 @@ This software is released under the terms of the [MIT license](https://github.co
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
 * https://github.com/css/csso
+* https://github.com/nzakas/parser-lib
