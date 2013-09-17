@@ -80,7 +80,7 @@ a, b, i /* foobar */ {
     outline: 0;
     padding: 0.4em 0;
 }
-}
+}.empty-rule{}
 
 /* Фигурные скобки. Вариант 2 */
 div
@@ -120,7 +120,7 @@ top: 0;/* ololo */margin :0;}
     b
         {
 top :0/* trololo */;margin : 0}
-
+.empty-rule{}
     
 
       
