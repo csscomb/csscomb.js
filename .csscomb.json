@@ -12,6 +12,7 @@
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
+    "remove-empty-rulesets": true,
     "rule-indent": true,
     "stick-brace": "\n",
     "strip-spaces": true,
