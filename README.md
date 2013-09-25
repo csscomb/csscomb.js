@@ -139,9 +139,10 @@ a { color: red
 ### colon-space
 
 Available values:
-  * `{Boolean}` `true` (means `after`)
+  * `{Boolean}` `true` (means `after`) or `false` (no whitespace at all)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
   and/or a colon (` `, `: `, `\t:\n\t` etc.)
+  * `{Array}` with two `{String}` values: for setting left and right whitespace around a colon
 
 Example: `{ "colon-space": true }`
 
@@ -168,7 +169,7 @@ a {
 }
 ```
 
-Example: `{ "colon-space": ":" }`
+Example: `{ "colon-space": "" }`
 
 ```css
 /* before */
@@ -176,6 +177,16 @@ a { color: red }
 
 /* after */
 a { color:red }
+```
+
+Example: `{ "colon-space": ["\t", "\t"] }`
+
+```css
+/* before */
+a { color: red }
+
+/* after */
+a { color	:	red }
 ```
 
 ### color-case
