@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.15 - 2013-10-03
+- Option: remove-empty-rulesets (#67)
+- Option colon-space expanded
+- Some refactoring and fixes
+
 ## 0.0.14 - 2013-09-12
 - Option: eof-newline (#55)
 - Verbose option (#62)

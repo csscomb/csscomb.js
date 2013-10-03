@@ -30,7 +30,24 @@ describe('options/colon-space', function() {
             'a {color /* bar */: red }'
         );
     });
-    it('`after` value should set space after colon', function() {
+    it('False Boolean value should set no space around colon', function() {
+        comb.configure({ 'colon-space': false });
+        assert.equal(
+            comb.processString(
+                'a { color: red }' +
+                'a{color:red}' +
+                'a {color : red}' +
+                'a {color : /* foo */ red }' +
+                'a {color /* bar */ : red }'
+            ),
+            'a { color:red }' +
+            'a{color:red}' +
+            'a {color:red}' +
+            'a {color:/* foo */ red }' +
+            'a {color /* bar */:red }'
+        );
+    });
+    it('String `after` value should set space after colon', function() {
         comb.configure({ 'colon-space': 'after' });
         assert.equal(
             comb.processString(
@@ -47,7 +64,7 @@ describe('options/colon-space', function() {
             'a {color /* bar */: red }'
         );
     });
-    it('`before` value should set space before colon', function() {
+    it('String `before` value should set space before colon', function() {
         comb.configure({ 'colon-space': 'before' });
         assert.equal(
             comb.processString(
@@ -64,7 +81,7 @@ describe('options/colon-space', function() {
             'a {color /* bar */ :red }'
         );
     });
-    it('`both` value should set spaces around colon', function() {
+    it('String `both` value should set spaces around colon', function() {
         comb.configure({ 'colon-space': 'both' });
         assert.equal(
             comb.processString(
@@ -77,7 +94,7 @@ describe('options/colon-space', function() {
             'a {color : red}'
         );
     });
-    it('`  ` value should set two spaces after colon', function() {
+    it('String `  ` value should set two spaces after colon', function() {
         comb.configure({ 'colon-space': '  ' });
         assert.equal(
             comb.processString(
@@ -90,7 +107,7 @@ describe('options/colon-space', function() {
             'a {color:  red}'
         );
     });
-    it('`:` value should set no space around colon', function() {
+    it('String `:` value should set no space around colon', function() {
         comb.configure({ 'colon-space': ':' });
         assert.equal(
             comb.processString(
@@ -103,20 +120,20 @@ describe('options/colon-space', function() {
             'a {color:red}'
         );
     });
-    it('`\\n:` value should set a newline before colon', function() {
-        comb.configure({ 'colon-space': '\n:' });
+    it('String `` value should set no space around colon', function() {
+        comb.configure({ 'colon-space': '' });
         assert.equal(
             comb.processString(
                 'a { color: red }' +
                 'a{color:red}' +
                 'a {color : red}'
             ),
-            'a { color\n:red }' +
-            'a{color\n:red}' +
-            'a {color\n:red}'
+            'a { color:red }' +
+            'a{color:red}' +
+            'a {color:red}'
         );
     });
-    it('`\\t:\\t` value should set tabs around colon', function() {
+    it('String `\\t:\\t` value should set tabs around colon', function() {
         comb.configure({ 'colon-space': '\t:\t' });
         assert.equal(
             comb.processString(

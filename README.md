@@ -42,6 +42,7 @@ Example configuration:
     "exclude": ["node_modules/**"],
     "verbose": true,
 
+    "remove-empty-rulesets": true,
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
@@ -58,6 +59,14 @@ Example configuration:
 ```
 
 ## Options
+
+### exclude
+
+Available values: `{String[]}`
+
+Array of [Ant path patterns](http://ant.apache.org/manual/dirtasks.html#patterns) to exclude.
+
+Example: `{ "exclude": ["node_modules/**"] }` - exclude all files and directories under `node_modules` dir.
 
 ### verbose
 
@@ -79,6 +88,14 @@ CLI mode:
 $ ./bin/csscomb ./test --verbose
 $ ./bin/csscomb ./test -v
 ```
+
+### remove-empty-rulesets
+
+Available values: `{Boolean}` `true`
+
+Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
+
+`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
 ### always-semicolon
 
@@ -122,9 +139,10 @@ a { color: red
 ### colon-space
 
 Available values:
-  * `{Boolean}` `true` (means `after`)
+  * `{Boolean}` `true` (means `after`) or `false` (no whitespace at all)
   * `{String}`: `before`, `after`, `both` or any combination of whitespaces
   and/or a colon (` `, `: `, `\t:\n\t` etc.)
+  * `{Array}` with two `{String}` values: for setting left and right whitespace around a colon
 
 Example: `{ "colon-space": true }`
 
@@ -151,7 +169,7 @@ a {
 }
 ```
 
-Example: `{ "colon-space": ":" }`
+Example: `{ "colon-space": "" }`
 
 ```css
 /* before */
@@ -159,6 +177,16 @@ a { color: red }
 
 /* after */
 a { color:red }
+```
+
+Example: `{ "colon-space": ["\t", "\t"] }`
+
+```css
+/* before */
+a { color: red }
+
+/* after */
+a { color	:	red }
 ```
 
 ### color-case
@@ -405,3 +433,4 @@ This software is released under the terms of the [MIT license](https://github.co
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
 * https://github.com/css/csso
+* https://github.com/nzakas/parser-lib
