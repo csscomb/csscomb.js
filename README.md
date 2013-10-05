@@ -6,7 +6,7 @@ You can easily write your own [configuration](#configuration) to make your style
 
 The main feature is the [sorting properties](#sort-order) in specific order.
 It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
-This is the new JavaScript version, based on powerful CSS parser [Gonzales](https://github.com/css/gonzales).
+This is the new JavaScript version, based on powerful CSS parser [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
 ## Installation
 
@@ -465,5 +465,6 @@ This software is released under the terms of the [MIT license](https://github.co
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
+* https://github.com/tonyganch/gonzales-pe
 * https://github.com/css/csso
 * https://github.com/nzakas/parser-lib

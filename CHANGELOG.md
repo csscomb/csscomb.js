@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.X.X - 2013-XX-XX
+- Use Gonzales PE to parse *.scss and *.less files
+- Support sorting properties in *.scss and *.less files
+
 ## 1.0.0 - 2013-11-06
 - Option: vendor-prefix-align
 - Dependencies updated
