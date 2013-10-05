@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.XX - 2013-XX-XX
+- Use Gonzales PE to parse *.scss files
+- Support SCSS syntax
+
 ## 0.0.15 - 2013-10-03
 - Option: remove-empty-rulesets (#67)
 - Option colon-space expanded
