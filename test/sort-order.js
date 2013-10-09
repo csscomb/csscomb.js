@@ -117,7 +117,10 @@ describe('options/sort-order', function() {
 
     });
 
-    /* TODO: We should not change code while sorting. If we want to replace delimeters, it should be done with another module, but NOT sort-order.
+    /* TODO: We should not change code while sorting.
+     * If we want to replace delimeters, it should be done with another module,
+     * but NOT sort-order.
+     */
     /*it('Should replace custom delimiters by ours', function() {
 
         var config = {

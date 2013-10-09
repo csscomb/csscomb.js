@@ -10,9 +10,9 @@ describe('SCSS', function() {
 
     describe('Parsing', function() {
         it('Should parse nested rules', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; a { top: 0; } }'
@@ -22,9 +22,9 @@ describe('SCSS', function() {
         });
 
         it('Should parse parent selector &', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; &.top { color: nani; top: 0; } left: 0; }'
@@ -34,9 +34,9 @@ describe('SCSS', function() {
         });
 
         it('Should parse nested properties', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['left', 'color', 'font']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; font: 2px/3px { family: fantasy; size: 30em; } left: 0; }'
@@ -56,9 +56,9 @@ describe('SCSS', function() {
         });
 
         it('Should parse interpolated variables inside selectors', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div.#{$nani} {color:tomato;top:0;}'
@@ -68,9 +68,9 @@ describe('SCSS', function() {
         });
 
         it('Should parse interpolated variables inside values', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div {color:#{$tomato};top:0;}'
@@ -80,9 +80,9 @@ describe('SCSS', function() {
         });
 
         it('Should parse defaults', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato !default; top: 0; }'
@@ -271,9 +271,11 @@ describe('SCSS', function() {
             comb.configure({});
             assert.equal(
                 comb.processString(
-                    '@mixin nani($shadows...) { box-shadow: $shadows; } .foo { @include nani(0px 4px 5px #666, 2px 6px 10px #999); }'
+                    '@mixin nani($shadows...) { box-shadow: $shadows; }\n' +
+                    '.foo { @include nani(0px 4px 5px #666, 2px 6px 10px #999); }'
                 ),
-                    '@mixin nani($shadows...) { box-shadow: $shadows; } .foo { @include nani(0px 4px 5px #666, 2px 6px 10px #999); }'
+                    '@mixin nani($shadows...) { box-shadow: $shadows; }\n' +
+                    '.foo { @include nani(0px 4px 5px #666, 2px 6px 10px #999); }'
             );
         });
 
@@ -310,9 +312,9 @@ describe('SCSS', function() {
 
     describe('Sorting', function() {
         it('Should sort properties inside rules', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; top: 0; }'
@@ -322,9 +324,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort properties inside nested rules', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; a { color: nani; top: 0; } }'
@@ -334,9 +336,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort properties divided by nested rules', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: tomato; a { color: nani; top: 0; } left: 0; }'
@@ -346,9 +348,9 @@ describe('SCSS', function() {
         });
 
         it('Should group declarations with proper comments and spaces (multiple lines)', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div {\n' +
@@ -370,9 +372,9 @@ describe('SCSS', function() {
         });
 
         it('Should group declarations with proper comments and spaces (single line)', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div {/* 1 */ color: tomato; /* 2 */ top: 0; /* 3 */ /* 4 */}'
@@ -382,9 +384,9 @@ describe('SCSS', function() {
         });
 
         it('Should divide properties from different groups with an empty line', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top'], ['color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div {\n' +
@@ -401,9 +403,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort variables', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['$variable', 'color']
-            ]});
+            ] });
             assert.equal(
                 comb.processString(
                     'div { color: $tomato; $red: tomato; }'
@@ -413,9 +415,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort imports', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['$import', 'color']
-            ]});
+            ] });
             assert.equal(comb.processString(
                 'div { color: tomato; @import "foo.css"; }'
             ),
@@ -423,9 +425,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort @include-s', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['$include', 'color']
-            ]});
+            ] });
             assert.equal(comb.processString(
                 'div { color: tomato; @include .nani; }'
             ),
@@ -433,9 +435,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort @extend-s', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['$extend', 'color']
-            ]});
+            ] });
             assert.equal(comb.processString(
                 'div { color: tomato; @extend %nani; }'
             ),
@@ -443,9 +445,9 @@ describe('SCSS', function() {
         });
 
         it('Should sort properties inside blocks passed to mixins', function() {
-            comb.configure({'sort-order': [
+            comb.configure({ 'sort-order': [
                 ['top', 'color']
-            ]});
+            ] });
             assert.equal(comb.processString(
                 '.foo { @include nani { color: tomato; top: 0; } }'
             ),
