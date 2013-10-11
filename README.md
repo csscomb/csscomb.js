@@ -30,6 +30,7 @@ To run `csscomb`, you can use the following command from the project root:
     -h, --help           output usage information
     -V, --version        output the version number
     -c, --config [path]  configuration file path
+    -l, --lint           in case some fixes needed returns an error
 ```
 
 ## Configuration
