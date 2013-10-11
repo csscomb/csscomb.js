@@ -424,7 +424,8 @@ Thanks for assistance and contributions:
 [@L0stSoul](https://github.com/L0stSoul),
 [@ignovak](https://github.com/ignovak),
 [@kizu](https://github.com/kizu),
-[@anton-rudeshko](https://github.com/anton-rudeshko)
+[@anton-rudeshko](https://github.com/anton-rudeshko),
+[@mishaberezin](https://github.com/mishaberezin)
 
 ## License
 
