@@ -57,4 +57,68 @@ describe('options/always-semicolon', function() {
             'div {\ntop: 1px;\nheight: 0; /* 1comment */  /* 2comment */\n}'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(a, b) {
+        comb.detect();
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect semicolon for last property. Test 1', function() {
+        should_detect(
+            'div { height: 0 }',
+            {
+                'always-semicolon': false
+            }
+        );
+    });
+
+    it('Should detect semicolon for last property. Test 2', function() {
+        should_detect(
+            'div { height: 0; }',
+            {
+                'always-semicolon': true
+            }
+        );
+    });
+
+    it('Should detect semicolon for last property. Test 3', function() {
+        should_detect(
+            'div { height: 0; } div { height: 0 }',
+            {
+                'always-semicolon': true
+            }
+        );
+    });
+
+    it('Should detect semicolon for last property. Test 4', function() {
+        should_detect(
+            'div { height: 0 } div { height: 0; } div { height: 0 }',
+            {
+                'always-semicolon': false
+            }
+        );
+    });
+
+    it('Should detect semicolon for last property. Test 5', function() {
+        should_detect(
+            'div {\nheight: 0 /* Comment */\n} ' +
+            'div { height: 0; }' +
+            'div {\ntop: 1px;\nheight: 0 /* 1comment */  /* 2comment */\n}',
+            {
+                'always-semicolon': false
+            }
+        );
+    });
+
+    it('Should not detect semicolon for last property if there are no properties', function() {
+        should_detect(
+            'div {}',
+            {}
+        );
+    });
+
 });
