@@ -27,7 +27,7 @@ module.exports = {
         test: {
             options: {
                 node: true,
-                predef: ['describe', 'beforeEach', 'it']
+                predef: ['describe', 'beforeEach', 'afterEach', 'it']
             },
             includes: ['test/*.js']
         }
