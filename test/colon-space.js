@@ -146,4 +146,73 @@ describe('options/colon-space', function() {
             'a {color\t:\tred}'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect no whitespaces around colon', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color:red }',
+            {
+                'colon-space': ['', '']
+            }
+        );
+    });
+
+    it('Should detect space after colon', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color: red }',
+            {
+                'colon-space': ['', ' ']
+            }
+        );
+    });
+
+    it('Should detect space after colon from two variants.', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color: red; color:red }',
+            {
+                'colon-space': ['', ' ']
+            }
+        );
+    });
+
+    it('Should detect no whitespaces around colon along three variants', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color: red; background:red } b { width:10px }',
+            {
+                'colon-space': ['', '']
+            }
+        );
+    });
+
+    it('Should detect space around colon', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color : red; background :red } b { width:10px }',
+            {
+                'colon-space': [' ', ' ']
+            }
+        );
+    });
+
+    it('Should detect different whitespaces around colon', function() {
+        should_detect(
+            ['colon-space'],
+            'a { color :  red; background :red } b { width :  10px }',
+            {
+                'colon-space': [' ', '  ']
+            }
+        );
+    });
 });

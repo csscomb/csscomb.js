@@ -59,8 +59,8 @@ describe('options/always-semicolon', function() {
     });
 
     // Helper to check the detection
-    function should_detect(a, b) {
-        comb.detect();
+    function should_detect(options, a, b) {
+        comb.detect(options);
         assert.equal(
             JSON.stringify(comb.processString(a)),
             JSON.stringify(b)
@@ -69,6 +69,7 @@ describe('options/always-semicolon', function() {
 
     it('Should detect semicolon for last property. Test 1', function() {
         should_detect(
+            ['always-semicolon'],
             'div { height: 0 }',
             {
                 'always-semicolon': false
@@ -78,6 +79,7 @@ describe('options/always-semicolon', function() {
 
     it('Should detect semicolon for last property. Test 2', function() {
         should_detect(
+            ['always-semicolon'],
             'div { height: 0; }',
             {
                 'always-semicolon': true
@@ -87,6 +89,7 @@ describe('options/always-semicolon', function() {
 
     it('Should detect semicolon for last property. Test 3', function() {
         should_detect(
+            ['always-semicolon'],
             'div { height: 0; } div { height: 0 }',
             {
                 'always-semicolon': true
@@ -96,6 +99,7 @@ describe('options/always-semicolon', function() {
 
     it('Should detect semicolon for last property. Test 4', function() {
         should_detect(
+            ['always-semicolon'],
             'div { height: 0 } div { height: 0; } div { height: 0 }',
             {
                 'always-semicolon': false
@@ -105,6 +109,7 @@ describe('options/always-semicolon', function() {
 
     it('Should detect semicolon for last property. Test 5', function() {
         should_detect(
+            ['always-semicolon'],
             'div {\nheight: 0 /* Comment */\n} ' +
             'div { height: 0; }' +
             'div {\ntop: 1px;\nheight: 0 /* 1comment */  /* 2comment */\n}',
@@ -116,6 +121,7 @@ describe('options/always-semicolon', function() {
 
     it('Should not detect semicolon for last property if there are no properties', function() {
         should_detect(
+            ['always-semicolon'],
             'div {}',
             {}
         );
