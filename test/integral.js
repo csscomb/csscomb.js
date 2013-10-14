@@ -36,12 +36,13 @@ describe('integral test', function() {
         .then(function(results) {
             try {
                 assert.equal(
-                    JSON.stringify(comb.processString(results[0])),
+                    JSON.stringify(comb.processString(results[1])),
                     JSON.stringify({
                         'always-semicolon': true,
                         'color-case': 'lower',
                         'color-shorthand': true,
-                        'colon-space': ['', ' ']
+                        'colon-space': ['', ' '],
+                        'combinator-space': [' ', ' ']
                     })
                 );
                 done();
