@@ -50,4 +50,69 @@ describe('options/color-case', function() {
         );
     });
 
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect uppercase color', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #F3F3F3 }',
+            {
+                'color-case': 'upper'
+            }
+        );
+    });
+
+    it('Should detect lowercase color', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #f6f6f6 }',
+            {
+                'color-case': 'lower'
+            }
+        );
+    });
+
+    it('Should detect uppercase color in a shorthand', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #FFF }',
+            {
+                'color-case': 'upper'
+            }
+        );
+    });
+
+    it('Should detect lowercase color in a shorthand', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #fff }',
+            {
+                'color-case': 'lower'
+            }
+        );
+    });
+
+    it('Shouldn’t detect color case if it contains only digits', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #333 }',
+            {}
+        );
+    });
+
+    it('Shouldn’t detect color case if it is in mixed case', function() {
+        should_detect(
+            ['color-case'],
+            'a { color: #fFfFfF }',
+            {}
+        );
+    });
+
 });
