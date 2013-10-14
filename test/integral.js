@@ -41,6 +41,7 @@ describe('integral test', function() {
                         'always-semicolon': true,
                         'color-case': 'lower',
                         'color-shorthand': true,
+                        'element-case': 'lower',
                         'colon-space': ['', ' '],
                         'combinator-space': [' ', ' ']
                     })
