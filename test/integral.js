@@ -23,4 +23,32 @@ describe('integral test', function() {
             }
         });
     });
+
+    it('Should detect everything in integral test', function(done) {
+        comb = new Comb();
+        comb.detect();
+        vow.all(['origin', 'expect'].map(function(type) {
+            var fileName = './test/integral.' + type + '.css';
+            return vfs.read(fileName, 'utf8').then(function(data) {
+                return data;
+            });
+        }))
+        .then(function(results) {
+            try {
+                assert.equal(
+                    JSON.stringify(comb.processString(results[0])),
+                    JSON.stringify({
+                        'always-semicolon': true,
+                        'color-case': 'lower',
+                        'color-shorthand': true,
+                        'colon-space': ['', ' ']
+                    })
+                );
+                done();
+            } catch (e) {
+                done(e);
+            }
+        });
+    });
+
 });
