@@ -44,7 +44,8 @@ describe('integral test', function() {
                         'element-case': 'lower',
                         'eof-newline': true,
                         'colon-space': ['', ' '],
-                        'combinator-space': [' ', ' ']
+                        'combinator-space': [' ', ' '],
+                        'unitless-zero': true
                     })
                 );
                 done();
