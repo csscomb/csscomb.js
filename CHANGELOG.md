@@ -1,8 +1,11 @@
 # Changelog
 
-## 0.0.XX - 2013-XX-XX
+## 0.1.XX - 2013-XX-XX
 - Use Gonzales PE to parse *.scss files
-- Support SCSS syntax
+- Support sorting of *.scss files
+
+## 0.1.0 - 2013-10-11
+- CLI: lint mode
 
 ## 0.0.15 - 2013-10-03
 - Option: remove-empty-rulesets (#67)
