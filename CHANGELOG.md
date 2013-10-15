@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.XX - 2013-XX-XX
+- Use Gonzales PE to parse *.scss files
+- Support sorting of *.scss files
+
 ## 0.1.0 - 2013-10-11
 - CLI: lint mode
 

@@ -76,11 +76,11 @@ describe('options/sort-order', function() {
         var input = 'div p em {\n' +
             '\t/* upline comment */\n' +
             '\tfont-style:italic;\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
+            '\tborder-bottom:1px solid red; /* trololo */ /* trololo */\n' +
             '}';
 
         var expected = 'div p em {\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
+            '\tborder-bottom:1px solid red; /* trololo */ /* trololo */\n' +
             '\t/* upline comment */\n' +
             '\tfont-style:italic;\n' +
             '}';
@@ -117,7 +117,11 @@ describe('options/sort-order', function() {
 
     });
 
-    it('Should replace custom delimiters by ours', function() {
+    /* TODO: We should not change code while sorting.
+     * If we want to replace delimeters, it should be done with another module,
+     * but NOT sort-order.
+     */
+    /*it('Should replace custom delimiters by ours', function() {
 
         var config = {
                 'sort-order': [
@@ -141,6 +145,6 @@ describe('options/sort-order', function() {
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
 
-    });
+    });*/
 
 });
