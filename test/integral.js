@@ -43,6 +43,7 @@ describe('integral test', function() {
                         'color-shorthand': true,
                         'element-case': 'lower',
                         'leading-zero': false,
+                        'strip-spaces': true,
                         'eof-newline': true,
                         'colon-space': ['', ' '],
                         'combinator-space': [' ', ' '],
