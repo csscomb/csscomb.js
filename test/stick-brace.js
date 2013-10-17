@@ -44,4 +44,53 @@ describe('options/stick-brace', function() {
             '@media all\n{ .input__control\n{ color: #000;\n \n }\t}'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect the empty stick-brace option', function() {
+        should_detect(
+            ['stick-brace'],
+            'a{ color: red }',
+            {
+                'stick-brace': ''
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a single space', function() {
+        should_detect(
+            ['stick-brace'],
+            'a {\ncolor: red }',
+            {
+                'stick-brace': ' '
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a newline with spaces', function() {
+        should_detect(
+            ['stick-brace'],
+            '.input__control\n    { color: #000;\n \n }',
+            {
+                'stick-brace': '\n    '
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a newline when nested in mq', function() {
+        should_detect(
+            ['stick-brace'],
+            '@media all\n{\n    .input__control\n    { color: #000;\n \n }\t}',
+            {
+                'stick-brace': '\n'
+            }
+        );
+    });
 });
