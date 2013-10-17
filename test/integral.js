@@ -38,6 +38,7 @@ describe('integral test', function() {
                 assert.equal(
                     JSON.stringify(comb.processString(results[1])),
                     JSON.stringify({
+                        'remove-empty-rulesets': true,
                         'always-semicolon': true,
                         'color-case': 'lower',
                         'color-shorthand': true,
