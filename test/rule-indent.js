@@ -56,4 +56,53 @@ describe('options/rule-indent', function() {
             'a {}'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect the empty rule-indent option', function() {
+        should_detect(
+            ['rule-indent'],
+            'a{\ncolor: red\n}',
+            {
+                'rule-indent': ''
+            }
+        );
+    });
+
+    it('Should detect the rule-indent option equal to four spaces', function() {
+        should_detect(
+            ['rule-indent'],
+            'a{\n    color: red\n}',
+            {
+                'rule-indent': '    '
+            }
+        );
+    });
+
+    it('Should detect the rule-indent option equal to a tab', function() {
+        should_detect(
+            ['rule-indent'],
+            'a{\n\tcolor: red\n}',
+            {
+                'rule-indent': '\t'
+            }
+        );
+    });
+
+    it('Should detect the rule-indent option equal to two spaces inside a mq', function() {
+        should_detect(
+            ['rule-indent'],
+            '@media all {\n  .input__control {\n    color: #000;\n  }\n}',
+            {
+                'rule-indent': '  '
+            }
+        );
+    });
 });

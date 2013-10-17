@@ -49,6 +49,7 @@ describe('integral test', function() {
                         'stick-brace': '\n',
                         'colon-space': ['', ' '],
                         'combinator-space': [' ', ' '],
+                        'rule-indent': '    ',
                         'unitless-zero': true
                     })
                 );
