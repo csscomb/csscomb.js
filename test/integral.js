@@ -3,40 +3,36 @@ var assert = require('assert');
 var vow = require('vow');
 var vfs = require('vow-fs');
 
-describe('integral test', function() {
-    var comb;
-    it('Process result must be equal to expect.css', function(done) {
-        comb = new Comb();
-        comb.configure(require('../.csscomb.json'));
-        vow.all(['origin', 'expect'].map(function(type) {
-            var fileName = './test/integral.' + type + '.css';
-            return vfs.read(fileName, 'utf8').then(function(data) {
-                return data;
-            });
-        }))
-        .then(function(results) {
+var comb;
+
+vow.all(['origin', 'expect'].map(function(type) {
+    var fileName = './test/integral.' + type + '.css';
+    return vfs.read(fileName, 'utf8').then(function(data) {
+        return data;
+    });
+}))
+.then(function(results) {
+    describe('integral test', function() {
+        it('Process result must be equal to expect.css', function(done) {
             try {
+                comb = new Comb();
+                comb.configure(require('../.csscomb.json'));
                 assert.equal(comb.processString(results[0]), results[1]);
+
                 done();
             } catch (e) {
                 done(e);
             }
-        });
-    });
 
-    it('Should detect everything in integral test', function(done) {
+        });
+
         comb = new Comb();
         comb.detect();
-        vow.all(['origin', 'expect'].map(function(type) {
-            var fileName = './test/integral.' + type + '.css';
-            return vfs.read(fileName, 'utf8').then(function(data) {
-                return data;
-            });
-        }))
-        .then(function(results) {
+        var detectedOptions = comb.processString(results[1]);
+        it('Should detect everything in integral test', function(done) {
             try {
                 assert.equal(
-                    JSON.stringify(comb.processString(results[1])),
+                    JSON.stringify(detectedOptions),
                     JSON.stringify({
                         'remove-empty-rulesets': true,
                         'always-semicolon': true,
@@ -54,11 +50,26 @@ describe('integral test', function() {
                         'unitless-zero': true
                     })
                 );
+
                 done();
             } catch (e) {
                 done(e);
             }
         });
-    });
 
+        var detectedConfiguration = JSON.parse(JSON.stringify(detectedOptions));
+        detectedConfiguration['sort-order'] = require('../.csscomb.json')['sort-order'];
+        it('Result processed with detected options must be equal to expect.css', function(done) {
+            try {
+                comb = new Comb();
+                comb.configure(detectedConfiguration);
+                assert.equal(comb.processString(results[0]), results[1]);
+
+                done();
+            } catch (e) {
+                done(e);
+            }
+
+        });
+    });
 });
