@@ -50,6 +50,7 @@ describe('integral test', function() {
                         'colon-space': ['', ' '],
                         'combinator-space': [' ', ' '],
                         'rule-indent': '    ',
+                        'block-indent': '    ',
                         'unitless-zero': true
                     })
                 );

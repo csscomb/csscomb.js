@@ -41,4 +41,52 @@ describe('options/block-indent', function() {
             'a { color: red \n}\n@media all {\n\t.input__control\n\t{ color: #000;\n\t}\n}'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect the block-indent option set to four spaces', function() {
+        should_detect(
+            ['block-indent'],
+            ' \na { color: red \n}\n@media all {\n    .input__control { color: #000;\n    }\n}',
+            {
+                'block-indent': '    '
+            }
+        );
+    });
+
+    it('Should detect the block-indent option set to three spaces', function() {
+        should_detect(
+            ['block-indent'],
+            'a\n{ color: red \n}\n@media all {\n   .input__control\n   { color: #000;\n   }\n}',
+            {
+                'block-indent': '   '
+            }
+        );
+    });
+
+    it('Should detect the block-indent option set to a tab', function() {
+        should_detect(
+            ['block-indent'],
+            'a { color: red \n}\n@media all {\n\t.input__control\n\t{ color: #000;\n\t}\n}',
+            {
+                'block-indent': '\t'
+            }
+        );
+    });
+    it('Should detect the block-indent option set to an empty string', function() {
+        should_detect(
+            ['block-indent'],
+            'a { color: red \n}\n@media all {\n.input__control\n{ color: #000;\n}\n}',
+            {
+                'block-indent': ''
+            }
+        );
+    });
 });
