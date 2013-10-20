@@ -44,6 +44,23 @@ describe('options/stick-brace', function() {
             '@media all\n{ .input__control\n{ color: #000;\n \n }\t}'
         );
     });
+    it('Empty String value should set no space before brace', function() {
+        comb.configure({ 'stick-brace': '' });
+        assert.equal(
+            comb.processString(
+                'a{ color: red }' +
+                'a, b /* i */ { color: red; }' +
+                'a \t\t \n{color:red\n \n}' +
+                'a /* foo */ {color:red ;\n}' +
+                '@media all { .input__control { color: #000;\n \n }\t}'
+            ),
+            'a{ color: red }' +
+            'a, b /* i */{ color: red; }' +
+            'a{color:red\n \n}' +
+            'a /* foo */{color:red ;\n}' +
+            '@media all{ .input__control{ color: #000;\n \n }\t}'
+        );
+    });
 
     // Helper to check the detection
     function should_detect(options, a, b) {
