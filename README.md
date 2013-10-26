@@ -363,6 +363,35 @@ p {
 }
 ```
 
+If you sort properties in `*.scss` or `*.less` files, you can use one of 3
+keywords in your config:
+  * `$variable` for variable declarations (e.g. `$var` in Sass or `@var` in LESS);
+  * `$include` for included mixins (e.g. `@include ...` and `@extend ...` in Sass
+    or `.mixin()` in LESS);
+  * `$import` for `@import` rules.
+
+Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ] ] }`
+
+```scss
+/* before */
+p {
+    padding: 0;
+    @include mixin($color);
+    $color: tomato;
+    top: 0;
+}
+
+/* after */
+p {
+    $color: tomato;
+
+    @include mixin($color);
+
+    top: 0;
+    padding: 0;
+}
+```
+
 ### stick-brace
 
 Available values:
