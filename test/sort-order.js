@@ -116,35 +116,4 @@ describe('options/sort-order', function() {
         assert.equal(comb.processString(input), expected);
 
     });
-
-    /* TODO: We should not change code while sorting.
-     * If we want to replace delimeters, it should be done with another module,
-     * but NOT sort-order.
-     */
-    /*it('Should replace custom delimiters by ours', function() {
-
-        var config = {
-                'sort-order': [
-                    ['margin'],
-                    ['padding']
-                ]
-            };
-
-        var input = 'div p em {\n' +
-            '\tpadding: 1px;\n' +
-            '        \n' +
-            '\tmargin: 1px;\n' +
-            '}';
-
-        var expected = 'div p em {\n' +
-            '\tmargin: 1px;\n' +
-            '\n' +
-            '\tpadding: 1px;\n' +
-            '}';
-
-        comb.configure(config);
-        assert.equal(comb.processString(input), expected);
-
-    });*/
-
 });
