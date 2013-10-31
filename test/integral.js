@@ -40,6 +40,7 @@ vow.all(['origin', 'expect'].map(function(type) {
                         'color-shorthand': true,
                         'element-case': 'lower',
                         'leading-zero': false,
+                        'quotes': 'single',
                         'strip-spaces': true,
                         'eof-newline': true,
                         'stick-brace': '\n',
