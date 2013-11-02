@@ -309,5 +309,23 @@ describe('LESS', function() {
                        '    color: tomato;\n' +
                        '    }';
         });
+
+        it('Should sort included mixins. Test 3', function() {
+            config = { 'sort-order': [
+                ['$include', 'border', 'color']
+            ] };
+
+            input = '.foo {\n' +
+                    '    color: #0f0;\n' +
+                    '    border: 1px solid #f00;\n' +
+                    '    .linear-gradient(#fff; #000);\n' +
+                    '}';
+
+            expected = '.foo {\n' +
+                       '    .linear-gradient(#fff; #000);\n' +
+                       '    border: 1px solid #f00;\n' +
+                       '    color: #0f0;\n' +
+                       '}';
+        });
     });
 });
