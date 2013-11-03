@@ -39,17 +39,17 @@
         "node": ">= 0.8.0"
     },
     "dependencies": {
-        "commander": "1.1.1",
-        "gonzales": "1.0.6",
+        "commander": "2.0.0",
+        "gonzales": "1.0.7",
         "minimatch": "0.2.12",
-        "vow": "0.3.7",
-        "vow-fs": "0.1.13"
+        "vow": "0.3.11",
+        "vow-fs": "0.2.3"
     },
     "devDependencies": {
-        "jshint-groups": "0.5.1",
-        "jshint": "2.1.7",
-        "jscs": "1.0.5",
-        "mocha": "1.11.0"
+        "jshint-groups": "0.5.3",
+        "jshint": "2.3.0",
+        "jscs": "1.0.11",
+        "mocha": "1.14.0"
     },
     "main": "./lib/csscomb.js",
     "bin": {
