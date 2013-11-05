@@ -404,6 +404,30 @@ img { border: 0px }
 img { border: 0 }
 ```
 
+### vendor-prefix-align
+
+Available value: `{Boolean}` `true`
+
+Example: `{ "vendor-prefix-align": true }`
+
+```css
+/* before */
+a
+{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* after */
+a
+{
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+```
+
 ## Tests
 
 Run `npm test` for tests.
