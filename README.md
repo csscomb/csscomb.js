@@ -43,7 +43,6 @@ Example configuration:
     "exclude": ["node_modules/**"],
     "verbose": true,
 
-    "remove-empty-rulesets": true,
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
@@ -52,10 +51,12 @@ Example configuration:
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
+    "remove-empty-rulesets": true,
     "rule-indent": true,
     "stick-brace": true,
     "strip-spaces": true,
-    "unitless-zero": true
+    "unitless-zero": true,
+    "vendor-prefix-align": true
 }
 ```
 
@@ -89,14 +90,6 @@ CLI mode:
 $ ./bin/csscomb ./test --verbose
 $ ./bin/csscomb ./test -v
 ```
-
-### remove-empty-rulesets
-
-Available values: `{Boolean}` `true`
-
-Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
-
-`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
 ### always-semicolon
 
@@ -296,6 +289,14 @@ p { padding: 0.5em }
 p { padding: .5em }
 ```
 
+### remove-empty-rulesets
+
+Available values: `{Boolean}` `true`
+
+Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
+
+`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
+
 ### rule-indent
 
 **Note**: better to use with [block-indent](#block-indent)
@@ -402,6 +403,36 @@ img { border: 0px }
 
 /* after */
 img { border: 0 }
+```
+
+### vendor-prefix-align
+
+Available value: `{Boolean}` `true`
+
+Example: `{ "vendor-prefix-align": true }`
+
+```css
+/* before */
+a
+{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background: -moz-linear-gradient(top, #fff 0, #eee 100%);
+    background: linear-gradient(to bottom, #fff 0, #eee 100%);
+}
+
+/* after */
+a
+{
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
+    background:         linear-gradient(to bottom, #fff 0, #eee 100%);
+}
 ```
 
 ## Tests

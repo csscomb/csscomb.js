@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0 - 2013-11-06
+- Option: vendor-prefix-align
+- Dependencies updated
+- Fixed options order in readme
+
 ## 0.1.0 - 2013-10-11
 - CLI: lint mode
 
