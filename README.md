@@ -43,7 +43,6 @@ Example configuration:
     "exclude": ["node_modules/**"],
     "verbose": true,
 
-    "remove-empty-rulesets": true,
     "always-semicolon": true,
     "block-indent": true,
     "colon-space": true,
@@ -52,10 +51,12 @@ Example configuration:
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
+    "remove-empty-rulesets": true,
     "rule-indent": true,
     "stick-brace": true,
     "strip-spaces": true,
-    "unitless-zero": true
+    "unitless-zero": true,
+    "vendor-prefix-align": true
 }
 ```
 
@@ -89,14 +90,6 @@ CLI mode:
 $ ./bin/csscomb ./test --verbose
 $ ./bin/csscomb ./test -v
 ```
-
-### remove-empty-rulesets
-
-Available values: `{Boolean}` `true`
-
-Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
-
-`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
 ### always-semicolon
 
@@ -295,6 +288,14 @@ p { padding: 0.5em }
 /* after */
 p { padding: .5em }
 ```
+
+### remove-empty-rulesets
+
+Available values: `{Boolean}` `true`
+
+Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
+
+`a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
 ### rule-indent
 
