@@ -76,11 +76,11 @@ describe('options/sort-order', function() {
         var input = 'div p em {\n' +
             '\t/* upline comment */\n' +
             '\tfont-style:italic;\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
+            '\tborder-bottom:1px solid red; /* trololo */ /* trololo */\n' +
             '}';
 
         var expected = 'div p em {\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
+            '\tborder-bottom:1px solid red; /* trololo */ /* trololo */\n' +
             '\t/* upline comment */\n' +
             '\tfont-style:italic;\n' +
             '}';
@@ -116,31 +116,4 @@ describe('options/sort-order', function() {
         assert.equal(comb.processString(input), expected);
 
     });
-
-    it('Should replace custom delimiters by ours', function() {
-
-        var config = {
-                'sort-order': [
-                    ['margin'],
-                    ['padding']
-                ]
-            };
-
-        var input = 'div p em {\n' +
-            '\tpadding: 1px;\n' +
-            '        \n' +
-            '\tmargin: 1px;\n' +
-            '}';
-
-        var expected = 'div p em {\n' +
-            '\tmargin: 1px;\n' +
-            '\n' +
-            '\tpadding: 1px;\n' +
-            '}';
-
-        comb.configure(config);
-        assert.equal(comb.processString(input), expected);
-
-    });
-
 });

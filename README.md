@@ -6,7 +6,7 @@ You can easily write your own [configuration](#configuration) to make your style
 
 The main feature is the [sorting properties](#sort-order) in specific order.
 It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
-This is the new JavaScript version, based on powerful CSS parser [Gonzales](https://github.com/css/gonzales).
+This is the new JavaScript version, based on powerful CSS parser [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
 ## Installation
 
@@ -363,6 +363,35 @@ p {
 }
 ```
 
+If you sort properties in `*.scss` or `*.less` files, you can use one of 3
+keywords in your config:
+  * `$variable` for variable declarations (e.g. `$var` in Sass or `@var` in LESS);
+  * `$include` for included mixins (e.g. `@include ...` and `@extend ...` in Sass
+    or `.mixin()` in LESS);
+  * `$import` for `@import` rules.
+
+Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ] ] }`
+
+```scss
+/* before */
+p {
+    padding: 0;
+    @include mixin($color);
+    $color: tomato;
+    top: 0;
+}
+
+/* after */
+p {
+    $color: tomato;
+
+    @include mixin($color);
+
+    top: 0;
+    padding: 0;
+}
+```
+
 ### stick-brace
 
 Available values:
@@ -465,5 +494,6 @@ This software is released under the terms of the [MIT license](https://github.co
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
+* https://github.com/tonyganch/gonzales-pe
 * https://github.com/css/csso
 * https://github.com/nzakas/parser-lib
