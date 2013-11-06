@@ -1,0 +1,10 @@
+b
+{
+  color: #fff;
+
+  background: -webkit-linear-gradient(linear, left top, right top, color-stop(0,rgba(255,255,255,0)), color-stop(20%, #fff));
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -o-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+  background:       linear-gradient(to right, rgba(255,255,255,0) 0, #fff 20%);
+}

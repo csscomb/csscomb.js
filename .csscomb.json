@@ -17,6 +17,7 @@
     "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
+    "vendor-prefix-align": true,
     "sort-order": [
         [
             "font",
