@@ -48,4 +48,91 @@ describe('options/vendor-prefix-align', function() {
 
         assert.equal(comb.processString(input), expected);
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        comb.detect(options);
+        assert.equal(
+            JSON.stringify(comb.processString(a)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Shouldn not detect anything if there are no prefixed groups', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            'a{ color: red }a{ -webkit-transform: translateZ(0) }',
+            {}
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as false in properties', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/property-align.css', 'utf8'),
+            {
+                'vendor-prefix-align': false
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as true in properties', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/property-align.expected.css', 'utf8'),
+            {
+                'vendor-prefix-align': true
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as false in values', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/value-align.css', 'utf8'),
+            {
+                'vendor-prefix-align': false
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as true in values', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/value-align.expected.css', 'utf8'),
+            {
+                'vendor-prefix-align': true
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as true, test 1', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/already-aligned.css', 'utf8'),
+            {
+                'vendor-prefix-align': true
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as true, test 2', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/complex.expected.css', 'utf8'),
+            {
+                'vendor-prefix-align': true
+            }
+        );
+    });
+
+    it('Shouldn detect vendor-prefix-align as false', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            fs.readFileSync('./test/vendor-prefix-align/complex.css', 'utf8'),
+            {
+                'vendor-prefix-align': false
+            }
+        );
+    });
 });

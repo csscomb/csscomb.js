@@ -47,7 +47,8 @@ vow.all(['origin', 'expect'].map(function(type) {
                         'combinator-space': [' ', ' '],
                         'rule-indent': '    ',
                         'block-indent': '    ',
-                        'unitless-zero': true
+                        'unitless-zero': true,
+                        'vendor-prefix-align': true
                     })
                 );
 
