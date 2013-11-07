@@ -1,0 +1,5 @@
+.serp-block__head_animation_yes
+{
+    -webkit-transition: -webkit-transform 150ms linear;
+            transition:         transform 150ms linear;
+}
