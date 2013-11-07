@@ -61,6 +61,7 @@ csscomb -h
     -V, --version        output the version number
     -v, --verbose        verbose mode
     -c, --config [path]  configuration file path
+    -d, --detect         detect mode (would return detected options)
     -l, --lint           in case some fixes needed returns an error
 ```
 
@@ -137,6 +138,8 @@ var combedLESS = comb.processString(less, 'less');
 
 ## Configuration
 
+### Through `.csscomb.json`
+
 `csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) file, located in the project root.
 
 Example configuration:
@@ -162,6 +165,66 @@ Example configuration:
 }
 ```
 
+### Through `.css`-template
+
+Instead of configuring all the options one by one, you can use a CSS-template file instead: CSSComb.js would detect the codestyle used in this file and would use it as a config. All the existent properties except for the `sort-order` could be configured this way.
+
+To provide a template just add `"template"` with the path to the template in the `.csscomb.json`:
+
+```json
+{
+    "template": "example.css"
+}
+```
+
+CSSComb.js would detect only those things that could be detected, so if your template don't provide examples of usage for some of the options, or if you would want to override something from it, you can write them in the `.csscomb.json` along the `"template"`:
+
+```json
+{
+    "template": "example.css",
+    "leading-zero": false,
+    "vendor-prefix-align": true
+}
+```
+
+This config would detect all the options from the `example.css`, then it would use `"leading-zero":  false` instead of what it detected, and then it would use `"vendor-prefix-align": true` even if there were no prefixed properties or values inside the `example.css`.
+
+### Creating `.csscomb.json` from the `.css` file
+
+If you want to configure everything manually, but based on the codestyle from existing `.css`-file, you can at first detect all the options using `--detect` CLI option, and then add/edit any options you like. So if you have such `example.css`:
+
+```css
+.foo
+{
+    width: #fff;
+}
+```
+
+then by running
+
+```bash
+./node_modules/.bin/csscomb -d template.css > .csscomb.json
+```
+
+you would generate this `.csscomb.json`:
+
+```json
+{
+    "remove-empty-rulesets": true,
+    "always-semicolon": true,
+    "color-case": "lower",
+    "color-shorthand": true,
+    "strip-spaces": true,
+    "eof-newline": true,
+    "stick-brace": "\n",
+    "colon-space": [
+        "",
+        " "
+    ],
+    "rule-indent": "    "
+}
+```
+
 ## Options
 
 ### exclude
@@ -178,7 +241,7 @@ Available value: `{Boolean}` `true`
 
 Config mode: `{ "verbose": true }`
 ```bash
-./bin/csscomb ./test
+csscomb ./test
 
 ✓ test/integral.origin.css
   test/integral.expect.css
@@ -190,8 +253,22 @@ Config mode: `{ "verbose": true }`
 
 CLI mode:
 ```bash
-./bin/csscomb ./test --verbose
-./bin/csscomb ./test -v
+csscomb ./test --verbose
+csscomb ./test -v
+```
+
+### template
+
+**Note:** see the description of the [configuring through template](#through-css-template).
+
+Available value: `{String}` path to the `.css` file.
+
+Example: `{ "template": "example.css" }`
+
+CLI mode — just provide path to `.css` file instead of `.csscomb.json`:
+```bash
+csscomb ./test --config example.css
+csscomb ./test -c example.css
 ```
 
 ### always-semicolon
