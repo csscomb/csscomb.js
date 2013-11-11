@@ -16,7 +16,7 @@ vow.all(['origin', 'expect'].map(function(type) {
         it('Process result must be equal to expect.css', function(done) {
             try {
                 comb = new Comb();
-                comb.configure(require('../.csscomb.json'));
+                comb.configure(require('../config/csscomb.json'));
                 assert.equal(comb.processString(results[0]), results[1]);
 
                 done();
