@@ -10,18 +10,48 @@ This is the new JavaScript version, based on powerful CSS parser [Gonzales PE](h
 
 ## Installation
 
+Global installation (use as a command-line tool):
+
+```bash
+npm install csscomb -g
+```
+
+Local installation (use as a command-line tool within current directory):
+
 ```bash
 npm install csscomb
 ```
 
-To run `csscomb`, you can use the following command from the project root:
+To install as a project dependency (package will appear in your dependencies):
+
+```bash
+npm install csscomb --save
+```
+
+To install as a dev dependency (package will appear in your devDependencies):
+
+```bash
+npm install csscomb --save-dev
+```
+
+## CLI usage
+
+To run `csscomb`:
+
+```bash
+csscomb path[ path[...]]
+```
+
+If you installed the package locally, in the project's directory run:
 
 ```bash
 ./node_modules/.bin/csscomb path[ path[...]]
 ```
 
+If you run `csscomb -h`, it will show some helpful information:
+
 ```bash
-./node_modules/.bin/csscomb --help
+csscomb -h
 
   Usage: csscomb [options] <file ...>
 
@@ -29,8 +59,80 @@ To run `csscomb`, you can use the following command from the project root:
 
     -h, --help           output usage information
     -V, --version        output the version number
+    -v, --verbose        verbose mode
     -c, --config [path]  configuration file path
     -l, --lint           in case some fixes needed returns an error
+```
+
+## Node.js module usage
+
+Besides being a great CLI, `csscomb` can be used in Node.js projects (inside
+a plugin or as a dev tool):
+
+```js
+// Require:
+var Comb = require('csscomb');
+
+// Configure:
+var comb = new Comb();
+comb.configure(config);
+
+// Use:
+comb.processPath('style.css');
+```
+
+### configure(config)
+
+You must configure csscomb before using and config must be a valid JSON.    
+See [configuration section](#configuration) for more information.
+
+### processPath(path)
+
+Comb a file or a directory.    
+Warning: This method rewrites the file.
+
+```js
+// One file:
+comb.processPath('main.scss');
+
+// Whole directory:
+comb.processPath('assets/styles');
+```
+
+### processDirectory(path)
+
+Comb all supported files in a directory.    
+Warning: This method rewrites the files.
+
+```js
+comb.processDirectory('public/css');
+```
+
+### processFile(path)
+
+Comb one file.    
+If file's syntax is not supported, the file will be ignored.    
+Warning: This method rewrites the file.
+
+```js
+comb.processFile('print.less');
+```
+
+### processString(text, syntax, filename)
+
+Comb a stylesheet.    
+If style's syntax is different from `css`, you should pass `syntax` parameter,
+too.    
+`filename` is optional, it's used to print possible errors.
+
+```js
+// Comb a css string:
+var css = 'a {top: 0; left: 0}';
+var combedCSS = comb.processString(css);
+
+// Comb a less string:
+var less = '@color: tomato; a {color: @color}';
+var combedLESS = comb.processString(less, 'less');
 ```
 
 ## Configuration
@@ -76,7 +178,8 @@ Available value: `{Boolean}` `true`
 
 Config mode: `{ "verbose": true }`
 ```bash
-$ ./bin/csscomb ./test
+./bin/csscomb ./test
+
 ✓ test/integral.origin.css
   test/integral.expect.css
 
@@ -87,8 +190,8 @@ $ ./bin/csscomb ./test
 
 CLI mode:
 ```bash
-$ ./bin/csscomb ./test --verbose
-$ ./bin/csscomb ./test -v
+./bin/csscomb ./test --verbose
+./bin/csscomb ./test -v
 ```
 
 ### always-semicolon
