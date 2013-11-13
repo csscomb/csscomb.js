@@ -1,5 +1,6 @@
 var Comb = require('../lib/csscomb');
 var assert = require('assert');
+var fs = require('fs');
 
 describe('options/sort-order (less)', function() {
     var comb;
@@ -7,13 +8,12 @@ describe('options/sort-order (less)', function() {
     var input;
     var expected;
 
+    function readFile(path) {
+        return fs.readFileSync('test/sort-order-less/' + path, 'utf8');
+    }
+
     beforeEach(function() {
         comb = new Comb();
-    });
-
-    afterEach(function() {
-        comb.configure(config);
-        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort properties inside rules', function() {
@@ -21,9 +21,11 @@ describe('options/sort-order (less)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div { color: tomato; top: 0; }';
+        input = readFile('rule.less');
+        expected = readFile('rule.expected.less');
 
-        expected = 'div {top: 0;  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort properties inside nested rules', function() {
@@ -31,9 +33,11 @@ describe('options/sort-order (less)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div { color: tomato; a { color: nani; top: 0; } }';
+        input = readFile('nested-rule-1.less');
+        expected = readFile('nested-rule-1.expected.less');
 
-        expected = 'div { color: tomato; a {top: 0;  color: nani; } }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort properties divided by nested rules', function() {
@@ -41,9 +45,11 @@ describe('options/sort-order (less)', function() {
             ['top', 'left', 'color']
         ] };
 
-        input = 'div { color: tomato; a { color: nani; top: 0; } left: 0; }';
+        input = readFile('nested-rule-2.less');
+        expected = readFile('nested-rule-2.expected.less');
 
-        expected = 'div { left: 0;  color: tomato; a {top: 0;  color: nani; }}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (single line)', function() {
@@ -51,9 +57,11 @@ describe('options/sort-order (less)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div {/* 1 */ color: tomato; /* 2 */ top: 0; /* 3 */ /* 4 */}';
+        input = readFile('comments-1.less');
+        expected = readFile('comments-1.expected.less');
 
-        expected = 'div {top: 0; /* 3 */ /* 4 *//* 1 */ color: tomato; /* 2 */ }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (multiple lines). Test 1', function() {
@@ -61,21 +69,11 @@ describe('options/sort-order (less)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div {\n' +
-            '    color: tomato; /* 1 */\n' +
-            '    /* 2 */\n' +
-            '    /* 3 */\n' +
-            '    top: 0; /* 4 */\n' +
-            '    /* 5 */\n' +
-            '}';
+        input = readFile('comments-2.less');
+        expected = readFile('comments-2.expected.less');
 
-        expected = 'div {\n' +
-            '    /* 2 */\n' +
-            '    /* 3 */\n' +
-            '    top: 0; /* 4 */\n' +
-            '    color: tomato; /* 1 */\n' +
-            '    /* 5 */\n' +
-            '}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (multiple lines). Test 2', function() {
@@ -83,19 +81,11 @@ describe('options/sort-order (less)', function() {
             ['$variable', 'color']
         ] };
 
-        input = 'p {\n' +
-                '    /* One hell of a comment */\n' +
-                '    color: tomato;\n' +
-                '    // Get in line!\n' +
-                '    @var: white;\n' +
-                '    }';
+        input = readFile('comments-3.less');
+        expected = readFile('comments-3.expected.less');
 
-        expected = 'p {\n' +
-                   '    // Get in line!\n' +
-                   '    @var: white;\n' +
-                   '    /* One hell of a comment */\n' +
-                   '    color: tomato;\n' +
-                   '    }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (multiple lines). Test 3', function() {
@@ -103,15 +93,11 @@ describe('options/sort-order (less)', function() {
             ['$variable', 'color']
         ] };
 
-        input = 'p {\n' +
-                '    color: tomato; /* One hell of a comment */\n' +
-                '    @var: white; // Get in line!\n' +
-                '    }';
+        input = readFile('comments-3.less');
+        expected = readFile('comments-3.expected.less');
 
-        expected = 'p {\n' +
-                   '    @var: white; // Get in line!\n' +
-                   '    color: tomato; /* One hell of a comment */\n' +
-                   '    }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should divide properties from different groups with an empty line', function() {
@@ -119,16 +105,11 @@ describe('options/sort-order (less)', function() {
             ['top'], ['color']
         ] };
 
-        input = 'div {\n' +
-            '    color: tomato;\n' +
-            '    top: 0;\n' +
-            '}';
+        input = readFile('different-groups.less');
+        expected = readFile('different-groups.expected.less');
 
-        expected = 'div {\n' +
-            '    top: 0;\n' +
-            '\n' +
-            '    color: tomato;\n' +
-            '}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort variables', function() {
@@ -136,9 +117,11 @@ describe('options/sort-order (less)', function() {
             ['$variable', 'color']
         ] };
 
-        input = 'div { color: @red; @red: tomato; }';
+        input = readFile('variable.less');
+        expected = readFile('variable.expected.less');
 
-        expected = 'div {@red: tomato;  color: @red; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort imports', function() {
@@ -146,9 +129,11 @@ describe('options/sort-order (less)', function() {
             ['$import', 'color']
         ] };
 
-        input = 'div { color: tomato; @import "foo.css"; }';
+        input = readFile('import.less');
+        expected = readFile('import.expected.less');
 
-        expected = 'div {@import "foo.css";  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort included mixins. Test 1', function() {
@@ -156,31 +141,11 @@ describe('options/sort-order (less)', function() {
             ['$include', 'color', 'border-top', 'border-bottom']
         ] };
 
-        input = '.bordered {\n' +
-                '    border-bottom: solid 2px black;\n' +
-                '    border-top: dotted 1px black;\n' +
-                '    }\n' +
-                '#menu a {\n' +
-                '    color: #111;\n' +
-                '    .bordered;\n' +
-                '    }\n' +
-                '.post a {\n' +
-                '    color: red;\n' +
-                '    .bordered;\n' +
-                '    }';
+        input = readFile('mixin-1.less');
+        expected = readFile('mixin-1.expected.less');
 
-        expected = '.bordered {\n' +
-                   '    border-top: dotted 1px black;\n' +
-                   '    border-bottom: solid 2px black;\n' +
-                   '    }\n' +
-                   '#menu a {\n' +
-                   '    .bordered;\n' +
-                   '    color: #111;\n' +
-                   '    }\n' +
-                   '.post a {\n' +
-                   '    .bordered;\n' +
-                   '    color: red;\n' +
-                   '    }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort included mixins. Test 2', function() {
@@ -188,19 +153,11 @@ describe('options/sort-order (less)', function() {
             ['$include', 'top', 'color']
         ] };
 
-        input = '.test {\n' +
-                '    .test1();\n' +
-                '    color: tomato;\n' +
-                '    .test2();\n' +
-                '    top: 0;\n' +
-                '    }';
+        input = readFile('mixin-2.less');
+        expected = readFile('mixin-2.expected.less');
 
-        expected = '.test {\n' +
-                   '    .test1();\n' +
-                   '    .test2();\n' +
-                   '    top: 0;\n' +
-                   '    color: tomato;\n' +
-                   '    }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 
     it('Should sort included mixins. Test 3', function() {
@@ -208,16 +165,10 @@ describe('options/sort-order (less)', function() {
             ['$include', 'border', 'color']
         ] };
 
-        input = '.foo {\n' +
-                '    color: #0f0;\n' +
-                '    border: 1px solid #f00;\n' +
-                '    .linear-gradient(#fff; #000);\n' +
-                '}';
+        input = readFile('mixin-3.less');
+        expected = readFile('mixin-3.expected.less');
 
-        expected = '.foo {\n' +
-                   '    .linear-gradient(#fff; #000);\n' +
-                   '    border: 1px solid #f00;\n' +
-                   '    color: #0f0;\n' +
-                   '}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'less'), expected);
     });
 });

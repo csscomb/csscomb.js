@@ -1,5 +1,6 @@
 var Comb = require('../lib/csscomb');
 var assert = require('assert');
+var fs = require('fs');
 
 describe('options/sort-order (scss)', function() {
     var comb;
@@ -7,13 +8,12 @@ describe('options/sort-order (scss)', function() {
     var input;
     var expected;
 
+    function readFile(path) {
+        return fs.readFileSync('test/sort-order-scss/' + path, 'utf8');
+    }
+
     beforeEach(function() {
         comb = new Comb();
-    });
-
-    afterEach(function() {
-        comb.configure(config);
-        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort properties inside rules', function() {
@@ -21,9 +21,11 @@ describe('options/sort-order (scss)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div { color: tomato; top: 0; }';
+        input = readFile('rule.scss');
+        expected = readFile('rule.expected.scss');
 
-        expected = 'div {top: 0;  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort properties inside nested rules', function() {
@@ -31,9 +33,11 @@ describe('options/sort-order (scss)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div { color: tomato; a { color: nani; top: 0; } }';
+        input = readFile('nested-rule-1.scss');
+        expected = readFile('nested-rule-1.expected.scss');
 
-        expected = 'div { color: tomato; a {top: 0;  color: nani; } }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort properties divided by nested rules', function() {
@@ -41,9 +45,11 @@ describe('options/sort-order (scss)', function() {
             ['top', 'left', 'color']
         ] };
 
-        input = 'div { color: tomato; a { color: nani; top: 0; } left: 0; }';
+        input = readFile('nested-rule-2.scss');
+        expected = readFile('nested-rule-2.expected.scss');
 
-        expected = 'div { left: 0;  color: tomato; a {top: 0;  color: nani; }}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (multiple lines)', function() {
@@ -51,21 +57,11 @@ describe('options/sort-order (scss)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div {\n' +
-            '    color: tomato; /* 1 */\n' +
-            '    /* 2 */\n' +
-            '    /* 3 */\n' +
-            '    top: 0; /* 4 */\n' +
-            '    /* 5 */\n' +
-            '}';
+        input = readFile('comments-1.scss');
+        expected = readFile('comments-1.expected.scss');
 
-        expected = 'div {\n' +
-            '    /* 2 */\n' +
-            '    /* 3 */\n' +
-            '    top: 0; /* 4 */\n' +
-            '    color: tomato; /* 1 */\n' +
-            '    /* 5 */\n' +
-            '}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should group declarations with proper comments and spaces (single line)', function() {
@@ -73,9 +69,11 @@ describe('options/sort-order (scss)', function() {
             ['top', 'color']
         ] };
 
-        input = 'div {/* 1 */ color: tomato; /* 2 */ top: 0; /* 3 */ /* 4 */}';
+        input = readFile('comments-2.scss');
+        expected = readFile('comments-2.expected.scss');
 
-        expected = 'div {top: 0; /* 3 */ /* 4 *//* 1 */ color: tomato; /* 2 */ }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should divide properties from different groups with an empty line', function() {
@@ -83,16 +81,11 @@ describe('options/sort-order (scss)', function() {
             ['top'], ['color']
         ] };
 
-        input = 'div {\n' +
-            '    color: tomato;\n' +
-            '    top: 0;\n' +
-            '}';
+        input = readFile('different-groups.scss');
+        expected = readFile('different-groups.expected.scss');
 
-        expected = 'div {\n' +
-            '    top: 0;\n' +
-            '\n' +
-            '    color: tomato;\n' +
-            '}';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort variables', function() {
@@ -100,9 +93,11 @@ describe('options/sort-order (scss)', function() {
             ['$variable', 'color']
         ] };
 
-        input = 'div { color: $tomato; $red: tomato; }';
+        input = readFile('variable.scss');
+        expected = readFile('variable.expected.scss');
 
-        expected = 'div {$red: tomato;  color: $tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort imports', function() {
@@ -110,9 +105,11 @@ describe('options/sort-order (scss)', function() {
             ['$import', 'color']
         ] };
 
-        input = 'div { color: tomato; @import "foo.css"; }';
+        input = readFile('import.scss');
+        expected = readFile('import.expected.scss');
 
-        expected = 'div {@import "foo.css";  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort @include-s', function() {
@@ -120,9 +117,11 @@ describe('options/sort-order (scss)', function() {
             ['$include', 'color']
         ] };
 
-        input = 'div { color: tomato; @include .nani; }';
+        input = readFile('include.scss');
+        expected = readFile('include.expected.scss');
 
-        expected = 'div {@include .nani;  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort @extend-s', function() {
@@ -130,9 +129,11 @@ describe('options/sort-order (scss)', function() {
             ['$include', 'color']
         ] };
 
-        input = 'div { color: tomato; @extend %nani; }';
+        input = readFile('extend.scss');
+        expected = readFile('extend.expected.scss');
 
-        expected = 'div {@extend %nani;  color: tomato; }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 
     it('Should sort properties inside blocks passed to mixins', function() {
@@ -140,8 +141,10 @@ describe('options/sort-order (scss)', function() {
             ['top', 'color']
         ] };
 
-        input = '.foo { @include nani { color: tomato; top: 0; } }';
+        input = readFile('mixin.scss');
+        expected = readFile('mixin.expected.scss');
 
-        expected = '.foo { @include nani {top: 0;  color: tomato; } }';
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
     });
 });

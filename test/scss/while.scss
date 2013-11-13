@@ -1,0 +1,8 @@
+div {
+    @while $i > 6 {
+        .item {
+            width: 2em * $i;
+        }
+        $i: $i - 2;
+    }
+}

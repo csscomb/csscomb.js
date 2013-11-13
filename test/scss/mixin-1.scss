@@ -1,0 +1,6 @@
+@mixin nani {
+    color: tomato;
+}
+.foo {
+    @include nani;
+}
