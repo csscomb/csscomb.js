@@ -35,11 +35,17 @@ describe('options/vendor-prefix-align', function() {
         assert.equal(comb.processString(input), expected);
     });
 
+    it('Should correct align prefixes in preoperties and values at the same time', function() {
+        var input = fs.readFileSync('./test/vendor-prefix-align/both.css', 'utf8');
+        var expected = fs.readFileSync('./test/vendor-prefix-align/both.expected.css', 'utf8');
+
+        assert.equal(comb.processString(input), expected);
+    });
+
     it('Should always correctly align prefixes', function() {
         var input = fs.readFileSync('./test/vendor-prefix-align/complex.css', 'utf8');
         var expected = fs.readFileSync('./test/vendor-prefix-align/complex.expected.css', 'utf8');
 
         assert.equal(comb.processString(input), expected);
     });
-
 });
