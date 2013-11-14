@@ -49,4 +49,11 @@ describe('options/rule-indent', function() {
             'a { /* foo */\n\tcolor:red; /* bar */\n\n\tbackground: #fff\n}\n'
         );
     });
+    it('Valid value should ignore empty blocks', function() {
+        comb.configure({ 'rule-indent': true });
+        assert.equal(
+            comb.processString('a {}'),
+            'a {}'
+        );
+    });
 });
