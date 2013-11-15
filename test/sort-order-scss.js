@@ -16,7 +16,19 @@ describe('options/sort-order (scss)', function() {
         comb = new Comb();
     });
 
-    it('Should sort properties inside rules', function() {
+    it('Should sort properties inside rules (single line)', function() {
+        config = { 'sort-order': [
+            ['top', 'color']
+        ] };
+
+        input = readFile('rule.scss');
+        expected = readFile('rule.expected.scss');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
+    });
+
+    it('Should sort properties inside rules (multiple lines)', function() {
         config = { 'sort-order': [
             ['top', 'color']
         ] };
@@ -143,6 +155,30 @@ describe('options/sort-order (scss)', function() {
 
         input = readFile('mixin.scss');
         expected = readFile('mixin.expected.scss');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
+    });
+
+    it('Should handle properties preceeding rulesets', function() {
+        config = { 'sort-order': [
+            ['top', 'left', 'color']
+        ] };
+
+        input = readFile('ruleset.scss');
+        expected = readFile('ruleset.expected.scss');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input, 'scss'), expected);
+    });
+
+    it('Should handle properties preceeding conditions', function() {
+        config = { 'sort-order': [
+            ['font-size', 'display', 'top', 'color']
+        ] };
+
+        input = readFile('condition.scss');
+        expected = readFile('condition.expected.scss');
 
         comb.configure(config);
         assert.equal(comb.processString(input, 'scss'), expected);
