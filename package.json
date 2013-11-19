@@ -40,7 +40,7 @@
     },
     "dependencies": {
         "commander": "2.0.0",
-        "gonzales-pe": "2.0.0-rc0",
+        "gonzales-pe": "2.0.1",
         "minimatch": "0.2.12",
         "vow": "0.3.11",
         "vow-fs": "0.2.3"
