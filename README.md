@@ -196,6 +196,8 @@ CLI mode:
 
 ### always-semicolon
 
+Whether to add a semicolon after the last value/mixin.
+
 Available value: `{Boolean}` `true`
 
 Example: `{ "always-semicolon": true }`
@@ -206,6 +208,45 @@ a { color: red }
 
 /* after */
 a { color: red; }
+```
+
+Example: `{ "always-semicolon": true }` (scss file):
+
+```scss
+// before
+div {
+    color: tomato;
+    @include nani
+    }
+
+// after
+div {
+    color: tomato;
+    @include nani;
+    }
+```
+
+Note that in `*.scss` and `*.less` files semicolons are not added after `}`
+even if it's part of a value:
+
+```scss
+// before
+div {
+    color: tomato;
+    font: {
+        family: fantasy;
+        size: 16px
+        }
+    }
+
+// after
+div {
+    color: tomato;
+    font: {
+        family: fantasy;
+        size: 16px;
+        }
+    }
 ```
 
 ### block-indent
