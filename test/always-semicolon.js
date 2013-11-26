@@ -119,6 +119,17 @@ describe('options/always-semicolon', function() {
         );
     });
 
+
+    it('Should detect semicolon for last property. Test 6', function() {
+        should_detect(
+            ['always-semicolon'],
+            'a{\n    border:0;\n}',
+            {
+                'always-semicolon': true
+            }
+        );
+    });
+
     it('Should not detect semicolon for last property if there are no properties', function() {
         should_detect(
             ['always-semicolon'],

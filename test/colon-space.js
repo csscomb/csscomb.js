@@ -215,4 +215,14 @@ describe('options/colon-space', function() {
             }
         );
     });
+
+    it('Should detect whitespace after colon', function() {
+        should_detect(
+            ['colon-space'],
+            '.input\n{\n    position: relative;\n\n    display: inline-block;\n\n    width: 100%;\n}',
+            {
+                'colon-space': ['', ' ']
+            }
+        );
+    });
 });
