@@ -135,4 +135,12 @@ describe('options/vendor-prefix-align', function() {
             }
         );
     });
+
+    it('Should not detect anything in simple case', function() {
+        should_detect(
+            ['vendor-prefix-align'],
+            'a{border:0;}',
+            {}
+        );
+    });
 });
