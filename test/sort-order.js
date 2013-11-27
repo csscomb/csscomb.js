@@ -143,4 +143,33 @@ describe('options/sort-order', function() {
         assert.equal(comb.processString(input), expected);
 
     });
+
+    it('Should not add more than 1 line between groups', function() {
+
+        var config = {
+                'sort-order': [
+                    ['top'], ['color']
+                ]
+            };
+
+        var input = 'a\n' +
+            '{\n' +
+            '\tcolor: tomato;\n' +
+            '\ttop: 0;\n' +
+            '}';
+
+        var expected = 'a\n' +
+            '{\n' +
+            '\ttop: 0;\n' +
+            '\n' +
+            '\tcolor: tomato;\n' +
+            '}';
+
+        comb.configure(config);
+        for (var i = 6; i--;) {
+            input = comb.processString(input);
+        }
+        assert.equal(input, expected);
+
+    });
 });
