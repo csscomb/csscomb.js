@@ -105,4 +105,14 @@ describe('options/unitless-zero', function() {
             {}
         );
     });
+
+    it('Should detect unitless zero option with percents', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { padding: 0% 0 0 }',
+            {
+                'unitless-zero': true
+            }
+        );
+    });
 });
