@@ -203,7 +203,7 @@ If you want to configure everything manually, but based on the codestyle from ex
 then by running
 
 ```bash
-./node_modules/.bin/csscomb -d template.css > .csscomb.json
+csscomb -d template.css > .csscomb.json
 ```
 
 you would generate this `.csscomb.json`:
@@ -253,8 +253,8 @@ csscomb ./test
 
 CLI mode:
 ```bash
-csscomb ./test --verbose
-csscomb ./test -v
+csscomb --verbose ./test
+csscomb -v ./test
 ```
 
 ### template
@@ -267,8 +267,8 @@ Example: `{ "template": "example.css" }`
 
 CLI mode — just provide path to `.css` file instead of `.csscomb.json`:
 ```bash
-csscomb ./test --config example.css
-csscomb ./test -c example.css
+csscomb --config example.css ./test
+csscomb -c example.css ./test
 ```
 
 ### always-semicolon
