@@ -104,4 +104,14 @@ describe('options/rule-indent', function() {
             }
         );
     });
+
+    it('Should detect the rule-indent option equal to a tab with a lot of whitespaces', function() {
+        should_detect(
+            ['rule-indent'],
+            'a{\n\t\n\tcolor: red\n}',
+            {
+                'rule-indent': '\t'
+            }
+        );
+    });
 });

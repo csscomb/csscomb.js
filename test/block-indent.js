@@ -88,4 +88,13 @@ describe('options/block-indent', function() {
             }
         );
     });
+    it('Should detect the block-indent option in a complex case', function() {
+        should_detect(
+            ['block-indent'],
+            'a { color: red \n}\n@media all {\n\t.input__control\n\t{ color: #000;\n\t\n\t\n\t\n\t}\n}',
+            {
+                'block-indent': '\t'
+            }
+        );
+    });
 });
