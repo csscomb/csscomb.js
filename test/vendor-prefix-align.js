@@ -51,9 +51,8 @@ describe('options/vendor-prefix-align', function() {
 
     // Helper to check the detection
     function should_detect(options, a, b) {
-        comb.detect(options);
         assert.equal(
-            JSON.stringify(comb.processString(a)),
+            JSON.stringify(comb.detectInString(a, options)),
             JSON.stringify(b)
         );
     }
