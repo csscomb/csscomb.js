@@ -4,7 +4,7 @@
         "node_modules/**"
     ],
     "always-semicolon": true,
-    "block-indent": true,
+    "block-indent": "    ",
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,

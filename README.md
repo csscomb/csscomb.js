@@ -149,7 +149,7 @@ Example configuration:
     "verbose": true,
 
     "always-semicolon": true,
-    "block-indent": true,
+    "block-indent": "    ",
     "colon-space": true,
     "color-case": "lower",
     "color-shorthand": true,
@@ -330,10 +330,10 @@ div {
 
 **Note**: better to use with [rule-indent](#rule-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "block-indent": 2 }`
 
@@ -350,6 +350,23 @@ a { color: red
   }
 }
 ```
+
+Example: `{ "block-indent": "  " }`
+
+```css
+/* before */
+  a { color: red }
+  @media all { a { color: green } }
+
+/* after */
+a { color: red
+}
+@media all {
+  a { color: green
+  }
+}
+```
+
 
 ### colon-space
 
