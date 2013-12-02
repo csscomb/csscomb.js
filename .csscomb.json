@@ -5,7 +5,7 @@
     ],
     "always-semicolon": true,
     "block-indent": "    ",
-    "colon-space": true,
+    "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
     "combinator-space": true,

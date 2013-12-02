@@ -150,7 +150,7 @@ Example configuration:
 
     "always-semicolon": true,
     "block-indent": "    ",
-    "colon-space": true,
+    "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
@@ -370,46 +370,13 @@ a { color: red
 
 ### colon-space
 
-Available values:
-  * `{Boolean}` `true` (means `after`) or `false` (no whitespace at all)
-  * `{String}`: `before`, `after`, `both` or any combination of whitespaces
-  and/or a colon (` `, `: `, `\t:\n\t` etc.)
-  * `{Array}` with two `{String}` values: for setting left and right whitespace around a colon
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
-Example: `{ "colon-space": true }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a { color: red }
-```
-
-Example: `{ "colon-space": ":\n\t\t" }`
-
-```css
-/* before */
-a {
-  color: red;
-}
-
-/* after */
-a {
-  color:
-    red;
-}
-```
-
-Example: `{ "colon-space": "" }`
-
-```css
-/* before */
-a { color: red }
-
-/* after */
-a { color:red }
-```
+The first element of the array sets spaces before colon, and the second one sets
+spaces after colon.
 
 Example: `{ "colon-space": ["\t", "\t"] }`
 
@@ -420,6 +387,17 @@ a { color: red }
 /* after */
 a { color	:	red }
 ```
+
+Example: `{ "colon-space": [0, 1] }`
+
+```css
+/* before */
+a { color:red }
+
+/* after */
+a { color: red }
+```
+
 
 ### color-case
 
