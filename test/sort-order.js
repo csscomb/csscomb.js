@@ -116,4 +116,31 @@ describe('options/sort-order', function() {
         assert.equal(comb.processString(input), expected);
 
     });
+
+    it('Should parse semicolons inside data uri correctly', function() {
+
+        var config = {
+                'sort-order': [
+                    ['position', 'background', 'color']
+                ]
+            };
+
+        var input = 'a\n' +
+            '{\n' +
+            '\tcolor: tomato;\n' +
+            '\tbackground: #D2D2D2 no-repeat url(\'data:image/svg+xml;charset=US-ASCII.naninani\');\n' +
+            '\tposition: absolute;\n' +
+            '}';
+
+        var expected = 'a\n' +
+            '{\n' +
+            '\tposition: absolute;\n' +
+            '\tbackground: #D2D2D2 no-repeat url(\'data:image/svg+xml;charset=US-ASCII.naninani\');\n' +
+            '\tcolor: tomato;\n' +
+            '}';
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+
+    });
 });
