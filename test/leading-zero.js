@@ -28,4 +28,39 @@ describe('options/leading-zero', function() {
         );
     });
 
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect leading zero option', function() {
+        should_detect(
+            ['leading-zero'],
+            'a { width: 0.5em }',
+            {
+                'leading-zero': true
+            }
+        );
+    });
+
+    it('Should detect leading zero option set to false', function() {
+        should_detect(
+            ['leading-zero'],
+            'a { width: .5em }',
+            {
+                'leading-zero': false
+            }
+        );
+    });
+
+    it('Shouldn’t detect leading zero option', function() {
+        should_detect(
+            ['leading-zero'],
+            'a { width: 10.5em }',
+            {}
+        );
+    });
 });

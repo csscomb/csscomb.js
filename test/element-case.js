@@ -48,4 +48,67 @@ describe('options/element-case', function() {
         );
     });
 
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect lowercase elements', function() {
+        should_detect(
+            ['element-case'],
+            'a { color: red }',
+            {
+                'element-case': 'lower'
+            }
+        );
+    });
+
+    it('Should detect uppercase elements', function() {
+        should_detect(
+            ['element-case'],
+            'A { color: red }',
+            {
+                'element-case': 'upper'
+            }
+        );
+    });
+
+    it('Should detect lowercase elements in a long selector', function() {
+        should_detect(
+            ['element-case'],
+            'ul li:not(:hover) A { color: red }',
+            {
+                'element-case': 'lower'
+            }
+        );
+    });
+
+    it('Should detect uppercase elements in a long selector', function() {
+        should_detect(
+            ['element-case'],
+            'ul .lol:not(LI) A { color: red }',
+            {
+                'element-case': 'upper'
+            }
+        );
+    });
+
+    it('Shouldn’t detect case of elements in a mixed case', function() {
+        should_detect(
+            ['element-case'],
+            'aRtIcLe { color: red }',
+            {}
+        );
+    });
+
+    it('Shouldn’t detect case of elements when there are no such', function() {
+        should_detect(
+            ['element-case'],
+            '*.lol { color: red }',
+            {}
+        );
+    });
 });

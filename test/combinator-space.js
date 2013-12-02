@@ -154,4 +154,80 @@ describe('options/combinator-space', function() {
             'a ~\nb +\nc >\nd { color: red }'
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect no whitespaces around combinator', function() {
+        should_detect(
+            ['combinator-space'],
+            'a+b { color:red }',
+            {
+                'combinator-space': ['', '']
+            }
+        );
+    });
+
+    it('Should detect a space around combinator', function() {
+        should_detect(
+            ['combinator-space'],
+            'a + b { color:red }',
+            {
+                'combinator-space': [' ', ' ']
+            }
+        );
+    });
+
+    it('Should detect a mixed spaces around combinator', function() {
+        should_detect(
+            ['combinator-space'],
+            'a + \n b { color:red }',
+            {
+                'combinator-space': [' ', ' \n ']
+            }
+        );
+    });
+
+    it('Should detect a space around combinator in long selector', function() {
+        should_detect(
+            ['combinator-space'],
+            'a + b ~ c>d { color:red }',
+            {
+                'combinator-space': [' ', ' ']
+            }
+        );
+    });
+
+    it('Should detect a space around combinator in long selector, test 2', function() {
+        should_detect(
+            ['combinator-space'],
+            'a>b + c + d { color:red }',
+            {
+                'combinator-space': [' ', ' ']
+            }
+        );
+    });
+
+    it('Should detect no whitespaces around combinator in long selector', function() {
+        should_detect(
+            ['combinator-space'],
+            'a+b ~ c+d { color:red }',
+            {
+                'combinator-space': ['', '']
+            }
+        );
+    });
+
+    it('Shouldn’t detect whitespaces around combinator in selector without combinators', function() {
+        should_detect(
+            ['combinator-space'],
+            'a { color:red }',
+            {}
+        );
+    });
 });

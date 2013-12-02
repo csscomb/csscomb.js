@@ -44,4 +44,69 @@ describe('options/stick-brace', function() {
             '@media all\n{ .input__control\n{ color: #000;\n \n }\t}'
         );
     });
+    it('Empty String value should set no space before brace', function() {
+        comb.configure({ 'stick-brace': '' });
+        assert.equal(
+            comb.processString(
+                'a{ color: red }' +
+                'a, b /* i */ { color: red; }' +
+                'a \t\t \n{color:red\n \n}' +
+                'a /* foo */ {color:red ;\n}' +
+                '@media all { .input__control { color: #000;\n \n }\t}'
+            ),
+            'a{ color: red }' +
+            'a, b /* i */{ color: red; }' +
+            'a{color:red\n \n}' +
+            'a /* foo */{color:red ;\n}' +
+            '@media all{ .input__control{ color: #000;\n \n }\t}'
+        );
+    });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect the empty stick-brace option', function() {
+        should_detect(
+            ['stick-brace'],
+            'a{ color: red }',
+            {
+                'stick-brace': ''
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a single space', function() {
+        should_detect(
+            ['stick-brace'],
+            'a {\ncolor: red }',
+            {
+                'stick-brace': ' '
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a newline with spaces', function() {
+        should_detect(
+            ['stick-brace'],
+            '.input__control\n    { color: #000;\n \n }',
+            {
+                'stick-brace': '\n    '
+            }
+        );
+    });
+
+    it('Should detect the stick-brace option equal to a newline when nested in mq', function() {
+        should_detect(
+            ['stick-brace'],
+            '@media all\n{\n    .input__control\n    { color: #000;\n \n }\t}',
+            {
+                'stick-brace': '\n'
+            }
+        );
+    });
 });

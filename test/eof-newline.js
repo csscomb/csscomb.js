@@ -31,4 +31,52 @@ describe('options/eof-newline', function() {
             'a {color:red}  '
         );
     });
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Shouldn’t detect eof newline', function() {
+        should_detect(
+            ['eof-newline'],
+            'a { color: red }',
+            {
+                'eof-newline': false
+            }
+        );
+    });
+
+    it('Should detect eof newline', function() {
+        should_detect(
+            ['eof-newline'],
+            'a { color: red }\n',
+            {
+                'eof-newline': true
+            }
+        );
+    });
+
+    it('Shouldn’t detect eof newline with spaces at the end', function() {
+        should_detect(
+            ['eof-newline'],
+            'a { color: red }  ',
+            {
+                'eof-newline': false
+            }
+        );
+    });
+
+    it('Should detect eof newline with mixed spaces at the end', function() {
+        should_detect(
+            ['eof-newline'],
+            'a { color: red } \n ',
+            {
+                'eof-newline': true
+            }
+        );
+    });
 });
