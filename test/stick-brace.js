@@ -3,23 +3,29 @@ var assert = require('assert');
 
 describe('options/stick-brace', function() {
     var comb;
+
     beforeEach(function() {
         comb = new Comb();
     });
-    it('Invalid String should not change space before brace', function() {
+
+    it('Boolean value should not change space before brace', function() {
+        var input = 'a { color: red }';
         comb.configure({ 'stick-brace': 'foobar' });
-        assert.equal(
-            comb.processString('a { color: red }'),
-            'a { color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
-    it('True Boolean value should set 1 space before brace', function() {
-        comb.configure({ 'stick-brace': true });
-        assert.equal(
-            comb.processString('a{color:red }'),
-            'a {color:red }'
-        );
+
+    it('Invalid String should not change space before brace', function() {
+        var input = 'a { color: red }';
+        comb.configure({ 'stick-brace': 'foobar' });
+        assert.equal(comb.processString(input), input);
     });
+
+    it('Invalid Number should not change space before brace', function() {
+        var input = 'a { color: red }';
+        comb.configure({ 'stick-brace': 3.5 });
+        assert.equal(comb.processString(input), input);
+    });
+
     it('Valid Number value should set equal space before brace', function() {
         comb.configure({ 'stick-brace': 0 });
         assert.equal(
@@ -27,6 +33,7 @@ describe('options/stick-brace', function() {
             'a{color:red }'
         );
     });
+
     it('Valid String value should set equal space before brace', function() {
         comb.configure({ 'stick-brace': '\n' });
         assert.equal(

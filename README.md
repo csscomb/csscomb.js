@@ -158,7 +158,7 @@ Example configuration:
     "leading-zero": false,
     "remove-empty-rulesets": true,
     "rule-indent": "    ",
-    "stick-brace": true,
+    "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true
@@ -617,10 +617,10 @@ p {
 
 ### stick-brace
 
-Available values:
-  * `{Boolean}` `true` (means 1 space)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t\n]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or newlines. If there is any other
+    character in the string, the value will not be set.
 
 Example: `{ "stick-brace": "\n" }`
 
@@ -632,6 +632,17 @@ a { color:red }
 a
 { color:red }
 ```
+
+Example: `{ "stick-brace": 1 }`
+
+```css
+/* before */
+a{ color:red }
+
+/* after */
+a { color:red }
+```
+
 
 ### strip-spaces
 
