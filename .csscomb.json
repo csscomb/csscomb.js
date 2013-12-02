@@ -8,7 +8,7 @@
     "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
-    "combinator-space": true,
+    "combinator-space": [" ", " "],
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,

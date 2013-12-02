@@ -3,131 +3,30 @@ var assert = require('assert');
 
 describe('options/combinator-space', function() {
     var comb;
+
     beforeEach(function() {
         comb = new Comb();
     });
-    it('Invalid String should not change space around combinator', function() {
+
+    it('Number value should not change space around combinator', function() {
+        var input = 'a >b { color: red }';
+        comb.configure({ 'combinator-space': 2 });
+        assert.equal(comb.processString(input), input);
+    });
+
+    it('String value should not change space around combinator', function() {
+        var input = 'a >b { color: red }';
         comb.configure({ 'combinator-space': 'foobar' });
-        assert.equal(
-            comb.processString(
-                'a >b { color: red }' +
-                'a ~b { color: red }' +
-                'a +b { color: red }'
-            ),
-            'a >b { color: red }' +
-            'a ~b { color: red }' +
-            'a +b { color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
-    it('True Boolean value should set space around combinator to one space', function() {
+
+    it('Boolean value should not change space around combinator', function() {
+        var input = 'a >b { color: red }';
         comb.configure({ 'combinator-space': true });
-        assert.equal(
-            comb.processString(
-                'a>b { color: red }' +
-                'a> b { color: red }' +
-                'a >b { color: red }' +
-                'a+b { color: red }' +
-                'a+ b { color: red }' +
-                'a +b { color: red }' +
-                'a~b { color: red }' +
-                'a~ b { color: red }' +
-                'a ~b { color: red }' +
-                'a ~b+ c>d { color: red }'
-            ),
-            'a > b { color: red }' +
-            'a > b { color: red }' +
-            'a > b { color: red }' +
-            'a + b { color: red }' +
-            'a + b { color: red }' +
-            'a + b { color: red }' +
-            'a ~ b { color: red }' +
-            'a ~ b { color: red }' +
-            'a ~ b { color: red }' +
-            'a ~ b + c > d { color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
-    it('False Boolean value should remove spaces around combinator', function() {
-        comb.configure({ 'combinator-space': false });
-        assert.equal(
-            comb.processString(
-                'a>b { color: red }' +
-                'a> b { color: red }' +
-                'a >b { color: red }' +
-                'a+b { color: red }' +
-                'a+ b { color: red }' +
-                'a +b { color: red }' +
-                'a~b { color: red }' +
-                'a~ b { color: red }' +
-                'a ~b { color: red }' +
-                'a ~b+ c>d { color: red }'
-            ),
-            'a>b { color: red }' +
-            'a>b { color: red }' +
-            'a>b { color: red }' +
-            'a+b { color: red }' +
-            'a+b { color: red }' +
-            'a+b { color: red }' +
-            'a~b { color: red }' +
-            'a~b { color: red }' +
-            'a~b { color: red }' +
-            'a~b+c>d { color: red }'
-        );
-    });
-    it('String `` value should remove spaces around combinator', function() {
-        comb.configure({ 'combinator-space': '' });
-        assert.equal(
-            comb.processString(
-                'a>b { color: red }' +
-                'a> b { color: red }' +
-                'a >b { color: red }' +
-                'a+b { color: red }' +
-                'a+ b { color: red }' +
-                'a +b { color: red }' +
-                'a~b { color: red }' +
-                'a~ b { color: red }' +
-                'a ~b { color: red }' +
-                'a ~b+ c>d { color: red }'
-            ),
-            'a>b { color: red }' +
-            'a>b { color: red }' +
-            'a>b { color: red }' +
-            'a+b { color: red }' +
-            'a+b { color: red }' +
-            'a+b { color: red }' +
-            'a~b { color: red }' +
-            'a~b { color: red }' +
-            'a~b { color: red }' +
-            'a~b+c>d { color: red }'
-        );
-    });
-    it('String `  ` value should set two spaces around combinator', function() {
-        comb.configure({ 'combinator-space': '  ' });
-        assert.equal(
-            comb.processString(
-                'a>b { color: red }' +
-                'a> b { color: red }' +
-                'a >b { color: red }' +
-                'a+b { color: red }' +
-                'a+ b { color: red }' +
-                'a +b { color: red }' +
-                'a~b { color: red }' +
-                'a~ b { color: red }' +
-                'a ~b { color: red }' +
-                'a ~b+ c>d { color: red }'
-            ),
-            'a  >  b { color: red }' +
-            'a  >  b { color: red }' +
-            'a  >  b { color: red }' +
-            'a  +  b { color: red }' +
-            'a  +  b { color: red }' +
-            'a  +  b { color: red }' +
-            'a  ~  b { color: red }' +
-            'a  ~  b { color: red }' +
-            'a  ~  b { color: red }' +
-            'a  ~  b  +  c  >  d { color: red }'
-        );
-    });
-    it('Array value should set different spaces around combinator', function() {
+
+    it('Array of strings should set proper spaces around combinator', function() {
         comb.configure({ 'combinator-space': [' ', '\n'] });
         assert.equal(
             comb.processString(
@@ -152,6 +51,34 @@ describe('options/combinator-space', function() {
             'a ~\nb { color: red }' +
             'a ~\nb { color: red }' +
             'a ~\nb +\nc >\nd { color: red }'
+        );
+    });
+
+    it('Array of numbers should set proper spaces around combinator', function() {
+        comb.configure({ 'combinator-space': [0, 1] });
+        assert.equal(
+            comb.processString(
+                'a>b { color: red }' +
+                'a> b { color: red }' +
+                'a >b { color: red }' +
+                'a+b { color: red }' +
+                'a+ b { color: red }' +
+                'a +b { color: red }' +
+                'a~b { color: red }' +
+                'a~ b { color: red }' +
+                'a ~b { color: red }' +
+                'a ~b+ c>d { color: red }'
+            ),
+            'a> b { color: red }' +
+            'a> b { color: red }' +
+            'a> b { color: red }' +
+            'a+ b { color: red }' +
+            'a+ b { color: red }' +
+            'a+ b { color: red }' +
+            'a~ b { color: red }' +
+            'a~ b { color: red }' +
+            'a~ b { color: red }' +
+            'a~ b+ c> d { color: red }'
         );
     });
 

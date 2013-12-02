@@ -429,30 +429,13 @@ b { color: #fc0 }
 
 ### combinator-space
 
-Available values:
-  * `{Boolean}`: `true` sets one space, `false` removes the spaces.
-  * `{String}`: any combination of whitespaces.
-  * `{Array}` with two `{String}` values: for setting left and right whitespace.
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or new lines. If there is any other
+    character in the string, the value will not be set.
 
-Example: `{ "combinator-space": true }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a > b { color: red }
-```
-
-Example: `{ "combinator-space": "" }`
-
-```css
-/* before */
-a > b { color: red }
-
-/* after */
-a>b { color: red }
-```
+The first element of the array sets spaces before combinator, and the second
+one sets spaces after combinator.
 
 Example: `{ "combinator-space": [" ", "\n"] }`
 
@@ -464,6 +447,17 @@ a>b { color: red }
 a >
 b { color: red }
 ```
+
+Example: `{ "combinator-space": [1, 1] }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a > b { color: red }
+```
+
 
 ### element-case
 
