@@ -157,7 +157,7 @@ Example configuration:
     "eof-newline": true,
     "leading-zero": false,
     "remove-empty-rulesets": true,
-    "rule-indent": true,
+    "rule-indent": "    ",
     "stick-brace": true,
     "strip-spaces": true,
     "unitless-zero": true,
@@ -511,10 +511,10 @@ Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no decl
 
 **Note**: better to use with [block-indent](#block-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "rule-indent": 2 }`
 
@@ -527,6 +527,19 @@ a {
   color:red;
   margin:0 }
 ```
+
+Example: `{ "rule-indent": "  " }`
+
+```css
+/* before */
+a { color:red; margin:0 }
+
+/* after */
+a {
+  color:red;
+  margin:0 }
+```
+
 
 ### sort-order
 

@@ -3,30 +3,23 @@ var assert = require('assert');
 
 describe('options/rule-indent', function() {
     var comb;
+
     beforeEach(function() {
         comb = new Comb();
     });
+
     it('Invalid Number value should not change rule indent', function() {
+        var input = 'a {\n color: red }';
         comb.configure({ 'rule-indent': 3.5 });
-        assert.equal(
-            comb.processString('a {\n color: red }'),
-            'a {\n color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
+
     it('Invalid String value should not change rule indent', function() {
+        var input = 'a {\n color: red }';
         comb.configure({ 'rule-indent': 'foobar' });
-        assert.equal(
-            comb.processString('a {\n color: red }'),
-            'a {\n color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
-    it('True Boolean value should set 4 spaces indent', function() {
-        comb.configure({ 'rule-indent': true });
-        assert.equal(
-            comb.processString('a {\n color: red }'),
-            'a {\n    color: red }'
-        );
-    });
+
     it('Valid Number value should set equal space indent', function() {
         comb.configure({ 'rule-indent': 3 });
         assert.equal(
@@ -34,6 +27,7 @@ describe('options/rule-indent', function() {
             'a {\n   color: red }'
         );
     });
+
     it('Valid String value should set equal indent', function() {
         comb.configure({ 'rule-indent': '\t' });
         assert.equal(
@@ -49,8 +43,9 @@ describe('options/rule-indent', function() {
             'a { /* foo */\n\tcolor:red; /* bar */\n\n\tbackground: #fff\n}\n'
         );
     });
+
     it('Valid value should ignore empty blocks', function() {
-        comb.configure({ 'rule-indent': true });
+        comb.configure({ 'rule-indent': '  ' });
         assert.equal(
             comb.processString('a {}'),
             'a {}'

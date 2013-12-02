@@ -13,7 +13,7 @@
     "eof-newline": true,
     "leading-zero": false,
     "remove-empty-rulesets": true,
-    "rule-indent": true,
+    "rule-indent": "    ",
     "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
