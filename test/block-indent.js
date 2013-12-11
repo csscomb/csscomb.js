@@ -3,30 +3,29 @@ var assert = require('assert');
 
 describe('options/block-indent', function() {
     var comb;
+
     beforeEach(function() {
         comb = new Comb();
     });
+
     it('Invalid Number value should not change space after brace', function() {
+        var input = 'a { color: red }';
         comb.configure({ 'block-indent': 3.5 });
-        assert.equal(
-            comb.processString('a { color: red }'),
-            'a { color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
+
     it('Invalid String value should not change space after brace', function() {
+        var input = 'a { color: red }';
         comb.configure({ 'block-indent': 'foobar' });
-        assert.equal(
-            comb.processString('a { color: red }'),
-            'a { color: red }'
-        );
+        assert.equal(comb.processString(input), input);
     });
-    it('True Boolean value should set 4 spaces indent', function() {
+
+    it('Boolean value should not change space after brace', function() {
+        var input = ' \n a { color: red }  @media all {.input__control { color: #000;\n}\n}';
         comb.configure({ 'block-indent': true });
-        assert.equal(
-            comb.processString(' \n a { color: red }  @media all {.input__control { color: #000;\n}\n}'),
-            ' \na { color: red \n}\n@media all {\n    .input__control { color: #000;\n    }\n}'
-        );
+        assert.equal(comb.processString(input), input);
     });
+
     it('Valid Number value should set equal space after brace', function() {
         comb.configure({ 'block-indent': 3 });
         assert.equal(

@@ -149,16 +149,16 @@ Example configuration:
     "verbose": true,
 
     "always-semicolon": true,
-    "block-indent": true,
-    "colon-space": true,
+    "block-indent": "    ",
+    "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
     "remove-empty-rulesets": true,
-    "rule-indent": true,
-    "stick-brace": true,
+    "rule-indent": "    ",
+    "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true
@@ -330,10 +330,10 @@ div {
 
 **Note**: better to use with [rule-indent](#rule-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "block-indent": 2 }`
 
@@ -351,48 +351,32 @@ a { color: red
 }
 ```
 
+Example: `{ "block-indent": "  " }`
+
+```css
+/* before */
+  a { color: red }
+  @media all { a { color: green } }
+
+/* after */
+a { color: red
+}
+@media all {
+  a { color: green
+  }
+}
+```
+
+
 ### colon-space
 
-Available values:
-  * `{Boolean}` `true` (means `after`) or `false` (no whitespace at all)
-  * `{String}`: `before`, `after`, `both` or any combination of whitespaces
-  and/or a colon (` `, `: `, `\t:\n\t` etc.)
-  * `{Array}` with two `{String}` values: for setting left and right whitespace around a colon
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
-Example: `{ "colon-space": true }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a { color: red }
-```
-
-Example: `{ "colon-space": ":\n\t\t" }`
-
-```css
-/* before */
-a {
-  color: red;
-}
-
-/* after */
-a {
-  color:
-    red;
-}
-```
-
-Example: `{ "colon-space": "" }`
-
-```css
-/* before */
-a { color: red }
-
-/* after */
-a { color:red }
-```
+The first element of the array sets spaces before colon, and the second one sets
+spaces after colon.
 
 Example: `{ "colon-space": ["\t", "\t"] }`
 
@@ -403,6 +387,17 @@ a { color: red }
 /* after */
 a { color	:	red }
 ```
+
+Example: `{ "colon-space": [0, 1] }`
+
+```css
+/* before */
+a { color:red }
+
+/* after */
+a { color: red }
+```
+
 
 ### color-case
 
@@ -434,30 +429,13 @@ b { color: #fc0 }
 
 ### combinator-space
 
-Available values:
-  * `{Boolean}`: `true` sets one space, `false` removes the spaces.
-  * `{String}`: any combination of whitespaces.
-  * `{Array}` with two `{String}` values: for setting left and right whitespace.
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or new lines. If there is any other
+    character in the string, the value will not be set.
 
-Example: `{ "combinator-space": true }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a > b { color: red }
-```
-
-Example: `{ "combinator-space": "" }`
-
-```css
-/* before */
-a > b { color: red }
-
-/* after */
-a>b { color: red }
-```
+The first element of the array sets spaces before combinator, and the second
+one sets spaces after combinator.
 
 Example: `{ "combinator-space": [" ", "\n"] }`
 
@@ -469,6 +447,17 @@ a>b { color: red }
 a >
 b { color: red }
 ```
+
+Example: `{ "combinator-space": [1, 1] }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a > b { color: red }
+```
+
 
 ### element-case
 
@@ -522,10 +511,10 @@ Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no decl
 
 **Note**: better to use with [block-indent](#block-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "rule-indent": 2 }`
 
@@ -538,6 +527,19 @@ a {
   color:red;
   margin:0 }
 ```
+
+Example: `{ "rule-indent": "  " }`
+
+```css
+/* before */
+a { color:red; margin:0 }
+
+/* after */
+a {
+  color:red;
+  margin:0 }
+```
+
 
 ### sort-order
 
@@ -615,10 +617,10 @@ p {
 
 ### stick-brace
 
-Available values:
-  * `{Boolean}` `true` (means 1 space)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t\n]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or newlines. If there is any other
+    character in the string, the value will not be set.
 
 Example: `{ "stick-brace": "\n" }`
 
@@ -630,6 +632,17 @@ a { color:red }
 a
 { color:red }
 ```
+
+Example: `{ "stick-brace": 1 }`
+
+```css
+/* before */
+a{ color:red }
+
+/* after */
+a { color:red }
+```
+
 
 ### strip-spaces
 
