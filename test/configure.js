@@ -29,4 +29,20 @@ describe('csscomb methods', function() {
 
         assert.equal(expected, output);
     });
+
+    it('new Comb() should be chainable', function() {
+        input = 'a { color: tomato; top: 0; }';
+        expected = 'a {top: 0;  color: tomato; }';
+        output = new Comb('zen').processString(input);
+
+        assert.equal(expected, output);
+    });
+
+    it('configure() should be chainable', function() {
+        input = 'a { color: tomato }';
+        expected = 'a { color: tomato; }';
+        output = new Comb().configure({ 'always-semicolon': true }).processString(input);
+
+        assert.equal(expected, output);
+    });
 });
