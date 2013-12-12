@@ -1,0 +1,8 @@
+div {
+    color: tomato;
+    @if @color == tomato {
+        display: block;
+        font-size: 2px;
+        }
+    top: 0;
+    }
