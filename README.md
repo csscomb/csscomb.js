@@ -156,6 +156,7 @@ Example configuration:
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
+    "quotes": "single",
     "remove-empty-rulesets": true,
     "rule-indent": "    ",
     "stick-brace": "\n",
@@ -497,6 +498,20 @@ p { padding: 0.5em }
 
 /* after */
 p { padding: .5em }
+```
+
+### quotes
+
+Available values: `{String}` `single` or `double`
+
+Example: `{ "quotes": "single" }`
+
+```css
+/* before */
+p[href^="https://"]:before { content: "secure" }
+
+/* after */
+p[href^='https://']:before { content: 'secure' }
 ```
 
 ### remove-empty-rulesets
