@@ -1,0 +1,17 @@
+.test
+{
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+
+    border: 1px solid transparent;
+    border-color: rgba(0,0,0,.38) rgba(0,0,0,.27) rgba(0,0,0,.16);
+    background: -webkit-linear-gradient(#fff, #fff);
+    background:         linear-gradient(#fff, #fff);
+    background-clip: padding-box;
+    background-size: 16px 16px;
+
+    -webkit-appearance: textfield;
+}
