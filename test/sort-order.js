@@ -130,4 +130,15 @@ describe('options/sort-order', function() {
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
     });
+
+    it('Issue 94. Test 2', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-2.css');
+        var expected = readFile('issue-94-2.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
 });
