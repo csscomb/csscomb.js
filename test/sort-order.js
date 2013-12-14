@@ -141,4 +141,13 @@ describe('options/sort-order', function() {
         assert.equal(comb.processString(input), expected);
     });
 
+    it('Issue 94. Test 3', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-3.css');
+        var expected = readFile('issue-94-3.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
 });
