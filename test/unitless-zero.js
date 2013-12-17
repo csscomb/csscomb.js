@@ -42,4 +42,77 @@ describe('options/unitless-zero', function() {
         );
     });
 
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect unitless zero option', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { width: 0 }',
+            {
+                'unitless-zero': true
+            }
+        );
+    });
+
+    it('Should detect zero with unit', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { width: 0px }',
+            {
+                'unitless-zero': false
+            }
+        );
+    });
+
+    it('Should detect unitless zero option with multiple values', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { padding: 0px 0 0 }',
+            {
+                'unitless-zero': true
+            }
+        );
+    });
+
+    it('Should detect zero with unit and multiple values', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { padding: 0px 0 0em }',
+            {
+                'unitless-zero': false
+            }
+        );
+    });
+
+    it('Shouldn’t detect unitless zero option if there is no unit', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { color: red }',
+            {}
+        );
+    });
+
+    it('Shouldn’t detect unitless zero option if there is `deg` unit', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { transform: rotate(0deg) }',
+            {}
+        );
+    });
+
+    it('Should detect unitless zero option with percents', function() {
+        should_detect(
+            ['unitless-zero'],
+            'a { padding: 0% 0 0 }',
+            {
+                'unitless-zero': true
+            }
+        );
+    });
 });

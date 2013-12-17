@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0 - 2013-12-18
+**Great thanks for @tonyganch and @kizu!**
+- Use Gonzales PE to parse *.scss and *.less files
+- Support sorting properties in *.scss and *.less files
+- Codestyle detection
+- Option: always-semicolon (scss + less)
+- Option: quotes
+- Two more config examples now: `csscomb` and `zen`
+- Lots of refactoring and fixes
+- Lots of tests added
+- Node v0.8 no longer supported
+
 ## 1.0.0 - 2013-11-06
 - Option: vendor-prefix-align
 - Dependencies updated

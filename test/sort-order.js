@@ -1,64 +1,48 @@
 var Comb = require('../lib/csscomb');
 var assert = require('assert');
+var fs = require('fs');
 
 describe('options/sort-order', function() {
-
     var comb;
+
+    function readFile(path) {
+        return fs.readFileSync('test/sort-order/' + path, 'utf8');
+    }
 
     beforeEach(function() {
         comb = new Comb();
     });
 
-    it('Should be in expected order in case of 1 group', function() {
+    it('Should be in expected order in case properties are not grouped', function() {
+        var config = { 'sort-order': ['position', 'z-index'] };
 
-        var config = {
-                'sort-order': [
-                    ['position', 'z-index']
-                ]
-            };
-
-        var input = 'a\n' +
-            '{\n' +
-            '\tz-index: 2;\n' +
-            '\tposition: absolute;\n' +
-            '}';
-
-        var expected = 'a\n' +
-            '{\n' +
-            '\tposition: absolute;\n' +
-            '\tz-index: 2;\n' +
-            '}';
+        var input = readFile('single-group.css');
+        var expected = readFile('single-group.expected.css');
 
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
+    });
 
+    it('Should be in expected order in case of 1 group', function() {
+        var config = { 'sort-order': [
+            ['position', 'z-index']
+        ] };
+
+        var input = readFile('single-group.css');
+        var expected = readFile('single-group.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
     });
 
     it('Shuld be in expected order in case of multiple groups', function() {
+        var config = { 'sort-order': [
+            ['position', 'z-index'],
+            ['width', 'height']
+        ] };
 
-        var config = {
-                'sort-order': [
-                    ['position', 'z-index'],
-                    ['width', 'height']
-                ]
-            };
-
-        var input = 'a\n' +
-            '{\n' +
-            '\tz-index: 2;\n' +
-            '\tposition: absolute;\n' +
-            '\theight: 2px;\n' +
-            '\twidth: 2px;\n' +
-            '}';
-
-        var expected = 'a\n' +
-            '{\n' +
-            '\tposition: absolute;\n' +
-            '\tz-index: 2;\n' +
-            '\n' +
-            '\twidth: 2px;\n' +
-            '\theight: 2px;\n' +
-            '}';
+        var input = readFile('multiple-groups.css');
+        var expected = readFile('multiple-groups.expected.css');
 
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
@@ -66,76 +50,51 @@ describe('options/sort-order', function() {
     });
 
     it('Should work correctly with comments in case of 1 group', function() {
+        var config = { 'sort-order': [
+            ['border-bottom', 'font-style'],
+        ] };
 
-        var config = {
-                'sort-order': [
-                    ['border-bottom', 'font-style'],
-                ]
-            };
-
-        var input = 'div p em {\n' +
-            '\t/* upline comment */\n' +
-            '\tfont-style:italic;\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
-            '}';
-
-        var expected = 'div p em {\n' +
-            '\tborder-bottom:1px solid red /* trololo */ /* trololo */\n' +
-            '\t/* upline comment */\n' +
-            '\tfont-style:italic;\n' +
-            '}';
+        var input = readFile('single-group-comments.css');
+        var expected = readFile('single-group-comments.expected.css');
 
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
-
     });
 
     it('Should work correctly with comments in case of multiple groups', function() {
+        var config = { 'sort-order': [
+            ['margin'],
+            ['padding']
+        ] };
 
-        var config = {
-                'sort-order': [
-                    ['margin'],
-                    ['padding']
-                ]
-            };
-
-        var input = 'a, b, i /* foobar */\n' +
-            '{\n' +
-            '  padding: 0;\n' +
-            '  margin: 0;\n' +
-            '  }';
-
-        var expected = 'a, b, i /* foobar */\n' +
-            '{\n' +
-            '  margin: 0;\n' +
-            '\n' +
-            '  padding: 0;\n' +
-            '  }';
+        var input = readFile('multiple-groups-comments.css');
+        var expected = readFile('multiple-groups-comments.expected.css');
 
         comb.configure(config);
         assert.equal(comb.processString(input), expected);
 
     });
 
-    it('Should replace custom delimiters by ours', function() {
+    it('Should parse semicolons inside data uri correctly', function() {
 
         var config = {
                 'sort-order': [
-                    ['margin'],
-                    ['padding']
+                    ['position', 'background', 'color']
                 ]
             };
 
-        var input = 'div p em {\n' +
-            '\tpadding: 1px;\n' +
-            '        \n' +
-            '\tmargin: 1px;\n' +
+        var input = 'a\n' +
+            '{\n' +
+            '\tcolor: tomato;\n' +
+            '\tbackground: #D2D2D2 no-repeat url(\'data:image/svg+xml;charset=US-ASCII.naninani\');\n' +
+            '\tposition: absolute;\n' +
             '}';
 
-        var expected = 'div p em {\n' +
-            '\tmargin: 1px;\n' +
-            '\n' +
-            '\tpadding: 1px;\n' +
+        var expected = 'a\n' +
+            '{\n' +
+            '\tposition: absolute;\n' +
+            '\tbackground: #D2D2D2 no-repeat url(\'data:image/svg+xml;charset=US-ASCII.naninani\');\n' +
+            '\tcolor: tomato;\n' +
             '}';
 
         comb.configure(config);
@@ -143,4 +102,62 @@ describe('options/sort-order', function() {
 
     });
 
+    it('Should not add more than 1 line between groups', function() {
+
+        var config = {
+                'sort-order': [
+                    ['top'], ['color']
+                ]
+            };
+
+        var input = 'a\n' +
+            '{\n' +
+            '\tcolor: tomato;\n' +
+            '\ttop: 0;\n' +
+            '}';
+
+        var expected = 'a\n' +
+            '{\n' +
+            '\ttop: 0;\n' +
+            '\n' +
+            '\tcolor: tomato;\n' +
+            '}';
+
+        comb.configure(config);
+        for (var i = 6; i--;) {
+            input = comb.processString(input);
+        }
+        assert.equal(input, expected);
+
+    });
+
+    it('Issue 94. Test 1', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-1.css');
+        var expected = readFile('issue-94-1.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
+    it('Issue 94. Test 2', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-2.css');
+        var expected = readFile('issue-94-2.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
+    it('Issue 94. Test 3', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-3.css');
+        var expected = readFile('issue-94-3.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
 });

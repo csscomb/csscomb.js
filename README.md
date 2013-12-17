@@ -6,22 +6,52 @@ You can easily write your own [configuration](#configuration) to make your style
 
 The main feature is the [sorting properties](#sort-order) in specific order.
 It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
-This is the new JavaScript version, based on powerful CSS parser [Gonzales](https://github.com/css/gonzales).
+This is the new JavaScript version, based on powerful CSS parser [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
 ## Installation
+
+Global installation (use as a command-line tool):
+
+```bash
+npm install csscomb -g
+```
+
+Local installation (use as a command-line tool within current directory):
 
 ```bash
 npm install csscomb
 ```
 
-To run `csscomb`, you can use the following command from the project root:
+To install as a project dependency (package will appear in your dependencies):
+
+```bash
+npm install csscomb --save
+```
+
+To install as a dev dependency (package will appear in your devDependencies):
+
+```bash
+npm install csscomb --save-dev
+```
+
+## CLI usage
+
+To run `csscomb`:
+
+```bash
+csscomb path[ path[...]]
+```
+
+If you installed the package locally, in the project's directory run:
 
 ```bash
 ./node_modules/.bin/csscomb path[ path[...]]
 ```
 
+If you run `csscomb -h`, it will show some helpful information:
+
 ```bash
-./node_modules/.bin/csscomb --help
+csscomb -h
 
   Usage: csscomb [options] <file ...>
 
@@ -29,11 +59,86 @@ To run `csscomb`, you can use the following command from the project root:
 
     -h, --help           output usage information
     -V, --version        output the version number
+    -v, --verbose        verbose mode
     -c, --config [path]  configuration file path
+    -d, --detect         detect mode (would return detected options)
     -l, --lint           in case some fixes needed returns an error
 ```
 
+## Node.js module usage
+
+Besides being a great CLI, `csscomb` can be used in Node.js projects (inside
+a plugin or as a dev tool):
+
+```js
+// Require:
+var Comb = require('csscomb');
+
+// Configure:
+var comb = new Comb();
+comb.configure(config);
+
+// Use:
+comb.processPath('style.css');
+```
+
+### configure(config)
+
+You must configure csscomb before using and config must be a valid JSON.    
+See [configuration section](#configuration) for more information.
+
+### processPath(path)
+
+Comb a file or a directory.    
+Warning: This method rewrites the file.
+
+```js
+// One file:
+comb.processPath('main.scss');
+
+// Whole directory:
+comb.processPath('assets/styles');
+```
+
+### processDirectory(path)
+
+Comb all supported files in a directory.    
+Warning: This method rewrites the files.
+
+```js
+comb.processDirectory('public/css');
+```
+
+### processFile(path)
+
+Comb one file.    
+If file's syntax is not supported, the file will be ignored.    
+Warning: This method rewrites the file.
+
+```js
+comb.processFile('print.less');
+```
+
+### processString(text, syntax, filename)
+
+Comb a stylesheet.    
+If style's syntax is different from `css`, you should pass `syntax` parameter,
+too.    
+`filename` is optional, it's used to print possible errors.
+
+```js
+// Comb a css string:
+var css = 'a {top: 0; left: 0}';
+var combedCSS = comb.processString(css);
+
+// Comb a less string:
+var less = '@color: tomato; a {color: @color}';
+var combedLESS = comb.processString(less, 'less');
+```
+
 ## Configuration
+
+### Through `.csscomb.json`
 
 `csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) file, located in the project root.
 
@@ -44,19 +149,80 @@ Example configuration:
     "verbose": true,
 
     "always-semicolon": true,
-    "block-indent": true,
-    "colon-space": true,
+    "block-indent": "    ",
+    "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
     "eof-newline": true,
     "leading-zero": false,
+    "quotes": "single",
     "remove-empty-rulesets": true,
-    "rule-indent": true,
-    "stick-brace": true,
+    "rule-indent": "    ",
+    "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true
+}
+```
+
+### Through `.css`-template
+
+Instead of configuring all the options one by one, you can use a CSS-template file instead: CSSComb.js would detect the codestyle used in this file and would use it as a config. All the existent properties except for the `sort-order` could be configured this way.
+
+To provide a template just add `"template"` with the path to the template in the `.csscomb.json`:
+
+```json
+{
+    "template": "example.css"
+}
+```
+
+CSSComb.js would detect only those things that could be detected, so if your template don't provide examples of usage for some of the options, or if you would want to override something from it, you can write them in the `.csscomb.json` along the `"template"`:
+
+```json
+{
+    "template": "example.css",
+    "leading-zero": false,
+    "vendor-prefix-align": true
+}
+```
+
+This config would detect all the options from the `example.css`, then it would use `"leading-zero":  false` instead of what it detected, and then it would use `"vendor-prefix-align": true` even if there were no prefixed properties or values inside the `example.css`.
+
+### Creating `.csscomb.json` from the `.css` file
+
+If you want to configure everything manually, but based on the codestyle from existing `.css`-file, you can at first detect all the options using `--detect` CLI option, and then add/edit any options you like. So if you have such `example.css`:
+
+```css
+.foo
+{
+    width: #fff;
+}
+```
+
+then by running
+
+```bash
+csscomb -d template.css > .csscomb.json
+```
+
+you would generate this `.csscomb.json`:
+
+```json
+{
+    "remove-empty-rulesets": true,
+    "always-semicolon": true,
+    "color-case": "lower",
+    "color-shorthand": true,
+    "strip-spaces": true,
+    "eof-newline": true,
+    "stick-brace": "\n",
+    "colon-space": [
+        "",
+        " "
+    ],
+    "rule-indent": "    "
 }
 ```
 
@@ -76,7 +242,8 @@ Available value: `{Boolean}` `true`
 
 Config mode: `{ "verbose": true }`
 ```bash
-$ ./bin/csscomb ./test
+csscomb ./test
+
 ✓ test/integral.origin.css
   test/integral.expect.css
 
@@ -87,11 +254,27 @@ $ ./bin/csscomb ./test
 
 CLI mode:
 ```bash
-$ ./bin/csscomb ./test --verbose
-$ ./bin/csscomb ./test -v
+csscomb --verbose ./test
+csscomb -v ./test
+```
+
+### template
+
+**Note:** see the description of the [configuring through template](#through-css-template).
+
+Available value: `{String}` path to the `.css` file.
+
+Example: `{ "template": "example.css" }`
+
+CLI mode — just provide path to `.css` file instead of `.csscomb.json`:
+```bash
+csscomb --config example.css ./test
+csscomb -c example.css ./test
 ```
 
 ### always-semicolon
+
+Whether to add a semicolon after the last value/mixin.
 
 Available value: `{Boolean}` `true`
 
@@ -105,14 +288,53 @@ a { color: red }
 a { color: red; }
 ```
 
+Example: `{ "always-semicolon": true }` (scss file):
+
+```scss
+// before
+div {
+    color: tomato;
+    @include nani
+    }
+
+// after
+div {
+    color: tomato;
+    @include nani;
+    }
+```
+
+Note that in `*.scss` and `*.less` files semicolons are not added after `}`
+even if it's part of a value:
+
+```scss
+// before
+div {
+    color: tomato;
+    font: {
+        family: fantasy;
+        size: 16px
+        }
+    }
+
+// after
+div {
+    color: tomato;
+    font: {
+        family: fantasy;
+        size: 16px;
+        }
+    }
+```
+
 ### block-indent
 
 **Note**: better to use with [rule-indent](#rule-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "block-indent": 2 }`
 
@@ -130,48 +352,32 @@ a { color: red
 }
 ```
 
+Example: `{ "block-indent": "  " }`
+
+```css
+/* before */
+  a { color: red }
+  @media all { a { color: green } }
+
+/* after */
+a { color: red
+}
+@media all {
+  a { color: green
+  }
+}
+```
+
+
 ### colon-space
 
-Available values:
-  * `{Boolean}` `true` (means `after`) or `false` (no whitespace at all)
-  * `{String}`: `before`, `after`, `both` or any combination of whitespaces
-  and/or a colon (` `, `: `, `\t:\n\t` etc.)
-  * `{Array}` with two `{String}` values: for setting left and right whitespace around a colon
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
-Example: `{ "colon-space": true }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a { color: red }
-```
-
-Example: `{ "colon-space": ":\n\t\t" }`
-
-```css
-/* before */
-a {
-  color: red;
-}
-
-/* after */
-a {
-  color:
-    red;
-}
-```
-
-Example: `{ "colon-space": "" }`
-
-```css
-/* before */
-a { color: red }
-
-/* after */
-a { color:red }
-```
+The first element of the array sets spaces before colon, and the second one sets
+spaces after colon.
 
 Example: `{ "colon-space": ["\t", "\t"] }`
 
@@ -182,6 +388,17 @@ a { color: red }
 /* after */
 a { color	:	red }
 ```
+
+Example: `{ "colon-space": [0, 1] }`
+
+```css
+/* before */
+a { color:red }
+
+/* after */
+a { color: red }
+```
+
 
 ### color-case
 
@@ -213,30 +430,13 @@ b { color: #fc0 }
 
 ### combinator-space
 
-Available values:
-  * `{Boolean}`: `true` sets one space, `false` removes the spaces.
-  * `{String}`: any combination of whitespaces.
-  * `{Array}` with two `{String}` values: for setting left and right whitespace.
+Acceptable value is `{Array}` with 2 elements of following types:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or new lines. If there is any other
+    character in the string, the value will not be set.
 
-Example: `{ "combinator-space": true }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a > b { color: red }
-```
-
-Example: `{ "combinator-space": "" }`
-
-```css
-/* before */
-a > b { color: red }
-
-/* after */
-a>b { color: red }
-```
+The first element of the array sets spaces before combinator, and the second
+one sets spaces after combinator.
 
 Example: `{ "combinator-space": [" ", "\n"] }`
 
@@ -248,6 +448,17 @@ a>b { color: red }
 a >
 b { color: red }
 ```
+
+Example: `{ "combinator-space": [1, 1] }`
+
+```css
+/* before */
+a>b { color: red }
+
+/* after */
+a > b { color: red }
+```
+
 
 ### element-case
 
@@ -289,6 +500,20 @@ p { padding: 0.5em }
 p { padding: .5em }
 ```
 
+### quotes
+
+Available values: `{String}` `single` or `double`
+
+Example: `{ "quotes": "single" }`
+
+```css
+/* before */
+p[href^="https://"]:before { content: "secure" }
+
+/* after */
+p[href^='https://']:before { content: 'secure' }
+```
+
 ### remove-empty-rulesets
 
 Available values: `{Boolean}` `true`
@@ -301,10 +526,10 @@ Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no decl
 
 **Note**: better to use with [block-indent](#block-indent)
 
-Available values:
-  * `{Boolean}` `true` (means 4 spaces)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces or tabs. If there is any other character in the
+    string, the value will not be set.
 
 Example: `{ "rule-indent": 2 }`
 
@@ -317,6 +542,19 @@ a {
   color:red;
   margin:0 }
 ```
+
+Example: `{ "rule-indent": "  " }`
+
+```css
+/* before */
+a { color:red; margin:0 }
+
+/* after */
+a {
+  color:red;
+  margin:0 }
+```
+
 
 ### sort-order
 
@@ -363,12 +601,41 @@ p {
 }
 ```
 
+If you sort properties in `*.scss` or `*.less` files, you can use one of 3
+keywords in your config:
+  * `$variable` for variable declarations (e.g. `$var` in Sass or `@var` in LESS);
+  * `$include` for included mixins (e.g. `@include ...` and `@extend ...` in Sass
+    or `.mixin()` in LESS);
+  * `$import` for `@import` rules.
+
+Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ] ] }`
+
+```scss
+/* before */
+p {
+    padding: 0;
+    @include mixin($color);
+    $color: tomato;
+    top: 0;
+}
+
+/* after */
+p {
+    $color: tomato;
+
+    @include mixin($color);
+
+    top: 0;
+    padding: 0;
+}
+```
+
 ### stick-brace
 
-Available values:
-  * `{Boolean}` `true` (means 1 space)
-  * `{Number}` of spaces
-  * `{String}` of whitespace characters (`/[ \t\n]+/`)
+Acceptable values:
+  * `{Number}` of spaces;
+  * `{String}` of whitespaces, tabs or newlines. If there is any other
+    character in the string, the value will not be set.
 
 Example: `{ "stick-brace": "\n" }`
 
@@ -380,6 +647,17 @@ a { color:red }
 a
 { color:red }
 ```
+
+Example: `{ "stick-brace": 1 }`
+
+```css
+/* before */
+a{ color:red }
+
+/* after */
+a { color:red }
+```
+
 
 ### strip-spaces
 
@@ -446,7 +724,8 @@ review the [guidelines for contributing](CONTRIBUTE.md).
 
 ## Authors
 
-[@mishanga](https://github.com/mishanga)
+[@mishanga](https://github.com/mishanga),
+[@tonyganch](https://github.com/tonyganch)
 
 Thanks for assistance and contributions:
 
@@ -465,5 +744,6 @@ This software is released under the terms of the [MIT license](https://github.co
 ## Other projects
 * https://github.com/senchalabs/cssbeautify
 * https://github.com/css/gonzales
+* https://github.com/tonyganch/gonzales-pe
 * https://github.com/css/csso
 * https://github.com/nzakas/parser-lib

@@ -38,4 +38,48 @@ describe('options/color-shorthand', function() {
         );
     });
 
+
+    // Helper to check the detection
+    function should_detect(options, a, b) {
+        assert.equal(
+            JSON.stringify(comb.detectInString(a, options)),
+            JSON.stringify(b)
+        );
+    }
+
+    it('Should detect non-shorthanded color', function() {
+        should_detect(
+            ['color-shorthand'],
+            'a { color: #FF33EE }',
+            {
+                'color-shorthand': false
+            }
+        );
+    });
+
+    it('Should detect shorthanded color', function() {
+        should_detect(
+            ['color-shorthand'],
+            'a { color: #fff }',
+            {
+                'color-shorthand': true
+            }
+        );
+    });
+
+    it('Shouldn’t detect if a color is shorthanded if it can’t be shorthanded', function() {
+        should_detect(
+            ['color-shorthand'],
+            'a { color: #F3F3F3 }',
+            {}
+        );
+    });
+
+    it('Shouldn’t detect if a color is shorthanded if it is not a vhash', function() {
+        should_detect(
+            ['color-shorthand'],
+            'a { color: rgba(0,0,0,0.5) }',
+            {}
+        );
+    });
 });

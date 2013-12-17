@@ -1,0 +1,7 @@
+div {
+    @if $type == ocean {
+        top: 0;
+    } @else {
+        left: 0;
+    }
+}
