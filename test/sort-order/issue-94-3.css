@@ -1,0 +1,21 @@
+.input-view {
+  position: absolute;
+  -webkit-appearance: none;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+
+  border: 1px solid transparent;
+
+  top: -1px;
+
+  background: -webkit-linear-gradient(#FFF, #FFF);
+  background: linear-gradient(#FFF, #FFF);
+  background-clip: padding-box;
+  background-size: 16px 16px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+
+  border-color: rgba(0,0,0,0.27);
+  border-top-color: rgba(0,0,0,0.38);
+  border-bottom-color: rgba(0,0,0,0.16);
+}

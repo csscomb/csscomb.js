@@ -130,4 +130,34 @@ describe('options/sort-order', function() {
         assert.equal(input, expected);
 
     });
+
+    it('Issue 94. Test 1', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-1.css');
+        var expected = readFile('issue-94-1.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
+    it('Issue 94. Test 2', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-2.css');
+        var expected = readFile('issue-94-2.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
+    it('Issue 94. Test 3', function() {
+        var config = comb.getConfig('csscomb');
+
+        var input = readFile('issue-94-3.css');
+        var expected = readFile('issue-94-3.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
 });
