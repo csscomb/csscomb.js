@@ -13,6 +13,16 @@ describe('options/sort-order', function() {
         comb = new Comb();
     });
 
+    it('Should be in expected order in case properties are not grouped', function() {
+        var config = { 'sort-order': ['position', 'z-index'] };
+
+        var input = readFile('single-group.css');
+        var expected = readFile('single-group.expected.css');
+
+        comb.configure(config);
+        assert.equal(comb.processString(input), expected);
+    });
+
     it('Should be in expected order in case of 1 group', function() {
         var config = { 'sort-order': [
             ['position', 'z-index']
