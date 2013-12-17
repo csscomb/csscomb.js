@@ -724,7 +724,8 @@ review the [guidelines for contributing](CONTRIBUTE.md).
 
 ## Authors
 
-[@mishanga](https://github.com/mishanga)
+[@mishanga](https://github.com/mishanga),
+[@tonyganch](https://github.com/tonyganch)
 
 Thanks for assistance and contributions:
 

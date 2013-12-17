@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
     "description": "CSS coding style formatter",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
@@ -10,6 +10,11 @@
             "name": "Mikhail Troshev",
             "email": "mishanga@yandex-team.ru",
             "web": "http://mishanga.pro/"
+        },
+        {
+            "name": "Tony Ganch",
+            "email": "tonyganch+github@gmail.com",
+            "web": "http://tonyganch.com/"
         },
         {
             "name": "Slava Oliyanchuk",
@@ -36,7 +41,7 @@
         }
     ],
     "engines": {
-        "node": ">= 0.8.0"
+        "node": ">= 0.10.0"
     },
     "dependencies": {
         "commander": "2.0.0",
