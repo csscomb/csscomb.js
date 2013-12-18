@@ -140,7 +140,7 @@ var combedLESS = comb.processString(less, 'less');
 
 ### Through `.csscomb.json`
 
-`csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/.csscomb.json) file, located in the project root.
+`csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/config/csscomb.json) file, located in the project root.
 
 Example configuration:
 ```json
@@ -166,9 +166,14 @@ Example configuration:
 }
 ```
 
+**Note**: you can use one of [predefined config files](https://github.com/csscomb/csscomb.js/tree/master/config)
+```bash
+cp ./node_modules/csscomb/config/csscomb.json .csscomb.json
+```
+
 ### Through `.css`-template
 
-Instead of configuring all the options one by one, you can use a CSS-template file instead: CSSComb.js would detect the codestyle used in this file and would use it as a config. All the existent properties except for the `sort-order` could be configured this way.
+Instead of configuring all the options one by one, you can use a CSS-template file: CSSComb.js would detect the codestyle used in this file and would use it as a config. All the existent properties except for the `sort-order` could be configured this way.
 
 To provide a template just add `"template"` with the path to the template in the `.csscomb.json`:
 
