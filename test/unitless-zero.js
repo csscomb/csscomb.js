@@ -1,4 +1,4 @@
-var Comb = require('../lib/csscomb');
+var Comb = process.env.TEST_COV ? require('../lib-cov/csscomb') : require('../lib/csscomb');
 var assert = require('assert');
 
 describe('options/unitless-zero', function() {
