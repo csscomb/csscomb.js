@@ -4,37 +4,37 @@
 CSSComb is a coding style formatter for CSS.
 You can easily write your own [configuration](#configuration) to make your style sheets beautiful and consistent.
 
-The main feature is the [sorting properties](#sort-order) in specific order.
-It was inspired by the same-named [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb).
-This is the new JavaScript version, based on powerful CSS parser [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
+The main feature is [sorting properties](#sort-order) in a specific order.
+It was inspired by [@miripiruni](https://github.com/miripiruni)'s [PHP-based tool](https://github.com/csscomb/csscomb) of the same name.
+This is the new JavaScript version, based on the powerful CSS parser [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
 ## Installation
 
-Global installation (use as a command-line tool):
+Global installation (for use as a command-line tool):
 
 ```bash
 npm install csscomb -g
 ```
 
-Local installation (use as a command-line tool within current directory):
+Local installation (for use as a command-line tool within current directory):
 
 ```bash
 npm install csscomb
 ```
 
-To install as a project dependency (package will appear in your dependencies):
+To install as a project dependency (the package will appear in your dependencies):
 
 ```bash
 npm install csscomb --save
 ```
 
-To install as a dev dependency (package will appear in your devDependencies):
+To install as a dev dependency (the package will appear in your devDependencies):
 
 ```bash
 npm install csscomb --save-dev
 ```
 
-## CLI usage
+## Command Line usage
 
 To run `csscomb`:
 
@@ -84,7 +84,7 @@ comb.processPath('style.css');
 
 ### configure(config)
 
-You must configure csscomb before using and config must be a valid JSON.    
+You must configure csscomb before use. The config must be valid JSON.    
 See [configuration section](#configuration) for more information.
 
 ### processPath(path)
@@ -122,9 +122,8 @@ comb.processFile('print.less');
 ### processString(text, syntax, filename)
 
 Comb a stylesheet.    
-If style's syntax is different from `css`, you should pass `syntax` parameter,
-too.    
-`filename` is optional, it's used to print possible errors.
+If syntax is not `css`, you should pass a `syntax` parameter, too.    
+`filename` is optional. It is used to print errors.
 
 ```js
 // Comb a css string:
@@ -140,7 +139,7 @@ var combedLESS = comb.processString(less, 'less');
 
 ### Through `.csscomb.json`
 
-`csscomb` is configured using [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/config/csscomb.json) file, located in the project root.
+`csscomb` is configured using the file [.csscomb.json](https://github.com/csscomb/csscomb.js/blob/master/config/csscomb.json), located in the project root.
 
 Example configuration:
 ```json
@@ -166,14 +165,14 @@ Example configuration:
 }
 ```
 
-**Note**: you can use one of [predefined config files](https://github.com/csscomb/csscomb.js/tree/master/config)
+**Note**: you can also use a [predefined config file](https://github.com/csscomb/csscomb.js/tree/master/config)
 ```bash
 cp ./node_modules/csscomb/config/csscomb.json .csscomb.json
 ```
 
 ### Through `.css`-template
 
-Instead of configuring all the options one by one, you can use a CSS-template file: CSSComb.js would detect the codestyle used in this file and would use it as a config. All the existent properties except for the `sort-order` could be configured this way.
+Instead of configuring all the options one by one, you can use a CSS-template file: CSSComb.js will detect the coding style and use it as a config. All existing properties except `sort-order` can be configured this way.
 
 To provide a template just add `"template"` with the path to the template in the `.csscomb.json`:
 
@@ -183,7 +182,7 @@ To provide a template just add `"template"` with the path to the template in the
 }
 ```
 
-CSSComb.js would detect only those things that could be detected, so if your template don't provide examples of usage for some of the options, or if you would want to override something from it, you can write them in the `.csscomb.json` along the `"template"`:
+CSSComb.js will only create rules based on the examples given, so if your template doesn't provide examples of usage for some of the options, or if you want to override an example, you can write them in the `.csscomb.json` after the `"template"`:
 
 ```json
 {
@@ -193,11 +192,11 @@ CSSComb.js would detect only those things that could be detected, so if your tem
 }
 ```
 
-This config would detect all the options from the `example.css`, then it would use `"leading-zero":  false` instead of what it detected, and then it would use `"vendor-prefix-align": true` even if there were no prefixed properties or values inside the `example.css`.
+This config would detect all the options from the `example.css`, and use `"leading-zero":  false` instead of anything detected, and `"vendor-prefix-align": true` even if there were no prefixed properties or values inside the `example.css`.
 
 ### Creating `.csscomb.json` from the `.css` file
 
-If you want to configure everything manually, but based on the codestyle from existing `.css`-file, you can at first detect all the options using `--detect` CLI option, and then add/edit any options you like. So if you have such `example.css`:
+If you want to configure everything manually, but based on the coding style of an existing `.css`-file, you can first detect all the options using `--detect` CLI option, and then add/edit any options you like. So if you have `example.css`:
 
 ```css
 .foo
@@ -206,13 +205,13 @@ If you want to configure everything manually, but based on the codestyle from ex
 }
 ```
 
-then by running
+running
 
 ```bash
 csscomb -d template.css > .csscomb.json
 ```
 
-you would generate this `.csscomb.json`:
+would generate this `.csscomb.json`:
 
 ```json
 {
@@ -265,13 +264,13 @@ csscomb -v ./test
 
 ### template
 
-**Note:** see the description of the [configuring through template](#through-css-template).
+**Note:** see the description of the [configuring with templates](#through-css-template).
 
 Available value: `{String}` path to the `.css` file.
 
 Example: `{ "template": "example.css" }`
 
-CLI mode — just provide path to `.css` file instead of `.csscomb.json`:
+CLI mode — just provide the path to the `.css` file instead of `.csscomb.json`:
 ```bash
 csscomb --config example.css ./test
 csscomb -c example.css ./test
@@ -376,7 +375,7 @@ a { color: red
 
 ### colon-space
 
-Acceptable value is `{Array}` with 2 elements of following types:
+Acceptable values are of the form `{Array}` with 2 elements of the following types:
   * `{Number}` of spaces;
   * `{String}` of whitespaces or tabs. If there is any other character in the
     string, the value will not be set.
@@ -435,7 +434,7 @@ b { color: #fc0 }
 
 ### combinator-space
 
-Acceptable value is `{Array}` with 2 elements of following types:
+Acceptable value is `{Array}` with 2 elements of the following types:
   * `{Number}` of spaces;
   * `{String}` of whitespaces, tabs or new lines. If there is any other
     character in the string, the value will not be set.
@@ -467,7 +466,7 @@ a > b { color: red }
 
 ### element-case
 
-Available values: `{String}` `lower` or `upper`
+Acceptable values: `{String}` `lower` or `upper`
 
 Example: `{ "element-case": "upper" }`
 
@@ -481,7 +480,7 @@ LI > A { color: red }
 
 ### eof-newline
 
-Available values: `{Boolean}` `true` or `false`
+Acceptable values: `{Boolean}` `true` or `false`
 
 Example: `{ "eof-newline": true }`
 
@@ -493,7 +492,7 @@ Example: `{ "eof-newline": false }`
 
 ### leading-zero
 
-Available values: `{Boolean}` `true` or `false`
+Acceptable values: `{Boolean}` `true` or `false`
 
 Example: `{ "leading-zero": false }`
 
@@ -507,7 +506,7 @@ p { padding: .5em }
 
 ### quotes
 
-Available values: `{String}` `single` or `double`
+Acceptable values: `{String}` `single` or `double`
 
 Example: `{ "quotes": "single" }`
 
@@ -521,7 +520,7 @@ p[href^='https://']:before { content: 'secure' }
 
 ### remove-empty-rulesets
 
-Available values: `{Boolean}` `true`
+Acceptable values: `{Boolean}` `true`
 
 Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
 
@@ -666,7 +665,7 @@ a { color:red }
 
 ### strip-spaces
 
-Available value: `{Boolean}` `true`
+Acceptable value: `{Boolean}` `true`
 
 Example: `{ "strip-spaces": true }`
 
@@ -676,7 +675,7 @@ Example: `{ "strip-spaces": true }`
 
 ### unitless-zero
 
-Available value: `{Boolean}` `true`
+Acceptable value: `{Boolean}` `true`
 
 Example: `{ "unitless-zero": true }`
 
@@ -690,7 +689,7 @@ img { border: 0 }
 
 ### vendor-prefix-align
 
-Available value: `{Boolean}` `true`
+Acceptable value: `{Boolean}` `true`
 
 Example: `{ "vendor-prefix-align": true }`
 
