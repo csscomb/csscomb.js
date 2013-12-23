@@ -522,7 +522,7 @@ p[href^='https://']:before { content: 'secure' }
 
 Acceptable values: `{Boolean}` `true`
 
-Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have no declarations or comments.
+Example: `{ "remove-empty-rulesets": true }` - remove rulesets that have nothing but spaces.
 
 `a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 

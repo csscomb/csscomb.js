@@ -1,0 +1,9 @@
+.parent {
+    .child1 {
+        @include mix-all;
+        @include mix-top;
+    }
+    .child2 {
+        .grandchild { }
+    }
+}

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.1 - 2013-12-23
+- Fix for `remove-empty-rulesets` option (#133)
+
 ## 2.0.0 - 2013-12-18
 **Great thanks for @tonyganch and @kizu!**
 - Use Gonzales PE to parse *.scss and *.less files
