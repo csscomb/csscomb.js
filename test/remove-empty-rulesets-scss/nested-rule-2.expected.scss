@@ -1,0 +1,7 @@
+.parent {
+    .child1 {
+        @include mix-all;
+        @include mix-top;
+    }
+    
+}

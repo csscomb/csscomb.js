@@ -27,6 +27,10 @@ describe('options/remove-empty-rulesets', function() {
             assert.equal(comb.processString(' b {} '), '  ');
         });
 
+        it('should remove ruleset with spaces', function() {
+            assert.equal(comb.processString(' b {   } '), '  ');
+        });
+
         it('should leave ruleset with declarations', function() {
             assert.equal(comb.processString('a { width: 10px; }\nb {} '), 'a { width: 10px; }\n ');
         });
