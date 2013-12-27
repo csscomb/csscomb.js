@@ -62,6 +62,6 @@
     },
     "scripts": {
         "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && node test/mocha",
-        "test-cov": "rm -rf lib-cov && jscoverage lib lib-cov && TEST_COV=true ./node_modules/.bin/mocha -R html-cov > ./test/test-coverage.html"
+        "test-cov": "rm -rf lib-cov && jscoverage lib lib-cov && TEST_COV=true node test/mocha > ./test/test-coverage.html"
     }
 }

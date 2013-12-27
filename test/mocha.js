@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path');
 
 var mocha = new Mocha();
+if (process.env.TEST_COV) mocha.reporter('html-cov');
 
 // Tell mocha which tests to run:
 ['test/core', 'test/options'].forEach(function(dirname) {
