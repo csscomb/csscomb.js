@@ -721,6 +721,14 @@ a
 
 Run `npm test` for tests.
 
+To check test coverage, you need `jscoverage` tool.
+Once it is installed ([see instructions here](https://github.com/visionmedia/node-jscoverage#installation)), run:
+
+```
+npm run-script test-cov
+open ./test/test-coverage.html
+```
+
 ## Contributing
 
 Anyone and everyone is welcome to contribute. Please take a moment to
