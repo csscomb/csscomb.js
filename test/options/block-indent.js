@@ -81,4 +81,18 @@ describe('options/block-indent', function() {
             }
         );
     });
+    it('Should detect nothing with an empty block, test 1', function() {
+        this.shouldDetect(
+            ['block-indent'],
+            'a{ }',
+            {}
+        );
+    });
+    it('Should detect nothing with an empty block, test 2', function() {
+        this.shouldDetect(
+            ['block-indent'],
+            'a{}',
+            {}
+        );
+    });
 });
