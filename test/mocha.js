@@ -58,9 +58,28 @@ mocha.suite.beforeEach(function() {
      * @param {Object} expected Expected config with detected options
      */
     this.shouldDetect = function(options, input, expected) {
+        // We need to “sort” the input and expected objects, as their order may vary
+        function sortObject(o) {
+            var sorted = {};
+            var key = [];
+            var a = [];
+
+            for (key in o) {
+                if (o.hasOwnProperty(key)) {
+                    a.push(key);
+                }
+            }
+
+            a.sort();
+
+            for (key = 0; key < a.length; key++) {
+                sorted[a[key]] = o[a[key]];
+            }
+            return sorted;
+        }
         assert.equal(
-            JSON.stringify(this.comb.detectInString(input, options)),
-            JSON.stringify(expected)
+            JSON.stringify(sortObject(this.comb.detectInString(input, options))),
+            JSON.stringify(sortObject(expected))
         );
     };
 });
