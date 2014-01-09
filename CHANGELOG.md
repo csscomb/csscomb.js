@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.2 - 2014-01-09
+- Added test coverage (#138)
+- Added test helpers (#147)
+- Fixed config file recursive searching (#151)
+- Fixed `block-indent` detecting (#148)
+- Fixed `quote` value setter (#149)
+- Fixed detection integral tests (#150)
+
 ## 2.0.1 - 2013-12-23
 - Fix for `remove-empty-rulesets` option (#133)
 
