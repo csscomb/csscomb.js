@@ -5,9 +5,9 @@ CSScomb is a coding style formatter for CSS.
 You can easily write your own [configuration](doc/configuration.md) to make
 your style sheets beautiful and consistent.
 
-The main feature is [sorting properties](doc/options.md#sort-order) in a specific order.    
+The main feature is [sorting properties](doc/options.md#sort-order) in a specific order.
 It was inspired by [@miripiruni](https://github.com/miripiruni)'s
-[PHP-based tool](https://github.com/csscomb/csscomb) of the same name.    
+[PHP-based tool](https://github.com/csscomb/csscomb) of the same name.
 This is the new JavaScript version, based on the powerful CSS parser
 [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
@@ -64,7 +64,7 @@ comb.processPath('assets/css');
 
 ## 4. Contribute
 
-Anyone and everyone is welcome to contribute.    
+Anyone and everyone is welcome to contribute.
 Please take a moment to review the [guidelines for contributing](CONTRIBUTE.md).
 
 ## Authors

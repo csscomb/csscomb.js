@@ -43,7 +43,7 @@ csscomb -h
 
 If you want to use custom config instead of predefined `csscomb.json` just
 put a file named `.csscomb.json` to project's root (see [configuration
-docs](configuration.md#where-to-put-config) for more information).    
+docs](configuration.md#where-to-put-config) for more information).
 However, if for some reason you would like to use custom path, do it this way:
 
 ```bash
@@ -64,7 +64,7 @@ more information.
 ### lint
 
 CSScomb can be used as a linter, i.e. telling you what should be changed instead
-of modifying anything.    
+of modifying anything.
 This option should be combined with `--verbose`:
 
 ```bash

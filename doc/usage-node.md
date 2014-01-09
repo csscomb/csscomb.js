@@ -205,4 +205,3 @@ var css = 'a {top: 0; left: 0}';
 var config = comb.detectInString(css);
 comb.configure(config);
 ```
-
