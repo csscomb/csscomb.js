@@ -1,8 +1,8 @@
 # CSScomb [![CSSComb](logo.png)](http://csscomb.com/)
 [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 
-CSScomb is a coding style formatter for CSS.    
-You can easily write your own [configuration](docs/configuration.md) to make
+CSScomb is a coding style formatter for CSS.
+You can easily write your own [configuration](doc/configuration.md) to make
 your style sheets beautiful and consistent.
 
 The main feature is [sorting properties](doc/options.md#sort-order) in a specific order.    
@@ -41,10 +41,10 @@ npm install csscomb --save-dev
 
 There are a number of ways to configure CSScomb:
 
-- Use one of predefined configs
+- Use one of [predefined configs](config)
 - Put `.csscomb.json` file in the project root.
 - Set path to config's file
-- Use `.css` file as a template
+- Use `*.css` file as a template
 
 ## 3. Use
 
