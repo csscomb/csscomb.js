@@ -49,6 +49,12 @@ describe('options/vendor-prefix-align', function() {
         assert.equal(comb.processString(input), expected);
     });
 
+    it('Should correctly work when value and property name are the same', function() {
+        var input = fs.readFileSync('./test/vendor-prefix-align/same-name.css', 'utf8');
+        var expected = fs.readFileSync('./test/vendor-prefix-align/same-name.expected.css', 'utf8');
+        assert.equal(comb.processString(input), expected);
+    });
+
     // Helper to check the detection
     function should_detect(options, a, b) {
         assert.equal(
