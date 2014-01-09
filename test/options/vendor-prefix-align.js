@@ -20,6 +20,10 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('both.css', 'both.expected.css');
     });
 
+    it('Should correctly work when value and property name are the same', function() {
+        this.shouldBeEqual('same-name.css', 'same-name.expected.css');
+    });
+
     it('Should always correctly align prefixes', function() {
         this.shouldBeEqual('complex.css', 'complex.expected.css');
     });
