@@ -1,7 +1,7 @@
 {
     "name": "csscomb",
     "description": "CSS coding style formatter",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "homepage": "http://csscomb.com/",
     "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
     "repository": "https://github.com/csscomb/csscomb.js",
@@ -45,7 +45,7 @@
     },
     "dependencies": {
         "commander": "2.0.0",
-        "gonzales-pe": "2.0.1",
+        "gonzales-pe": "2.0.x",
         "minimatch": "0.2.12",
         "vow": "0.3.11",
         "vow-fs": "0.2.3"
@@ -61,6 +61,7 @@
         "csscomb": "./bin/csscomb"
     },
     "scripts": {
-        "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha -u bdd -R dot"
+        "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && node test/mocha",
+        "test-cov": "rm -rf lib-cov && jscoverage lib lib-cov && TEST_COV=true node test/mocha > ./test/test-coverage.html"
     }
 }
