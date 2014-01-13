@@ -1,0 +1,24 @@
+a {
+    leftover: yay;
+    border: 1px solid;
+    @include .nani;
+    font: 20px/16px Arial, sans-serif;
+    position: $tomato;
+    $red: tomato;
+}
+b {
+    border: 1px solid;
+    @include .nani;
+    position: $tomato;
+    leftover: yay;
+    font: 20px/16px Arial, sans-serif;
+    $red: tomato;
+}
+c {
+    border: 1px solid;
+    @include .nani;
+    font: 20px/16px Arial, sans-serif;
+    position: $tomato;
+    $red: tomato;
+    leftover: yay;
+}
