@@ -326,6 +326,28 @@ p {
 }
 ```
 
+### Leftovers
+
+When there are properties that are not mentioned in the `sort-order` option, they are inserted after all the sorted properties in the new group in the same order they were in the source stylesheet.
+
+You can override this by using a “leftovers” token: `...` — just place it either in its own group, or near other properties in any other group and CSSComb would place all the properties that were not sorted where the `...` was in `sort-order`.
+
+So, with this value:
+
+``` json
+{
+    "sort-order": [
+        ["$variable"],
+        ["position"],
+        ["...", "border"],
+        ["$include"],
+        ["font"]
+    ]
+}
+```
+
+everything would go into five groups: variables, then group with `position`, then group containing all the leftovers plus the `border`, then group with all includes and then the `font`.
+
 ## space-after-colon
 
 Set space after `:` in declarations.
