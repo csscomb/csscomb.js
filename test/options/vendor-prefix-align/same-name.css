@@ -1,0 +1,7 @@
+.test
+{
+    -webkit-transition: -webkit-transform .6s;
+    transition: transform .6s;
+    -webkit-transform: scale(.6, .6);
+    transform: scale(.6, .6);
+}

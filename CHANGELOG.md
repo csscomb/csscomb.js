@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3 - 2014-01-16
+- Documentation moved to `doc` directory
+- Fixed incorrect left indent (#153)
+
 ## 2.0.2 - 2014-01-09
 - Added test coverage (#138)
 - Added test helpers (#147)

@@ -1,4 +1,8 @@
 {
+    "exclude": [
+        ".git/**",
+        "node_modules/**"
+    ],
     "sort-order": [ [
         "position",
         "top",
