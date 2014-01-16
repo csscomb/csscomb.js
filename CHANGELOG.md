@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.4 - 2014-01-16
+- Fixed relative path to config (#164)
+
 ## 2.0.3 - 2014-01-16
 - Documentation moved to `doc` directory
 - Fixed incorrect left indent (#153)
