@@ -468,6 +468,44 @@ p
 > a { color: panda; }
 ```
 
+## space-before-opening-brace
+
+Set space before `{`.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-before-opening-brace': 1 }`
+
+```scss
+// Before:
+a{
+    color: panda;
+    }
+
+// After:
+a {
+    color: panda;
+    }
+```
+
+Example: `{ 'space-before-opening-brace': '\n' }`
+
+```scss
+// Before:
+a{
+    color: panda;
+    }
+
+// After:
+a
+{
+    color: panda;
+    }
+```
+
 ## strip-spaces
 
 Whether to trim trailing spaces.
