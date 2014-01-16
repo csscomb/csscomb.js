@@ -367,6 +367,47 @@ a {
 }
 ```
 
+## space-before-colon
+
+Set space before `:` in declarations.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-before-colon': '' }`
+
+```scss
+// Before:
+a {
+    top : 0;
+    color : tomato;
+}
+
+// After:
+a {
+    top: 0;
+    color: tomato;
+}
+```
+
+Example: `{ 'space-before-colon': 1 }`
+
+```scss
+// Before:
+a {
+    top:0;
+    color:tomato;
+}
+
+// After:
+a {
+    top :0;
+    color :tomato;
+}
+```
+
 ## strip-spaces
 
 Whether to trim trailing spaces.
