@@ -4,6 +4,7 @@
         "node_modules/**"
     ],
     "always-semicolon": true,
+    "block-indent": "    ",
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",

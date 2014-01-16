@@ -1,0 +1,36 @@
+a {color: tomato; top: 0;
+}
+
+a { color: tomato;
+    top: 0;
+}
+
+a { color: tomato;
+    top: 0;
+}
+
+a {
+    color: tomato;
+    top: 0;
+}
+
+a {
+    color: tomato;
+    top: 0;
+}
+
+a {
+    color: tomato;
+    top: 0;
+}
+
+@media print { a {color: tomato; top: 0;
+    }
+}
+
+@media print {
+    a {
+        color: tomato;
+        top: 0;
+    }
+}
