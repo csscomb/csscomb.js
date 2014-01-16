@@ -397,6 +397,36 @@ p >
   a { color: panda; }
 ```
 
+## space-after-opening-brace
+
+Set space after `{`.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-after-opening-brace': 1 }`
+
+```scss
+// Before:
+a {color: panda;}
+
+// After:
+a { color: panda;}
+```
+
+Example: `{ 'space-after-opening-brace': '\n' }`
+
+```scss
+// Before:
+a{color: panda;}
+
+// After:
+a{
+color: panda;}
+```
+
 ## space-before-colon
 
 Set space before `:` in declarations.
