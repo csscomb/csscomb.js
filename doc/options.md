@@ -367,6 +367,36 @@ a {
 }
 ```
 
+## space-after-combinator
+
+Set space after combinator (for example, in selectors like `p > a`).
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-after-combinator': 1 }`
+
+```scss
+// Before:
+p>a { color: panda; }
+
+// After:
+p> a { color: panda; }
+```
+
+Example: `{ 'space-after-combinator': '\n  ' }`
+
+```scss
+// Before:
+p > a { color: panda; }
+
+// After:
+p >
+  a { color: panda; }
+```
+
 ## space-before-colon
 
 Set space before `:` in declarations.
