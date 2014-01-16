@@ -46,6 +46,60 @@ div {
     }
 ```
 
+## block-indent
+
+Set indent for code inside blocks, including media queries and nested rules.
+
+Acceptable values:
+
+* `{Number}` — number os whitespaces;
+* `{String}` — string with whitespaces and tabs. Note that line breaks are not
+    allowed here.
+
+Example: `{ 'block-indent': 4 }`
+
+```scss
+// Before:
+a {
+top: 0;
+  p {
+      color: tomato;
+position: happy;
+ }
+}
+
+// After:
+a {
+    top: 0;
+    p {
+        color: tomato;
+        position: happy;
+        }
+    }
+```
+
+Example: `{ 'block-indent': '' }`
+
+```scss
+// Before:
+a {
+top: 0;
+  p {
+      color: tomato;
+position: happy;
+ }
+}
+
+// After:
+a {
+top: 0;
+p {
+color: tomato;
+position: happy;
+}
+}
+```
+
 ## color-case
 
 Unify case of hexadecimal colors.
