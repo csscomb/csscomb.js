@@ -548,6 +548,28 @@ Example: `{ "strip-spaces": true }`
 
 `a { color: red }\t` &rarr; `a { color: red }`
 
+## tab-size
+
+Set tab size (number of spaces to replace hard tabs).
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+
+Example: `{ 'tab-size': 2 }`
+
+```scss
+// Before:
+a{
+	color: panda;
+	}
+
+// After:
+a {
+  color: panda;
+  }
+```
+
 ## template
 
 **Note:** See [configuration docs](configuration.md#override-templates-settings)
