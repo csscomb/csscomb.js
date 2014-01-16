@@ -408,6 +408,36 @@ a {
 }
 ```
 
+## space-before-combinator
+
+Set space before combinator (for example, in selectors like `p > a`).
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-before-combinator': 1 }`
+
+```scss
+// Before:
+p>a { color: panda; }
+
+// After:
+p >a { color: panda; }
+```
+
+Example: `{ 'space-before-combinator': '\n' }`
+
+```scss
+// Before:
+p > a { color: panda; }
+
+// After:
+p
+> a { color: panda; }
+```
+
 ## strip-spaces
 
 Whether to trim trailing spaces.
