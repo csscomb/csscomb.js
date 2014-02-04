@@ -66,19 +66,19 @@ describe('options/sort-order', function() {
     });
 
     it.skip('Issue 94. Test 1', function() {
-        var config = this.comb.getConfig('csscomb');
+        var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-1.css', 'issue-94-1.expected.css');
     });
 
     it.skip('Issue 94. Test 2', function() {
-        var config = this.comb.getConfig('csscomb');
+        var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-2.css', 'issue-94-2.expected.css');
     });
 
     it.skip('Issue 94. Test 3', function() {
-        var config = this.comb.getConfig('csscomb');
+        var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-3.css', 'issue-94-3.expected.css');
     });
