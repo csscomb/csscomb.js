@@ -17,6 +17,7 @@ if (process.env.TEST_COV) mocha.reporter('html-cov');
 
 // Add helpers (see tests for usage examples):
 mocha.suite.beforeEach(function() {
+    this.Comb = Comb;
     this.comb = new Comb();
     this.filename = '';
 
