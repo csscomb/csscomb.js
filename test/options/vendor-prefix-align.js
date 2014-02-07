@@ -24,6 +24,10 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('same-name.css', 'same-name.expected.css');
     });
 
+    it('Should correctly work when there is no whitespace after colon', function() {
+        this.shouldBeEqual('without-space.css', 'without-space.expected.css');
+    });
+
     it('Should always correctly align prefixes', function() {
         this.shouldBeEqual('complex.css', 'complex.expected.css');
     });
