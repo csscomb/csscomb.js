@@ -28,6 +28,10 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('without-space.css', 'without-space.expected.css');
     });
 
+    it('Should correctly work when there is comment after colon', function() {
+        this.shouldBeEqual('with-comment.css', 'with-comment.expected.css');
+    });
+
     it('Should not do anyting with oneliners', function() {
         this.shouldBeEqual('one-line.css', 'one-line.expected.css');
     });
