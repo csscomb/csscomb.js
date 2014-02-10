@@ -4,6 +4,10 @@ describe('options/vendor-prefix-align', function() {
         this.comb.configure({ 'vendor-prefix-align': true });
     });
 
+    it('Should correctly work when there is comment before property name', function() {
+        this.shouldBeEqual('with-comment-property.css', 'with-comment-property.expected.css');
+    });
+
     it('Should correctly align prefixes in properties', function() {
         this.shouldBeEqual('property-align.css', 'property-align.expected.css');
     });
