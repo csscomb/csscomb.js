@@ -4,6 +4,14 @@ describe('options/vendor-prefix-align', function() {
         this.comb.configure({ 'vendor-prefix-align': true });
     });
 
+    it('Should correctly work when there is comment before property name', function() {
+        this.shouldBeEqual('with-comment-property.css', 'with-comment-property.expected.css');
+    });
+
+    it('Should correctly work when there is comment before property name', function() {
+        this.shouldBeEqual('multiline-comments.css', 'multiline-comments.expected.css');
+    });
+
     it('Should correctly align prefixes in properties', function() {
         this.shouldBeEqual('property-align.css', 'property-align.expected.css');
     });
@@ -22,6 +30,18 @@ describe('options/vendor-prefix-align', function() {
 
     it('Should correctly work when value and property name are the same', function() {
         this.shouldBeEqual('same-name.css', 'same-name.expected.css');
+    });
+
+    it('Should correctly work when there is no whitespace after colon', function() {
+        this.shouldBeEqual('without-space.css', 'without-space.expected.css');
+    });
+
+    it('Should correctly work when there is comment after colon', function() {
+        this.shouldBeEqual('with-comment.css', 'with-comment.expected.css');
+    });
+
+    it('Should not do anyting with oneliners', function() {
+        this.shouldBeEqual('one-line.css', 'one-line.expected.css');
     });
 
     it('Should always correctly align prefixes', function() {
