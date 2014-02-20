@@ -24,11 +24,11 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('already-aligned.css', 'already-aligned.expected.css');
     });
 
-    it('Should correct align prefixes in preoperties and values at the same time', function() {
+    it('Should correctly align prefixes in properties and values at the same time', function() {
         this.shouldBeEqual('both.css', 'both.expected.css');
     });
 
-    it('Should correctly work when value and property name are the same', function() {
+    it('Should correctly work when value and property names are the same', function() {
         this.shouldBeEqual('same-name.css', 'same-name.expected.css');
     });
 
@@ -40,11 +40,11 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('with-comment.css', 'with-comment.expected.css');
     });
 
-    it('Should not do anyting with oneliners', function() {
+    it('Should not do anything with oneliners', function() {
         this.shouldBeEqual('one-line.css', 'one-line.expected.css');
     });
 
-    it('Should not do anyting with oneliners. Test 2', function() {
+    it('Should not do anything with oneliners. Test 2', function() {
         this.shouldBeEqual('one-line-2.css', 'one-line-2.expected.css');
     });
 
