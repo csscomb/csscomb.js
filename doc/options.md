@@ -46,82 +46,6 @@ div {
     }
 ```
 
-## block-indent
-
-**Note**: This option should be used together with [rule-indent](#rule-indent).
-
-Acceptable values:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
-
-Example: `{ "block-indent": 2 }`
-
-```css
-/* before */
-  a { color: red }
-  @media all { a { color: green } }
-
-/* after */
-a { color: red
-}
-@media all {
-  a { color: green
-  }
-}
-```
-
-Example: `{ "block-indent": "  " }`
-
-```css
-/* before */
-  a { color: red }
-  @media all { a { color: green } }
-
-/* after */
-a { color: red
-}
-@media all {
-  a { color: green
-  }
-}
-```
-
-## colon-space
-
-Set spaces around `:`.
-
-Acceptable value is `{Array}` with 2 elements of the following types:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
-
-The first element of the array sets spaces before colon, and the second one sets
-spaces after colon.
-
-Example: `{ "colon-space": ["\t", "\t"] }`
-
-```css
-/* before */
-a { color: red }
-
-/* after */
-a { color	:	red }
-```
-
-Example: `{ "colon-space": [0, 1] }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a { color: red }
-```
-
-
 ## color-case
 
 Unify case of hexadecimal colors.
@@ -169,41 +93,6 @@ b { color: #fc0 }
 /* after */
 b { color: #ffcc00 }
 ```
-
-## combinator-space
-
-Set spaces around combinator.
-
-Acceptable value is `{Array}` with 2 elements of the following types:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces, tabs or new lines. If there is any other
-   character in the string, the value will not be set.
-
-The first element of the array sets spaces before combinator, and the second
-one sets spaces after combinator.
-
-Example: `{ "combinator-space": [" ", "\n"] }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a >
-b { color: red }
-```
-
-Example: `{ "combinator-space": [1, 1] }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a > b { color: red }
-```
-
 
 ## element-case
 
@@ -301,40 +190,6 @@ Example: `{ "remove-empty-rulesets": true }`.
 
 `a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
-## rule-indent
-
-**Note**: This option should be used together with [block-indent](#block-indent).
-
-Acceptable values:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
-
-Example: `{ "rule-indent": 2 }`
-
-```css
-/* before */
-a { color:red; margin:0 }
-
-/* after */
-a {
-  color:red;
-  margin:0 }
-```
-
-Example: `{ "rule-indent": "  " }`
-
-```css
-/* before */
-a { color:red; margin:0 }
-
-/* after */
-a {
-  color:red;
-  margin:0 }
-```
-
 ## sort-order
 
 Set sort order.
@@ -415,37 +270,6 @@ p {
     top: 0;
     padding: 0;
 }
-```
-
-## stick-brace
-
-Set spaces before `{`.
-
-Acceptable values:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces, tabs or newlines. If there is any other
-   character in the string, the value will not be set.
-
-Example: `{ "stick-brace": "\n" }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a
-{ color:red }
-```
-
-Example: `{ "stick-brace": 1 }`
-
-```css
-/* before */
-a{ color:red }
-
-/* after */
-a { color:red }
 ```
 
 ## strip-spaces

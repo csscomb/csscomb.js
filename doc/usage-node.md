@@ -33,7 +33,7 @@ var comb = new Comb('yandex');
 
 // This is shortcut for:
 var comb = new Comb();
-var config = comb.getConfig('yandex');
+var config = Comb.getConfig('yandex');
 comb.configure(config);
 ```
 
@@ -48,9 +48,11 @@ var comb = new Comb();
 comb.configure(config);
 ```
 
-## getConfig(name)
+## Comb.getConfig(name)
 
 Get one of predefined configs.
+
+Note that this is a static method.
 
 Parameters:
 
@@ -61,8 +63,47 @@ Example: Configure CSScomb using predefined `zen` sort order that is slightly
 modified.
 
 ```js
-var config = comb.getConfig('zen');
+var config = Comb.getConfig('zen');
 config['always-semicolon'] = true;
+comb.configure(config);
+```
+
+## Comb.detectInFile(path, options)
+
+Get config options that can be detected in a file.
+
+Note that this is a static method.
+
+Parameters:
+
+* `{String} path` — path to stylesheet
+* `{Array} options` — list of options to detect. Optional. By default tries
+   to detect all available options.
+
+Example: Configure CSScomb using template file
+
+```js
+var config = comb.detectInFile('template.css');
+comb.configure(config);
+```
+
+## Comb.detectInString(string, options)
+
+Get config options that can be detected in a string.
+
+Note that this is a static method.
+
+Parameters:
+
+* `{String} string` — stylesheet
+* `{Array} options` — list of options to detect. Optional. By default tries
+   to detect all available options.
+
+Example: Configure CSScomb using template stylesheet
+
+```js
+var css = 'a {top: 0; left: 0}';
+var config = comb.detectInString(css);
 comb.configure(config);
 ```
 
@@ -89,6 +130,20 @@ comb.configure(config);
 ```
 
 See [configuration docs](configuration.md) for more information.
+
+## getValue(optionName)
+
+Get value of a given option.
+
+Parameters:
+
+* `{String} optionName` — name of option which value you want to get
+
+Example: Get configured sort order
+
+```js
+comb.getValue('sort-order');
+```
 
 ## processPath(path)
 
@@ -171,37 +226,3 @@ var less = '@color: tomato; a {color: @color}';
 var combedLESS = comb.processString(less, 'less');
 ```
 
-## detectInFile(path, options)
-
-Get config options that can be detected in a file.
-
-Parameters:
-
-* `{String} path` — path to stylesheet
-* `{Array} options` — list of options to detect. Optional. By default tries
-   to detect all available options.
-
-Example: Configure CSScomb using template file
-
-```js
-var config = comb.detectInFile('template.css');
-comb.configure(config);
-```
-
-## detectInString(string, options)
-
-Get config options that can be detected in a string.
-
-Parameters:
-
-* `{String} string` — stylesheet
-* `{Array} options` — list of options to detect. Optional. By default tries
-   to detect all available options.
-
-Example: Configure CSScomb using template stylesheet
-
-```js
-var css = 'a {top: 0; left: 0}';
-var config = comb.detectInString(css);
-comb.configure(config);
-```

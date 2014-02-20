@@ -39,8 +39,6 @@ Here is an example:
     "verbose": true,
 
     "always-semicolon": true,
-    "block-indent": "    ",
-    "colon-space": ["", " "],
     "color-case": "lower",
     "color-shorthand": true,
     "element-case": "lower",
@@ -48,8 +46,6 @@ Here is an example:
     "leading-zero": false,
     "quotes": "single",
     "remove-empty-rulesets": true,
-    "rule-indent": "    ",
-    "stick-brace": "\n",
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true
@@ -111,13 +107,7 @@ Generated config wiil then look this way:
     "color-case": "lower",
     "color-shorthand": true,
     "strip-spaces": true,
-    "eof-newline": true,
-    "stick-brace": "\n",
-    "colon-space": [
-        "",
-        " "
-    ],
-    "rule-indent": "    "
+    "eof-newline": true
 }
 ```
 
