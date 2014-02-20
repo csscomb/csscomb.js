@@ -79,7 +79,7 @@ mocha.suite.beforeEach(function() {
             return sorted;
         }
         assert.equal(
-            JSON.stringify(sortObject(this.comb.detectInString(input, options))),
+            JSON.stringify(sortObject(Comb.detectInString(input, options))),
             JSON.stringify(sortObject(expected))
         );
     };
