@@ -44,6 +44,10 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('one-line.css', 'one-line.expected.css');
     });
 
+    it('Should not do anyting with oneliners. Test 2', function() {
+        this.shouldBeEqual('one-line-2.css', 'one-line-2.expected.css');
+    });
+
     it('Should always correctly align prefixes', function() {
         this.shouldBeEqual('complex.css', 'complex.expected.css');
     });
