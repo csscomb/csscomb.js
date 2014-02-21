@@ -8,7 +8,11 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('with-comment-property.css', 'with-comment-property.expected.css');
     });
 
-    it('Should correctly work when there is comment before property name', function() {
+    it('Should correctly work when there is comment before property name. Test 2', function() {
+        this.shouldBeEqual('with-comment-property-2.css', 'with-comment-property-2.expected.css');
+    });
+
+    it('Should correctly work when there is comment before property name. Test 3', function() {
         this.shouldBeEqual('multiline-comments.css', 'multiline-comments.expected.css');
     });
 
