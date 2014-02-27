@@ -326,6 +326,47 @@ p {
 }
 ```
 
+## space-after-colon
+
+Set space after `:` in declarations.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-after-colon': '' }`
+
+```scss
+// Before:
+a {
+    top: 0;
+    color: tomato;
+}
+
+// After:
+a {
+    top:0;
+    color:tomato;
+}
+```
+
+Example: `{ 'space-after-colon': 1 }`
+
+```scss
+// Before:
+a {
+    top:0;
+    color:tomato;
+}
+
+// After:
+a {
+    top: 0;
+    color: tomato;
+}
+```
+
 ## strip-spaces
 
 Whether to trim trailing spaces.
