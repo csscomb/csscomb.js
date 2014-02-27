@@ -13,6 +13,7 @@
     "quotes": "single",
     "remove-empty-rulesets": true,
     "space-after-colon": " ",
+    "space-before-colon": "",
     "strip-spaces": true,
     "unitless-zero": true,
     "vendor-prefix-align": true,
