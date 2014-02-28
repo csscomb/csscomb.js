@@ -15,6 +15,7 @@
     "space-after-colon": " ",
     "space-after-combinator": " ",
     "space-after-opening-brace": "\n",
+    "space-before-closing-brace": "\n",
     "space-before-colon": "",
     "space-before-combinator": " ",
     "space-before-opening-brace": "\n",
