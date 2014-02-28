@@ -59,4 +59,8 @@ describe('options/block-indent:', function() {
             {}
         );
     });
+    it('Valid string value => should set proper space after combnator', function() {
+        this.comb.configure({ 'block-indent': '    ', 'space-before-closing-brace': '\n' });
+        this.shouldBeEqual('test.css', 'test-3.expected.css');
+    });
 });
