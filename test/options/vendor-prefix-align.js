@@ -56,6 +56,10 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('complex.css', 'complex.expected.css');
     });
 
+    it('Issue 193: should handle declarations without preceding spaces', function() {
+        this.shouldBeEqual('issue-193.css', 'issue-193.expected.css');
+    });
+
     it('Shouldn not detect anything if there are no prefixed groups', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
