@@ -427,6 +427,45 @@ a{
 color: panda;}
 ```
 
+## space-before-closing-brace
+
+Set space before `}`.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-before-closing-brace': 1 }`
+
+```scss
+// Before:
+a {
+    top: 0;
+    color: tomato;
+}
+
+// After:
+a {
+    top: 0;
+    color: tomato; }
+```
+
+Example: `{ 'space-before-closing-space': '\n' }`
+
+```scss
+// Before:
+a {
+    top: 0;
+    color: tomato;}
+
+// After:
+a {
+    top: 0;
+    color: tomato;
+}
+```
+
 ## space-before-colon
 
 Set space before `:` in declarations.
