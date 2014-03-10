@@ -450,7 +450,7 @@ a, b {
     }
 ```
 
-Example: `{ 'space-before-selector-delimiter': '\n' }`
+Example: `{ 'space-after-selector-delimiter': '\n' }`
 
 ```scss
 // Before:
