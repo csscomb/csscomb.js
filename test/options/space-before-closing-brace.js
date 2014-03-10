@@ -64,5 +64,13 @@ describe('options/space-before-closing-brace:', function() {
             { 'space-before-closing-brace': ' ' }
         );
     });
+
+    it('Should detect whitespace (mix with block indent)', function() {
+        this.shouldDetect(
+            ['space-before-closing-brace', 'block-indent'],
+            'a {\n  top:0\n  }\nb{\n  color:tomato;\n  }',
+            { 'block-indent': '  ', 'space-before-closing-brace': '\n  ' }
+        );
+    });
 });
 

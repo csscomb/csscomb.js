@@ -68,7 +68,8 @@ div p em
 }
 
 @media all /* media */
-{ /* foobar */
+{
+    /* foobar */
     .input__control
     {
         font-size: 100%;
@@ -85,7 +86,8 @@ div p em
 
 @media screen and (min-width: 35em) /* screen */,
        print and (min-width: 40em) /* print */
-{ /* foobar */
+{
+    /* foobar */
     .input__control
     {
         -moz-box-sizing: border-box;
@@ -123,8 +125,7 @@ div
     margin: 0;
     padding: 0;
 }
-/* foo */
-div ~ p
+/* foo */  div ~ p
 {
     font-size: 1px;
 
@@ -132,7 +133,7 @@ div ~ p
 }
 div > p + em
 {
-        /* upline comment*/
+    /* upline comment*/
     font-style: italic;
 
     border-bottom: 1px solid red; /* trololo */ /* trololo */
@@ -140,13 +141,9 @@ div > p + em
 
 a:not(b)
 {
-    top: 0;/* ololo */
-
-    margin: 0;
+    top: 0;/* ololo */margin: 0;
 }
 b
 {
-    top: 0/* trololo */;
-
-    margin: 0;
+    top: 0/* trololo */;margin: 0;
 }
