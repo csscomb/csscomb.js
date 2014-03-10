@@ -427,6 +427,44 @@ a{
 color: panda;}
 ```
 
+## space-after-selector-delimiter
+
+Set space after selector delimiter.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-after-selector-delimiter': 1 }`
+
+```scss
+// Before:
+a,b{
+    color: panda;
+    }
+
+// After:
+a, b {
+    color: panda;
+    }
+```
+
+Example: `{ 'space-before-selector-delimiter': '\n' }`
+
+```scss
+// Before:
+a, b{
+    color: panda;
+    }
+
+// After:
+a,
+b{
+    color: panda;
+    }
+```
+
 ## space-before-closing-brace
 
 Set space before `}`.
@@ -571,6 +609,44 @@ a{
 // After:
 a
 {
+    color: panda;
+    }
+```
+
+## space-before-selector-delimiter
+
+Set space before selector delimiter.
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-before-selector-delimiter': 0 }`
+
+```scss
+// Before:
+a , b{
+    color: panda;
+    }
+
+// After:
+a, b {
+    color: panda;
+    }
+```
+
+Example: `{ 'space-before-selector-delimiter': '\n' }`
+
+```scss
+// Before:
+a, b{
+    color: panda;
+    }
+
+// After:
+a
+,b{
     color: panda;
     }
 ```
