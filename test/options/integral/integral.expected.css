@@ -35,7 +35,9 @@
 }
 
 /* Фигурные скобки. Вариант 1 */
-a, b, i /* foobar */
+a,
+b,
+i /* foobar */
 {
     margin: 0;
     padding: 0;
