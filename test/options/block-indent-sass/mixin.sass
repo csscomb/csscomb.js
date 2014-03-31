@@ -1,0 +1,8 @@
+@mixin sexy-border($color, $width: 1px)
+  border:
+    color: $color
+    width: $width
+    style: dashed
+
+p
+  +sexy-border(blue)
