@@ -1,0 +1,5 @@
+li{
+    @include respond-to(mobile){ float: none; }
+    float: left;
+    width: 25%;
+}
