@@ -1,0 +1,10 @@
+a {
+    color: tomato;
+    font-size: 1em;
+    top: 0;
+    position: absolute;
+    left: 0;
+    -webkit-float: left;
+    -moz-color: zebra;
+    float: right;
+    }

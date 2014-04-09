@@ -100,4 +100,17 @@ describe('options/sort-order (scss)', function() {
         ] });
         this.shouldBeEqual('condition.scss', 'condition.expected.scss');
     });
+
+    it('Should sort complex case with leftovers', function() {
+        this.comb.configure({
+          "sort-order": [
+            ["$variable"],
+            ["position"],
+            ["...", "border"],
+            ["$include"],
+            ["font"]
+          ]
+        });
+        this.shouldBeEqual('leftovers.scss', 'leftovers.expected.scss');
+    });
 });
