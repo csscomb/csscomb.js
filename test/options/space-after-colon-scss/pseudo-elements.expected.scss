@@ -1,0 +1,11 @@
+li{
+    float: left;
+
+    a:hover{
+        text-decoration: underline;
+    }
+}
+
+li:before {
+    color: tomato;
+}
