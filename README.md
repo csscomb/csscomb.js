@@ -1,5 +1,7 @@
 # CSScomb [![CSSComb](logo.png)](http://csscomb.com/)
 [![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
+[![Dependency Status](https://david-dm.org/csscomb/csscomb.js.svg)](https://david-dm.org/csscomb/csscomb.js)
+[![devDependency Status](https://david-dm.org/csscomb/csscomb.js/dev-status.svg)](https://david-dm.org/csscomb/csscomb.js#info=devDependencies)
 
 CSScomb is a coding style formatter for CSS.
 You can easily write your own [configuration](doc/configuration.md) to make
