@@ -1,5 +1,5 @@
 # CSScomb [![CSSComb](logo.png)](http://csscomb.com/)
-[![Build Status](https://secure.travis-ci.org/csscomb/csscomb.js.png?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
+[![Build Status](https://travis-ci.org/csscomb/csscomb.js.svg?branch=master)](http://travis-ci.org/csscomb/csscomb.js)
 [![NPM version](https://badge.fury.io/js/csscomb.svg)](http://badge.fury.io/js/csscomb)
 [![Dependency Status](https://david-dm.org/csscomb/csscomb.js.svg)](https://david-dm.org/csscomb/csscomb.js)
 [![devDependency Status](https://david-dm.org/csscomb/csscomb.js/dev-status.svg)](https://david-dm.org/csscomb/csscomb.js#info=devDependencies)
