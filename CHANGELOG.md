@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.5 - 2014-0609
+- Updated dependencies (#229)
+
 ## 2.0.4 - 2014-01-16
 - Fixed relative path to config (#164)
 
