@@ -511,7 +511,7 @@ a {
     color: tomato; }
 ```
 
-Example: `{ 'space-before-closing-space': '\n' }`
+Example: `{ 'space-before-closing-brace': '\n' }`
 
 ```scss
 // Before:
