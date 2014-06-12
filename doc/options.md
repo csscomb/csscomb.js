@@ -419,6 +419,49 @@ p >
   a { color: panda; }
 ```
 
+## space-after-declaration
+
+Set space after declaration (i.e. `color: tomato`).
+
+Acceptable values:
+
+* `{Number}` — number of whitespaces;
+* `{String}` — string with whitespaces, tabs or line breaks.
+
+Example: `{ 'space-after-declaration': 1 }`
+
+```scss
+// Before:
+a {
+    color: panda;
+    top: 0;
+    /* comment */
+    right: 0;
+    position: absolute
+    }
+
+// After:
+a {
+    color: panda; top: 0; /* comment */
+    right: 0; position: absolute }
+```
+
+Example: `{ 'space-after-declaration': '\n  ' }`
+
+```scss
+// Before:
+a {
+  color: panda; top: 0; right: 0}
+
+// After:
+a {
+  color: panda;
+  top: 0;
+  right: 0;
+  }
+```
+
+
 ## space-after-opening-brace
 
 Set space after `{`.
