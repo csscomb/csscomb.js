@@ -1,7 +1,43 @@
 # Configuration options
 
 There are a number of options you can use, all of them are switched off by
-default.
+default.  
+Here is a full list in the same order they are applied while processing css:
+
+- [remove-empty-rulesets](#remove-empty-rulesets)
+- [always-semicolon](#always-semicolon)
+- [color-case](#color-case)
+- [color-shorthand](#color-shorthand)
+- [element-case](#element-case)
+- [leading-zero](#leading-zero)
+- [quotes](#quotes)
+- [strip-spaces](#strip-spaces)
+- [eof-newline](#eof-newline)
+- [space-after-combinator](#space-after-combinator)
+- [space-before-combinator](#space-before-combinator)
+- [space-before-colon](#space-before-colon)
+- [space-after-colon](#space-after-colon)
+- [space-before-opening-brace](#space-before-opening-brace)
+- [space-after-opening-brace](#space-after-opening-brace)
+- [space-before-selector-delimiter](#space-before-selector-delimiter)
+- [space-after-selector-delimiter](#space-after-selector-delimiter)
+- [space-after-declaration](#space-after-declaration)
+- [block-indent](#block-indent)
+- [sort-order-fallback](#sort-order-fallback)
+- [sort-order](#sort-order)
+- [space-before-closing-brace](#space-before-closing-brace)
+- [tab-size](#tab-size)
+- [unitless-zero](#unitless-zero)
+- [vendor-prefix-align](#vendor-prefix-align)
+
+Following options are ignored while processing `*.sass` files:
+
+- always-semicolon
+- space-before-opening-brace
+- space-after-opening-brace
+- space-before-closing-brace
+- space-after-declaration
+
 
 ## always-semicolon
 
@@ -326,7 +362,7 @@ p {
 }
 ```
 
-### Leftovers
+### sort-order vs. leftovers
 
 When there are properties that are not mentioned in the `sort-order` option, they are inserted after all the sorted properties in the new group in the same order they were in the source stylesheet.
 
@@ -347,6 +383,55 @@ So, with this value:
 ```
 
 everything would go into five groups: variables, then group with `position`, then group containing all the leftovers plus the `border`, then group with all includes and then the `font`.
+
+## sort-order-fallback
+
+Apply a special sort order for properties that are not specified in `sort-order`
+list.  
+Works great with [leftovers](#sort-order-vs-leftovers).  
+**Note:** This option is applied only if [sort order](#sort-order) list is
+provided.
+
+Acceptable values:
+
+* `abc` - sort unknown options alphabetically.
+
+Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['top'] }`
+
+```scss
+// Before:
+a {
+    height: 100px;
+    color: tomato;
+    top: 0;
+}
+
+// After:
+a {
+    top:0;
+
+    color:tomato;
+    height: 100px;
+}
+```
+
+Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['...'] }`
+
+```scss
+// Before:
+a {
+    height: 100px;
+    color: tomato;
+    top: 0;
+}
+
+// After:
+a {
+    color:tomato;
+    height: 100px;
+    top:0;
+}
+```
 
 ## space-after-colon
 
