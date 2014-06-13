@@ -1,0 +1,8 @@
+li {
+    float: left;
+    @include respond-to(mobile) {
+        float: none;
+        width: $width;
+        $width: 100%;
+    }
+}
