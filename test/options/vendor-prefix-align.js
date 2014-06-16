@@ -60,6 +60,14 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('issue-193.css', 'issue-193.expected.css');
     });
 
+    it('Issue 241: should not break tabs', function() {
+        this.comb.configure({
+            'block-indent': '\t',
+            'vendor-prefix-align': true
+        });
+        this.shouldBeEqual('issue-241.css', 'issue-241.expected.css');
+    });
+
     it('Shouldn not detect anything if there are no prefixed groups', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
