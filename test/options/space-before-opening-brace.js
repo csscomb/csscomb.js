@@ -33,6 +33,11 @@ describe('options/space-before-opening-brace:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
+    it('Issue 232', function() {
+        this.comb.configure({ 'space-before-opening-brace': 1 });
+        this.shouldBeEqual('issue-232.css', 'issue-232.expected.css');
+    });
+
     it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],

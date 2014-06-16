@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Panda;
+    src: url(panda.ttf);
+}
+
+@media screen and (max-width: 400px) {
+    @-ms-viewport {
+        width: 320px;
+    }
+}
