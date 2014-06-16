@@ -37,4 +37,9 @@ describe('options/space-after-declaration:', function() {
         this.comb.configure({ 'space-after-declaration': 1 });
         this.shouldBeEqual('comments.css', 'comments.expected.css');
     });
+
+    it('Issue 239', function() {
+        this.comb.configure({ 'space-after-declaration': '\n    ' });
+        this.shouldBeEqual('issue-239.css', 'issue-239.expected.css');
+    });
 });
