@@ -1,0 +1,113 @@
+#!/bin/bash
+
+# pre-commit hook to comb staged .sass files
+# save as .git/hooks/pre-commit
+# make executable: chmod +x .git/hooks/pre-commit
+
+# sources:
+
+# http://www.hagenburger.net/BLOG/Using-Git-Commit-Hooks-to-Autocompile-Sass-to-CSS.html
+# http://stackoverflow.com/questions/8470755/git-pre-commit-hook-add-file-into-index/8471009#8471009
+# http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script/677212#677212
+# https://gist.github.com/openam/8406343
+
+
+
+# check if sass files are staged for commit
+
+# diff-lines from http://stackoverflow.com/a/12179492/3019532
+# takes the line
+function diff-lines() {
+  local path=
+  local line=
+  while read; do
+    esc=$'\033'
+    if [[ $REPLY =~ ---\ (a/)?.* ]]; then
+      continue
+    elif [[ $REPLY =~ \+\+\+\ (b/)?([^[:blank:]$esc]+).* ]]; then
+      path=${BASH_REMATCH[2]}
+    elif [[ $REPLY =~ @@\ -[0-9]+(,[0-9]+)?\ \+([0-9]+)(,[0-9]+)?\ @@.* ]]; then
+      line=${BASH_REMATCH[2]}
+    elif [[ $REPLY =~ ^($esc\[[0-9;]+m)*([\ +-]) ]]; then
+      echo "Line $line:$REPLY"
+      if [[ ${BASH_REMATCH[2]} != - ]]; then
+        ((line++))
+      fi
+    fi
+  done
+}
+
+
+
+if ! git diff --quiet --cached **/*.sass; then
+
+      echo ""
+      echo "--> you checked in sass files. lets comb them..."
+      echo ""
+
+      # check if csscomb is installed
+
+      if hash csscomb 2>/dev/null; then
+
+        echo -e "\033[1;32m--> found csscomb\033[0m"
+        
+
+        # TODO: check for csscomb update once a week
+        
+        # check if configfile exists
+
+        if [ ! -f ./.csscomb.json ]; then
+          echo "--> no config file, using defaults"
+        else
+          echo -e "\033[1;32m--> found .csscomb.json\033[0m"
+
+        fi
+
+        echo ""
+
+        # Necessary check for initial commit
+        against="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+        git rev-parse --verify HEAD >/dev/null 2>&1 && against="HEAD"
+        EXITCODE=0
+
+        # (A)dded (C)opied or (M)odified
+        # encapsulate the loop in {} http://stackoverflow.com/a/13665483/3019532
+        git diff-index --cached --full-index --diff-filter=ACM $against | \
+        {
+          while read -r line; do
+            FILE_PATH="$(echo ${line} |cut -d' ' -f6-)"
+            EXTENSION="${FILE_PATH##*.}"
+            # EXTENSION=${EXTENSION,,} # Convert to lowercase
+            REGEX=""
+           
+            # Select discouraged words based on extension
+
+            if [ "${EXTENSION}" = "sass" ]; then
+            echo "--> staged sass file: " $FILE_PATH
+            echo "--> combing..."
+            csscomb $FILE_PATH
+            echo "--> adding combed file"
+            git add $FILE_PATH
+            echo "--> done"
+            echo ""
+            fi
+          done
+        }
+        
+
+      else
+        echo -e "\033[0;31m--> Oh noes, CSS Comb is not installed. Do:"
+        echo "--> npm install csscomb -g"
+        echo -e "\033[0m"
+        echo "--> (you need to change and stage a sass file again to see it work on the next commit...)"
+        echo ""
+      fi
+
+fi
+
+# Necessary check for initial commit
+against="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+git rev-parse --verify HEAD >/dev/null 2>&1 && against="HEAD"
+EXITCODE=0
+
+exit 0
