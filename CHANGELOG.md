@@ -1,6 +1,52 @@
 # Changelog
 
-## 2.0.5 - 2014-0609
+## 3.0.0 - 2014-07-XX
+**Thanks to
+[@cvrebert](https://github.com/cvrebert),
+[@filtercake](https://github.com/filtercake),
+[@lefoy](https://github.com/lefoy),
+[@L0stSoul](https://github.com/L0stSoul),
+[@kizu](https://github.com/kizu),
+[@schneyra](https://github.com/schneyra),
+[@thejameskyle](https://github.com/thejameskyle),
+[@vecmezoni](https://github.com/vecmezoni)**
+
+New:
+
+- Sass support
+- Plugin API
+- Leftovers (#160)
+- `sort-order-fallback` (alphabetical sort order)
+- `space-before-colon`
+- `space-after-colon`
+- `space-before-combinator`
+- `space-after-combinator`
+- `space-before-selector-delimiter`
+- `space-after-selector-delimiter`
+- `space-before-opening-brace`
+- `space-after-opening-brace`
+- `space-before-closing-brace`
+- `space-after-declaration`
+- `tab-size`
+
+Removed:
+
+- `colon-space`
+- `combinator-space`
+- `rule-indent`
+- `stick-brace`
+
+Changed:
+
+- Divided `process` and `detect` methods
+- Made `getConfig` and `detect` static methods
+- Removed "best guess" logic from options
+- Excluded `bower_components/**` from processing
+- Updated badges at README page
+- Update Gonzales PE to v3.0
+- Various fixes
+
+## 2.0.5 - 2014-06-09
 - Updated dependencies (#229)
 
 ## 2.0.4 - 2014-01-16
