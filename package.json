@@ -45,10 +45,9 @@
     },
     "dependencies": {
         "commander": "2.0.0",
-        "gonzales-pe": "3.0.0-5",
-        "minimatch": "0.2.12",
-        "vow": "0.4.4",
-        "vow-fs": "0.3.2"
+        "csscomb-core": "~1.0.0",
+        "gonzales-pe": "3.0.0-8",
+        "vow": "0.4.4"
     },
     "devDependencies": {
         "jshint-groups": "0.5.3",
