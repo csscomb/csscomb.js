@@ -78,12 +78,18 @@ Please take a moment to review the [guidelines for contributing](CONTRIBUTE.md).
 Thanks for assistance and contributions:
 
 [@miripiruni](https://github.com/miripiruni),
-[@puzankov](https://github.com/puzankov),
-[@L0stSoul](https://github.com/L0stSoul),
+[@anton-rudeshko](https://github.com/anton-rudeshko),
+[@cvrebert](https://github.com/cvrebert),
+[@filtercake](https://github.com/filtercake),
 [@ignovak](https://github.com/ignovak),
 [@kizu](https://github.com/kizu),
-[@anton-rudeshko](https://github.com/anton-rudeshko),
-[@mishaberezin](https://github.com/mishaberezin)
+[@lefoy](https://github.com/lefoy),
+[@L0stSoul](https://github.com/L0stSoul),
+[@mishaberezin](https://github.com/mishaberezin),
+[@puzankov](https://github.com/puzankov),
+[@schneyra](https://github.com/schneyra),
+[@thejameskyle](https://github.com/thejameskyle),
+[@vecmezoni](https://github.com/vecmezoni)
 
 ## License
 
