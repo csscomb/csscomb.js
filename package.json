@@ -1,67 +1,68 @@
 {
-    "name": "csscomb",
-    "description": "CSS coding style formatter",
-    "version": "3.0.0-5",
-    "homepage": "http://csscomb.com/",
-    "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
-    "repository": "https://github.com/csscomb/csscomb.js",
-    "maintainers": [
-        {
-            "name": "Mikhail Troshev",
-            "email": "mishanga@yandex-team.ru",
-            "web": "http://mishanga.pro/"
-        },
-        {
-            "name": "Tony Ganch",
-            "email": "tonyganch+github@gmail.com",
-            "web": "http://tonyganch.com/"
-        },
-        {
-            "name": "Slava Oliyanchuk",
-            "email": "miripiruni@gmail.com",
-            "web": "http://miripiruni.org/"
-        }
-    ],
-    "contributors": [
-        {
-            "name": "Sergey Puzankov",
-            "email": "puzankov@yandex-team.ru"
-        },
-        {
-            "name": "Denis Payase",
-            "email": "lostsoul@yandex-team.ru"
-        },
-        {
-            "name": "Igor Novak",
-            "email": "bezengi@gmail.com"
-        },
-        {
-            "name": "Roman Komarov",
-            "email": "kizmarh@ya.ru"
-        }
-    ],
-    "engines": {
-        "node": ">= 0.10.0"
+  "name": "csscomb",
+  "description": "CSS coding style formatter",
+  "version": "3.0.0-5",
+  "homepage": "http://csscomb.com/",
+  "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
+  "repository": "https://github.com/csscomb/csscomb.js",
+  "maintainers": [
+    {
+      "name": "Mikhail Troshev",
+      "email": "mishanga@yandex-team.ru",
+      "web": "http://mishanga.pro/"
     },
-    "dependencies": {
-        "commander": "2.0.0",
-        "gonzales-pe": "3.0.0-5",
-        "minimatch": "0.2.12",
-        "vow": "0.4.4",
-        "vow-fs": "0.3.2"
+    {
+      "name": "Tony Ganch",
+      "email": "tonyganch+github@gmail.com",
+      "web": "http://tonyganch.com/"
     },
-    "devDependencies": {
-        "jshint-groups": "0.5.3",
-        "jshint": "2.3.0",
-        "jscs": "1.4.5",
-        "mocha": "1.14.0"
-    },
-    "main": "./lib/csscomb.js",
-    "bin": {
-        "csscomb": "./bin/csscomb"
-    },
-    "scripts": {
-        "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && node test/mocha",
-        "test-cov": "rm -rf lib-cov && jscoverage lib lib-cov && TEST_COV=true node test/mocha > ./test/test-coverage.html"
+    {
+      "name": "Slava Oliyanchuk",
+      "email": "miripiruni@gmail.com",
+      "web": "http://miripiruni.org/"
     }
+  ],
+  "contributors": [
+    {
+      "name": "Sergey Puzankov",
+      "email": "puzankov@yandex-team.ru"
+    },
+    {
+      "name": "Denis Payase",
+      "email": "lostsoul@yandex-team.ru"
+    },
+    {
+      "name": "Igor Novak",
+      "email": "bezengi@gmail.com"
+    },
+    {
+      "name": "Roman Komarov",
+      "email": "kizmarh@ya.ru"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "dependencies": {
+    "commander": "2.0.0",
+    "gonzales-pe": "3.0.0-5",
+    "minimatch": "0.2.12",
+    "vow": "0.4.4",
+    "vow-fs": "0.3.2"
+  },
+  "devDependencies": {
+    "inquirer": "^0.5.1",
+    "jscs": "1.4.5",
+    "jshint": "2.3.0",
+    "jshint-groups": "0.5.3",
+    "mocha": "1.14.0"
+  },
+  "main": "./lib/csscomb.js",
+  "bin": {
+    "csscomb": "./bin/csscomb"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && node test/mocha",
+    "test-cov": "rm -rf lib-cov && jscoverage lib lib-cov && TEST_COV=true node test/mocha > ./test/test-coverage.html"
+  }
 }
