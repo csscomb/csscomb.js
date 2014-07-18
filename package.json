@@ -45,7 +45,7 @@
     },
     "dependencies": {
         "commander": "2.0.0",
-        "csscomb-core": "~1.0.0",
+        "csscomb-core": "~2.0.0",
         "gonzales-pe": "3.0.0-8",
         "vow": "0.4.4"
     },
