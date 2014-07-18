@@ -48,7 +48,7 @@ mocha.suite.beforeEach(function() {
         var syntax = input.split('.').pop();
         input = this.readFile(input);
         expected = expected ? this.readFile(expected) : input;
-        assert.equal(this.comb.processString(input, syntax), expected);
+        assert.equal(this.comb.processString(input, { syntax: syntax }), expected);
     };
 
     /**

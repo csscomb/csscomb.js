@@ -13,7 +13,7 @@ describe('options/remove-empty-rulesets (less):', function() {
     it('Issue 201. Test 2', function() {
         this.comb.configure({ 'remove-empty-rulesets': true });
         var string = '#a {#b {} #d {}}';
-        assert.equal(this.comb.processString(string, 'less'), '');
+        assert.equal(this.comb.processString(string, { syntax: 'less' }), '');
     });
 
     it('Issue 201. Test 3', function() {
@@ -22,6 +22,6 @@ describe('options/remove-empty-rulesets (less):', function() {
             'always-semicolon': true
         });
         var string = '#a {#b {} #d {}}';
-        assert.equal(this.comb.processString(string, 'less'), string);
+        assert.equal(this.comb.processString(string, { syntax: 'less' }), string);
     });
 });
