@@ -21,7 +21,7 @@ Here is a full list in the same order they are applied while processing css:
 - [space-after-opening-brace](#space-after-opening-brace)
 - [space-before-selector-delimiter](#space-before-selector-delimiter)
 - [space-after-selector-delimiter](#space-after-selector-delimiter)
-- [space-after-declaration](#space-after-declaration)
+- [space-between-declarations](#space-between-declarations)
 - [block-indent](#block-indent)
 - [sort-order-fallback](#sort-order-fallback)
 - [sort-order](#sort-order)
@@ -36,7 +36,7 @@ Following options are ignored while processing `*.sass` files:
 - space-before-opening-brace
 - space-after-opening-brace
 - space-before-closing-brace
-- space-after-declaration
+- space-between-declarations
 
 
 ## always-semicolon
@@ -504,21 +504,21 @@ p >
   a { color: panda; }
 ```
 
-## space-after-declaration
+## space-between-declarations
 
-Set space after declaration (i.e. `color: tomato`).
+Set space between declarations (i.e. `color: tomato`).
 
 Acceptable values:
 
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-declaration': 1 }`
+Example: `{ 'space-between-declarations': 1 }`
 
 ```scss
 // Before:
 a {
-    color: panda;
+    color: panda; /* comment */
     top: 0;
     /* comment */
     right: 0;
@@ -527,11 +527,13 @@ a {
 
 // After:
 a {
-    color: panda; top: 0; /* comment */
-    right: 0; position: absolute }
+    color: panda; /* comment */ top: 0;
+    /* comment */
+    right: 0; position: absolute
+    }
 ```
 
-Example: `{ 'space-after-declaration': '\n  ' }`
+Example: `{ 'space-between-declarations': '\n  ' }`
 
 ```scss
 // Before:
@@ -542,8 +544,7 @@ a {
 a {
   color: panda;
   top: 0;
-  right: 0;
-  }
+  right: 0;}
 ```
 
 
