@@ -14,8 +14,9 @@
 New:
 
 - Sass support
-- Plugin API
 - Leftovers (#160)
+- Use [CSScomb Core](https://github/csscomb/core)
+- Plugins API (with `.use()` method)
 - `sort-order-fallback` (alphabetical sort order)
 - `space-before-colon`
 - `space-after-colon`
