@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 - 2014-07-XX
+## 3.0.0 - 2014-07-19
 **Thanks to
 [@cvrebert](https://github.com/cvrebert),
 [@filtercake](https://github.com/filtercake),
