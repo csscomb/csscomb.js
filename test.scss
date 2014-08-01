@@ -1,0 +1,12 @@
+body {
+    color: red;
+
+    &::after {
+        content: '';
+    }
+}
+
+
+a {
+    background: blue;
+}

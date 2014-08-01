@@ -11,6 +11,7 @@ Here is a full list in the same order they are applied while processing css:
 - [element-case](#element-case)
 - [leading-zero](#leading-zero)
 - [quotes](#quotes)
+- [rules-delimiter](#rules-delimiter)
 - [strip-spaces](#strip-spaces)
 - [eof-newline](#eof-newline)
 - [space-after-combinator](#space-after-combinator)
@@ -801,6 +802,10 @@ a
     color: panda;
     }
 ```
+
+## rules-delimiter
+
+Adds a number of blank lines or string before new rules
 
 ## strip-spaces
 
