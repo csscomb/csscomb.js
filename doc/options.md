@@ -6,6 +6,7 @@ Here is a full list in the same order they are applied while processing css:
 
 - [remove-empty-rulesets](#remove-empty-rulesets)
 - [always-semicolon](#always-semicolon)
+- [block-indent](#block-indent)
 - [color-case](#color-case)
 - [color-shorthand](#color-shorthand)
 - [element-case](#element-case)
@@ -22,7 +23,6 @@ Here is a full list in the same order they are applied while processing css:
 - [space-before-selector-delimiter](#space-before-selector-delimiter)
 - [space-after-selector-delimiter](#space-after-selector-delimiter)
 - [space-between-declarations](#space-between-declarations)
-- [block-indent](#block-indent)
 - [sort-order-fallback](#sort-order-fallback)
 - [sort-order](#sort-order)
 - [space-before-closing-brace](#space-before-closing-brace)
