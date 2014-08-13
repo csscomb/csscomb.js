@@ -238,8 +238,8 @@ Add/remove leading zero in dimensions.
 
 Acceptable values:
 
-    * `true` — add leading zero;
-    * `false` — remove leading zero.
+* `true` — add leading zero;
+* `false` — remove leading zero.
 
 Example: `{ "leading-zero": false }`
 
