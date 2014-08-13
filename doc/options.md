@@ -92,7 +92,7 @@ Acceptable values:
 * `{String}` — string with whitespaces and tabs. Note that line breaks are not
     allowed here.
 
-Example: `{ 'block-indent': 4 }`
+Example: `{ "block-indent": 4 }`
 
 ```scss
 // Before:
@@ -114,7 +114,7 @@ a {
     }
 ```
 
-Example: `{ 'block-indent': '' }`
+Example: `{ "block-indent": "" }`
 
 ```scss
 // Before:
@@ -396,7 +396,7 @@ Acceptable values:
 
 * `abc` - sort unknown options alphabetically.
 
-Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['top'] }`
+Example: `{ "sort-order-fallback": "abc", "sort-order": ["top"] }`
 
 ```scss
 // Before:
@@ -415,7 +415,7 @@ a {
 }
 ```
 
-Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['...'] }`
+Example: `{ "sort-order-fallback": "abc", "sort-order": ["..."] }`
 
 ```scss
 // Before:
@@ -442,7 +442,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-colon': '' }`
+Example: `{ "space-after-colon": "" }`
 
 ```scss
 // Before:
@@ -458,7 +458,7 @@ a {
 }
 ```
 
-Example: `{ 'space-after-colon': 1 }`
+Example: `{ "space-after-colon": 1 }`
 
 ```scss
 // Before:
@@ -483,7 +483,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-combinator': 1 }`
+Example: `{ "space-after-combinator": 1 }`
 
 ```scss
 // Before:
@@ -493,7 +493,7 @@ p>a { color: panda; }
 p> a { color: panda; }
 ```
 
-Example: `{ 'space-after-combinator': '\n  ' }`
+Example: `{ "space-after-combinator": "\n  " }`
 
 ```scss
 // Before:
@@ -513,7 +513,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-between-declarations': 1 }`
+Example: `{ "space-between-declarations": 1 }`
 
 ```scss
 // Before:
@@ -533,7 +533,7 @@ a {
     }
 ```
 
-Example: `{ 'space-between-declarations': '\n  ' }`
+Example: `{ "space-between-declarations": "\n  " }`
 
 ```scss
 // Before:
@@ -557,7 +557,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-opening-brace': 1 }`
+Example: `{ "space-after-opening-brace": 1 }`
 
 ```scss
 // Before:
@@ -567,7 +567,7 @@ a {color: panda;}
 a { color: panda;}
 ```
 
-Example: `{ 'space-after-opening-brace': '\n' }`
+Example: `{ "space-after-opening-brace": "\n" }`
 
 ```scss
 // Before:
@@ -587,7 +587,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-selector-delimiter': 1 }`
+Example: `{ "space-after-selector-delimiter": 1 }`
 
 ```scss
 // Before:
@@ -601,7 +601,7 @@ a, b {
     }
 ```
 
-Example: `{ 'space-after-selector-delimiter': '\n' }`
+Example: `{ "space-after-selector-delimiter": "\n" }`
 
 ```scss
 // Before:
@@ -625,7 +625,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-closing-brace': 1 }`
+Example: `{ "space-before-closing-brace": 1 }`
 
 ```scss
 // Before:
@@ -640,7 +640,7 @@ a {
     color: tomato; }
 ```
 
-Example: `{ 'space-before-closing-brace': '\n' }`
+Example: `{ "space-before-closing-brace": "\n" }`
 
 ```scss
 // Before:
@@ -664,7 +664,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-colon': '' }`
+Example: `{ "space-before-colon": "" }`
 
 ```scss
 // Before:
@@ -680,7 +680,7 @@ a {
 }
 ```
 
-Example: `{ 'space-before-colon': 1 }`
+Example: `{ "space-before-colon": 1 }`
 
 ```scss
 // Before:
@@ -705,7 +705,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-combinator': 1 }`
+Example: `{ "space-before-combinator": 1 }`
 
 ```scss
 // Before:
@@ -715,7 +715,7 @@ p>a { color: panda; }
 p >a { color: panda; }
 ```
 
-Example: `{ 'space-before-combinator': '\n' }`
+Example: `{ "space-before-combinator": "\n" }`
 
 ```scss
 // Before:
@@ -735,7 +735,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-opening-brace': 1 }`
+Example: `{ "space-before-opening-brace": 1 }`
 
 ```scss
 // Before:
@@ -749,7 +749,7 @@ a {
     }
 ```
 
-Example: `{ 'space-before-opening-brace': '\n' }`
+Example: `{ "space-before-opening-brace": "\n" }`
 
 ```scss
 // Before:
@@ -773,7 +773,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-selector-delimiter': 0 }`
+Example: `{ "space-before-selector-delimiter": 0 }`
 
 ```scss
 // Before:
@@ -787,7 +787,7 @@ a, b {
     }
 ```
 
-Example: `{ 'space-before-selector-delimiter': '\n' }`
+Example: `{ "space-before-selector-delimiter": "\n" }`
 
 ```scss
 // Before:
@@ -822,7 +822,7 @@ Acceptable values:
 
 * `{Number}` — number of whitespaces;
 
-Example: `{ 'tab-size': 2 }`
+Example: `{ "tab-size": 2 }`
 
 ```scss
 // Before:
