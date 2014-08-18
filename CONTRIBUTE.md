@@ -4,7 +4,8 @@
 ## Pull requests
 
 1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
-```bash
+
+    ```bash
 # Clone your fork of the repo into the current directory
 git clone https://github.com/<your-username>/csscomb.js
 # Navigate to the newly cloned directory
@@ -14,14 +15,17 @@ git remote add upstream https://github.com/csscomb/csscomb.js
 ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
-```bash
+
+    ```bash
 git checkout dev
 git pull upstream dev
 ```
-**IMPORTANT**: We are using `dev` branch for development, not `master`.
+
+    **IMPORTANT**: We are using `dev` branch for development, not `master`.
 
 3. Create a topic branch for your feature, change, or fix:
-```bash
+
+    ```bash
 git checkout -b <topic-branch-name>
 ```
 
@@ -31,12 +35,14 @@ git checkout -b <topic-branch-name>
 5. Update the `README.md` if there were corresponding changes or new options.
 
 6. Locally rebase the upstream development branch into your topic branch:
-```bash
+
+    ```bash
 git pull --rebase upstream dev
 ```
 
 7. Push your topic branch up to your fork:
-```bash
+
+    ```bash
 git push origin <topic-branch-name>
 ```
 
