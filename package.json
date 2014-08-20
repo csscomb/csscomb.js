@@ -44,16 +44,16 @@
         "node": ">= 0.10.0"
     },
     "dependencies": {
-        "commander": "2.0.0",
+        "commander": "^2.0.0",
         "csscomb-core": "~2.0.0",
         "gonzales-pe": "~3.0.0",
-        "vow": "0.4.4"
+        "vow": "~0.4.4"
     },
     "devDependencies": {
-        "jshint-groups": "0.5.3",
-        "jshint": "2.3.0",
-        "jscs": "1.4.5",
-        "mocha": "1.14.0"
+        "jshint-groups": "~0.5.3",
+        "jshint": "^2.3.0",
+        "jscs": "~1.4.5",
+        "mocha": "^1.14.0"
     },
     "main": "./lib/csscomb.js",
     "bin": {
