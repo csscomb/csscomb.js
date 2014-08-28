@@ -31,6 +31,7 @@ describe('.use()', function() {
           'space-between-rulesets',
           'block-indent',
           'sort-order',
+          'rule-delimiter',
           'strip-spaces',
           'space-before-closing-brace',
           'unitless-zero',
