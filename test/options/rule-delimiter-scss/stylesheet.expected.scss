@@ -1,0 +1,11 @@
+.top-bar {
+    padding-top: 28px;
+}
+
+.home {
+    @media #{$small-only} {
+        padding-top: 0;
+    }
+
+    margin-bottom:20px
+}
