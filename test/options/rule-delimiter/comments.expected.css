@@ -3,9 +3,10 @@
     color: tomato;
 }
 
-    .b {top: 0; }
+/* comment */
+.b {top: 0; }
 
-    .c {position: happy}
+.c {position: happy}
 
-    .d {
+/* comment */   .d {
     position: absolute;}

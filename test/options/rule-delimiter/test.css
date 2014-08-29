@@ -1,7 +1,6 @@
-.some-class em {
-    font-size: strong;
-    font-family: Pompadur;
+.a {
+    animal: panda;
+    color: tomato;
 }
-.another-class {
-    color: #fff;
-}
+
+.b {top: 0; }

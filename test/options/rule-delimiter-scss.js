@@ -1,4 +1,4 @@
-describe('options/rule-delimiter (scss)', function() {
+describe('options/rule-delimiter (scss):', function() {
     beforeEach(function() {
         this.filename = __filename;
     });
