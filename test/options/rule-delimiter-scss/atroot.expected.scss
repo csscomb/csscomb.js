@@ -1,0 +1,7 @@
+.page {
+    width: 8in;
+
+    @at-root (without: media) {
+        color: red;
+    }
+}

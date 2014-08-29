@@ -1,0 +1,6 @@
+.some-class {
+    .another-class {
+        color: #fff;
+    }
+    @return '[data-' + $attr + ']';
+}
