@@ -1,0 +1,14 @@
+@desktop:   ~"only screen and (min-width: 960px) and (max-width: 1199px)";
+@tablet :   ~"only screen and (min-width: 720px) and (max-width: 959px)";
+
+footer {
+  width: 100%;
+
+  @media @tablet {
+    width: 768px;
+  }
+
+  @media @desktop {
+    width: 940px;
+  }
+}
