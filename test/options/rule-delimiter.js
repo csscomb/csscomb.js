@@ -1,30 +1,26 @@
-describe('options/rule-delimiter (css)', function() {
+describe('options/rule-delimiter:', function() {
     beforeEach(function() {
         this.filename = __filename;
     });
 
-    it('Should add blank line before .some-class', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('fontface.css', 'fontface.expected.css');
+    it('Array value (incorrect value) => should not change anything', function() {
+        this.comb.configure({ 'rule-delimiter': ['', ' '] });
+        this.shouldBeEqual('test.css');
     });
 
-    it('Should change nothing', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n\n" });
-        this.shouldBeEqual('single.css', 'single.expected.css');
+    it('Integer value (one newline) => should set proper space between rulesets', function() {
+        this.comb.configure({ 'rule-delimiter': '\n' });
+        this.shouldBeEqual('integer-value.css', 'integer-value.expected.css');
     });
 
-    it('Should insert blank lines before .some-class and after .another-class', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('importfile.css', 'importfile.expected.css');
+    it('Valid string value (2 newlines) => should set proper space between rulesets', function() {
+        this.comb.configure({ 'rule-delimiter': '\n\n' });
+        this.shouldBeEqual('space-newline-value.css', 'space-newline-value.expected.css');
     });
 
-    it('Should insert blank line before h1', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('media.css', 'media.expected.css');
-    });
-
-    it('Should insert newline before .another-class', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('test.css', 'test.expected.css');
+    it('Should leave comments as is', function() {
+        this.comb.configure({ 'rule-delimiter': '\n\n' });
+        this.shouldBeEqual('comments.css', 'comments.expected.css');
     });
 });
+

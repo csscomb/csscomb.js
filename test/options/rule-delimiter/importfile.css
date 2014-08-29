@@ -1,8 +1,0 @@
-@import url(test.css) screen;
-.some-class em {
-    font-size: strong;
-}
-.another-class {
-    color: #fff;
-}
-@import url(test.css) screen;
