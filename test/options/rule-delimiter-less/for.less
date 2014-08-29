@@ -1,0 +1,13 @@
+.c-grid, .c-grid__span {
+    width: 100%;
+    @for $n from 2 through 6 {
+        position: relative;
+        .c-grid, .c-grid__span {
+            font-size: 10px;
+            &:nth-child(#{$n}n+1) {
+                clear: both;
+            }
+        }
+    }
+    height: 100%;
+}
