@@ -1,4 +1,4 @@
-describe('options/rule-delimiter (less)', function() {
+describe('options/rule-delimiter (less):', function() {
     beforeEach(function() {
         this.filename = __filename;
     });

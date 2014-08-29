@@ -28,7 +28,6 @@ describe('.use()', function() {
           'space-before-opening-brace',
           'space-before-selector-delimiter',
           'space-between-declarations',
-          'space-between-rulesets',
           'block-indent',
           'sort-order',
           'rule-delimiter',
