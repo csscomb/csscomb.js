@@ -37,4 +37,9 @@ describe('options/rule-delimiter (scss)', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n" });
         this.shouldBeEqual('complex.scss', 'complex.expected.scss');
     });
+
+    it('Should insert blank line before n-th child', function() {
+        this.comb.configure({ 'rule-delimiter': "\n\n" });
+        this.shouldBeEqual('for.scss', 'for.expected.scss');
+    });
 });
