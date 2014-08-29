@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Pompadur;
+    src: url(fonts/pompadur.ttf);
+}
+.some-class em {
+    font-size: strong;
+    font-family: Pompadur;
+}
