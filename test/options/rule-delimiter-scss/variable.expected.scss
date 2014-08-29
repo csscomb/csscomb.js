@@ -1,0 +1,13 @@
+.block {
+    $count: 10;
+    $margin_left: 5px;
+    $all_width: 1000px;
+
+    width: $all_width;
+
+    .sub_element {
+        width: ( $all_width / $count ) - $margin_left;
+        margin: 0 0 0 $margin_left;
+    }
+}
+

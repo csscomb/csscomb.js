@@ -1,0 +1,5 @@
+@import "foo.css";
+.some-class {
+    @import "some-class";
+    color: #fff;
+}
