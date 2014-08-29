@@ -53,11 +53,6 @@ describe('options/rule-delimiter (scss)', function() {
         this.shouldBeEqual('for.scss', 'for.expected.scss');
     });
 
-    it('Should insert blank line after @if and after @else', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('if.scss', 'if.expected.scss');
-    });
-
     it('Should insert blank line before @return', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n" });
         this.shouldBeEqual('return.scss', 'return.expected.scss');
@@ -71,11 +66,6 @@ describe('options/rule-delimiter (scss)', function() {
     it('Should insert blank line after @function', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n" });
         this.shouldBeEqual('function.scss', 'function.expected.scss');
-    });
-
-    it('Should add new lines after variables and before .sub_element', function() {
-        this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('variable.scss', 'variable.expected.scss');
     });
 
     it('Should add new lines before @at-root', function() {
