@@ -1,10 +1,14 @@
 .some-class {
     // this is em
+    // this is em
     em {
         font-size: strong;
     }
 
-    // this is another class
+    /* This comment is
+    * several lines long.
+    * since it uses the CSS comment syntax,
+    * it will appear in the CSS output. */
     .another-class {
         color: #fff;
     }
