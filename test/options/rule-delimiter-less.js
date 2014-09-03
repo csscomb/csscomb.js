@@ -10,7 +10,7 @@ describe('options/rule-delimiter (less):', function() {
 
     it('Should change nothing', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n\n" });
-        this.shouldBeEqual('single.less', 'single.expected.less');
+        this.shouldBeEqual('single.less');
     });
 
     it('Should insert blank lines before comment #2 and #3', function() {
