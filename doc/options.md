@@ -1,33 +1,34 @@
 # Configuration options
 
 There are a number of options you can use, all of them are switched off by
-default.  
+default.
 Here is a full list in the same order they are applied while processing css:
 
-- [remove-empty-rulesets](#remove-empty-rulesets)
 - [always-semicolon](#always-semicolon)
+- [remove-empty-rulesets](#remove-empty-rulesets)
 - [color-case](#color-case)
 - [color-shorthand](#color-shorthand)
 - [element-case](#element-case)
+- [eof-newline](#eof-newline)
 - [leading-zero](#leading-zero)
 - [quotes](#quotes)
-- [strip-spaces](#strip-spaces)
-- [eof-newline](#eof-newline)
-- [space-after-combinator](#space-after-combinator)
-- [space-before-combinator](#space-before-combinator)
-- [space-before-colon](#space-before-colon)
+- [sort-order-fallback](#sort-order-fallback)
 - [space-after-colon](#space-after-colon)
-- [space-before-opening-brace](#space-before-opening-brace)
+- [space-after-combinator](#space-after-combinator)
 - [space-after-opening-brace](#space-after-opening-brace)
-- [space-before-selector-delimiter](#space-before-selector-delimiter)
 - [space-after-selector-delimiter](#space-after-selector-delimiter)
+- [space-before-colon](#space-before-colon)
+- [space-before-combinator](#space-before-combinator)
+- [space-before-opening-brace](#space-before-opening-brace)
+- [space-before-selector-delimiter](#space-before-selector-delimiter)
 - [space-between-declarations](#space-between-declarations)
 - [block-indent](#block-indent)
-- [sort-order-fallback](#sort-order-fallback)
 - [sort-order](#sort-order)
+- [rule-delimiter](#rule-delimiter)
+- [strip-spaces](#strip-spaces)
 - [space-before-closing-brace](#space-before-closing-brace)
-- [tab-size](#tab-size)
 - [unitless-zero](#unitless-zero)
+- [tab-size](#tab-size)
 - [vendor-prefix-align](#vendor-prefix-align)
 
 Following options are ignored while processing `*.sass` files:
@@ -92,7 +93,7 @@ Acceptable values:
 * `{String}` — string with whitespaces and tabs. Note that line breaks are not
     allowed here.
 
-Example: `{ 'block-indent': 4 }`
+Example: `{ "block-indent": 4 }`
 
 ```scss
 // Before:
@@ -114,7 +115,7 @@ a {
     }
 ```
 
-Example: `{ 'block-indent': '' }`
+Example: `{ "block-indent": "" }`
 
 ```scss
 // Before:
@@ -238,8 +239,8 @@ Add/remove leading zero in dimensions.
 
 Acceptable values:
 
-    * `true` — add leading zero;
-    * `false` — remove leading zero.
+* `true` — add leading zero;
+* `false` — remove leading zero.
 
 Example: `{ "leading-zero": false }`
 
@@ -387,8 +388,8 @@ everything would go into five groups: variables, then group with `position`, the
 ## sort-order-fallback
 
 Apply a special sort order for properties that are not specified in `sort-order`
-list.  
-Works great with [leftovers](#sort-order-vs-leftovers).  
+list.
+Works great with [leftovers](#sort-order-vs-leftovers).
 **Note:** This option is applied only if [sort order](#sort-order) list is
 provided.
 
@@ -396,7 +397,7 @@ Acceptable values:
 
 * `abc` - sort unknown options alphabetically.
 
-Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['top'] }`
+Example: `{ "sort-order-fallback": "abc", "sort-order": ["top"] }`
 
 ```scss
 // Before:
@@ -415,7 +416,7 @@ a {
 }
 ```
 
-Example: `{ 'sort-order-fallback': 'abc', 'sort-order': ['...'] }`
+Example: `{ "sort-order-fallback": "abc", "sort-order": ["..."] }`
 
 ```scss
 // Before:
@@ -432,6 +433,44 @@ a {
     top:0;
 }
 ```
+
+## rule-delimiter
+
+Sets newlines between rules trying to follow `EmptyLineBetweenBlocks` rule of `scss-lint`
+
+Acceptable values:
+
+* `{String}` — string with line breaks
+
+Example: `{ 'rule-delimiter': '\n\n' }`
+
+```scss
+// Before:
+.top-bar {
+    padding-top: 28px;
+}
+.home {
+    @media #{$small-only} {
+        padding-top: 0;
+    }
+    margin-bottom:20px
+}
+
+// After:
+.top-bar {
+    padding-top: 28px;
+}
+
+.home {
+    @media #{$small-only} {
+        padding-top: 0;
+    }
+
+    margin-bottom:20px
+}
+
+```
+
 
 ## space-after-colon
 
@@ -442,7 +481,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-colon': '' }`
+Example: `{ "space-after-colon": "" }`
 
 ```scss
 // Before:
@@ -458,7 +497,7 @@ a {
 }
 ```
 
-Example: `{ 'space-after-colon': 1 }`
+Example: `{ "space-after-colon": 1 }`
 
 ```scss
 // Before:
@@ -483,7 +522,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-combinator': 1 }`
+Example: `{ "space-after-combinator": 1 }`
 
 ```scss
 // Before:
@@ -493,7 +532,7 @@ p>a { color: panda; }
 p> a { color: panda; }
 ```
 
-Example: `{ 'space-after-combinator': '\n  ' }`
+Example: `{ "space-after-combinator": "\n  " }`
 
 ```scss
 // Before:
@@ -513,7 +552,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-between-declarations': 1 }`
+Example: `{ "space-between-declarations": 1 }`
 
 ```scss
 // Before:
@@ -533,7 +572,7 @@ a {
     }
 ```
 
-Example: `{ 'space-between-declarations': '\n  ' }`
+Example: `{ "space-between-declarations": "\n  " }`
 
 ```scss
 // Before:
@@ -557,7 +596,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-opening-brace': 1 }`
+Example: `{ "space-after-opening-brace": 1 }`
 
 ```scss
 // Before:
@@ -567,7 +606,7 @@ a {color: panda;}
 a { color: panda;}
 ```
 
-Example: `{ 'space-after-opening-brace': '\n' }`
+Example: `{ "space-after-opening-brace": "\n" }`
 
 ```scss
 // Before:
@@ -587,7 +626,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-after-selector-delimiter': 1 }`
+Example: `{ "space-after-selector-delimiter": 1 }`
 
 ```scss
 // Before:
@@ -601,7 +640,7 @@ a, b {
     }
 ```
 
-Example: `{ 'space-after-selector-delimiter': '\n' }`
+Example: `{ "space-after-selector-delimiter": "\n" }`
 
 ```scss
 // Before:
@@ -625,7 +664,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-closing-brace': 1 }`
+Example: `{ "space-before-closing-brace": 1 }`
 
 ```scss
 // Before:
@@ -640,7 +679,7 @@ a {
     color: tomato; }
 ```
 
-Example: `{ 'space-before-closing-brace': '\n' }`
+Example: `{ "space-before-closing-brace": "\n" }`
 
 ```scss
 // Before:
@@ -664,7 +703,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-colon': '' }`
+Example: `{ "space-before-colon": "" }`
 
 ```scss
 // Before:
@@ -680,7 +719,7 @@ a {
 }
 ```
 
-Example: `{ 'space-before-colon': 1 }`
+Example: `{ "space-before-colon": 1 }`
 
 ```scss
 // Before:
@@ -705,7 +744,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-combinator': 1 }`
+Example: `{ "space-before-combinator": 1 }`
 
 ```scss
 // Before:
@@ -715,7 +754,7 @@ p>a { color: panda; }
 p >a { color: panda; }
 ```
 
-Example: `{ 'space-before-combinator': '\n' }`
+Example: `{ "space-before-combinator": "\n" }`
 
 ```scss
 // Before:
@@ -735,7 +774,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-opening-brace': 1 }`
+Example: `{ "space-before-opening-brace": 1 }`
 
 ```scss
 // Before:
@@ -749,7 +788,7 @@ a {
     }
 ```
 
-Example: `{ 'space-before-opening-brace': '\n' }`
+Example: `{ "space-before-opening-brace": "\n" }`
 
 ```scss
 // Before:
@@ -773,7 +812,7 @@ Acceptable values:
 * `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces, tabs or line breaks.
 
-Example: `{ 'space-before-selector-delimiter': 0 }`
+Example: `{ "space-before-selector-delimiter": 0 }`
 
 ```scss
 // Before:
@@ -787,7 +826,7 @@ a, b {
     }
 ```
 
-Example: `{ 'space-before-selector-delimiter': '\n' }`
+Example: `{ "space-before-selector-delimiter": "\n" }`
 
 ```scss
 // Before:
@@ -822,7 +861,7 @@ Acceptable values:
 
 * `{Number}` — number of whitespaces;
 
-Example: `{ 'tab-size': 2 }`
+Example: `{ "tab-size": 2 }`
 
 ```scss
 // Before:

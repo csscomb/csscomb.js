@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1 - 2014-08-18
+**Thanks to
+[@mishanga](https://github.com/mishanga),
+[@cust0dian](https://github.com/cust0dian)**
+- Added `khtml` to list of vendor prefixes
+- Updated docs
+
 ## 3.0.0 - 2014-07-19
 **Thanks to
 [@cvrebert](https://github.com/cvrebert),
@@ -15,7 +22,7 @@ New:
 
 - Sass support
 - Leftovers (#160)
-- Use [CSScomb Core](https://github/csscomb/core)
+- Use [CSScomb Core](https://github.com/csscomb/core)
 - Plugins API (with `.use()` method)
 - `sort-order-fallback` (alphabetical sort order)
 - `space-before-colon`
