@@ -10,7 +10,7 @@ describe('options/rule-delimiter (scss):', function() {
 
     it('Should change nothing', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n\n" });
-        this.shouldBeEqual('single.scss', 'single.expected.scss');
+        this.shouldBeEqual('single.scss');
     });
 
     it('Should insert blank lines before comment #2 and #3', function() {
@@ -18,7 +18,7 @@ describe('options/rule-delimiter (scss):', function() {
         this.shouldBeEqual('comment.scss', 'comment.expected.scss');
     });
 
-    it('Should insert nlank line before .home and after @media', function() {
+    it('Should insert blank line before .home and after @media', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n" });
         this.shouldBeEqual('media.scss', 'media.expected.scss');
     });
@@ -35,7 +35,7 @@ describe('options/rule-delimiter (scss):', function() {
 
     it('Should change nothing', function() {
         this.comb.configure({ 'rule-delimiter': "\n\n" });
-        this.shouldBeEqual('extend.scss', 'extend.expected.scss');
+        this.shouldBeEqual('extend.scss');
     });
 
     it('Should insert blank line before em', function() {
