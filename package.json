@@ -56,6 +56,11 @@
         "mocha": "1.14.0"
     },
     "main": "./lib/csscomb.js",
+    "files": [
+        "bin",
+        "config",
+        "lib"
+    ],
     "bin": {
         "csscomb": "./bin/csscomb"
     },
