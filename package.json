@@ -46,7 +46,7 @@
     "dependencies": {
         "commander": "2.0.0",
         "csscomb-core": "~2.0.0",
-        "gonzales-pe": "~3.0.0",
+        "gonzales-pe": "git://github.com/vecmezoni/gonzales-pe.git#cbb8a04924465b7f52ab329b20335eee20ebfade",
         "vow": "0.4.4"
     },
     "devDependencies": {
