@@ -46,7 +46,7 @@
     "dependencies": {
         "commander": "2.0.0",
         "csscomb-core": "~2.0.0",
-        "gonzales-pe": "~3.0.0",
+        "gonzales-pe": "~3.0.0-0",
         "vow": "0.4.4"
     },
     "devDependencies": {
