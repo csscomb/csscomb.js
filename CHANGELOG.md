@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.2 - 2014-09-21
+- Fix Gonzales PE version
+
 ## 3.0.1 - 2014-08-18
 **Thanks to
 [@mishanga](https://github.com/mishanga),
