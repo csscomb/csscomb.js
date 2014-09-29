@@ -1,0 +1,31 @@
+.tv-header-reminders {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+ 
+    &__spin {
+        background-color: #fff;
+        display: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+ 
+        .spin {
+            height: 100%;
+            text-align: center;
+        }
+ 
+        .spin__icon {
+            margin-top: 4px;
+        }
+    }
+ 
+    &_loading_yes .tv-header-reminders__spin {
+        display: block;
+ 
+ 
+    }
+ 
+}

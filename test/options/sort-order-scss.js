@@ -113,4 +113,9 @@ describe('options/sort-order (scss)', function() {
         });
         this.shouldBeEqual('leftovers.scss', 'leftovers.expected.scss');
     });
+
+    it('Issue 317', function() {
+        this.comb.configure({ 'sort-order': ['...'] });
+        this.shouldBeEqual('issue-317.scss');
+    });
 });
