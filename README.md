@@ -68,7 +68,7 @@ comb.processPath('assets/css');
 ## 4. Contribute
 
 Anyone and everyone is welcome to contribute.
-Please take a moment to review the [guidelines for contributing](CONTRIBUTE.md).
+Please take a moment to review the [guidelines for contributing](CONTRIBUTING.md).
 
 ## Authors
 
