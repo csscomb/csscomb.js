@@ -88,7 +88,7 @@ Set indent for code inside blocks, including media queries and nested rules.
 
 Acceptable values:
 
-* `{Number}` — number os whitespaces;
+* `{Number}` — number of whitespaces;
 * `{String}` — string with whitespaces and tabs. Note that line breaks are not
     allowed here.
 
