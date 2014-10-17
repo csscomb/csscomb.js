@@ -52,7 +52,7 @@ Here is an example:
 }
 ```
 
-Take a look at [available options](options.md) and choose those you need.
+Take a look at [available options](options.md) and choose those you need.  You can use our [visual config builder](http://csscomb.com/config) to choose most options.
 
 ### Where to put config
 
