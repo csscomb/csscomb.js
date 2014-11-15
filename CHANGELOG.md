@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.4 - 2014-11-15
+**Thanks to
+[@gonzalocasas](https://github.com/gonzalocasas),
+[@tomByrer](https://github.com/tomByrer)**
+- Improved docs
+- Fixed Gonzales PE version
+
 ## 3.0.3 - 2014-09-29
 **Thanks to
 [@kizu](https://github.com/kizu),
