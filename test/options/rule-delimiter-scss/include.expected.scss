@@ -1,0 +1,9 @@
+.trans-button {
+    @include inline-block;
+    width: 290px;
+
+    i {
+        @include inline-block;
+        margin: -3px 14px 0 0;
+    }
+}

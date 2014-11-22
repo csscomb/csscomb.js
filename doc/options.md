@@ -1,7 +1,7 @@
 # Configuration options
 
 There are a number of options you can use, all of them are switched off by
-default.  
+default.
 Here is a full list in the same order they are applied while processing css:
 
 - [always-semicolon](#always-semicolon)
@@ -25,6 +25,7 @@ Here is a full list in the same order they are applied while processing css:
 - [block-indent](#block-indent)
 - [sort-order](#sort-order)
 - [strip-spaces](#strip-spaces)
+- [rule-delimiter](#rule-delimiter)
 - [space-before-closing-brace](#space-before-closing-brace)
 - [unitless-zero](#unitless-zero)
 - [tab-size](#tab-size)
@@ -387,8 +388,8 @@ everything would go into five groups: variables, then group with `position`, the
 ## sort-order-fallback
 
 Apply a special sort order for properties that are not specified in `sort-order`
-list.  
-Works great with [leftovers](#sort-order-vs-leftovers).  
+list.
+Works great with [leftovers](#sort-order-vs-leftovers).
 **Note:** This option is applied only if [sort order](#sort-order) list is
 provided.
 
@@ -432,6 +433,44 @@ a {
     top:0;
 }
 ```
+
+## rule-delimiter
+
+Sets newlines between rules trying to follow `EmptyLineBetweenBlocks` rule of `scss-lint`
+
+Acceptable values:
+
+* `{String}` — string with line breaks
+
+Example: `{ 'rule-delimiter': '\n\n' }`
+
+```scss
+// Before:
+.top-bar {
+    padding-top: 28px;
+}
+.home {
+    @media #{$small-only} {
+        padding-top: 0;
+    }
+    margin-bottom:20px
+}
+
+// After:
+.top-bar {
+    padding-top: 28px;
+}
+
+.home {
+    @media #{$small-only} {
+        padding-top: 0;
+    }
+
+    margin-bottom:20px
+}
+
+```
+
 
 ## space-after-colon
 
