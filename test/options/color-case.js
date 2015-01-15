@@ -43,7 +43,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Should detect uppercase color', function() {
+    it.skip('Should detect uppercase color', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #F3F3F3 }',
@@ -53,7 +53,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Should detect lowercase color', function() {
+    it.skip('Should detect lowercase color', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #f6f6f6 }',
@@ -63,7 +63,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Should detect uppercase color in a shorthand', function() {
+    it.skip('Should detect uppercase color in a shorthand', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #FFF }',
@@ -73,7 +73,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Should detect lowercase color in a shorthand', function() {
+    it.skip('Should detect lowercase color in a shorthand', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #fff }',
@@ -83,7 +83,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Shouldn’t detect color case if it contains only digits', function() {
+    it.skip('Shouldn’t detect color case if it contains only digits', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #333 }',
@@ -91,7 +91,7 @@ describe('options/color-case', function() {
         );
     });
 
-    it('Shouldn’t detect color case if it is in mixed case', function() {
+    it.skip('Shouldn’t detect color case if it is in mixed case', function() {
         this.shouldDetect(
             ['color-case'],
             'a { color: #fFfFfF }',
