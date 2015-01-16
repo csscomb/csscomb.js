@@ -1,4 +1,4 @@
-describe('options/always-semicolon (scss)', function() {
+describe('options/always-semicolon (less)', function() {
     beforeEach(function() {
         this.filename = __filename;
         this.comb.configure({ 'always-semicolon': true });
