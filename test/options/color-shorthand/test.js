@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/color-shorthand', function() {
+describe('options/color-shorthand', function() {
     it('Should shrink hexadecimal colors to 3 symbols', function() {
         this.comb.configure({ 'color-shorthand': true });
         assert.equal(
@@ -32,7 +32,7 @@ describe.skip('options/color-shorthand', function() {
     });
 
 
-    it('Should detect non-shorthanded color', function() {
+    it.skip('Should detect non-shorthanded color', function() {
         this.shouldDetect(
             ['color-shorthand'],
             'a { color: #FF33EE }',
@@ -42,7 +42,7 @@ describe.skip('options/color-shorthand', function() {
         );
     });
 
-    it('Should detect shorthanded color', function() {
+    it.skip('Should detect shorthanded color', function() {
         this.shouldDetect(
             ['color-shorthand'],
             'a { color: #fff }',
@@ -52,7 +52,7 @@ describe.skip('options/color-shorthand', function() {
         );
     });
 
-    it('Shouldn’t detect if a color is shorthanded if it can’t be shorthanded', function() {
+    it.skip('Shouldn’t detect if a color is shorthanded if it can’t be shorthanded', function() {
         this.shouldDetect(
             ['color-shorthand'],
             'a { color: #F3F3F3 }',
@@ -60,7 +60,7 @@ describe.skip('options/color-shorthand', function() {
         );
     });
 
-    it('Shouldn’t detect if a color is shorthanded if it is not a vhash', function() {
+    it.skip('Shouldn’t detect if a color is shorthanded if it is not a vhash', function() {
         this.shouldDetect(
             ['color-shorthand'],
             'a { color: rgba(0,0,0,0.5) }',
