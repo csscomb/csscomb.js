@@ -1,4 +1,4 @@
-describe('options/space-before-colon:', function() {
+describe.skip('options/space-before-colon:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-colon': ['', ' '] });
         this.shouldBeEqual('test.css');

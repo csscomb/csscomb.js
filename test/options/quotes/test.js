@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/quotes', function() {
+describe.skip('options/quotes', function() {
     it('Invalid String should not change quotes', function() {
         this.comb.configure({ quotes: 3 });
         assert.equal(

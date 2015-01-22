@@ -1,4 +1,4 @@
-describe('options/space-before-combinator:', function() {
+describe.skip('options/space-before-combinator:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-combinator': ['', ' '] });
         this.shouldBeEqual('test.css');

@@ -1,4 +1,4 @@
-describe('Sass', function() {
+describe.skip('Sass', function() {
     beforeEach(function() {
         this.comb.configure({});
     });

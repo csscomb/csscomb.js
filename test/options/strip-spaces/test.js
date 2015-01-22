@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/strip-spaces', function() {
+describe.skip('options/strip-spaces', function() {
     it('Invalid value should not trim trailing spaces', function() {
         this.comb.configure({ 'strip-spaces': 'foobar' });
         assert.equal(

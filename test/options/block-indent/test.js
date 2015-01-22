@@ -1,4 +1,4 @@
-describe('options/block-indent:', function() {
+describe.skip('options/block-indent:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'block-indent': ['', ' '] });
         this.shouldBeEqual('test.css');

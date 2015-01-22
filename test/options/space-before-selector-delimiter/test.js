@@ -1,4 +1,4 @@
-describe('options/space-before-selector-delimiter:', function() {
+describe.skip('options/space-before-selector-delimiter:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-selector-delimiter': ['', ' '] });
         this.shouldBeEqual('test.css');

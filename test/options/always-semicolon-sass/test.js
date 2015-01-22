@@ -1,4 +1,4 @@
-describe('options/always-semicolon (scss)', function() {
+describe('options/always-semicolon (sass)', function() {
     beforeEach(function() {
         this.comb.configure({ 'always-semicolon': true });
     });

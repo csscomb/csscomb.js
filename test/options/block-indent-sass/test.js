@@ -1,4 +1,4 @@
-describe('options/block-indent (sass):', function() {
+describe.skip('options/block-indent (sass):', function() {
     it('First level ruleset\'s block', function() {
         this.comb.configure({ 'block-indent': 2 });
         this.shouldBeEqual('block.sass', 'block.expected.sass');

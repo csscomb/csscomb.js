@@ -1,4 +1,4 @@
-describe('options/space-before-opening-brace:', function() {
+describe.skip('options/space-before-opening-brace:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-opening-brace': ['', ' '] });
         this.shouldBeEqual('test.css');

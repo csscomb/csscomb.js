@@ -1,4 +1,4 @@
-describe('options/vendor-prefix-align', function() {
+describe.skip('options/vendor-prefix-align', function() {
     beforeEach(function() {
         this.comb.configure({ 'vendor-prefix-align': true });
     });

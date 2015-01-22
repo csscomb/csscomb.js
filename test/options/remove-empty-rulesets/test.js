@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/remove-empty-rulesets', function() {
+describe.skip('options/remove-empty-rulesets', function() {
     it('Configured with invalid value, should not remove empty ruleset', function() {
         this.comb.configure({ 'remove-empty-rulesets': 'foobar' });
         assert.equal(this.comb.processString('a { width: 10px; } b {}'), 'a { width: 10px; } b {}');
