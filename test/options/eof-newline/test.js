@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/eof-newline', function() {
+describe.skip('options/eof-newline', function() {
     it('Invalid value should not change trim trailing brac', function() {
         this.comb.configure({ 'eof-newline': 'foobar' });
         assert.equal(

@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/unitless-zero', function() {
+describe.skip('options/unitless-zero', function() {
     it('Should remove units in zero-valued dimensions', function() {
         this.comb.configure({ 'unitless-zero': true });
         assert.equal(

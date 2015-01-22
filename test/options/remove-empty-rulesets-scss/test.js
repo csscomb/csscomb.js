@@ -1,4 +1,4 @@
-describe('options/remove-empty-rulesets (scss)', function() {
+describe.skip('options/remove-empty-rulesets (scss)', function() {
     beforeEach(function() {
         this.comb.configure({ 'remove-empty-rulesets': true });
     });

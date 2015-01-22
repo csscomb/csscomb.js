@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/color-shorthand', function() {
+describe.skip('options/color-shorthand', function() {
     it('Should shrink hexadecimal colors to 3 symbols', function() {
         this.comb.configure({ 'color-shorthand': true });
         assert.equal(

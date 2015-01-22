@@ -1,4 +1,4 @@
-describe('options/tab-size:', function() {
+describe.skip('options/tab-size:', function() {
     it('Test 1: String value => should not change anything', function() {
         this.comb.configure({ 'tab-size': '   ' });
         this.shouldBeEqual('test.css');

@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/element-case', function() {
+describe.skip('options/element-case', function() {
     it('Invalid String should not change case of elements', function() {
         this.comb.configure({ 'element-case': 'foobar' });
         assert.equal(

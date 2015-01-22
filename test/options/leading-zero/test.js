@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/leading-zero', function() {
+describe.skip('options/leading-zero', function() {
     it('Should add leading zero in dimensions', function() {
         this.comb.configure({ 'leading-zero': true });
         assert.equal(

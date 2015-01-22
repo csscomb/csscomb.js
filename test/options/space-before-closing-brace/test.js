@@ -1,4 +1,4 @@
-describe('options/space-before-closing-brace:', function() {
+describe.skip('options/space-before-closing-brace:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-closing-brace': ['', ' '] });
         this.shouldBeEqual('test.css');

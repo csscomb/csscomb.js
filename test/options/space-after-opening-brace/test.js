@@ -1,4 +1,4 @@
-describe('options/space-after-opening-brace:', function() {
+describe.skip('options/space-after-opening-brace:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-after-opening-brace': ['', ' '] });
         this.shouldBeEqual('test.css');
