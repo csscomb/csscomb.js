@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/leading-zero', function() {
+describe('options/leading-zero', function() {
     it('Should add leading zero in dimensions', function() {
         this.comb.configure({ 'leading-zero': true });
         assert.equal(
@@ -21,7 +21,7 @@ describe.skip('options/leading-zero', function() {
         );
     });
 
-    it('Should detect leading zero option', function() {
+    it.skip('Should detect leading zero option', function() {
         this.shouldDetect(
             ['leading-zero'],
             'a { width: 0.5em }',
@@ -31,7 +31,7 @@ describe.skip('options/leading-zero', function() {
         );
     });
 
-    it('Should detect leading zero option set to false', function() {
+    it.skip('Should detect leading zero option set to false', function() {
         this.shouldDetect(
             ['leading-zero'],
             'a { width: .5em }',
@@ -41,7 +41,7 @@ describe.skip('options/leading-zero', function() {
         );
     });
 
-    it('Shouldn’t detect leading zero option', function() {
+    it.skip('Shouldn’t detect leading zero option', function() {
         this.shouldDetect(
             ['leading-zero'],
             'a { width: 10.5em }',
