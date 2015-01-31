@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/remove-empty-rulesets (less):', function() {
+describe('options/remove-empty-rulesets (less):', function() {
     it('Issue 201. Test 1', function() {
         this.comb.configure({ 'remove-empty-rulesets': true });
         this.shouldBeEqual('1.less', '1.expected.less');
