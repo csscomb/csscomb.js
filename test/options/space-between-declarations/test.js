@@ -1,4 +1,4 @@
-describe.skip('options/space-between-declarations:', function() {
+describe('options/space-between-declarations:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-between-declarations': ['', ' '] });
         this.shouldBeEqual('test.css');
