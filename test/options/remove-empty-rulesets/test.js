@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/remove-empty-rulesets', function() {
+describe('options/remove-empty-rulesets', function() {
     it('Configured with invalid value, should not remove empty ruleset', function() {
         this.comb.configure({ 'remove-empty-rulesets': 'foobar' });
         assert.equal(this.comb.processString('a { width: 10px; } b {}'), 'a { width: 10px; } b {}');
@@ -28,7 +28,7 @@ describe.skip('options/remove-empty-rulesets', function() {
         });
     });
 
-    describe('detecting the value', function() {
+    describe.skip('detecting the value', function() {
         it('Should detect this option set to `true`', function() {
             this.shouldDetect(
                 ['remove-empty-rulesets'],
