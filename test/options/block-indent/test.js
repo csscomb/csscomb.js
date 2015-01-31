@@ -1,4 +1,4 @@
-describe.skip('options/block-indent:', function() {
+describe('options/block-indent:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'block-indent': ['', ' '] });
         this.shouldBeEqual('test.css');
@@ -24,7 +24,7 @@ describe.skip('options/block-indent:', function() {
         this.shouldBeEqual('test.css', 'test-2.expected.css');
     });
 
-    it('Should detect nothing with an empty block, test 1', function() {
+    it.skip('Should detect nothing with an empty block, test 1', function() {
         this.shouldDetect(
             ['block-indent'],
             'a{ }',
@@ -32,7 +32,7 @@ describe.skip('options/block-indent:', function() {
         );
     });
 
-    it('Should detect nothing with an empty block, test 2', function() {
+    it.skip('Should detect nothing with an empty block, test 2', function() {
         this.shouldDetect(
             ['block-indent'],
             'a{}',
@@ -40,7 +40,7 @@ describe.skip('options/block-indent:', function() {
         );
     });
 
-    it('Should detect correct number of spaces', function() {
+    it.skip('Should detect correct number of spaces', function() {
         this.shouldDetect(
             ['block-indent'],
             'a{\n    top: 0;\n    color: tomato;\n}',
@@ -48,14 +48,14 @@ describe.skip('options/block-indent:', function() {
         );
     });
 
-    it('Should detect no indent for one-line code', function() {
+    it.skip('Should detect no indent for one-line code', function() {
         this.shouldDetect(
             ['block-indent'],
             'a{ top: 0; color: tomato; }',
             {}
         );
     });
-    it('Valid string value => should set proper space after combnator', function() {
+    it.skip('Valid string value => should set proper space after combnator', function() {
         this.comb.configure({ 'block-indent': '    ', 'space-before-closing-brace': '\n' });
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
