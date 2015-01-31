@@ -1,4 +1,4 @@
-describe.skip('options/space-before-opening-brace:', function() {
+describe('options/space-before-opening-brace:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-opening-brace': ['', ' '] });
         this.shouldBeEqual('test.css');
@@ -34,7 +34,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         this.shouldBeEqual('issue-232.css', 'issue-232.expected.css');
     });
 
-    it('Should detect no whitespace', function() {
+    it.skip('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0}',
@@ -42,7 +42,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         );
     });
 
-    it('Should detect whitespace', function() {
+    it.skip('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a \n {top:0}',
@@ -50,7 +50,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         );
     });
 
-    it('Should detect no whitespace (2 blocks)', function() {
+    it.skip('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0} b {left:0}',
@@ -58,7 +58,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         );
     });
 
-    it('Should detect whitespace (2 blocks)', function() {
+    it.skip('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a {top:0} b{left:0}',
@@ -66,7 +66,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         );
     });
 
-    it('Should detect no whitespace (3 blocks)', function() {
+    it.skip('Should detect no whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a {top:0} b{left:0} c{right:0}',
@@ -74,7 +74,7 @@ describe.skip('options/space-before-opening-brace:', function() {
         );
     });
 
-    it('Should detect whitespace (3 blocks)', function() {
+    it.skip('Should detect whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0} b {left:0} c {right:0}',
