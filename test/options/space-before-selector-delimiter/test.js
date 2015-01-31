@@ -1,4 +1,4 @@
-describe.skip('options/space-before-selector-delimiter:', function() {
+describe('options/space-before-selector-delimiter:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-before-selector-delimiter': ['', ' '] });
         this.shouldBeEqual('test.css');
@@ -29,7 +29,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it('Should detect no whitespace', function() {
+    it.skip('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a,b{top:0}',
@@ -37,7 +37,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         );
     });
 
-    it('Should detect whitespace', function() {
+    it.skip('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a \n ,b {top:0}',
@@ -45,7 +45,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         );
     });
 
-    it('Should detect no whitespace (2 blocks)', function() {
+    it.skip('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a,b{top:0} a ,b{left:0}',
@@ -53,7 +53,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         );
     });
 
-    it('Should detect whitespace (2 blocks)', function() {
+    it.skip('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a ,b {top:0} b,a{left:0}',
@@ -61,7 +61,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         );
     });
 
-    it('Should detect no whitespace (3 blocks)', function() {
+    it.skip('Should detect no whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a ,b{top:0} b,c{left:0} c,d{right:0}',
@@ -69,7 +69,7 @@ describe.skip('options/space-before-selector-delimiter:', function() {
         );
     });
 
-    it('Should detect whitespace (3 blocks)', function() {
+    it.skip('Should detect whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-selector-delimiter'],
             'a,b{top:0} b ,c{left:0} c ,d{right:0}',
