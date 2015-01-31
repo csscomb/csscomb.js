@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/quotes', function() {
+describe('options/quotes', function() {
     it('Invalid String should not change quotes', function() {
         this.comb.configure({ quotes: 3 });
         assert.equal(
@@ -70,7 +70,7 @@ describe.skip('options/quotes', function() {
         );
     });
 
-    it('Should not detect quotes when there are none', function() {
+    it.skip('Should not detect quotes when there are none', function() {
         this.shouldDetect(
             ['quotes'],
             'a { color:red }',
@@ -78,7 +78,7 @@ describe.skip('options/quotes', function() {
         );
     });
 
-    it('Should detect double quotes', function() {
+    it.skip('Should detect double quotes', function() {
         this.shouldDetect(
             ['quotes'],
             'a { content: "foo" }',
@@ -88,7 +88,7 @@ describe.skip('options/quotes', function() {
         );
     });
 
-    it('Should detect single quotes', function() {
+    it.skip('Should detect single quotes', function() {
         this.shouldDetect(
             ['quotes'],
             'a { content: \'foo\' }',
@@ -98,7 +98,7 @@ describe.skip('options/quotes', function() {
         );
     });
 
-    it('Should detect single quotes in attribute', function() {
+    it.skip('Should detect single quotes in attribute', function() {
         this.shouldDetect(
             ['quotes'],
             'a[class^=\'foo\'] { color: red }',
@@ -108,7 +108,7 @@ describe.skip('options/quotes', function() {
         );
     });
 
-    it('Should detect double quotes in url', function() {
+    it.skip('Should detect double quotes in url', function() {
         this.shouldDetect(
             ['quotes'],
             'a { background: url("foo.png") }',
