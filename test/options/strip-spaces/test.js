@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/strip-spaces', function() {
+describe('options/strip-spaces', function() {
     it('Invalid value should not trim trailing spaces', function() {
         this.comb.configure({ 'strip-spaces': 'foobar' });
         assert.equal(
@@ -31,7 +31,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `true`', function() {
+    it.skip('Should detect strip-spaces option set to `true`', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }',
@@ -41,7 +41,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `false`', function() {
+    it.skip('Should detect strip-spaces option set to `false`', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }  ',
@@ -51,7 +51,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `true` with newline', function() {
+    it.skip('Should detect strip-spaces option set to `true` with newline', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }\nb { color: blue }',
@@ -61,7 +61,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `false` with newline', function() {
+    it.skip('Should detect strip-spaces option set to `false` with newline', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }  \nb { color: blue }',
@@ -71,7 +71,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `true` inside a value', function() {
+    it.skip('Should detect strip-spaces option set to `true` inside a value', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a {\n  color:\n  red }',
@@ -81,7 +81,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `false` inside a value', function() {
+    it.skip('Should detect strip-spaces option set to `false` inside a value', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a {\n  color: \n  red }',
@@ -91,7 +91,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `true` if the only trailing space is the last newline', function() {
+    it.skip('Should detect strip-spaces option set to `true` if the only trailing space is the last newline', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }\n',
@@ -101,7 +101,7 @@ describe.skip('options/strip-spaces', function() {
         );
     });
 
-    it('Should detect strip-spaces option set to `false` if there is more than one newline at the end', function() {
+    it.skip('Should detect strip-spaces option set to `false` if there is more than one newline at the end', function() {
         this.shouldDetect(
             ['strip-spaces'],
             'a { color: red }\n\n',
