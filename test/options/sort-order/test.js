@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('options/sort-order', function() {
+describe('options/sort-order', function() {
     it('Should be in expected order in case properties are not grouped', function() {
         this.comb.configure({ 'sort-order': ['position', 'z-index'] });
         this.shouldBeEqual('single-group.css', 'single-group.expected.css');
@@ -61,31 +61,31 @@ describe.skip('options/sort-order', function() {
         assert.equal(input, expected);
     });
 
-    it('Issue 94. Test 1', function() {
+    it.skip('Issue 94. Test 1', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-1.css', 'issue-94-1.expected.css');
     });
 
-    it('Issue 94. Test 2', function() {
+    it.skip('Issue 94. Test 2', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-2.css', 'issue-94-2.expected.css');
     });
 
-    it('Issue 94. Test 3', function() {
+    it.skip('Issue 94. Test 3', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('issue-94-3.css', 'issue-94-3.expected.css');
     });
 
-    it('Should place the leftovers in the end', function() {
+    it.skip('Should place the leftovers in the end', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
         this.shouldBeEqual('leftovers-1.css', 'leftovers-1.expected.css');
     });
 
-    it('Should place the leftovers in the beginning', function() {
+    it.skip('Should place the leftovers in the beginning', function() {
         var config = this.Comb.getConfig('csscomb');
         config['sort-order'][0].unshift(['...']);
         this.comb.configure(config);
@@ -93,7 +93,7 @@ describe.skip('options/sort-order', function() {
         config['sort-order'][0].shift();
     });
 
-    it('Should place the leftovers in the beginning of its group', function() {
+    it.skip('Should place the leftovers in the beginning of its group', function() {
         var config = this.Comb.getConfig('csscomb');
         config['sort-order'][1].unshift('...');
         this.comb.configure(config);
@@ -101,7 +101,7 @@ describe.skip('options/sort-order', function() {
         config['sort-order'][1].shift();
     });
 
-    it('Should place the leftovers in the middle of its group', function() {
+    it.skip('Should place the leftovers in the middle of its group', function() {
         var config = this.Comb.getConfig('csscomb');
         config['sort-order'][1].splice(1, 0, '...');
         this.comb.configure(config);

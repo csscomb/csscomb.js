@@ -1,4 +1,4 @@
-describe.skip('options/sort-order (scss)', function() {
+describe('options/sort-order (scss)', function() {
     it('Should sort properties inside rules (single line)', function() {
         this.comb.configure({ 'sort-order': [
             ['top', 'color']

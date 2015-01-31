@@ -1,4 +1,4 @@
-describe.skip('options/sort-order-fallback', function() {
+describe('options/sort-order-fallback', function() {
     it('Should sort leftovers alphabetically if `sort-order-fallback` is set', function() {
         var config = {
             'sort-order-fallback': 'abc',
