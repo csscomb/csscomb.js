@@ -1,4 +1,4 @@
-describe.skip('options/space-after-colon:', function() {
+describe('options/space-after-colon:', function() {
     it('Array value => should not change anything', function() {
         this.comb.configure({ 'space-after-colon': ['', ' '] });
         this.shouldBeEqual('test.css');
@@ -29,7 +29,7 @@ describe.skip('options/space-after-colon:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it('Should detect no whitespaces', function() {
+    it.skip('Should detect no whitespaces', function() {
         this.shouldDetect(
             ['space-after-colon'],
             'a { color:red }',
@@ -37,7 +37,7 @@ describe.skip('options/space-after-colon:', function() {
         );
     });
 
-    it('Should detect space from two variants', function() {
+    it.skip('Should detect space from two variants', function() {
         this.shouldDetect(
             ['space-after-colon'],
             'a { color: red; color :red }',
@@ -45,7 +45,7 @@ describe.skip('options/space-after-colon:', function() {
         );
     });
 
-    it('Should detect no whitespaces along three variants', function() {
+    it.skip('Should detect no whitespaces along three variants', function() {
         this.shouldDetect(
             ['space-after-colon'],
             'a { color: red; background :red } b { width:10px }',
@@ -53,7 +53,7 @@ describe.skip('options/space-after-colon:', function() {
         );
     });
 
-    it('Should detect space', function() {
+    it.skip('Should detect space', function() {
         this.shouldDetect(
             ['space-after-colon'],
             'a { color : red; background :red } b { width: 10px }',
