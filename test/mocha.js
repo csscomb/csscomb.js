@@ -66,6 +66,7 @@ function shouldDetect(options, input, expected) {
 mocha.suite.beforeEach(function() {
     this.Comb = Comb;
     this.comb = new Comb();
+    this.readFile = readFile;
     this.shouldBeEqual = shouldBeEqual;
     this.shouldDetect = shouldDetect;
 });
