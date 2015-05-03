@@ -925,7 +925,7 @@ Example: `{ "rule-delimiter":  1}`
 }
 ```
 
-Example: `{ "rule-delimiter": "\n" }`
+Example: `{ "rule-delimiter": "\n\n" }`
 
 ```css
 // Before:
