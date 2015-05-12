@@ -114,4 +114,9 @@ describe('options/sort-order (scss)', function() {
         this.comb.configure({ 'sort-order': ['...'] });
         this.shouldBeEqual('issue-317.scss');
     });
+
+    it('Issue 333', function() {
+        this.comb.configure({ 'sort-order': ['...'] });
+        this.shouldBeEqual('issue-333.scss');
+    });
 });
