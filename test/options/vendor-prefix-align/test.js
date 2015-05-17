@@ -59,7 +59,7 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('issue-193.css', 'issue-193.expected.css');
     });
 
-    it.skip('Issue 241: should not break tabs', function() {
+    it('Issue 241: should not break tabs', function() {
         this.comb.configure({
             'block-indent': '\t',
             'vendor-prefix-align': true
