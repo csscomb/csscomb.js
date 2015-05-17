@@ -29,7 +29,7 @@ describe('options/space-before-closing-brace:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it.skip('Should detect no whitespace', function() {
+    it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-before-closing-brace'],
             'a{top:0}',
@@ -37,7 +37,7 @@ describe('options/space-before-closing-brace:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (2 blocks)', function() {
+    it('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-closing-brace'],
             'a{top:0} b { color: tomato; }',
@@ -45,7 +45,7 @@ describe('options/space-before-closing-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace', function() {
+    it('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-before-closing-brace'],
             'a { top:0 }',
@@ -53,7 +53,7 @@ describe('options/space-before-closing-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (2 blocks)', function() {
+    it('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-closing-brace'],
             'a { top:0 } b{color:tomato;}',
@@ -61,7 +61,7 @@ describe('options/space-before-closing-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (mix with block indent)', function() {
+    it('Should detect whitespace (mix with block indent)', function() {
         this.shouldDetect(
             ['space-before-closing-brace', 'block-indent'],
             'a {\n  top:0\n  }\nb{\n  color:tomato;\n  }',

@@ -29,7 +29,7 @@ describe('options/space-after-selector-delimiter:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it.skip('Should detect no whitespace', function() {
+    it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a,b{top:0}',
@@ -37,7 +37,7 @@ describe('options/space-after-selector-delimiter:', function() {
         );
     });
 
-    it.skip('Should detect whitespace', function() {
+    it('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a, \n b {top:0}',
@@ -45,7 +45,7 @@ describe('options/space-after-selector-delimiter:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (2 blocks)', function() {
+    it('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a,b{top:0} a, b{left:0}',
@@ -53,7 +53,7 @@ describe('options/space-after-selector-delimiter:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (2 blocks)', function() {
+    it('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a, b {top:0} b,a{left:0}',
@@ -61,7 +61,7 @@ describe('options/space-after-selector-delimiter:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (3 blocks)', function() {
+    it('Should detect no whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a, b{top:0} b,c{left:0} c,d{right:0}',
@@ -69,7 +69,7 @@ describe('options/space-after-selector-delimiter:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (3 blocks)', function() {
+    it('Should detect whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-after-selector-delimiter'],
             'a,b{top:0} b, c{left:0} c, sd{right:0}',

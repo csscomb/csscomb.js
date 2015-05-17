@@ -35,7 +35,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Should detect unitless zero option', function() {
+    it('Should detect unitless zero option', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { width: 0 }',
@@ -45,7 +45,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Should detect zero with unit', function() {
+    it('Should detect zero with unit', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { width: 0px }',
@@ -55,7 +55,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Should detect unitless zero option with multiple values', function() {
+    it('Should detect unitless zero option with multiple values', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { padding: 0px 0 0 }',
@@ -65,7 +65,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Should detect zero with unit and multiple values', function() {
+    it('Should detect zero with unit and multiple values', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { padding: 0px 0 0em }',
@@ -75,7 +75,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Shouldn’t detect unitless zero option if there is no unit', function() {
+    it('Shouldn’t detect unitless zero option if there is no unit', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { color: red }',
@@ -83,7 +83,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Shouldn’t detect unitless zero option if there is `deg` unit', function() {
+    it('Shouldn’t detect unitless zero option if there is `deg` unit', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { transform: rotate(0deg) }',
@@ -91,7 +91,7 @@ describe('options/unitless-zero', function() {
         );
     });
 
-    it.skip('Should detect unitless zero option with percents', function() {
+    it('Should detect unitless zero option with percents', function() {
         this.shouldDetect(
             ['unitless-zero'],
             'a { padding: 0% 0 0 }',
