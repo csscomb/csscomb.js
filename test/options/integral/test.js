@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('integral test', function() {
+describe('integral test', function() {
     it('Process result must be equal to expected.css', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
