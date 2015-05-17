@@ -1,7 +1,7 @@
 var Comb = process.env.TEST_COV ? require('../../../lib-cov/csscomb') : require('../../../lib/csscomb');
 var assert = require('assert');
 
-describe.skip('csscomb methods', function() {
+describe('csscomb methods', function() {
     var comb;
     var input;
     var output;

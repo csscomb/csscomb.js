@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe.skip('.use()', function() {
+describe('.use()', function() {
     it('Should set predefined options in correct order', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
