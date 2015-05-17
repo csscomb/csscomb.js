@@ -29,7 +29,7 @@ describe('options/space-after-opening-brace:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it.skip('Should detect no whitespace', function() {
+    it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{top:0}',
@@ -37,7 +37,7 @@ describe('options/space-after-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace', function() {
+    it('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{\n\ttop:0}',
@@ -45,7 +45,7 @@ describe('options/space-after-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (2 blocks)', function() {
+    it('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{top:0} b{\n left:0}',
@@ -53,7 +53,7 @@ describe('options/space-after-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (2 blocks)', function() {
+    it('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{ top:0 } b{left:0}',
@@ -61,7 +61,7 @@ describe('options/space-after-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (3 blocks)', function() {
+    it('Should detect no whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{top:0} b { left: 0 } c{\n\tright:0}',
@@ -69,7 +69,7 @@ describe('options/space-after-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (3 blocks)', function() {
+    it('Should detect whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
             'a{\ntop:0} b{\nleft:0} c{\n  right:0}',

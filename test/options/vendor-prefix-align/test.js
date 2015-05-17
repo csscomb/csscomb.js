@@ -67,7 +67,7 @@ describe('options/vendor-prefix-align', function() {
         this.shouldBeEqual('issue-241.css', 'issue-241.expected.css');
     });
 
-    it.skip('Shouldn not detect anything if there are no prefixed groups', function() {
+    it('Shouldn not detect anything if there are no prefixed groups', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             'a{ color: red }a{ -webkit-transform: translateZ(0) }',
@@ -75,7 +75,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as false in properties', function() {
+    it('Shouldn detect vendor-prefix-align as false in properties', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('property-align.css'),
@@ -85,7 +85,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as true in properties', function() {
+    it('Shouldn detect vendor-prefix-align as true in properties', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('property-align.expected.css'),
@@ -95,7 +95,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as false in values', function() {
+    it('Shouldn detect vendor-prefix-align as false in values', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('value-align.css'),
@@ -105,7 +105,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as true in values', function() {
+    it('Shouldn detect vendor-prefix-align as true in values', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('value-align.expected.css'),
@@ -115,7 +115,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as true, test 1', function() {
+    it('Shouldn detect vendor-prefix-align as true, test 1', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('already-aligned.css'),
@@ -125,7 +125,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as true, test 2', function() {
+    it('Shouldn detect vendor-prefix-align as true, test 2', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('complex.expected.css'),
@@ -135,7 +135,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Shouldn detect vendor-prefix-align as false', function() {
+    it('Shouldn detect vendor-prefix-align as false', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             this.readFile('complex.css'),
@@ -145,7 +145,7 @@ describe('options/vendor-prefix-align', function() {
         );
     });
 
-    it.skip('Should not detect anything in simple case', function() {
+    it('Should not detect anything in simple case', function() {
         this.shouldDetect(
             ['vendor-prefix-align'],
             'a{border:0;}',

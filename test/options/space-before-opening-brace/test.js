@@ -34,7 +34,7 @@ describe('options/space-before-opening-brace:', function() {
         this.shouldBeEqual('issue-232.css', 'issue-232.expected.css');
     });
 
-    it.skip('Should detect no whitespace', function() {
+    it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0}',
@@ -42,7 +42,7 @@ describe('options/space-before-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace', function() {
+    it('Should detect whitespace', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a \n {top:0}',
@@ -50,7 +50,7 @@ describe('options/space-before-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (2 blocks)', function() {
+    it('Should detect no whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0} b {left:0}',
@@ -58,7 +58,7 @@ describe('options/space-before-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (2 blocks)', function() {
+    it('Should detect whitespace (2 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a {top:0} b{left:0}',
@@ -66,7 +66,7 @@ describe('options/space-before-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect no whitespace (3 blocks)', function() {
+    it('Should detect no whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a {top:0} b{left:0} c{right:0}',
@@ -74,7 +74,7 @@ describe('options/space-before-opening-brace:', function() {
         );
     });
 
-    it.skip('Should detect whitespace (3 blocks)', function() {
+    it('Should detect whitespace (3 blocks)', function() {
         this.shouldDetect(
             ['space-before-opening-brace'],
             'a{top:0} b {left:0} c {right:0}',

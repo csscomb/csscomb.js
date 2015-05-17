@@ -27,7 +27,7 @@ describe('options/eof-newline', function() {
         );
     });
 
-    it.skip('Shouldn’t detect eof newline', function() {
+    it('Shouldn’t detect eof newline', function() {
         this.shouldDetect(
             ['eof-newline'],
             'a { color: red }',
@@ -37,7 +37,7 @@ describe('options/eof-newline', function() {
         );
     });
 
-    it.skip('Should detect eof newline', function() {
+    it('Should detect eof newline', function() {
         this.shouldDetect(
             ['eof-newline'],
             'a { color: red }\n',
@@ -47,7 +47,7 @@ describe('options/eof-newline', function() {
         );
     });
 
-    it.skip('Shouldn’t detect eof newline with spaces at the end', function() {
+    it('Shouldn’t detect eof newline with spaces at the end', function() {
         this.shouldDetect(
             ['eof-newline'],
             'a { color: red }  ',
@@ -57,7 +57,7 @@ describe('options/eof-newline', function() {
         );
     });
 
-    it.skip('Should detect eof newline with mixed spaces at the end', function() {
+    it('Should detect eof newline with mixed spaces at the end', function() {
         this.shouldDetect(
             ['eof-newline'],
             'a { color: red } \n ',

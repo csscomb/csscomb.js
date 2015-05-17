@@ -29,7 +29,7 @@ describe('options/space-before-colon:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it.skip('Should detect no whitespaces', function() {
+    it('Should detect no whitespaces', function() {
         this.shouldDetect(
             ['space-before-colon'],
             'a { color:red }',
@@ -37,7 +37,7 @@ describe('options/space-before-colon:', function() {
         );
     });
 
-    it.skip('Should detect no space from two variants', function() {
+    it('Should detect no space from two variants', function() {
         this.shouldDetect(
             ['space-before-colon'],
             'a { color: red; color :red }',
@@ -45,7 +45,7 @@ describe('options/space-before-colon:', function() {
         );
     });
 
-    it.skip('Should detect no whitespaces along three variants', function() {
+    it('Should detect no whitespaces along three variants', function() {
         this.shouldDetect(
             ['space-before-colon'],
             'a { color: red; background :red } b { width:10px }',
@@ -53,7 +53,7 @@ describe('options/space-before-colon:', function() {
         );
     });
 
-    it.skip('Should detect space', function() {
+    it('Should detect space', function() {
         this.shouldDetect(
             ['space-before-colon'],
             'a { color : red; background :red } b { width:10px }',

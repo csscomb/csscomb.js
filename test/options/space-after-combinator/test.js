@@ -29,7 +29,7 @@ describe('options/space-after-combinator:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
-    it.skip('Should detect no whitespaces after combinator', function() {
+    it('Should detect no whitespaces after combinator', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a+b { color:red }',
@@ -37,7 +37,7 @@ describe('options/space-after-combinator:', function() {
         );
     });
 
-    it.skip('Should detect a space after combinator', function() {
+    it('Should detect a space after combinator', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a + \n b { color:red }',
@@ -45,7 +45,7 @@ describe('options/space-after-combinator:', function() {
         );
     });
 
-    it.skip('Should detect a space after combinator in long selector', function() {
+    it('Should detect a space after combinator in long selector', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a + b ~ c>d { color:red }',
@@ -53,7 +53,7 @@ describe('options/space-after-combinator:', function() {
         );
     });
 
-    it.skip('Should detect a space after combinator in long selector, test 2', function() {
+    it('Should detect a space after combinator in long selector, test 2', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a>b + c + d { color:red }',
@@ -61,7 +61,7 @@ describe('options/space-after-combinator:', function() {
         );
     });
 
-    it.skip('Should detect no whitespaces after combinator in long selector', function() {
+    it('Should detect no whitespaces after combinator in long selector', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a+b ~ c+d { color:red }',
@@ -69,7 +69,7 @@ describe('options/space-after-combinator:', function() {
         );
     });
 
-    it.skip('Shouldn’t detect whitespaces after combinator in selector without combinators', function() {
+    it('Shouldn’t detect whitespaces after combinator in selector without combinators', function() {
         this.shouldDetect(
             ['space-after-combinator'],
             'a { color:red }',
