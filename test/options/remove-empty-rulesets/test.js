@@ -28,7 +28,7 @@ describe('options/remove-empty-rulesets', function() {
         });
     });
 
-    describe.skip('detecting the value', function() {
+    describe('detecting the value', function() {
         it('Should detect this option set to `true`', function() {
             this.shouldDetect(
                 ['remove-empty-rulesets'],

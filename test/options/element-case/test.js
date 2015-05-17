@@ -41,7 +41,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Should detect lowercase elements', function() {
+    it('Should detect lowercase elements', function() {
         this.shouldDetect(
             ['element-case'],
             'a { color: red }',
@@ -51,7 +51,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Should detect uppercase elements', function() {
+    it('Should detect uppercase elements', function() {
         this.shouldDetect(
             ['element-case'],
             'A { color: red }',
@@ -61,7 +61,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Should detect lowercase elements in a long selector', function() {
+    it('Should detect lowercase elements in a long selector', function() {
         this.shouldDetect(
             ['element-case'],
             'ul li:not(:hover) A { color: red }',
@@ -71,7 +71,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Should detect uppercase elements in a long selector', function() {
+    it('Should detect uppercase elements in a long selector', function() {
         this.shouldDetect(
             ['element-case'],
             'ul .lol:not(LI) A { color: red }',
@@ -81,7 +81,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Shouldn’t detect case of elements in a mixed case', function() {
+    it('Shouldn’t detect case of elements in a mixed case', function() {
         this.shouldDetect(
             ['element-case'],
             'aRtIcLe { color: red }',
@@ -89,7 +89,7 @@ describe('options/element-case', function() {
         );
     });
 
-    it.skip('Shouldn’t detect case of elements when there are no such', function() {
+    it('Shouldn’t detect case of elements when there are no such', function() {
         this.shouldDetect(
             ['element-case'],
             '*.lol { color: red }',
