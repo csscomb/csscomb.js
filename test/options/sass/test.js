@@ -23,7 +23,7 @@ describe('Sass', function() {
         this.shouldBeEqual('interpolated-variable-1.sass');
     });
 
-    it.skip('Should parse interpolated variables inside values', function() {
+    it('Should parse interpolated variables inside values', function() {
         this.shouldBeEqual('interpolated-variable-2.sass');
     });
 
