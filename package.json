@@ -39,7 +39,7 @@
         "node": ">= 0.10.0"
     },
     "dependencies": {
-        "commander": "2.0.0",
+        "minimist": "1.1.x",
         "csscomb-core": "3.0.0-3",
         "gonzales-pe": "3.0.0-28",
         "vow": "0.4.4"
