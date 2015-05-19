@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.1.0 - 2015-05-19
+**Thanks to
+[@1000ch](https://github.com/1000ch),
+[@alexeykuzmin](https://github.com/alexeykuzmin),
+[@jonrohan](https://github.com/jonrohan)**
+- Used new Gonzales PE API
+- Fixed nested properties (#319)
+- Added support for symlinked configs
+- Added support for configs with any extension
+
 ## 3.0.4 - 2014-11-15
 **Thanks to
 [@gonzalocasas](https://github.com/gonzalocasas),
