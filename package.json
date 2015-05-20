@@ -7,30 +7,12 @@
     "repository": "https://github.com/csscomb/csscomb.js",
     "maintainers": [
         {
-            "name": "Mikhail Troshev",
-            "email": "mishanga@yandex-team.ru",
-            "web": "http://mishanga.pro/"
-        },
-        {
             "name": "Tony Ganch",
             "email": "tonyganch+github@gmail.com",
             "web": "http://tonyganch.com/"
-        },
-        {
-            "name": "Slava Oliyanchuk",
-            "email": "miripiruni@gmail.com",
-            "web": "http://miripiruni.org/"
         }
     ],
     "contributors": [
-        {
-            "name": "Sergey Puzankov",
-            "email": "puzankov@yandex-team.ru"
-        },
-        {
-            "name": "Denis Payase",
-            "email": "lostsoul@yandex-team.ru"
-        },
         {
             "name": "Igor Novak",
             "email": "bezengi@gmail.com"
@@ -38,6 +20,19 @@
         {
             "name": "Roman Komarov",
             "email": "kizmarh@ya.ru"
+        },
+        {
+            "name": "Denis Payase",
+            "email": "lostsoul@yandex-team.ru"
+        },
+        {
+            "name": "Mikhail Troshev",
+            "email": "mishanga@yandex-team.ru",
+            "web": "http://mishanga.pro/"
+        },
+        {
+            "name": "Sergey Puzankov",
+            "email": "puzankov@yandex-team.ru"
         }
     ],
     "engines": {
