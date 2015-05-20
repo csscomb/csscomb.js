@@ -38,4 +38,9 @@ describe('options/space-between-declarations:', function() {
         this.comb.configure({ 'space-between-declarations': '\n    ' });
         this.shouldBeEqual('issue-239.css', 'issue-239.expected.css');
     });
+
+    it('Issue 378', function() {
+        this.comb.configure({ 'space-between-declarations': '\n' });
+        this.shouldBeEqual('issue-378.css');
+    });
 });
