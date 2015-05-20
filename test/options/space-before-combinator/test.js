@@ -29,6 +29,11 @@ describe('options/space-before-combinator:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
+    it.only('Issue 381', function() {
+        this.comb.configure({ 'space-before-combinator': ' ' });
+        this.shouldBeEqual('issue-381.css');
+    });
+
     it('Should detect no whitespaces before combinator', function() {
         this.shouldDetect(
             ['space-before-combinator'],
