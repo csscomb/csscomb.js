@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.2 - 2015-05-20
+- Fixed processing of hashes (#379)
+
 ## 3.1.1 - 2015-05-20
 - Fixed `space-between-declarations` vs. media queries (#378)
 
