@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.3 - 2015-05-20
+- Do not add extra space before combinators which go first in selectors (#381)
+
 ## 3.1.2 - 2015-05-20
 - Fixed processing of hashes (#379)
 
