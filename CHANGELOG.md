@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.1 - 2015-05-20
+- Fixed `space-between-declarations` vs. media queries (#378)
+
 ## 3.1.0 - 2015-05-19
 **Thanks to
 [@1000ch](https://github.com/1000ch),
