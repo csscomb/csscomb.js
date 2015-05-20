@@ -24,6 +24,11 @@ describe('options/block-indent:', function() {
         this.shouldBeEqual('test.css', 'test-2.expected.css');
     });
 
+    it('Issue 379', function() {
+        this.comb.configure({ 'block-indent': 4 });
+        this.shouldBeEqual('issue-379.css', 'issue-379.expected.css');
+    });
+
     it('Should detect nothing with an empty block, test 1', function() {
         this.shouldDetect(
             ['block-indent'],
