@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.4 - 2015-05-24
+- Fixed `space-after-opening-brace` option for empty media queries (#387)
+
 ## 3.1.3 - 2015-05-20
 - Do not add extra space before combinators which go first in selectors (#381)
 
