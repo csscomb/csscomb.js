@@ -29,6 +29,11 @@ describe('options/space-after-opening-brace:', function() {
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
 
+    it('Issue 387', function() {
+        this.comb.configure({ 'space-after-opening-brace': '\n' });
+        this.shouldBeEqual('issue-387.css', 'issue-387.expected.css');
+    });
+
     it('Should detect no whitespace', function() {
         this.shouldDetect(
             ['space-after-opening-brace'],
