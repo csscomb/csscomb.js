@@ -3,7 +3,9 @@ describe('options/always-semicolon (sass)', function() {
         this.comb.configure({ 'always-semicolon': true });
     });
 
-    it('Should not add semicolon', function() {
-        this.shouldBeEqual('test.sass');
+    describe('process', function() {
+        it('Should not add semicolon', function() {
+            this.shouldBeEqual('test.sass');
+        });
     });
 });
