@@ -40,8 +40,8 @@
     },
     "dependencies": {
         "commander": "2.0.0",
-        "csscomb-core": "~3.0.0-1",
-        "gonzales-pe": "~3.0.0-10",
+        "csscomb-core": "3.0.0-3",
+        "gonzales-pe": "3.0.0-28",
         "vow": "0.4.4"
     },
     "devDependencies": {
