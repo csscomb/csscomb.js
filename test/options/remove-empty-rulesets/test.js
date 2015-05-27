@@ -1,34 +1,36 @@
 var assert = require('assert');
 
 describe('options/remove-empty-rulesets', function() {
-    it('Configured with invalid value, should not remove empty ruleset', function() {
-        this.comb.configure({ 'remove-empty-rulesets': 'foobar' });
-        assert.equal(this.comb.processString('a { width: 10px; } b {}'), 'a { width: 10px; } b {}');
+    describe('process', function() {
+        it('Configured with invalid value, should not remove empty ruleset', function() {
+            this.comb.configure({ 'remove-empty-rulesets': 'foobar' });
+            assert.equal(this.comb.processString('a { width: 10px; } b {}'), 'a { width: 10px; } b {}');
+        });
+
+        describe('configured with Boolean "true" value', function() {
+            beforeEach(function() {
+                this.comb.configure({ 'remove-empty-rulesets': true });
+            });
+
+            it('should remove empty ruleset', function() {
+                assert.equal(this.comb.processString(' b {} '), '  ');
+            });
+
+            it('should remove ruleset with spaces', function() {
+                assert.equal(this.comb.processString(' b {   } '), '  ');
+            });
+
+            it('should leave ruleset with declarations', function() {
+                assert.equal(this.comb.processString('a { width: 10px; }\nb {} '), 'a { width: 10px; }\n ');
+            });
+
+            it('should leave ruleset with comments', function() {
+                assert.equal(this.comb.processString('a { /* comment */ }\nb {} '), 'a { /* comment */ }\n ');
+            });
+        });
     });
 
-    describe('configured with Boolean "true" value', function() {
-        beforeEach(function() {
-            this.comb.configure({ 'remove-empty-rulesets': true });
-        });
-
-        it('should remove empty ruleset', function() {
-            assert.equal(this.comb.processString(' b {} '), '  ');
-        });
-
-        it('should remove ruleset with spaces', function() {
-            assert.equal(this.comb.processString(' b {   } '), '  ');
-        });
-
-        it('should leave ruleset with declarations', function() {
-            assert.equal(this.comb.processString('a { width: 10px; }\nb {} '), 'a { width: 10px; }\n ');
-        });
-
-        it('should leave ruleset with comments', function() {
-            assert.equal(this.comb.processString('a { /* comment */ }\nb {} '), 'a { /* comment */ }\n ');
-        });
-    });
-
-    describe('detecting the value', function() {
+    describe('detect', function() {
         it('Should detect this option set to `true`', function() {
             this.shouldDetect(
                 ['remove-empty-rulesets'],
