@@ -40,8 +40,8 @@
     },
     "dependencies": {
         "minimist": "1.1.x",
-        "csscomb-core": "3.0.0-3",
-        "gonzales-pe": "3.0.0-28",
+        "csscomb-core": "3.0.0-4",
+        "gonzales-pe": "3.0.0-29",
         "vow": "0.4.4"
     },
     "devDependencies": {
