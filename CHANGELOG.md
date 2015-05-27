@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.5 - 2015-05-27
+- Fixed dependencies
+
 ## 3.1.4 - 2015-05-24
 - Fixed `space-after-opening-brace` option for empty media queries (#387)
 
