@@ -1,6 +1,7 @@
 module.exports = {
     options: {
         eqeqeq: true,
+        esnext: true,
         evil: true,
         expr: true,
         forin: true,
@@ -22,7 +23,7 @@ module.exports = {
     groups: {
         js: {
             options: { node: true },
-            includes: ['lib/**/*.js']
+            includes: ['src/**/*.js']
         },
         test: {
             options: {
