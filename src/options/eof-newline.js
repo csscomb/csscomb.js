@@ -20,7 +20,7 @@ module.exports = {
             node.content.push(lastChild);
         }
         lastChild.content = lastChild.content.replace(/\n$/, '');
-        if (this.getValue('eof-newline')) lastChild.content += '\n';
+        if (this.value) lastChild.content += '\n';
     },
 
     /**

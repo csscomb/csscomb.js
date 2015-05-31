@@ -47,7 +47,7 @@ module.exports = {
 
         var currentNode;
         // Sort order of properties:
-        var order = this.getValue('sort-order');
+        var order = this.value;
         var syntax = this.getSyntax();
         // List of declarations that should be sorted:
         var sorted = [];
