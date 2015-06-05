@@ -48,8 +48,8 @@ let CSScomb = function(config) {
  * @param {Array} options List of options to detect
  * @returns {Object} Detected options
  */
-CSScomb.detectInFile = function detectInFile(path, options) {
-    var stylesheet = fs.readFileSync(path, 'utf8');
+CSScomb.detectInFile = function detectInFile(file, options) {
+    var stylesheet = fs.readFileSync(file, 'utf8');
     return CSScomb.detectInString(stylesheet, options);
 };
 
