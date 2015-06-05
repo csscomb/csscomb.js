@@ -45,8 +45,7 @@
     "vow": "0.4.4"
   },
   "devDependencies": {
-    "babel-core": "^5.4.7",
-    "gulp-babel": "^5.1.0",
+    "babel": "^5.5.3",
     "jscs": "1.13.1",
     "jshint": "2.8.0",
     "jshint-groups": "0.5.3",
@@ -62,6 +61,7 @@
     "csscomb": "./bin/csscomb"
   },
   "scripts": {
+    "build": "./scripts/build.sh",
     "coverage": "./scripts/coverage.sh",
     "test": "./scripts/test.sh"
   }
