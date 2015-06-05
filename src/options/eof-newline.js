@@ -9,16 +9,16 @@ module.exports = {
 
     /**
      * Processes tree node.
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('stylesheet')) return;
+    process: function(ast) {
+        var lastChild = ast.last();
 
-        var lastChild = node.last();
         if (!lastChild.is('space')) {
             lastChild = gonzales.createNode({ type: 'space', content: '' });
-            node.content.push(lastChild);
+            ast.content.push(lastChild);
         }
+
         lastChild.content = lastChild.content.replace(/\n$/, '');
         if (this.value) lastChild.content += '\n';
     },
@@ -26,16 +26,15 @@ module.exports = {
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('stylesheet')) return;
+    detect: function(ast) {
+        var lastChild = ast.last();
 
-        var lastChild = node.last();
         if (lastChild.is('space') && lastChild.content.indexOf('\n') !== -1) {
-            return true;
+            return [true];
         } else {
-            return false;
+            return [false];
         }
     }
 };

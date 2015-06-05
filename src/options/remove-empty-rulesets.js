@@ -53,12 +53,10 @@ module.exports = (function() {
         /**
          * Remove rulesets with no declarations.
          *
-         * @param {String} node
+         * @param {String} ast
          */
-        process: function(node) {
-            if (!node.is('stylesheet')) return;
-
-            processNode(node);
+        process: function(ast) {
+            processNode(ast);
         },
 
         detectDefault: true,
@@ -67,15 +65,21 @@ module.exports = (function() {
          * Detects the value of an option at the tree node.
          * This option is treated as `true` by default, but any trailing space would invalidate it.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        detect: function(node) {
-            if (!node.is('atrulers') && !node.is('block')) return;
+        detect: function(ast) {
+            let detected = [];
 
-            if (node.length === 0 ||
-               (node.length === 1 && node.first().is('space'))) {
-                return false;
-            }
+            ast.traverse(function(node) {
+                if (!node.is('atrulers') && !node.is('block')) return;
+
+                if (node.length === 0 ||
+                   (node.length === 1 && node.first().is('space'))) {
+                    detected.push(false);
+                }
+            });
+
+            return detected;
         }
     };
 })();

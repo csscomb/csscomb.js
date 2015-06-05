@@ -260,177 +260,184 @@ module.exports = (function() {
         /**
          * Processes tree node.
          *
-         * @param {node} node
+         * @param {node} ast
+         * @param {String} syntax
          */
-        process: function(node) {
-            if (!node.is('block')) return;
-            oneline = true;
+        process: function(ast, syntax) {
+            ast.traverse('block', function(node) {
+                oneline = true;
 
-            var dict = {};
+                var dict = {};
 
-            // Gathering Info
-            walk({
-                node: node,
-                selector: getPropertyName,
-                getExtraSymbols: extraIndentProperty,
-                payload: function(info) {
-                    updateDict(info, dict);
-                }
-            });
-
-            walk({
-                node: node,
-                selector: getValName,
-                namespaceSelector: getPropertyName,
-                getExtraSymbols: extraIndentVal,
-                payload: function(info) {
-                    updateDict(info, dict);
-                }
-            });
-
-            if (oneline && this.getSyntax() !== 'sass') return;
-
-            // Update nodes
-            walk({
-                node: node,
-                selector: getValName,
-                namespaceSelector: getPropertyName,
-                getExtraSymbols: extraIndentVal,
-                payload: function(info, i) {
-                    for (var x = node.get(i).length; x--;) {
-                        if (node.get(i).get(x).is('value')) break;
+                // Gathering Info
+                walk({
+                    node: node,
+                    selector: getPropertyName,
+                    getExtraSymbols: extraIndentProperty,
+                    payload: function(info) {
+                        updateDict(info, dict);
                     }
+                });
 
-                    if (!node.get(i).get(x - 1).is('space')) {
-                        var space = gonzales.createNode({ type: 'space', content: '' });
-                        node.get(i).insert(x, space);
-                        ++x;
+                walk({
+                    node: node,
+                    selector: getValName,
+                    namespaceSelector: getPropertyName,
+                    getExtraSymbols: extraIndentVal,
+                    payload: function(info) {
+                        updateDict(info, dict);
                     }
+                });
 
-                    node.get(i).get(x - 1).content = updateIndent(info, dict, node.get(i).get(x - 1).content);
-                }
-            });
+                if (oneline && syntax !== 'sass') return;
 
-            if (this.getSyntax() === 'sass') return;
+                // Update nodes
+                walk({
+                    node: node,
+                    selector: getValName,
+                    namespaceSelector: getPropertyName,
+                    getExtraSymbols: extraIndentVal,
+                    payload: function(info, i) {
+                        for (var x = node.get(i).length; x--;) {
+                            if (node.get(i).get(x).is('value')) break;
+                        }
 
-            walk({
-                node: node,
-                selector: getPropertyName,
-                getExtraSymbols: extraIndentProperty,
-                payload: function(info, i) {
-                    // `node.get(i - 1)` can be either space or comment:
-                    var whitespaceNode = node.get(i - 1);
-                    if (!whitespaceNode) return;
-                    // If it's a comment, insert an empty space node:
-                    if (!whitespaceNode.is('space')) {
-                        whitespaceNode = gonzales.createNode({ type: 'space', content: '' });
-                        node.insert(i - 1, whitespaceNode);
+                        if (!node.get(i).get(x - 1).is('space')) {
+                            var space = gonzales.createNode({ type: 'space', content: '' });
+                            node.get(i).insert(x, space);
+                            ++x;
+                        }
+
+                        node.get(i).get(x - 1).content = updateIndent(info, dict, node.get(i).get(x - 1).content);
                     }
-                    whitespaceNode.content = updateIndent(info, dict, whitespaceNode.content);
-                }
+                });
+
+                if (syntax === 'sass') return;
+
+                walk({
+                    node: node,
+                    selector: getPropertyName,
+                    getExtraSymbols: extraIndentProperty,
+                    payload: function(info, i) {
+                        // `node.get(i - 1)` can be either space or comment:
+                        var whitespaceNode = node.get(i - 1);
+                        if (!whitespaceNode) return;
+                        // If it's a comment, insert an empty space node:
+                        if (!whitespaceNode.is('space')) {
+                            whitespaceNode = gonzales.createNode({ type: 'space', content: '' });
+                            node.insert(i - 1, whitespaceNode);
+                        }
+                        whitespaceNode.content = updateIndent(info, dict, whitespaceNode.content);
+                    }
+                });
             });
         },
 
         /**
          * Detects the value of an option at the tree node.
          *
-         * @param {node} node
+         * @param {node} ast
+         * @param {String} syntax
          */
-        detect: function(node) {
-            if (!node.is('block')) return;
+        detect: function(ast) {
+            let detected = [];
 
-            var result = {
-                true: 0,
-                false: 0
-            };
+            ast.traverse('block', function(node) {
+                var result = {
+                    true: 0,
+                    false: 0
+                };
 
-            var maybePrefix = false;
-            var prevPrefixLength = false;
-            var prevProp;
-            var prevSum;
-            var partialResult = null;
+                var maybePrefix = false;
+                var prevPrefixLength = false;
+                var prevProp;
+                var prevSum;
+                var partialResult = null;
 
-            var getResult = function(node, sum, info, i) {
-                var prop = info.baseName;
+                var getResult = function(node, sum, info, i) {
+                    var prop = info.baseName;
 
-                // If this is the last item in a row and we have a result, then catch it
-                if (prop !== prevProp && partialResult !== null) {
-                    if (partialResult) {
-                        result.true++;
-                    } else {
-                        result.false++;
+                    // If this is the last item in a row and we have a result, then catch it
+                    if (prop !== prevProp && partialResult !== null) {
+                        if (partialResult) {
+                            result.true++;
+                        } else {
+                            result.false++;
+                        }
+                        partialResult = null;
                     }
-                    partialResult = null;
-                }
 
-                if (prop === prevProp && info.prefixLength !== prevPrefixLength) {
-                    maybePrefix = true;
-                } else {
-                    maybePrefix = false;
-                }
-
-                if (maybePrefix && partialResult !== false) {
-                    // If there is prefixed prop, check if the prefixes are aligned,
-                    // but only if we hadn't already catched that it is false
-                    if (sum === prevSum) {
-                        partialResult = true;
+                    if (prop === prevProp && info.prefixLength !== prevPrefixLength) {
+                        maybePrefix = true;
                     } else {
-                        partialResult = false;
+                        maybePrefix = false;
                     }
-                }
 
-                if (node.length === i + 3 && partialResult !== null) {
-                    // If we're at the last property and have a result, catch it
-                    if (partialResult) {
-                        result.true++;
+                    if (maybePrefix && partialResult !== false) {
+                        // If there is prefixed prop, check if the prefixes are aligned,
+                        // but only if we hadn't already catched that it is false
+                        if (sum === prevSum) {
+                            partialResult = true;
+                        } else {
+                            partialResult = false;
+                        }
+                    }
+
+                    if (node.length === i + 3 && partialResult !== null) {
+                        // If we're at the last property and have a result, catch it
+                        if (partialResult) {
+                            result.true++;
+                        } else {
+                            result.false++;
+                        }
+                    }
+
+                    prevPrefixLength = info.prefixLength;
+                    prevProp = prop;
+                    prevSum = sum;
+                };
+
+                // Gathering Info
+                walk({
+                    node: node,
+                    selector: getPropertyName,
+                    getExtraSymbols: extraIndentProperty,
+                    payload: function(info, i) {
+                        if (node.get(i - 1) && node.get(i - 1).content) {
+                            var sum = node.get(i - 1).content.
+                                replace(/^[ \t]*\n+/, '').length + info.prefixLength;
+                            getResult(node, sum, info, i);
+                        }
+                    }
+                });
+
+                walk({
+                    node: node,
+                    selector: getValName,
+                    getExtraSymbols: extraIndentVal,
+                    payload: function(info, i) {
+                        for (var x = node.get(i).length; x--;) {
+                            if (node.get(i).get(x).is('value')) break;
+                        }
+
+                        if (node.get(i).get(x - 1)) {
+                            var sum = node.get(i).get(x - 1).content
+                                .replace(/^[ \t]*\n+/, '').length + info.prefixLength;
+                            getResult(node, sum, info, i);
+                        }
+                    }
+                });
+
+                if (result.true > 0 || result.false > 0) {
+                    if (result.true >= result.false) {
+                        detected.push(true);
                     } else {
-                        result.false++;
-                    }
-                }
-
-                prevPrefixLength = info.prefixLength;
-                prevProp = prop;
-                prevSum = sum;
-            };
-
-            // Gathering Info
-            walk({
-                node: node,
-                selector: getPropertyName,
-                getExtraSymbols: extraIndentProperty,
-                payload: function(info, i) {
-                    if (node.get(i - 1) && node.get(i - 1).content) {
-                        var sum = node.get(i - 1).content.
-                            replace(/^[ \t]*\n+/, '').length + info.prefixLength;
-                        getResult(node, sum, info, i);
+                        detected.push(false);
                     }
                 }
             });
 
-            walk({
-                node: node,
-                selector: getValName,
-                getExtraSymbols: extraIndentVal,
-                payload: function(info, i) {
-                    for (var x = node.get(i).length; x--;) {
-                        if (node.get(i).get(x).is('value')) break;
-                    }
-
-                    if (node.get(i).get(x - 1)) {
-                        var sum = node.get(i).get(x - 1).content
-                            .replace(/^[ \t]*\n+/, '').length + info.prefixLength;
-                        getResult(node, sum, info, i);
-                    }
-                }
-            });
-
-            if (result.true > 0 || result.false > 0) {
-                if (result.true >= result.false) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            return detected;
         }
     };
 })();

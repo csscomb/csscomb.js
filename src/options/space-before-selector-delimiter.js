@@ -15,43 +15,43 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('selector')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        var value = this.getValue('space-before-selector-delimiter');
-
-        node.forEach('delimiter', function(delim, i) {
-            var previousNode = node.get(i - 1);
-            if (previousNode.last().is('space')) {
-                previousNode.last().content = value;
-            } else {
-                var space = gonzales.createNode({ type: 'space', content: value });
-                previousNode.content.push(space);
-            }
+        ast.traverse('selector', function(selector) {
+            selector.forEach('delimiter', function(delim, i) {
+                var previousNode = selector.get(i - 1);
+                if (previousNode.last().is('space')) {
+                    previousNode.last().content = value;
+                } else {
+                    var space = gonzales.createNode({ type: 'space', content: value });
+                    previousNode.content.push(space);
+                }
+            });
         });
     },
 
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('selector')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        var variants = [];
-
-        node.forEach('delimiter', function(delim, i) {
-            var previousNode = node.get(i - 1);
-            if (previousNode.last().is('space')) {
-                variants.push(previousNode.last().content);
-            } else {
-                variants.push('');
-            }
+        ast.traverse('selector', function(selector) {
+            selector.forEach('delimiter', function(delim, i) {
+                var previousNode = selector.get(i - 1);
+                if (previousNode.last().is('space')) {
+                    detected.push(previousNode.last().content);
+                } else {
+                    detected.push('');
+                }
+            });
         });
 
-        return variants;
+        return detected;
     }
 };

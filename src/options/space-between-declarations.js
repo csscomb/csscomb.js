@@ -60,35 +60,30 @@ module.exports = (function() {
         /**
          * Processes tree node.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        process: function(node) {
-            var value = this.getValue('space-between-declarations');
+        process: function(ast) {
+            let value = this.value;
 
-            // TODO: Limit nodes to blocks, stylesheet, etc.
-            for (var i = 0, l = node.length; i < l; i++) {
-                if (!node.get(i) || !node.get(i).is('declarationDelimiter')) continue;
-
+            ast.traverse('declarationDelimiter', function(delimiter, i, parent) {
                 // Grom user's point of view "declaration" includes semicolons
                 // and comments placed on the same line.
                 // So group those things together:
-                var declarationEnd = getDeclarationEnd(node, i);
+                var declarationEnd = getDeclarationEnd(parent, i);
                 if (!declarationEnd) {
-                    continue;
+                    return;
                 } else {
                     i = declarationEnd;
                 }
 
-                var nextNode = node.get(i + 1);
+                var nextNode = parent.get(i + 1);
                 if (nextNode.is('space')) {
                     nextNode.content = value;
                 } else {
-                    i++;
-                    l++;
                     var space = gonzales.createNode({ type: 'space', content: value });
-                    node.insert(i, space);
+                    parent.insert(i + 1, space);
                 }
-            }
+            });
         }
     };
 })();
