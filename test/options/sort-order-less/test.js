@@ -91,4 +91,11 @@ describe.skip('options/sort-order (less)', function() {
             this.shouldBeEqual('mixin-3.less', 'mixin-3.expected.less');
         });
     });
+
+    it('Should sort included mixins with specified name. Test 4', function() {
+        this.comb.configure({ 'sort-order': [
+            ['$include'], ['color'], ['$include media']
+        ] });
+        this.shouldBeEqual('mixin-4.less', 'mixin-4.expected.less');
+    });
 });
