@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('options/sort-order', function() {
+describe.skip('options/sort-order', function() {
     describe('process', function() {
         it('Should be in expected order in case properties are not grouped', function() {
             this.comb.configure({ 'sort-order': ['position', 'z-index'] });

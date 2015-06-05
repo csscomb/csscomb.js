@@ -36,8 +36,9 @@ module.exports = {
     /**
      * Processes tree node.
      * @param {node} node
+     * @param {String} syntax
      */
-    process: function(node) {
+    process: function(node, syntax) {
         var _this = this;
         // Types of nodes that can be sorted:
         var NODES = ['atruleb', 'atruler', 'atrules', 'multilineComment', 'singlelineComment',
@@ -48,7 +49,6 @@ module.exports = {
         var currentNode;
         // Sort order of properties:
         var order = this.value;
-        var syntax = this.getSyntax();
         // List of declarations that should be sorted:
         var sorted = [];
         // list of nodes that should be removed from parent node:

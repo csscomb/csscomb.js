@@ -18,19 +18,19 @@ module.exports = (function() {
 
         /**
          * Processes tree node.
-         * @param {node} node
+         * @param {node} ast
          */
-        process: function(node) {
-            if (node.is('space')) {
-                node.content = trim(node.content);
-            } else if (node.is('stylesheet')) {
-                var lastChild = node.last();
-                if (lastChild.is('space')) {
-                    lastChild.content = trim(lastChild.content)
-                        .replace(/[ \t]+$/, '')
-                        .replace(/[\n]+/g, '\n');
-                }
+        process: function(ast) {
+            var lastChild = ast.last();
+            if (lastChild.is('space')) {
+                lastChild.content = trim(lastChild.content)
+                    .replace(/[ \t]+$/, '')
+                    .replace(/[\n]+/g, '\n');
             }
+
+            ast.traverse('space', function(space) {
+                space.content = trim(space.content);
+            });
         },
 
         detectDefault: true,
@@ -39,20 +39,23 @@ module.exports = (function() {
          * Detects the value of an option at the tree node.
          * This option is treated as `true` by default, but any trailing space would invalidate it.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        detect: function(node) {
-            if (node.is('space') &&
-                node.content.match(/[ \t]\n/)) {
-                return false;
-            } else if (node.is('stylesheet')) {
-                var lastChild = node.last();
-                if (lastChild.is('space') &&
-                    lastChild.content !== '\n' &&
-                    lastChild.content.match(/^[ \n\t]+$/)) {
-                    return false;
-                }
+        detect: function(ast) {
+            let detected = [];
+
+            var lastChild = ast.last();
+            if (lastChild.is('space') &&
+                lastChild.content !== '\n' &&
+                lastChild.content.match(/^[ \n\t]+$/)) {
+                detected.push(false);
             }
+
+            ast.traverse('space', function(space) {
+                if (space.content.match(/[ \t]\n/)) detected.push(false);
+            });
+
+            return detected;
         }
     };
 })();

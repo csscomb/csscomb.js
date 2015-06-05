@@ -10,10 +10,13 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('space')) return;
-        node.content = node.content.replace(/\t/, this.getValue('tab-size'));
+    process: function(ast) {
+        let value = this.value;
+
+        ast.traverse('space', function(space) {
+            space.content = space.content.replace(/\t/, value);
+        });
     }
 };
