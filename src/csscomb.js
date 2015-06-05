@@ -1,6 +1,7 @@
 let Comb = require('csscomb-core');
 let gonzales = require('gonzales-pe');
 let fs = require('fs');
+let format = require('./format');
 let path = require('path');
 
 /**
@@ -44,7 +45,7 @@ let CSScomb = function(config) {
 /**
  * Detects the options in the given file
  *
- * @param {String} path Path to the stylesheet
+ * @param {String} file Path to the stylesheet
  * @param {Array} options List of options to detect
  * @returns {Object} Detected options
  */
@@ -73,7 +74,8 @@ CSScomb.detectInString = function detectInString(text, options) {
         try {
             handlers.push(getHandler(option));
         } catch (e) {
-            console.warn('\nFailed to load "%s" option:\n%s', option, e.message);
+            let message = `\nFailed to load "${option}" option:\n${e.message}`;
+            console.warn(message);
         }
     });
 
@@ -109,9 +111,10 @@ CSScomb.getConfig = function getConfig(name) {
     }
 
     let CONFIG_DIR_PATH = '../config';
-    let availableConfigsNames = fs.readdirSync(__dirname + '/' + CONFIG_DIR_PATH)
+    let dir = `${__dirname}/${CONFIG_DIR_PATH}`;
+    let availableConfigsNames = fs.readdirSync(dir)
         .map(function(configFileName) {
-            return configFileName.split('.')[0];  // strip file extension(s)
+            return configFileName.split('.')[0]; // Strip file extension(s)
         });
 
     if (availableConfigsNames.indexOf(name) < 0) {
@@ -120,8 +123,9 @@ CSScomb.getConfig = function getConfig(name) {
                 return '\'' + configName + '\'';
             })
             .join(', ');
-        throw new Error('"' + name + '" is not a valid config name. Try one of ' +
-            'the following: ' + configsNamesAsString + '.');
+        let message = `"${name}" is not a valid config name. Try one
+                       of the following: ${configsNamesAsString}.`;
+        throw new Error(format(message));
     }
 
     return require(CONFIG_DIR_PATH + '/' + name + '.json');
@@ -156,7 +160,9 @@ CSScomb.getCustomConfig = function getCustomConfig(configPath) {
  * @returns {String | null}
  */
 CSScomb.getCustomConfigPath = function getCustomConfigPath(configPath) {
-    var HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    var HOME = process.env.HOME ||
+               process.env.HOMEPATH ||
+               process.env.USERPROFILE;
 
     configPath = configPath || path.join(process.cwd(), '.csscomb.json');
 
@@ -193,14 +199,16 @@ function cssToAST(text, syntax, filename) {
     var tree;
 
     try {
-        tree = gonzales.parse(text, { syntax: syntax });
+        tree = gonzales.parse(text, {syntax: syntax});
     } catch (e) {
         throw new Error('Parsing error' + fileInfo + ': ' + e.message);
     }
 
     // TODO: When can tree be undefined? <tg>
     if (typeof tree === 'undefined') {
-        throw new Error('Undefined tree' + fileInfo + ': ' + string(text) + ' => ' + string(tree));
+        let message = `Undefined tree ${fileInfo}: ${string(text)} =>
+                      ${string(tree)}`;
+        throw new Error(format(message));
     }
 
     return tree;
@@ -235,11 +243,13 @@ function detectInTree(tree, handlers) {
 function getDetectedOptions(detected, handlers) {
     var options = {};
     Object.keys(detected).forEach(function(option) {
-        // List of all the detected variants from the stylesheet for the given option:
+        // List of all the detected variants from the stylesheet
+        // for the given option:
         var values = detected[option];
         var i;
         if (!values.length) {
-            // If there are no values for the option, check if there is a default one:
+            // If there are no values for the option, check if there is
+            // a default one:
             for (i = handlers.length; i--;) {
                 if (handlers[i].name === option &&
                     handlers[i].detectDefault !== undefined) {
@@ -250,8 +260,9 @@ function getDetectedOptions(detected, handlers) {
         } else if (values.length === 1) {
             options[option] = values[0];
         } else {
-            // If there are more than one value for the option, find the most popular one;
-            // `variants` would be populated with the popularity for different values.
+            // If there are more than one value for the option, find
+            // the most popular one; `variants` would be populated
+            // with the popularity for different values.
             var variants = {};
             var bestGuess = null;
             var maximum = 0;
@@ -288,7 +299,9 @@ function getDetectedOptions(detected, handlers) {
  */
 function getHandler(optionName) {
     var option = require('./options/' + optionName);
-    if (!option.detect) throw new Error('Option does not have `detect()` method.');
+    if (!option.detect)
+        throw new Error('Option does not have `detect()` method.');
+
     return {
         name: option.name,
         detect: option.detect,

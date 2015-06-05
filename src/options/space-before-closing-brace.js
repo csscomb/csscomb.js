@@ -37,11 +37,15 @@ module.exports = (function() {
             var whitespaceNode = getLastWhitespaceNode(node);
 
             // If it's spaces, modify this node
-            // If it's something different from spaces, add a space node to the end
+            // If it's something different from spaces, add a space node
+            // to the end
             if (whitespaceNode) {
                 whitespaceNode.content = value;
             } else if (value !== '') {
-                var space = gonzales.createNode({ type: 'space', content: value });
+                var space = gonzales.createNode({
+                    type: 'space',
+                    content: value
+                });
                 node.content.push(space);
             }
 
