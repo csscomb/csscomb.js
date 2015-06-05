@@ -15,21 +15,22 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('selector')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        var value = this.getValue('space-after-combinator');
-
-        node.forEach('simpleSelector', function(simpleSelector) {
-            simpleSelector.forEach('combinator', function(combinator, i) {
-                if (simpleSelector.get(i + 1).is('space')) {
-                    simpleSelector.get(i + 1).content = value;
-                } else {
-                    var space = gonzales.createNode({ type: 'space', content: value });
-                    simpleSelector.insert(i + 1, space);
-                }
+        // TODO(tonyganch): Can this be replaced with one `traverse`?
+        ast.traverse('selector', function(selector) {
+            selector.forEach('simpleSelector', function(simpleSelector) {
+                simpleSelector.forEach('combinator', function(combinator, i) {
+                    if (simpleSelector.get(i + 1).is('space')) {
+                        simpleSelector.get(i + 1).content = value;
+                    } else {
+                        var space = gonzales.createNode({ type: 'space', content: value });
+                        simpleSelector.insert(i + 1, space);
+                    }
+                });
             });
         });
     },
@@ -37,24 +38,24 @@ module.exports = {
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('selector')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        var variants = [];
-
-        node.forEach('simpleSelector', function(simpleSelector) {
-            simpleSelector.forEach('combinator', function(combinator, i) {
-                if (simpleSelector.get(i + 1).is('space')) {
-                    variants.push(simpleSelector.get(i + 1).content);
-                } else {
-                    variants.push('');
-                }
+        ast.traverse('selector', function(selector) {
+            selector.forEach('simpleSelector', function(simpleSelector) {
+                simpleSelector.forEach('combinator', function(combinator, i) {
+                    if (simpleSelector.get(i + 1).is('space')) {
+                        detected.push(simpleSelector.get(i + 1).content);
+                    } else {
+                        detected.push('');
+                    }
+                });
             });
         });
 
-        return variants;
+        return detected;
     }
 };
 

@@ -7,19 +7,20 @@ module.exports = {
 
     /**
      * Processes tree node.
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('selector') &&
-            !node.is('arguments')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        var value = this.getValue('element-case');
+        ast.traverse(function(node) {
+            if (!node.is('selector') && !node.is('arguments')) return;
 
-        node.forEach('simpleSelector', function(selector) {
-            selector.forEach('ident', function(ident) {
-                ident.content = value === 'lower' ?
-                    ident.content.toLowerCase() :
-                    ident.content.toUpperCase();
+            node.forEach('simpleSelector', function(selector) {
+                selector.forEach('ident', function(ident) {
+                    ident.content = value === 'lower' ?
+                        ident.content.toLowerCase() :
+                        ident.content.toUpperCase();
+                });
             });
         });
     },
@@ -27,23 +28,25 @@ module.exports = {
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('selector') &&
-            !node.is('arguments')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        var variants = [];
+        ast.traverse(function(node) {
+            if (!node.is('selector') && !node.is('arguments')) return;
 
-        node.forEach('simpleSelector', function(selector) {
-            selector.forEach('ident', function(ident) {
-                if (ident.content.match(/^[a-z]+$/)) {
-                    variants.push('lower');
-                } else if (ident.content.match(/^[A-Z]+$/)) {
-                    variants.push('upper');
-                }
+            node.forEach('simpleSelector', function(selector) {
+                selector.forEach('ident', function(ident) {
+                    if (ident.content.match(/^[a-z]+$/)) {
+                        detected.push('lower');
+                    } else if (ident.content.match(/^[A-Z]+$/)) {
+                        detected.push('upper');
+                    }
+                });
             });
         });
-        return variants;
+
+        return detected;
     }
 };

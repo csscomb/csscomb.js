@@ -15,29 +15,29 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('selector')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        var value = this.getValue('space-before-combinator');
+        ast.traverse('selector', function(selector) {
+            selector.forEach(function(simpleSelector) {
+                var notFirst = false;
 
-        node.forEach(function(simpleSelector) {
-            var notFirst = false;
+                simpleSelector.forEach(function(n, i) {
+                    if (!n.is('space') && !n.is('combinator')) notFirst = true;
 
-            simpleSelector.forEach(function(n, i) {
-                if (!n.is('space') && !n.is('combinator')) notFirst = true;
+                    // If combinator is the first thing in selector,
+                    // do not add extra spaces:
+                    if (!n.is('combinator') || !notFirst) return;
 
-                // If combinator is the first thing in selector,
-                // do not add extra spaces:
-                if (!n.is('combinator') || !notFirst) return;
-
-                if (simpleSelector.get(i - 1).is('space')) {
-                    simpleSelector.get(i - 1).content = value;
-                } else {
-                    var space = gonzales.createNode({ type: 'space', content: value });
-                    simpleSelector.insert(i, space);
-                }
+                    if (simpleSelector.get(i - 1).is('space')) {
+                        simpleSelector.get(i - 1).content = value;
+                    } else {
+                        var space = gonzales.createNode({ type: 'space', content: value });
+                        simpleSelector.insert(i, space);
+                    }
+                });
             });
         });
     },
@@ -45,24 +45,24 @@ module.exports = {
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('selector')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        var variants = [];
-
-        node.forEach(function(simpleSelector) {
-            simpleSelector.forEach('combinator', function(combinator, i) {
-                if (simpleSelector.get(i - 1).is('space')) {
-                    variants.push(simpleSelector.get(i - 1).content);
-                } else {
-                    variants.push('');
-                }
+        ast.traverse('selector', function(selector) {
+            selector.forEach(function(simpleSelector) {
+                simpleSelector.forEach('combinator', function(combinator, i) {
+                    if (simpleSelector.get(i - 1).is('space')) {
+                        detected.push(simpleSelector.get(i - 1).content);
+                    } else {
+                        detected.push('');
+                    }
+                });
             });
         });
 
-        return variants;
+        return detected;
     }
 };
 

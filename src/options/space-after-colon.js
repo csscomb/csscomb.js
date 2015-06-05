@@ -15,44 +15,48 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
+     * @param {String} syntax
      */
-    process: function(node) {
-        if (!node.is('declaration')) return;
+    process: function(ast, syntax) {
+        let value = this.value;
 
-        var value = this.getValue('space-after-colon');
+        ast.traverse('declaration', function(declaration) {
+            declaration.eachFor('propertyDelimiter', function(delimiter, i) {
+                if (syntax === 'sass' && !declaration.get(i - 1)) return null;
 
-        for (var i = node.length; i--;) {
-            if (!node.get(i).is('propertyDelimiter')) continue;
+                // Remove any spaces after colon:
+                if (declaration.get(i + 1).is('space'))
+                    declaration.remove(i + 1);
+                // If the value set in config is not empty, add spaces:
+                if (value !== '') {
+                    var space = gonzales.createNode({ type: 'space', content: value });
+                    declaration.insert(i + 1, space);
+                }
 
-            if (this.getSyntax() === 'sass' && !node.get(i - 1)) break;
-
-            // Remove any spaces after colon:
-            if (node.get(i + 1).is('space')) node.remove(i + 1);
-            // If the value set in config is not empty, add spaces:
-            var space = gonzales.createNode({ type: 'space', content: value });
-            if (value !== '') node.insert(i + 1, space);
-
-            break;
-        }
+                return null;
+            });
+        });
     },
 
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('declaration')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        for (var i = node.length; i--;) {
-            if (!node.get(i).is('propertyDelimiter')) continue;
+        ast.traverse('declaration', function(declaration) {
+            declaration.eachFor('propertyDelimiter', function(delimiter, i) {
+                if (declaration.get(i + 1).is('space')) {
+                    detected.push(declaration.get(i + 1).content);
+                } else {
+                    detected.push('');
+                }
+            });
+        });
 
-            if (node.get(i + 1).is('space')) {
-                return node.get(i + 1).content;
-            } else {
-                return '';
-            }
-        }
+        return detected;
     }
 };

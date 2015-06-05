@@ -1,4 +1,4 @@
-describe('options/sort-order (sass)', function() {
+describe.skip('options/sort-order (sass)', function() {
     describe('process', function() {
         it('Should sort properties inside rules', function() {
             this.comb.configure({ 'sort-order': [

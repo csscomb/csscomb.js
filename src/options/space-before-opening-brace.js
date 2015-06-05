@@ -30,18 +30,18 @@ module.exports = (function() {
         /**
          * Processes tree node.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        process: function(node) {
-            var value = this.getValue('space-before-opening-brace');
+        process: function(ast) {
+            let value = this.value;
 
-            node.forEach(function(block, i) {
+            ast.traverse(function(block, i, parent) {
                 // If found block node stop at the next one for space check:
                 if (!block.is('block') && !block.is('atrulers')) return;
 
                 // For the pre-block node, find its last (the deepest) child:
                 // TODO: Exclude nodes with braces (for example, arguments)
-                var previousNode = node.get(i - 1);
+                var previousNode = parent.get(i - 1);
                 var whitespaceNode = getLastWhitespaceNode(previousNode);
 
                 // If it's spaces, modify this node.
@@ -54,7 +54,7 @@ module.exports = (function() {
                     if (previousNode && previousNode.is('atrulerq')) {
                         previousNode.content.push(space);
                     } else {
-                        node.insert(i, space);
+                        parent.insert(i, space);
                     }
                 }
             });
@@ -63,31 +63,31 @@ module.exports = (function() {
         /**
          * Detects the value of an option at the tree node.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        detect: function(node) {
-            var variants = [];
+        detect: function(ast) {
+            var detected = [];
 
-            node.forEach(function(block, i) {
+            ast.traverse(function(block, i, parent) {
                 // If found block node stop at the next one for space check:
                 if (!block.is('block') && !block.is('atrulers')) return;
 
                 // For the pre-block node, find its last (the deepest) child:
                 // TODO: Exclude nodes with braces (for example, arguments)
-                var previousNode = node.get(i - 1);
+                var previousNode = parent.get(i - 1);
                 var whitespaceNode = getLastWhitespaceNode(previousNode);
 
                 // If it's spaces, modify this node.
                 // If it's something different from spaces, add a space node to
                 // the end:
                 if (whitespaceNode) {
-                    variants.push(whitespaceNode.content);
+                    detected.push(whitespaceNode.content);
                 } else {
-                    variants.push('');
+                    detected.push('');
                 }
             });
 
-            return variants;
+            return detected;
         }
     };
 })();
