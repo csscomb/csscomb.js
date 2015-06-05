@@ -2,35 +2,30 @@ module.exports = {
     options: {
         eqeqeq: true,
         esnext: true,
-        evil: true,
         expr: true,
         forin: true,
-        immed: true,
-        indent: 4,
-        latedef: true,
         maxdepth: 5,
-        maxlen: 120,
-        maxparams: 4,
-        newcap: true,
+        maxparams: 3,
         noarg: true,
-        noempty: true,
         nonew: true,
-        quotmark: 'single',
         trailing: true,
         undef: true,
-        unused: true
+        unused: true,
+        //varstmt: true
     },
     groups: {
-        js: {
-            options: { node: true },
+        src: {
+            options: {
+                node: true
+            },
             includes: ['src/**/*.js']
         },
         test: {
             options: {
                 node: true,
-                predef: ['describe', 'beforeEach', 'afterEach', 'it']
+                predef: ['afterEach', 'beforeEach', 'describe', 'it']
             },
-            includes: ['test/*.js']
+            includes: ['test/**/*.js']
         }
     }
 };
