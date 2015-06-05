@@ -15,7 +15,7 @@ module.exports = {
      *
      * @param {node} ast
      */
-    process: function process(ast) {
+    process: function process(ast, syntax) {
         ast.eachFor('space', function(whitespaceNode, i) {
             var spaces = whitespaceNode.content.replace(/\n[ \t]+/gm, '\n');
 
@@ -26,8 +26,7 @@ module.exports = {
             }
         });
 
-        console.log(this);
-        this._processNode(ast, 0);
+        this._processNode(ast, syntax, 0);
     },
 
     /**
@@ -55,10 +54,11 @@ module.exports = {
                 detected.push(new Array(spacesLength).join(' '));
             });
         });
+
+        return detected;
     },
 
-    _processNode: function _processNode(node, level) {
-        var syntax = this.getSyntax();
+    _processNode: function _processNode(node, syntax, level) {
         var that = this;
 
         node.forEach(function(n) {
@@ -73,14 +73,14 @@ module.exports = {
 
             if (n.is('block') || n.is('atrulers')) level++;
 
-            that._processNode(n, level);
+            that._processNode(n, syntax, level);
         });
     },
 
     _processSassBlock: function _processSassBlock(node, level) {
-        var value = this.getValue('block-indent');
+        var value = this.value;
 
-        node.eachFore('space', function(whitespaceNode) {
+        node.eachFor('space', function(whitespaceNode) {
             if (whitespaceNode.content === '\n') return;
 
             var spaces = whitespaceNode.content.replace(/[ \t]/gm, '');
@@ -90,7 +90,7 @@ module.exports = {
     },
 
     _processSpaceNode: function _processSpaceNode(node, level) {
-        var value = this.getValue('block-indent');
+        var value = this.value;
 
         // Remove all whitespaces and tabs, leave only new lines:
         var spaces = node.content.replace(/[ \t]/gm, '');

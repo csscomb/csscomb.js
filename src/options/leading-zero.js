@@ -7,31 +7,36 @@ module.exports = {
 
     /**
      * Processes tree node.
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('number')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        if (this.getValue('leading-zero')) {
-            if (node.content[0] === '.')
-                node.content = '0' + node.content;
-        } else {
-            node.content = node.content.replace(/^0+(?=\.)/, '');
-        }
+        ast.traverse('number', function(number) {
+            if (!value) {
+                number.content = number.content.replace(/^0+(?=\.)/, '');
+            } else if (number.content[0] === '.') {
+                number.content = '0' + number.content;
+            }
+        });
     },
 
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('number')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        if (node.content.match(/^\.[0-9]+/)) {
-            return false;
-        } else if (node.content.match(/^0\.[0-9]+/)) {
-            return true;
-        }
+        ast.traverse('number', function(number) {
+            if (number.content.match(/^\.[0-9]+/)) {
+                detected.push(false);
+            } else if (number.content.match(/^0\.[0-9]+/)) {
+                detected.push(true);
+            }
+        });
+
+        return detected;
     }
 };

@@ -7,39 +7,48 @@ module.exports = {
 
     /**
      * Processes tree node.
-     * @param {node} node
+     * @param {node} ast
      */
-    process: function(node) {
-        if (!node.is('string')) return;
+    process: function(ast) {
+        let value = this.value;
 
-        var value = this.getValue('quotes');
-
-        if (node.content[0] === '"' && value === 'single') {
-            node.content = node.content
-                .replace(/\\"/g, '"') // unescape all escaped double quotes
-                .replace(/([^\\])'/g, '$1\\\'') // escape all the single quotes
-                .replace(/^"|"$/g, '\''); // replace the first and the last quote
-
-        } else if (node.content[0] === '\'' && value === 'double') {
-            node.content = node.content
-                .replace(/\\'/g, '\'') // unescape all escaped single quotes
-                .replace(/([^\\])"/g, '$1\\\"') // escape all the double quotes
-                .replace(/^'|'$/g, '"'); // replace the first and the last quote
-        }
+        ast.traverse('string', function(string) {
+            if (string.content[0] === '"' && value === 'single') {
+                string.content = string.content
+                    // unescape all escaped double quotes
+                    .replace(/\\"/g, '"')
+                    // escape all the single quotes
+                    .replace(/([^\\])'/g, '$1\\\'')
+                    // replace the first and the last quote
+                    .replace(/^"|"$/g, '\'');
+            } else if (string.content[0] === '\'' && value === 'double') {
+                string.content = string.content
+                    // unescape all escaped single quotes
+                    .replace(/\\'/g, '\'')
+                    // escape all the double quotes
+                    .replace(/([^\\])"/g, '$1\\\"')
+                    // replace the first and the last quote
+                    .replace(/^'|'$/g, '"');
+            }
+        });
     },
 
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('string')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        if (node.content[0] === '"') {
-            return 'double';
-        } else if (node.content[0] === '\'') {
-            return 'single';
-        }
+        ast.traverse('string', function(string) {
+            if (string.content[0] === '"') {
+                detected.push('double');
+            } else if (string.content[0] === '\'') {
+                detected.push('single');
+            }
+        });
+
+        return detected;
     }
 };

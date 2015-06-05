@@ -15,46 +15,48 @@ module.exports = {
     /**
      * Processes tree node.
      *
-     * @param {node} node
+     * @param {node} ast
+     * @param {String} syntax
      */
-    process: function(node) {
-        if (!node.is('declaration')) return;
+    process: function(ast, syntax) {
+        let value = this.value;
 
-        var value = this.getValue('space-before-colon');
-        var syntax = this.getSyntax();
+        ast.traverse('declaration', function(declaration) {
+            declaration.forEach('propertyDelimiter', function(delimiter, i) {
+                if (syntax === 'sass' && !declaration.get(i - 1)) return;
 
-        node.forEach('propertyDelimiter', function(delimiter, i) {
-            if (syntax === 'sass' && !node.get(i - 1)) return;
+                // Remove any spaces before colon:
+                if (declaration.get(i - 1).is('space')) {
+                    declaration.remove(--i);
+                }
 
-            // Remove any spaces before colon:
-            if (node.get(i - 1).is('space')) {
-                node.remove(--i);
-            }
-
-            // If the value set in config is not empty, add spaces:
-            var space = gonzales.createNode({ type: 'space', content: value });
-            if (value !== '') node.insert(i, space);
+                // If the value set in config is not empty, add spaces:
+                if (value !== '') {
+                    var space = gonzales.createNode({ type: 'space', content: value });
+                    declaration.insert(i, space);
+                }
+            });
         });
     },
 
     /**
      * Detects the value of an option at the tree node.
      *
-     * @param {node} node
+     * @param {node} ast
      */
-    detect: function(node) {
-        if (!node.is('declaration')) return;
+    detect: function(ast) {
+        let detected = [];
 
-        var result;
-
-        node.forEach('propertyDelimiter', function(delimiter, i) {
-            if (node.get(i - 1).is('space')) {
-                result = node.get(i - 1).content;
-            } else {
-                result = '';
-            }
+        ast.traverse('declaration', function(declaration) {
+            declaration.forEach('propertyDelimiter', function(delimiter, i) {
+                if (declaration.get(i - 1).is('space')) {
+                    detected.push(declaration.get(i - 1).content);
+                } else {
+                    detected.push('');
+                }
+            });
         });
 
-        return result;
+        return detected;
     }
 };

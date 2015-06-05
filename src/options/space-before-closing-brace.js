@@ -64,36 +64,38 @@ module.exports = (function() {
 
         /**
          * Processes tree node.
-         * @param {node} node
+         * @param {node} ast
+         * @param {String} syntax
+         * @param {Object} config
          */
-        process: function(node) {
-            valueFromSettings = this.getValue('space-before-closing-brace');
-            blockIndent = this.getValue('block-indent');
+        process: function(ast, syntax, config) {
+            valueFromSettings = this.value;
+            blockIndent = config['block-indent'];
 
-            if (!node.is('stylesheet')) return;
-
-            processBlock(node);
+            processBlock(ast);
         },
 
         /**
          * Detects the value of an option at the tree node.
          *
-         * @param {node} node
+         * @param {node} ast
          */
-        detect: function(node) {
-            if (!node.is('block') && !node.is('atrulers')) return;
+        detect: function(ast) {
+            let detected = [];
 
-            var variants = [];
+            ast.traverse(function(node) {
+                if (!node.is('block') && !node.is('atrulers')) return;
 
-            // For the block node, find its last (the deepest) child
-            var whitespaceNode = getLastWhitespaceNode(node);
-            if (whitespaceNode) {
-                variants.push(whitespaceNode.content);
-            } else {
-                variants.push('');
-            }
+                // For the block node, find its last (the deepest) child
+                var whitespaceNode = getLastWhitespaceNode(node);
+                if (whitespaceNode) {
+                    detected.push(whitespaceNode.content);
+                } else {
+                    detected.push('');
+                }
+            });
 
-            return variants;
+            return detected;
         }
     };
 })();

@@ -4,7 +4,7 @@ describe('.use()', function() {
     it('Should set predefined options in correct order', function() {
         var config = this.Comb.getConfig('csscomb');
         this.comb.configure(config);
-        var options = this.comb.getOptionsOrder();
+        var options = this.comb.plugins.map(function(plugin) {return plugin.name});
         var expected = [
           'always-semicolon',
           'remove-empty-rulesets',
