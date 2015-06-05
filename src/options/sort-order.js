@@ -294,37 +294,31 @@ module.exports = {
                 // Divide `include` into `$extend`,
                 // mixins with specific name (e. g. `$include breakpoint`),
                 // and the rest — `$include`.
-                var includeType;
-                var mixinName;
+                var include = node.get(i);
+                var includeType = 'include';
+                var includeName;
 
                 // SASS and SCSS both supports `@extend` and `@include`,
                 // but SASS also supports `+mixin-name`
-                if (_this.syntax === 'sass' || _this.syntax === 'scss') {
-                    if (_this.syntax === 'sass' && node.get(i).get(0).content === '+') {
-                        includeType = 'include';
-                        mixinName = node.get(i).get(1).get(0).content;
-                    } else {
+                if (syntax === 'less') {
+                    includeName = include.get(0).get(0).content;
+                } else if (syntax === 'sass' && include.get(0).content === '+') {
+                    includeName = include.get(1).get(0).content;
+                } else {
+                    includeType = include.get(0).get(0).content;
 
-                        includeType = node.get(i).get(0).get(0).content;
-
-                        if (includeType === 'include') {
-                            mixinName = node.get(i).get(2).get(0).content;
-                        }
+                    if (includeType === 'include') {
+                        includeName = include.get(2).get(0).content;
                     }
-                }
-
-                if (_this.syntax === 'less') {
-                    includeType = 'include';
-                    mixinName = node.get(i).get(0).get(0).content;
                 }
 
                 if (includeType === 'extend') {
                     propertyName = '$extend';
                 } else {
-                    var includeMixinName = '$include ' + mixinName;
+                    var includeWithName = '$include ' + includeName;
 
-                    if (order.hasOwnProperty(includeMixinName)) {
-                        propertyName = includeMixinName;
+                    if (order.hasOwnProperty(includeWithName)) {
+                        propertyName = includeWithName;
                     } else {
                         propertyName = '$include';
                     }
