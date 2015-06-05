@@ -63,7 +63,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "coverage": "./scripts/coverage.sh",
-    "test": "./scripts/test.sh",
+    "test": "./scripts/build.sh && ./scripts/test.sh",
     "watch": "./scripts/watch.sh"
   }
 }
