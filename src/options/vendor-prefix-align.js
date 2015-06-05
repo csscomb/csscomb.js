@@ -24,7 +24,8 @@ module.exports = (function() {
     }
 
     /**
-     * Creates object which contains info about vendor prefix used in propertyName.
+     * Creates object which contains info about vendor prefix used
+     * in propertyName.
      *
      * @param {String} propertyName property name
      * @param {String} [namespace=''] namespace name
@@ -93,9 +94,13 @@ module.exports = (function() {
             }
             if (node.is('multilineComment')) {
                 if (crPos === -1) {
-                    result += node.content.length + 4 /* comment symbols length */ ;
+                    // Comment symbols length
+                    let offset = 4;
+                    result += node.content.length + offset;
                 } else {
-                    result += node.content.length - crPos + 1 /* only last comment symbols length - 1(not count \n)*/;
+                    // Only last comment symbols length - 1 (not count \n)
+                    let offset = crPos - 1;
+                    result += node.content.length - offset;
                     break;
                 }
             }
@@ -147,7 +152,8 @@ module.exports = (function() {
     }
 
     /**
-     * Walks across nodes, and call payload for every node that pass selector check.
+     * Walks across nodes, and call payload for every node that pass
+     * selector check.
      *
      * @param {Object} args arguments in form of:
      *  {
@@ -161,7 +167,8 @@ module.exports = (function() {
     function walk(args) {
         args.node.forEach(function(item, i) {
             var name = args.selector(item);
-            var namespace = args.namespaceSelector && makeNamespace(args.namespaceSelector(item));
+            var namespace = args.namespaceSelector &&
+                            makeNamespace(args.namespaceSelector(item));
             var extraSymbols = args.getExtraSymbols(args.node, i);
 
             var info = name && getPrefixInfo(name, namespace, extraSymbols);
@@ -213,14 +220,18 @@ module.exports = (function() {
     function updateDict(info, dict) {
         if (info.prefixLength === 0 && info.extra === 0) return;
 
-        var indent = dict[info.id] || { prefixLength: 0, extra: 0 };
+        var indent = dict[info.id] || {prefixLength: 0, extra: 0};
 
-        dict[info.id] = indent.prefixLength + indent.extra > info.prefixLength + info.extra ?
-            indent :
-            {
+        let indentLength = indent.prefixLength + indent.extra;
+        let infoLength = info.prefixLength + info.extra;
+        if (indentLength > infoLength) {
+            dict[info.id] = indent;
+        } else {
+            dict[info.id] = {
                 prefixLength: info.prefixLength,
-                extra: info.extra,
+                extra: info.extra
             };
+        }
     }
 
     /**
@@ -240,7 +251,7 @@ module.exports = (function() {
         var tabPos = whitespaceNode.lastIndexOf('\t');
         if (tabPos > crPos) crPos = tabPos;
 
-        var firstPart = whitespaceNode.substr(0, crPos + 1 );
+        var firstPart = whitespaceNode.substr(0, crPos + 1);
         var extraIndent = new Array(
             (item.prefixLength - info.prefixLength) +
             (item.extra - info.extra) +
@@ -255,7 +266,9 @@ module.exports = (function() {
 
         syntax: ['css', 'less', 'sass', 'scss'],
 
-        accepts: { boolean: [true] },
+        accepts: {
+            boolean: [true]
+        },
 
         /**
          * Processes tree node.
@@ -302,13 +315,19 @@ module.exports = (function() {
                             if (node.get(i).get(x).is('value')) break;
                         }
 
-                        if (!node.get(i).get(x - 1).is('space')) {
-                            var space = gonzales.createNode({ type: 'space', content: '' });
+                        let prevNode = node.get(i).get(x - 1);
+                        if (!prevNode.is('space')) {
+                            var space = gonzales.createNode({
+                                type: 'space',
+                                content: ''
+                            });
                             node.get(i).insert(x, space);
                             ++x;
                         }
 
-                        node.get(i).get(x - 1).content = updateIndent(info, dict, node.get(i).get(x - 1).content);
+                        let content = node.get(i).get(x - 1).content;
+                        let updatedIndent = updateIndent(info, dict, content);
+                        node.get(i).get(x - 1).content = updatedIndent;
                     }
                 });
 
@@ -324,10 +343,15 @@ module.exports = (function() {
                         if (!whitespaceNode) return;
                         // If it's a comment, insert an empty space node:
                         if (!whitespaceNode.is('space')) {
-                            whitespaceNode = gonzales.createNode({ type: 'space', content: '' });
+                            whitespaceNode = gonzales.createNode({
+                                type: 'space',
+                                content: ''
+                            });
                             node.insert(i - 1, whitespaceNode);
                         }
-                        whitespaceNode.content = updateIndent(info, dict, whitespaceNode.content);
+                        let content = whitespaceNode.content;
+                        let updatedContent = updateIndent(info, dict, content);
+                        whitespaceNode.content = updatedContent;
                     }
                 });
             });
@@ -337,7 +361,6 @@ module.exports = (function() {
          * Detects the value of an option at the tree node.
          *
          * @param {node} ast
-         * @param {String} syntax
          */
         detect: function(ast) {
             let detected = [];
@@ -358,7 +381,8 @@ module.exports = (function() {
                     let {node, sum, info, i} = options;
                     var prop = info.baseName;
 
-                    // If this is the last item in a row and we have a result, then catch it
+                    // If this is the last item in a row and we have a result,
+                    // then catch it
                     if (prop !== prevProp && partialResult !== null) {
                         if (partialResult) {
                             result.true++;
@@ -368,15 +392,17 @@ module.exports = (function() {
                         partialResult = null;
                     }
 
-                    if (prop === prevProp && info.prefixLength !== prevPrefixLength) {
+                    if (prop === prevProp &&
+                            info.prefixLength !== prevPrefixLength) {
                         maybePrefix = true;
                     } else {
                         maybePrefix = false;
                     }
 
                     if (maybePrefix && partialResult !== false) {
-                        // If there is prefixed prop, check if the prefixes are aligned,
-                        // but only if we hadn't already catched that it is false
+                        // If there is prefixed prop, check if the prefixes are
+                        // aligned, but only if we hadn't already catched
+                        // that it is false
                         if (sum === prevSum) {
                             partialResult = true;
                         } else {
@@ -385,7 +411,8 @@ module.exports = (function() {
                     }
 
                     if (node.length === i + 3 && partialResult !== null) {
-                        // If we're at the last property and have a result, catch it
+                        // If we're at the last property and have a result,
+                        // catch it
                         if (partialResult) {
                             result.true++;
                         } else {
@@ -405,8 +432,9 @@ module.exports = (function() {
                     getExtraSymbols: extraIndentProperty,
                     payload: function(info, i) {
                         if (node.get(i - 1) && node.get(i - 1).content) {
-                            var sum = node.get(i - 1).content.
-                                replace(/^[ \t]*\n+/, '').length + info.prefixLength;
+                            let nodeLength = node.get(i - 1).content.
+                                replace(/^[ \t]*\n+/, '').length;
+                            var sum = nodeLength + info.prefixLength;
                             getResult({node: node, sum: sum, info: info, i: i});
                         }
                     }
@@ -422,8 +450,9 @@ module.exports = (function() {
                         }
 
                         if (node.get(i).get(x - 1)) {
-                            var sum = node.get(i).get(x - 1).content
-                                .replace(/^[ \t]*\n+/, '').length + info.prefixLength;
+                            let nodeLength = node.get(i).get(x - 1).content
+                                .replace(/^[ \t]*\n+/, '').length;
+                            var sum = nodeLength + info.prefixLength;
                             getResult({node: node, sum: sum, info: info, i: i});
                         }
                     }

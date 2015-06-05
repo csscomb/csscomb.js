@@ -3,7 +3,7 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { string: /^abc$/ },
+    accepts: {string: /^abc$/},
 
     process: function() {}
 };

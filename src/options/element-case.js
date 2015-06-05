@@ -3,7 +3,9 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { string: /^lower|upper$/ },
+    accepts: {
+        string: /^lower|upper$/
+    },
 
     /**
      * Processes tree node.

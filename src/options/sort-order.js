@@ -14,18 +14,19 @@ module.exports = {
      * @returns {Array}
      */
     setValue: function(value) {
-        if (!Array.isArray(value)) throw new Error('The option accepts only array of properties.');
+        if (!Array.isArray(value))
+            throw new Error('The option accepts only array of properties.');
 
         var order = {};
 
         if (typeof value[0] === 'string') {
             value.forEach(function(prop, propIndex) {
-                order[prop] = { group: 0, prop: propIndex };
+                order[prop] = {group: 0, prop: propIndex};
             });
         } else {
             value.forEach(function(group, groupIndex) {
                 group.forEach(function(prop, propIndex) {
-                    order[prop] = { group: groupIndex, prop: propIndex };
+                    order[prop] = {group: groupIndex, prop: propIndex};
                 });
             });
         }
@@ -41,8 +42,8 @@ module.exports = {
     process: function(node, syntax) {
         var _this = this;
         // Types of nodes that can be sorted:
-        var NODES = ['atruleb', 'atruler', 'atrules', 'multilineComment', 'singlelineComment',
-            'declaration', 'space', 'include'];
+        var NODES = ['atruleb', 'atruler', 'atrules', 'multilineComment',
+            'singlelineComment', 'declaration', 'space', 'include'];
         // Spaces and comments:
         var SC = ['multilineComment', 'singlelineComment', 'space'];
 
@@ -51,7 +52,7 @@ module.exports = {
         var order = this.value;
         // List of declarations that should be sorted:
         var sorted = [];
-        // list of nodes that should be removed from parent node:
+        // List of nodes that should be removed from parent node:
         var deleted = [];
         // List of spaces and comments that go before declaration/@-rule:
         var sc0 = [];
@@ -126,10 +127,12 @@ module.exports = {
             // Check every next node:
             for (; i < l; i++) {
                 currentNode = node.get(i + 1);
-                // If there is no node, or it is nor spaces neither comment, stop:
+                // If there is no node, or it is nor spaces neither comment,
+                // stop:
                 if (!currentNode || SC.indexOf(currentNode.type) === -1) break;
 
-                if (currentNode.is('multilineComment') || currentNode.is('singlelineComment')) {
+                if (currentNode.is('multilineComment') ||
+                        currentNode.is('singlelineComment')) {
                     sc.push(currentNode);
                     d.push(i + 1);
                     continue;
@@ -144,9 +147,10 @@ module.exports = {
                 if (lbIndex > -1) {
                     // TODO: Don't push an empty array
                     var s = currentNode.content.substring(0, lbIndex);
-                    var space = gonzales.createNode({ type: 's', content: s });
+                    var space = gonzales.createNode({type: 's', content: s});
                     sc.push(space);
-                    currentNode.content = currentNode.content.substring(lbIndex);
+                    currentNode.content = currentNode.content
+                                          .substring(lbIndex);
                     break;
                 }
 
@@ -187,10 +191,12 @@ module.exports = {
             // group and property indices. Otherwise set them to 10000, so
             // declaration appears at the bottom of a sorted list:
 
-            extendedNode.groupIndex = orderProperty && orderProperty.group > -1 ?
+            let groupIndex = orderProperty && orderProperty.group > -1 ?
                 orderProperty.group : lastGroupIndex;
-            extendedNode.propertyIndex = orderProperty && orderProperty.prop > -1 ?
+            let propertyIndex = orderProperty && orderProperty.prop > -1 ?
                 orderProperty.prop : lastPropertyIndex;
+            extendedNode.groupIndex = groupIndex;
+            extendedNode.propertyIndex = propertyIndex;
 
             // Mark current node to remove it later from parent node:
             deleted.push(i);
@@ -204,15 +210,16 @@ module.exports = {
 
             // If there is `;` right after the declaration, save it with the
             // declaration and mark it for removing from parent node:
-            if (currentNode && nextNode && nextNode.is('declarationDelimiter')) {
+            if (currentNode && nextNode &&
+                    nextNode.is('declarationDelimiter')) {
                 extendedNode.delim.push(nextNode);
                 deleted.push(i + 1);
                 i++;
 
                 if (syntax === 'sass') return extendedNode;
 
-                // Save spaces and comments which follow right after the declaration
-                // and mark them for removing from parent node:
+                // Save spaces and comments which follow right after
+                // the declaration and mark them for removing from parent node:
                 extendedNode.sc2 = checkSC1();
             }
 
@@ -247,8 +254,9 @@ module.exports = {
                 return a[2] < b[2] ? -1 : 1;
             } else {
                 // If unprefixed parts are identical (i.e. `border` in
-                // `-moz-border` and `-o-border`), compare prefixes (they
-                // should go in the same order they are set in `prefixes` array):
+                // `-moz-border` and `-o-border`), compare prefixes.
+                // They should go in the same order they are set
+                // in `prefixes` array.
                 return prefixes.indexOf(a[1]) < prefixes.indexOf(b[1]) ? -1 : 1;
             }
         };
@@ -294,7 +302,8 @@ module.exports = {
                             '$variable' : currentNode.get(0).content;
                         break;
                     } else if (currentNode.is('atkeyword') &&
-                        currentNode.get(0).content === 'import') { // Look for imports
+                        currentNode.get(0).content === 'import') {
+                        // Look for imports
                         propertyName = '$import';
                         break;
                     }
@@ -313,7 +322,8 @@ module.exports = {
             sorted.push(extendNode());
         }
 
-        // Remove all nodes, that were moved to a `sorted` list, from parent node:
+        // Remove all nodes, that were moved to a `sorted` list,
+        // from parent node:
         for (i = deleted.length - 1; i > -1; i--) {
             node.content.splice(deleted[i], 1);
         }
@@ -322,7 +332,8 @@ module.exports = {
         sorted.sort(function(a, b) {
             // If a's group index is higher than b's group index, in a sorted
             // list a appears after b:
-            if (a.groupIndex !== b.groupIndex) return a.groupIndex - b.groupIndex;
+            if (a.groupIndex !== b.groupIndex)
+                return a.groupIndex - b.groupIndex;
 
             // If a and b belong to leftovers and `sort-order-fallback` option
             // is set to `abc`, sort properties alphabetically:
@@ -334,7 +345,8 @@ module.exports = {
             // If a and b have the same group index, and a's property index is
             // higher than b's property index, in a sorted list a appears after
             // b:
-            if (a.propertyIndex !== b.propertyIndex) return a.propertyIndex - b.propertyIndex;
+            if (a.propertyIndex !== b.propertyIndex)
+                return a.propertyIndex - b.propertyIndex;
 
             // If a and b have the same group index and the same property index,
             // in a sorted list they appear in the same order they were in
@@ -371,7 +383,10 @@ module.exports = {
                 }
                 if (currentNode.delim.length > 0) {
                     var delim = this.syntax === 'sass' ? '\n' : ';';
-                    var declDelim = gonzales.createNode({ type: 'declarationDelimiter', content: delim });
+                    var declDelim = gonzales.createNode({
+                        type: 'declarationDelimiter',
+                        content: delim
+                    });
                     node.content.unshift(declDelim);
                 }
                 for (j = 0, nl = sc1.length; j < nl; j++) {

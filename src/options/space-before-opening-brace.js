@@ -50,7 +50,10 @@ module.exports = (function() {
                 if (whitespaceNode) {
                     whitespaceNode.content = value;
                 } else if (value !== '') {
-                    var space = gonzales.createNode({ type: 'space', content: value });
+                    var space = gonzales.createNode({
+                        type: 'space',
+                        content: value
+                    });
                     if (previousNode && previousNode.is('atrulerq')) {
                         previousNode.content.push(space);
                     } else {
