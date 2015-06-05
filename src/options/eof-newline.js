@@ -5,7 +5,9 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { boolean: [true, false] },
+    accepts: {
+        boolean: [true, false]
+    },
 
     /**
      * Processes tree node.
@@ -15,7 +17,7 @@ module.exports = {
         var lastChild = ast.last();
 
         if (!lastChild.is('space')) {
-            lastChild = gonzales.createNode({ type: 'space', content: '' });
+            lastChild = gonzales.createNode({type: 'space', content: ''});
             ast.content.push(lastChild);
         }
 

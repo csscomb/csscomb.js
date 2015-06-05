@@ -3,7 +3,9 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { string: /^single|double$/ },
+    accepts: {
+        string: /^single|double$/
+    },
 
     /**
      * Processes tree node.
@@ -15,19 +17,19 @@ module.exports = {
         ast.traverse('string', function(string) {
             if (string.content[0] === '"' && value === 'single') {
                 string.content = string.content
-                    // unescape all escaped double quotes
+                    // Unescape all escaped double quotes
                     .replace(/\\"/g, '"')
-                    // escape all the single quotes
+                    // Escape all the single quotes
                     .replace(/([^\\])'/g, '$1\\\'')
-                    // replace the first and the last quote
+                    // Replace the first and the last quote
                     .replace(/^"|"$/g, '\'');
             } else if (string.content[0] === '\'' && value === 'double') {
                 string.content = string.content
-                    // unescape all escaped single quotes
+                    // Unescape all escaped single quotes
                     .replace(/\\'/g, '\'')
-                    // escape all the double quotes
+                    // Escape all the double quotes
                     .replace(/([^\\])"/g, '$1\\\"')
-                    // replace the first and the last quote
+                    // Replace the first and the last quote
                     .replace(/^'|'$/g, '"');
             }
         });

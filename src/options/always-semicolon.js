@@ -5,7 +5,9 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { boolean: [true] },
+    accepts: {
+        boolean: [true]
+    },
 
     /**
      * Processes tree node.
@@ -70,8 +72,8 @@ module.exports = {
                     return;
                 }
 
-                // Check if there are spaces and comments at the end of the node:
-                for (var j = nodeWithoutSemicolon.length; j--; ) {
+                // Check if there are spaces and comments at the end of the node
+                for (var j = nodeWithoutSemicolon.length; j--;) {
                     var lastNode = nodeWithoutSemicolon.get(j);
 
                     // If the node's last child is block, do not add semicolon:
@@ -86,7 +88,10 @@ module.exports = {
                     }
                 }
 
-                var declDelim = gonzales.createNode({ type: 'declarationDelimiter', content: ';' });
+                var declDelim = gonzales.createNode({
+                    type: 'declarationDelimiter',
+                    content: ';'
+                });
                 nodeWithoutSemicolon.insert(j, declDelim);
                 return null;
             });

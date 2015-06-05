@@ -30,7 +30,10 @@ module.exports = {
                     declaration.remove(i + 1);
                 // If the value set in config is not empty, add spaces:
                 if (value !== '') {
-                    var space = gonzales.createNode({ type: 'space', content: value });
+                    var space = gonzales.createNode({
+                        type: 'space',
+                        content: value
+                    });
                     declaration.insert(i + 1, space);
                 }
 
