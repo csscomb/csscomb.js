@@ -354,7 +354,8 @@ module.exports = (function() {
                 var prevSum;
                 var partialResult = null;
 
-                var getResult = function(node, sum, info, i) {
+                var getResult = function(options) {
+                    let {node, sum, info, i} = options;
                     var prop = info.baseName;
 
                     // If this is the last item in a row and we have a result, then catch it
@@ -406,7 +407,7 @@ module.exports = (function() {
                         if (node.get(i - 1) && node.get(i - 1).content) {
                             var sum = node.get(i - 1).content.
                                 replace(/^[ \t]*\n+/, '').length + info.prefixLength;
-                            getResult(node, sum, info, i);
+                            getResult({node: node, sum: sum, info: info, i: i});
                         }
                     }
                 });
@@ -423,7 +424,7 @@ module.exports = (function() {
                         if (node.get(i).get(x - 1)) {
                             var sum = node.get(i).get(x - 1).content
                                 .replace(/^[ \t]*\n+/, '').length + info.prefixLength;
-                            getResult(node, sum, info, i);
+                            getResult({node: node, sum: sum, info: info, i: i});
                         }
                     }
                 });

@@ -1,5 +1,3 @@
-var assert = require('assert');
-
 describe.skip('integral test', function() {
     describe('process', function() {
         it('Process result must be equal to expected.css', function() {
@@ -27,7 +25,7 @@ describe.skip('integral test', function() {
             // Clone the required config object, otherwise other tests would fail
             var expected = JSON.parse(JSON.stringify(this.Comb.getConfig('csscomb')));
             delete expected['sort-order'];
-            delete expected['exclude'];
+            delete expected.exclude;
             this.shouldDetect(undefined, input, expected);
         });
     });

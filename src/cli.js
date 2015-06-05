@@ -90,7 +90,7 @@ function applyTemplate(config) {
 
     var templateConfig = Comb.detectInFile(config.template);
     for (var attrname in templateConfig) {
-        if (!config[attrname]) {
+        if (templateConfig.hasOwnProperty(attrname) && !config[attrname]) {
             config[attrname] = templateConfig[attrname];
         }
     }
