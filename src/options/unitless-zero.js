@@ -3,7 +3,9 @@ module.exports = {
 
     syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: { boolean: [true] },
+    accepts: {
+        boolean: [true]
+    },
 
     /**
      * Processes tree node.
@@ -45,8 +47,10 @@ module.exports = {
         let detected = [];
 
         ast.traverse(function(node, i, parent) {
-            // If we see a zero with unit and it is not degree, then we don’t have an option
-            if (node.is('percentage') && node.first('number').content[1] === '0') {
+            // If we see a zero with unit and it is not degree,
+            // then we don’t have an option
+            if (node.is('percentage') &&
+                node.first('number').content[1] === '0') {
                 detected.push(false);
                 return;
             }
@@ -58,7 +62,8 @@ module.exports = {
                 return;
             }
 
-            // If we see a zero and previous node is not percentage or dimension, then we have an option
+            // If we see a zero and previous node is not percentage
+            // or dimension, then we have an option
             if (node.is('number') &&
                 node.content[0] === '0' &&
                 !parent.is('percentage') &&

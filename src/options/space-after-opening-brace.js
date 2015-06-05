@@ -28,7 +28,10 @@ module.exports = {
                 node.first().is('space')) {
                 node.first().content = value;
             } else if (value !== '') {
-                var space = gonzales.createNode({ type: 'space', content: value });
+                var space = gonzales.createNode({
+                    type: 'space',
+                    content: value
+                });
                 node.insert(0, space);
             }
         });

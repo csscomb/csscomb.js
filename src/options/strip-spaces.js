@@ -14,7 +14,9 @@ module.exports = (function() {
 
         syntax: ['css', 'less', 'sass', 'scss'],
 
-        accepts: { boolean: [true] },
+        accepts: {
+            boolean: [true]
+        },
 
         /**
          * Processes tree node.
@@ -37,7 +39,8 @@ module.exports = (function() {
 
         /**
          * Detects the value of an option at the tree node.
-         * This option is treated as `true` by default, but any trailing space would invalidate it.
+         * This option is treated as `true` by default, but any trailing
+         * space would invalidate it.
          *
          * @param {node} ast
          */

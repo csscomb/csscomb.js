@@ -4,6 +4,7 @@
  * Usage example:
  * ./node_modules/.bin/csscomb [options] [file1 [dir1 [fileN [dirN]]]]
  */
+var format = require('format');
 var fs = require('fs');
 var parseArgs = require('minimist');
 var path = require('path');
@@ -50,9 +51,10 @@ function processFiles(files, config) {
         var changed = config.lint ? 0 : tbchanged;
 
         if (config.verbose) {
-            process.stdout.write('\n');
-            process.stdout.write(c.length + ' file' + (c.length === 1 ? '' : 's') + ' processed\n');
-            process.stdout.write(changed + ' file' + (changed === 1 ? '' : 's') + ' fixed\n');
+            let message = `\n
+                ${c.length} file${c.length === 1 ? '' : 's'} processed\n
+                ${changed} file${changed === 1 ? '' : 's'} fixed\n`;
+            process.stdout.write(format(message));
             console.timeEnd('Time spent');
         }
 
@@ -84,7 +86,9 @@ function applyTemplate(config) {
     if (!config.template) return;
 
     if (!fs.existsSync(config.template)) {
-        process.stderr.write('Template configuration file ' + config.template + ' was not found.');
+        let message = `Template configuration file ${config.template}
+                       was not found.`;
+        process.stderr.write(format(message));
         process.exit(1);
     }
 
@@ -111,7 +115,8 @@ function getConfig(options) {
     }
 
     if (!config) {
-        process.stderr.write('Configuration file ' + configPath + ' was not found.');
+        let message = `Configuration file ${configPath} was not found.`;
+        process.stderr.write(format(message));
         process.exit(1);
     }
 

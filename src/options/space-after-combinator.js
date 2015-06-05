@@ -27,7 +27,10 @@ module.exports = {
                     if (simpleSelector.get(i + 1).is('space')) {
                         simpleSelector.get(i + 1).content = value;
                     } else {
-                        var space = gonzales.createNode({ type: 'space', content: value });
+                        var space = gonzales.createNode({
+                            type: 'space',
+                            content: value
+                        });
                         simpleSelector.insert(i + 1, space);
                     }
                 });

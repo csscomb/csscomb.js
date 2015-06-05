@@ -26,7 +26,10 @@ module.exports = {
                 if (previousNode.last().is('space')) {
                     previousNode.last().content = value;
                 } else {
-                    var space = gonzales.createNode({ type: 'space', content: value });
+                    var space = gonzales.createNode({
+                        type: 'space',
+                        content: value
+                    });
                     previousNode.content.push(space);
                 }
             });
