@@ -4,7 +4,7 @@
  * Usage example:
  * ./node_modules/.bin/csscomb [options] [file1 [dir1 [fileN [dirN]]]]
  */
-var format = require('format');
+var format = require('./format');
 var fs = require('fs');
 var parseArgs = require('minimist');
 var path = require('path');
