@@ -46,7 +46,7 @@ function processFiles(files, config) {
 
         var tbchanged = c.reduce(function(a, b) {
             return a + b;
-        });
+        }, 0);
 
         var changed = config.lint ? 0 : tbchanged;
 
