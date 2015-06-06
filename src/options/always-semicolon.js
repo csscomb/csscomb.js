@@ -26,7 +26,8 @@ module.exports = {
                 // Add semicolon only after declarations and includes.
                 // If current node is include, insert semicolon right into it.
                 // If it's declaration, look for value node:
-                if (currentNode.is('include')) {
+                if (currentNode.is('include') ||
+                    currentNode.is('extend')) {
                     nodeWithoutSemicolon = currentNode;
                 } else if (currentNode.is('declaration')) {
                     nodeWithoutSemicolon = currentNode.last('value');
@@ -64,7 +65,8 @@ module.exports = {
                 // Add semicolon only after declarations and includes.
                 // If current node is include, insert semicolon right into it.
                 // If it's declaration, look for value node:
-                if (currentNode.is('include')) {
+                if (currentNode.is('include') ||
+                    currentNode.is('extend')) {
                     nodeWithoutSemicolon = currentNode;
                 } else if (currentNode.is('declaration')) {
                     nodeWithoutSemicolon = currentNode.last('value');
