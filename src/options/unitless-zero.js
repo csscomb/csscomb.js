@@ -21,13 +21,13 @@ module.exports = {
 
                 if (value.is('dimension')) {
                     var unit = value.first('ident').content;
-                    if (value.first('number').content[0] === '0' &&
+                    if (value.first('number').content === '0' &&
                         UNITS.indexOf(unit) !== -1) {
                         value.remove(1);
                     }
                 } else if (value.is('percentage')) {
                     var number = value.first('number').content;
-                    if (number[0] === '0') {
+                    if (number === '0') {
                         value.type = 'number';
                         value.content = number;
                     }
@@ -54,7 +54,7 @@ module.exports = {
             }
 
             if (node.is('dimension') &&
-                node.first('number').content[0] === '0' &&
+                node.first('number').content === '0' &&
                 node.first('ident').content !== 'deg') {
                 detected.push(false);
                 return;
@@ -63,7 +63,7 @@ module.exports = {
             // If we see a zero and previous node is not percentage
             // or dimension, then we have an option
             if (node.is('number') &&
-                node.content[0] === '0' &&
+                node.content === '0' &&
                 !parent.is('percentage') &&
                 !parent.is('dimension')) {
                 detected.push(true);

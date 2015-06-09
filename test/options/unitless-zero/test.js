@@ -37,6 +37,11 @@ describe('options/unitless-zero', function() {
                 assert.equal(actual, 'div { -webkit-transform: rotate(0deg); }');
             });
         });
+
+        it('Issue 394', function() {
+            this.comb.configure({ 'unitless-zero': true });
+            this.shouldBeEqual('issue-394.css', 'issue-394.expected.css');
+        });
     });
 
     describe('detect', function() {
@@ -49,6 +54,7 @@ describe('options/unitless-zero', function() {
                 }
             );
         });
+
 
         it('Should detect zero with unit', function() {
             this.shouldDetect(
