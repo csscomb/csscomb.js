@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.6 - 2015-06-09
+- Hotfix for issue when `unitless-zero` crashed on percentages in Less (#389)
+
 ## 3.1.5 - 2015-05-27
 - Fixed dependencies
 
