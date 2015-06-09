@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.7 - 2015-06-09
+
+- Do not remove units from values starting from zeroes, like `0.5em` (#394)
+
 ## 3.1.6 - 2015-06-09
 - Hotfix for issue when `unitless-zero` crashed on percentages in Less (#389)
 
