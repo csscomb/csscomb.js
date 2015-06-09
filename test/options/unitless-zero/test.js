@@ -35,6 +35,11 @@ describe('options/unitless-zero', function() {
         );
     });
 
+    it('Issue 394', function() {
+        this.comb.configure({ 'unitless-zero': true });
+        this.shouldBeEqual('issue-394.css', 'issue-394.expected.css');
+    });
+
     it('Should detect unitless zero option', function() {
         this.shouldDetect(
             ['unitless-zero'],
