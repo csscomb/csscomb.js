@@ -87,9 +87,7 @@ module.exports = (function() {
         detect: function(ast) {
             let detected = [];
 
-            ast.traverse(function(node) {
-                if (!node.is('block') && !node.is('atrulers')) return;
-
+            ast.traverseByTypes(['block', 'atrulers'], function(node) {
                 // For the block node, find its last (the deepest) child
                 var whitespaceNode = getLastWhitespaceNode(node);
                 if (whitespaceNode) {

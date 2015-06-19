@@ -20,7 +20,7 @@ module.exports = {
     process: function(ast) {
         let value = this.value;
 
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach('delimiter', function(delim, i) {
                 var previousNode = selector.get(i - 1);
                 if (previousNode.last().is('space')) {
@@ -44,7 +44,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach('delimiter', function(delim, i) {
                 var previousNode = selector.get(i - 1);
                 if (previousNode.last().is('space')) {
