@@ -277,7 +277,7 @@ module.exports = (function() {
          * @param {String} syntax
          */
         process: function(ast, syntax) {
-            ast.traverse('block', function(node) {
+            ast.traverseByType('block', function(node) {
                 oneline = true;
 
                 var dict = {};
@@ -365,7 +365,7 @@ module.exports = (function() {
         detect: function(ast) {
             let detected = [];
 
-            ast.traverse('block', function(node) {
+            ast.traverseByType('block', function(node) {
                 var result = {
                     true: 0,
                     false: 0

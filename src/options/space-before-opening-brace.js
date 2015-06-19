@@ -35,10 +35,9 @@ module.exports = (function() {
         process: function(ast) {
             let value = this.value;
 
-            ast.traverse(function(block, i, parent) {
-                // If found block node stop at the next one for space check:
-                if (!block.is('block') && !block.is('atrulers')) return;
-
+            // If found block node stop at the next one for space check.
+            ast.traverseByTypes(['block', 'atrulers'],
+                    function(block, i, parent) {
                 // For the pre-block node, find its last (the deepest) child:
                 // TODO: Exclude nodes with braces (for example, arguments)
                 var previousNode = parent.get(i - 1);
@@ -71,10 +70,8 @@ module.exports = (function() {
         detect: function(ast) {
             var detected = [];
 
-            ast.traverse(function(block, i, parent) {
-                // If found block node stop at the next one for space check:
-                if (!block.is('block') && !block.is('atrulers')) return;
-
+            ast.traverseByTypes(['block', 'atrulers'],
+                    function(block, i, parent) {
                 // For the pre-block node, find its last (the deepest) child:
                 // TODO: Exclude nodes with braces (for example, arguments)
                 var previousNode = parent.get(i - 1);
