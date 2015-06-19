@@ -30,7 +30,7 @@ module.exports = (function() {
                     .replace(/[\n]+/g, '\n');
             }
 
-            ast.traverse('space', function(space) {
+            ast.traverseByType('space', function(space) {
                 space.content = trim(space.content);
             });
         },
@@ -54,7 +54,7 @@ module.exports = (function() {
                 detected.push(false);
             }
 
-            ast.traverse('space', function(space) {
+            ast.traverseByType('space', function(space) {
                 if (space.content.match(/[ \t]\n/)) detected.push(false);
             });
 

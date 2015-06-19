@@ -21,7 +21,7 @@ module.exports = {
         let value = this.value;
 
         // TODO(tonyganch): Can this be replaced with one `traverse`?
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach('simpleSelector', function(simpleSelector) {
                 simpleSelector.forEach('combinator', function(combinator, i) {
                     if (simpleSelector.get(i + 1).is('space')) {
@@ -46,7 +46,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach('simpleSelector', function(simpleSelector) {
                 simpleSelector.forEach('combinator', function(combinator, i) {
                     if (simpleSelector.get(i + 1).is('space')) {

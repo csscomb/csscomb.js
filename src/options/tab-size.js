@@ -17,7 +17,7 @@ module.exports = {
     process: function(ast) {
         let value = this.value;
 
-        ast.traverse('space', function(space) {
+        ast.traverseByType('space', function(space) {
             space.content = space.content.replace(/\t/, value);
         });
     }

@@ -20,7 +20,7 @@ module.exports = {
     process: function(ast) {
         let value = this.value;
 
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach(function(simpleSelector) {
                 var notFirst = false;
 
@@ -53,7 +53,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('selector', function(selector) {
+        ast.traverseByType('selector', function(selector) {
             selector.forEach(function(simpleSelector) {
                 simpleSelector.forEach('combinator', function(combinator, i) {
                     if (simpleSelector.get(i - 1).is('space')) {

@@ -14,7 +14,7 @@ module.exports = {
     process: function(ast) {
         let value = this.value;
 
-        ast.traverse('number', function(number) {
+        ast.traverseByType('number', function(number) {
             if (!value) {
                 number.content = number.content.replace(/^0+(?=\.)/, '');
             } else if (number.content[0] === '.') {
@@ -31,7 +31,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('number', function(number) {
+        ast.traverseByType('number', function(number) {
             if (number.content.match(/^\.[0-9]+/)) {
                 detected.push(false);
             } else if (number.content.match(/^0\.[0-9]+/)) {
