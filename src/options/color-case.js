@@ -14,7 +14,7 @@ module.exports = {
     process: function(ast) {
         var value = this.value;
 
-        ast.traverse('color', function(color) {
+        ast.traverseByType('color', function(color) {
             color.content = value === 'lower' ?
                 color.content.toLowerCase() :
                 color.content.toUpperCase();
@@ -29,7 +29,7 @@ module.exports = {
     detect: function(ast) {
         var detected = [];
 
-        ast.traverse('color', function(color) {
+        ast.traverseByType('color', function(color) {
             if (color.content.match(/^[^A-F]*[a-f][^A-F]*$/)) {
                 detected.push('lower');
             } else if (color.content.match(/^[^a-f]*[A-F][^a-f]*$/)) {

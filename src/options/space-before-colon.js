@@ -21,7 +21,7 @@ module.exports = {
     process: function(ast, syntax) {
         let value = this.value;
 
-        ast.traverse('declaration', function(declaration) {
+        ast.traverseByType('declaration', function(declaration) {
             declaration.forEach('propertyDelimiter', function(delimiter, i) {
                 if (syntax === 'sass' && !declaration.get(i - 1)) return;
 
@@ -50,7 +50,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('declaration', function(declaration) {
+        ast.traverseByType('declaration', function(declaration) {
             declaration.forEach('propertyDelimiter', function(delimiter, i) {
                 if (declaration.get(i - 1).is('space')) {
                     detected.push(declaration.get(i - 1).content);

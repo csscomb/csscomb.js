@@ -17,7 +17,7 @@ module.exports = {
     lint: function(ast) {
         var errors = [];
 
-        ast.traverse('block', function(block) {
+        ast.traverseByType('block', function(block) {
             block.eachFor(function(currentNode) {
                 var nodeWithoutSemicolon;
                 // Skip nodes that already have `;` at the end:
@@ -57,7 +57,7 @@ module.exports = {
     process: function(ast) {
         var nodeWithoutSemicolon;
 
-        ast.traverse('block', function(block) {
+        ast.traverseByType('block', function(block) {
             block.eachFor(function(currentNode) {
                 // Skip nodes that already have `;` at the end:
                 if (currentNode.is('declarationDelimiter')) return null;
@@ -109,7 +109,7 @@ module.exports = {
     detect: function(ast) {
         var detected = [];
 
-        ast.traverse('block', function(block) {
+        ast.traverseByType('block', function(block) {
             block.eachFor(function(node) {
                 if (node.is('declarationDelimiter')) {
                     detected.push(true);

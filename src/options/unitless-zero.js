@@ -15,9 +15,7 @@ module.exports = {
     process: function(ast) {
         var UNITS = ['cm', 'em', 'ex', 'pt', 'px'];
 
-        ast.traverse(function(node) {
-            if (!node.is('value') && !node.is('parentheses')) return;
-
+        ast.traverseByTypes(['value', 'parentheses'], function(node) {
             node.forEach(function(value) {
                 if (typeof value === 'string') return;
 
