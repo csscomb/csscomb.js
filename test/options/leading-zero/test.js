@@ -4,22 +4,20 @@ describe('options/leading-zero', function() {
     describe('process', function() {
         it('Should add leading zero in dimensions', function() {
             this.comb.configure({ 'leading-zero': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { margin: .5em }'
-                ),
-                'div { margin: 0.5em }'
-            );
+            return this.comb.processString(
+                'div { margin: .5em }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { margin: 0.5em }');
+            });
         });
 
         it('Should remove leading zero in dimensions', function() {
             this.comb.configure({ 'leading-zero': false });
-            assert.equal(
-                this.comb.processString(
-                    'div { margin: 0.5em }'
-                ),
-                'div { margin: .5em }'
-            );
+            return this.comb.processString(
+                'div { margin: 0.5em }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { margin: .5em }');
+            });
         });
     });
 

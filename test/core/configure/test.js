@@ -25,9 +25,10 @@ describe('csscomb methods', function() {
         comb = new Comb({ 'always-semicolon': true });
         input = 'a { color: tomato }';
         expected = 'a { color: tomato; }';
-        output = comb.processString(input);
-
-        assert.equal(expected, output);
+        return comb.processString(input)
+            .then(function(actual) {
+                assert.equal(actual, expected);
+            });
     });
 
     it.skip('new Comb() should be chainable', function() {
@@ -41,8 +42,10 @@ describe('csscomb methods', function() {
     it('configure() should be chainable', function() {
         input = 'a { color: tomato }';
         expected = 'a { color: tomato; }';
-        output = new Comb().configure({ 'always-semicolon': true }).processString(input);
-
-        assert.equal(expected, output);
+        return new Comb().configure({ 'always-semicolon': true })
+            .processString(input)
+            .then(function(actual) {
+                assert.equal(actual, expected);
+            });
     });
 });

@@ -5,59 +5,59 @@ describe('options/vendor-prefix-align', function() {
 
     describe('process', function() {
         it('Should correctly work when there is comment before property name', function() {
-            this.shouldBeEqual('with-comment-property.css', 'with-comment-property.expected.css');
+            return this.shouldBeEqual('with-comment-property.css', 'with-comment-property.expected.css');
         });
 
         it('Should correctly work when there is comment before property name. Test 2', function() {
-            this.shouldBeEqual('with-comment-property-2.css', 'with-comment-property-2.expected.css');
+            return this.shouldBeEqual('with-comment-property-2.css', 'with-comment-property-2.expected.css');
         });
 
         it('Should correctly work when there is comment before property name. Test 3', function() {
-            this.shouldBeEqual('multiline-comments.css', 'multiline-comments.expected.css');
+            return this.shouldBeEqual('multiline-comments.css', 'multiline-comments.expected.css');
         });
 
         it('Should correctly align prefixes in properties', function() {
-            this.shouldBeEqual('property-align.css', 'property-align.expected.css');
+            return this.shouldBeEqual('property-align.css', 'property-align.expected.css');
         });
 
         it('Should correctly align prefixes in values', function() {
-            this.shouldBeEqual('value-align.css', 'value-align.expected.css');
+            return this.shouldBeEqual('value-align.css', 'value-align.expected.css');
         });
 
         it('Should not touch already align prefixes', function() {
-            this.shouldBeEqual('already-aligned.css', 'already-aligned.expected.css');
+            return this.shouldBeEqual('already-aligned.css', 'already-aligned.expected.css');
         });
 
         it('Should correctly align prefixes in properties and values at the same time', function() {
-            this.shouldBeEqual('both.css', 'both.expected.css');
+            return this.shouldBeEqual('both.css', 'both.expected.css');
         });
 
         it('Should correctly work when value and property names are the same', function() {
-            this.shouldBeEqual('same-name.css', 'same-name.expected.css');
+            return this.shouldBeEqual('same-name.css', 'same-name.expected.css');
         });
 
         it('Should correctly work when there is no whitespace after colon', function() {
-            this.shouldBeEqual('without-space.css', 'without-space.expected.css');
+            return this.shouldBeEqual('without-space.css', 'without-space.expected.css');
         });
 
         it('Should correctly work when there is comment after colon', function() {
-            this.shouldBeEqual('with-comment.css', 'with-comment.expected.css');
+            return this.shouldBeEqual('with-comment.css', 'with-comment.expected.css');
         });
 
         it('Should not do anything with oneliners', function() {
-            this.shouldBeEqual('one-line.css', 'one-line.expected.css');
+            return this.shouldBeEqual('one-line.css', 'one-line.expected.css');
         });
 
         it('Should not do anything with oneliners. Test 2', function() {
-            this.shouldBeEqual('one-line-2.css', 'one-line-2.expected.css');
+            return this.shouldBeEqual('one-line-2.css', 'one-line-2.expected.css');
         });
 
         it('Should always correctly align prefixes', function() {
-            this.shouldBeEqual('complex.css', 'complex.expected.css');
+            return this.shouldBeEqual('complex.css', 'complex.expected.css');
         });
 
         it('Issue 193: should handle declarations without preceding spaces', function() {
-            this.shouldBeEqual('issue-193.css', 'issue-193.expected.css');
+            return this.shouldBeEqual('issue-193.css', 'issue-193.expected.css');
         });
 
         it('Issue 241: should not break tabs', function() {
@@ -65,7 +65,7 @@ describe('options/vendor-prefix-align', function() {
                 'block-indent': '\t',
                 'vendor-prefix-align': true
             });
-            this.shouldBeEqual('issue-241.css', 'issue-241.expected.css');
+            return this.shouldBeEqual('issue-241.css', 'issue-241.expected.css');
         });
     });
 

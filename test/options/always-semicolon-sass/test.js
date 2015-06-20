@@ -5,7 +5,7 @@ describe('options/always-semicolon (sass)', function() {
 
     describe('process', function() {
         it('Should not add semicolon', function() {
-            this.shouldBeEqual('test.sass');
+            return this.shouldBeEqual('test.sass');
         });
     });
 });

@@ -4,98 +4,98 @@ describe('options/sort-order (scss)', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('rule.scss', 'rule.expected.scss');
+            return this.shouldBeEqual('rule.scss', 'rule.expected.scss');
         });
 
         it('Should sort properties inside rules (multiple lines)', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('rule.scss', 'rule.expected.scss');
+            return this.shouldBeEqual('rule.scss', 'rule.expected.scss');
         });
 
         it('Should sort properties inside nested rules', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('nested-rule-1.scss', 'nested-rule-1.expected.scss');
+            return this.shouldBeEqual('nested-rule-1.scss', 'nested-rule-1.expected.scss');
         });
 
         it('Should sort properties divided by nested rules', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
             ] });
-            this.shouldBeEqual('nested-rule-2.scss', 'nested-rule-2.expected.scss');
+            return this.shouldBeEqual('nested-rule-2.scss', 'nested-rule-2.expected.scss');
         });
 
         it('Should group declarations with proper comments and spaces (multiple lines)', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('comments-1.scss', 'comments-1.expected.scss');
+            return this.shouldBeEqual('comments-1.scss', 'comments-1.expected.scss');
         });
 
         it('Should group declarations with proper comments and spaces (single line)', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('comments-2.scss', 'comments-2.expected.scss');
+            return this.shouldBeEqual('comments-2.scss', 'comments-2.expected.scss');
         });
 
         it('Should divide properties from different groups with an empty line', function() {
             this.comb.configure({ 'sort-order': [
                 ['top'], ['color']
             ] });
-            this.shouldBeEqual('different-groups.scss', 'different-groups.expected.scss');
+            return this.shouldBeEqual('different-groups.scss', 'different-groups.expected.scss');
         });
 
         it('Should sort variables', function() {
             this.comb.configure({ 'sort-order': [
                 ['$variable', 'color']
             ] });
-            this.shouldBeEqual('variable.scss', 'variable.expected.scss');
+            return this.shouldBeEqual('variable.scss', 'variable.expected.scss');
         });
 
         it('Should sort imports', function() {
             this.comb.configure({ 'sort-order': [
                 ['$import', 'color']
             ] });
-            this.shouldBeEqual('import.scss', 'import.expected.scss');
+            return this.shouldBeEqual('import.scss', 'import.expected.scss');
         });
 
         it('Should sort @include-s', function() {
             this.comb.configure({ 'sort-order': [
                 ['$include', 'color']
             ] });
-            this.shouldBeEqual('include.scss', 'include.expected.scss');
+            return this.shouldBeEqual('include.scss', 'include.expected.scss');
         });
 
         it('Should sort @extend-s', function() {
             this.comb.configure({ 'sort-order': [
                 ['$include', 'color']
             ] });
-            this.shouldBeEqual('extend.scss', 'extend.expected.scss');
+            return this.shouldBeEqual('extend.scss', 'extend.expected.scss');
         });
 
         it('Should sort properties inside blocks passed to mixins', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'color']
             ] });
-            this.shouldBeEqual('mixin.scss', 'mixin.expected.scss');
+            return this.shouldBeEqual('mixin.scss', 'mixin.expected.scss');
         });
 
         it('Should handle properties preceeding rulesets', function() {
             this.comb.configure({ 'sort-order': [
                 ['top', 'left', 'color']
             ] });
-            this.shouldBeEqual('ruleset.scss', 'ruleset.expected.scss');
+            return this.shouldBeEqual('ruleset.scss', 'ruleset.expected.scss');
         });
 
         it('Should handle properties preceeding conditions', function() {
             this.comb.configure({ 'sort-order': [
                 ['font-size', 'display', 'top', 'color']
             ] });
-            this.shouldBeEqual('condition.scss', 'condition.expected.scss');
+            return this.shouldBeEqual('condition.scss', 'condition.expected.scss');
         });
 
         it('Should sort complex case with leftovers', function() {
@@ -108,17 +108,17 @@ describe('options/sort-order (scss)', function() {
                 ["font"]
               ]
             });
-            this.shouldBeEqual('leftovers.scss', 'leftovers.expected.scss');
+            return this.shouldBeEqual('leftovers.scss', 'leftovers.expected.scss');
         });
 
         it('Issue 317', function() {
             this.comb.configure({ 'sort-order': ['...'] });
-            this.shouldBeEqual('issue-317.scss');
+            return this.shouldBeEqual('issue-317.scss');
         });
 
         it('Issue 333', function() {
             this.comb.configure({ 'sort-order': ['...'] });
-            this.shouldBeEqual('issue-333.scss');
+            return this.shouldBeEqual('issue-333.scss');
         });
     });
 });

@@ -3,19 +3,19 @@ describe('integral test', function() {
         it('Process result must be equal to expected.css', function() {
             var config = this.Comb.getConfig('csscomb');
             this.comb.configure(config);
-            this.shouldBeEqual('integral.css', 'integral.expected.css');
+            return this.shouldBeEqual('integral.css', 'integral.expected.css');
         });
 
         it('Issue 252', function() {
             var config = this.Comb.getConfig('csscomb');
             this.comb.configure(config);
-            this.shouldBeEqual('issue-252.sass', 'issue-252.expected.sass');
+            return this.shouldBeEqual('issue-252.sass', 'issue-252.expected.sass');
         });
 
         it('Issue 374', function() {
             var config = this.Comb.getConfig('csscomb');
             this.comb.configure(config);
-            this.shouldBeEqual('issue-374.css');
+            return this.shouldBeEqual('issue-374.css');
         });
     });
 

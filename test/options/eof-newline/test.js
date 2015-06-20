@@ -4,30 +4,29 @@ describe('options/eof-newline', function() {
     describe('process', function() {
         it('Invalid value should not change trim trailing brac', function() {
             this.comb.configure({ 'eof-newline': 'foobar' });
-            assert.equal(
-                this.comb.processString('a { color: red }  \n'),
+            return this.comb.processString(
                 'a { color: red }  \n'
-            );
+            ).then(function(actual) {
+                assert.equal(actual, 'a { color: red }  \n');
+            });
         });
 
         it('Boolean true value should insert line-break at eof', function() {
             this.comb.configure({ 'eof-newline': true });
-            assert.equal(
-                this.comb.processString(
-                    'a {color:red}  '
-                ),
-                'a {color:red}  \n'
-            );
+            return this.comb.processString(
+                'a {color:red}  '
+            ).then(function(actual) {
+                assert.equal(actual, 'a {color:red}  \n');
+            });
         });
 
         it('Boolean false value should remove line-break from eof', function() {
             this.comb.configure({ 'eof-newline': false });
-            assert.equal(
-                this.comb.processString(
-                    'a {color:red}  \n'
-                ),
-                'a {color:red}  '
-            );
+            return this.comb.processString(
+                'a {color:red}  \n'
+            ).then(function(actual) {
+                assert.equal(actual, 'a {color:red}  ');
+            });
         });
     });
 
