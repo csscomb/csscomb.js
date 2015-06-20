@@ -37,10 +37,9 @@ module.exports = {
     /**
      * Processes tree node.
      * @param {node} ast
-     * @param {string} syntax
      * @param {object} config
      */
-    process: function(ast, syntax, config) {
+    process: function(ast, config) {
         // Types of nodes that can be sorted:
         var NODES = ['atruleb', 'atruler', 'atrules', 'multilineComment',
             'singlelineComment', 'declaration', 'space', 'include', 'extend'];
@@ -217,7 +216,7 @@ module.exports = {
                 deleted.push(i + 1);
                 i++;
 
-                if (syntax === 'sass') return extendedNode;
+                if (ast.syntax === 'sass') return extendedNode;
 
                 // Save spaces and comments which follow right after
                 // the declaration and mark them for removing from parent node:
@@ -383,7 +382,7 @@ module.exports = {
                     if (prevNode &&
                         currentNode.groupIndex > prevNode.groupIndex) {
                         if (sc0[0] && sc0[0].is('space') &&
-                           (syntax === 'sass' ||
+                           (ast.syntax === 'sass' ||
                             sc0[0].content.match(/\n/g) &&
                             sc0[0].content.match(/\n/g).length < 2)) {
                             sc0[0].content = '\n' + sc0[0].content;
@@ -394,7 +393,7 @@ module.exports = {
                         node.content.unshift(sc2[j]);
                     }
                     if (currentNode.delim.length > 0) {
-                        var delim = syntax === 'sass' ? '\n' : ';';
+                        var delim = ast.syntax === 'sass' ? '\n' : ';';
                         var declDelim = gonzales.createNode({
                             type: 'declarationDelimiter',
                             content: delim
