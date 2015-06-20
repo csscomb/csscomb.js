@@ -69,10 +69,9 @@ module.exports = (function() {
         /**
          * Processes tree node.
          * @param {node} ast
-         * @param {String} syntax
          * @param {Object} config
          */
-        process: function(ast, syntax, config) {
+        process: function(ast, config) {
             valueFromSettings = this.value;
             blockIndent = config['block-indent'];
 

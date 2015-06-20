@@ -16,14 +16,14 @@ module.exports = {
      * Processes tree node.
      *
      * @param {node} ast
-     * @param {String} syntax
      */
-    process: function(ast, syntax) {
+    process: function(ast) {
         let value = this.value;
 
         ast.traverseByType('declaration', function(declaration) {
             declaration.forEach('propertyDelimiter', function(delimiter, i) {
-                if (syntax === 'sass' && !declaration.get(i - 1)) return;
+                if (delimiter.syntax === 'sass' && !declaration.get(i - 1))
+                  return;
 
                 // Remove any spaces before colon:
                 if (declaration.get(i - 1).is('space')) {
