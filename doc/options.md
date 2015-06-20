@@ -340,7 +340,7 @@ keywords in your config:
   or `.mixin()` in LESS);
 * `$include mixin-name` — for mixins with specified name (e.g. `@include mixin-name` in Sass
   or `.mixin-name()` in LESS);
-* `$extend` — for extends (e.g. `@extend ...`; only in Sass);
+* `$extend` — for extends (e.g. `@extend .foo` in Sass or `&:extend(.foo)` in LESS);
 * `$import` — for `@import` rules.
 
 Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ], [ "$include media" ] ] }`
