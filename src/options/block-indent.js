@@ -15,7 +15,7 @@ module.exports = {
      *
      * @param {node} ast
      */
-    process: function process(ast, syntax) {
+    process: function process(ast) {
         ast.eachFor('space', function(whitespaceNode, i) {
             var spaces = whitespaceNode.content.replace(/\n[ \t]+/gm, '\n');
 
@@ -26,7 +26,7 @@ module.exports = {
             }
         });
 
-        this._processNode(ast, syntax, 0);
+        this._processNode(ast, 0);
     },
 
     /**
@@ -58,22 +58,22 @@ module.exports = {
         return detected;
     },
 
-    _processNode: function _processNode(node, syntax, level) {
+    _processNode: function _processNode(node, level) {
         var that = this;
 
         node.forEach(function(n) {
-            if (syntax === 'sass' && n.is('block')) {
+            if (node.syntax === 'sass' && n.is('block')) {
                 that._processSassBlock(n, level);
             }
 
             // Continue only with space nodes inside {...}:
-            if (syntax !== 'sass' && level !== 0 && n.is('space')) {
+            if (node.syntax !== 'sass' && level !== 0 && n.is('space')) {
                 that._processSpaceNode(n, level);
             }
 
             if (n.is('block') || n.is('atrulers')) level++;
 
-            that._processNode(n, syntax, level);
+            that._processNode(n, level);
         });
     },
 
