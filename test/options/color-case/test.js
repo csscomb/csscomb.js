@@ -4,44 +4,39 @@ describe('options/color-case', function() {
     describe('process', function() {
         it('Should switch colors to upper case', function() {
             this.comb.configure({ 'color-case': 'upper' });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #fff }'
-                ),
-                'div { color: #FFF }'
-            );
+            return this.comb.processString(
+                'div { color: #fff }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #FFF }');
+            });
         });
 
         it('Should switch colors to lower case', function() {
             this.comb.configure({ 'color-case': 'lower' });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #FFF }'
-                ),
-                'div { color: #fff }'
-            );
+            return this.comb.processString(
+                'div { color: #FFF }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #fff }');
+            });
         });
 
         it('Should switch color-case in complex rules', function() {
             this.comb.configure({ 'color-case': 'lower' });
-            assert.equal(
-                this.comb.processString(
-                    'div { background: url(img.png#RND) #E3E3E3 0 100% no-repeat;' +
-                        ' box-shadow: 1px 2px 3px 4px #F0F0F0 inset; }'
-                ),
-                'div { background: url(img.png#RND) #e3e3e3 0 100% no-repeat;' +
-                    ' box-shadow: 1px 2px 3px 4px #f0f0f0 inset; }'
-            );
+            this.comb.processString(
+                'div { background: url(img.png#RND) #E3E3E3 0 100% no-repeat;' +
+                ' box-shadow: 1px 2px 3px 4px #F0F0F0 inset; }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { background: url(img.png#RND) #e3e3e3 0 100% no-repeat; box-shadow: 1px 2px 3px 4px #f0f0f0 inset; }');
+            });
         });
 
         it('Should not switch selector case', function() {
             this.comb.configure({ 'color-case': 'lower' });
-            assert.equal(
-                this.comb.processString(
-                    '#Header { color: #FFF }'
-                ),
-                '#Header { color: #fff }'
-            );
+            return this.comb.processString(
+                '#Header { color: #FFF }'
+            ).then(function(actual) {
+                assert.equal(actual, '#Header { color: #fff }');
+            });
         });
     });
 

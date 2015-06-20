@@ -4,52 +4,47 @@ describe('options/always-semicolon', function() {
     describe('process', function() {
         it('Should add semicolon for last property if missing. Test 1', function() {
             this.comb.configure({ 'always-semicolon': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { height: 0 }'
-                ),
-                'div { height: 0; }'
-            );
+            return this.comb.processString(
+                'div { height: 0 }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { height: 0; }');
+            });
         });
 
         it('Should add semicolon for last property if missing. Test 2', function() {
             this.comb.configure({ 'always-semicolon': true });
-            assert.equal(
-                this.comb.processString(
-                    'div {\nheight: 0\n}'
-                ),
-                'div {\nheight: 0;\n}'
-            );
+            return this.comb.processString(
+                'div {\nheight: 0\n}'
+            ).then(function(actual) {
+                assert.equal(actual, 'div {\nheight: 0;\n}');
+            });
         });
 
         it('Should add semicolon for last property if missing. Test 3', function() {
             this.comb.configure({ 'always-semicolon': true });
-            assert.equal(
-                this.comb.processString(
-                    'div {height: 0}'
-                ),
-                'div {height: 0;}'
-            );
+            return this.comb.processString(
+                'div {height: 0}'
+            ).then(function(actual) {
+                assert.equal(actual, 'div {height: 0;}');
+            });
         });
 
         it('Should add semicolon for last property if missing. Test 4', function() {
             this.comb.configure({ 'always-semicolon': true });
-            assert.equal(
-                this.comb.processString(
-                    'div {\nheight: 0 /* Comment */\n}'
-                ),
-                'div {\nheight: 0; /* Comment */\n}'
-            );
+            return this.comb.processString(
+                'div {\nheight: 0 /* Comment */\n}'
+            ).then(function(actual) {
+                assert.equal(actual, 'div {\nheight: 0; /* Comment */\n}');
+            });
         });
 
         it('Should add semicolon for last property if missing. Test 5', function() {
             this.comb.configure({ 'always-semicolon': true });
-            assert.equal(
-                this.comb.processString(
-                    'div {\ntop: 1px;\nheight: 0 /* 1comment */  /* 2comment */\n}'
-                ),
-                'div {\ntop: 1px;\nheight: 0; /* 1comment */  /* 2comment */\n}'
-            );
+            return this.comb.processString(
+                'div {\ntop: 1px;\nheight: 0 /* 1comment */  /* 2comment */\n}'
+            ).then(function(actual) {
+                assert.equal(actual, 'div {\ntop: 1px;\nheight: 0; /* 1comment */  /* 2comment */\n}');
+            });
         });
     });
 

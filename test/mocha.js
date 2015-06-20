@@ -25,7 +25,10 @@ function shouldBeEqual(input, expected) {
     var syntax = input.split('.').pop();
     input = readFile.call(this, input);
     expected = expected ? readFile.call(this, expected) : input;
-    assert.equal(this.comb.processString(input, { syntax: syntax }), expected);
+    return this.comb.processString(input, { syntax: syntax })
+        .then(function(string) {
+            assert.equal(string, expected);
+        });
 }
 
 function sortObject(o) {
