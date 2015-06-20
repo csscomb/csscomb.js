@@ -70,9 +70,16 @@ describe('options/sort-order (scss)', function() {
             return this.shouldBeEqual('include.scss', 'include.expected.scss');
         });
 
+        it('Should sort @include-s with specified name', function() {
+            this.comb.configure({ 'sort-order': [
+                ['$include'], ['color'], ['$include media']
+            ] });
+            this.shouldBeEqual('include-specified.scss', 'include-specified.expected.scss');
+        });
+
         it('Should sort @extend-s', function() {
             this.comb.configure({ 'sort-order': [
-                ['$include', 'color']
+                ['$extend', 'color']
             ] });
             return this.shouldBeEqual('extend.scss', 'extend.expected.scss');
         });

@@ -297,9 +297,32 @@ module.exports = {
                 // If not, proceed with the next node:
                 propertyName = null;
                 // Look for includes:
-                if (node.get(i).is('include') ||
-                    node.get(i).is('extend')) {
-                    propertyName = '$include';
+                if (node.get(i).is('include')) {
+                    // Divide `include` into mixins with specific
+                    // name (e. g. `$include breakpoint`),
+                    // and the rest — `$include`.
+                    var mixinName;
+
+                    // SASS and SCSS both supports `@include`,
+                    // but SASS also supports `+mixin-name`
+                    if (ast.syntax === 'less') {
+                        mixinName = node.get(i).get(0).get(0).content;
+                    } else if (ast.syntax === 'sass' &&
+                               node.get(i).get(0).content === '+') {
+                        mixinName = node.get(i).get(1).get(0).content;
+                    } else {
+                        mixinName = node.get(i).get(2).get(0).content;
+                    }
+
+                    var includeMixinName = '$include ' + mixinName;
+
+                    if (order.hasOwnProperty(includeMixinName)) {
+                        propertyName = includeMixinName;
+                    } else {
+                        propertyName = '$include';
+                    }
+                } else if (node.get(i).is('extend')) {
+                    propertyName = '$extend';
                 } else {
                     for (j = 0, nl = node.get(i).length; j < nl; j++) {
                         currentNode = node.get(i).get(j);
