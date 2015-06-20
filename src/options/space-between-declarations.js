@@ -68,7 +68,7 @@ module.exports = (function() {
         process: function(ast) {
             let value = this.value;
 
-            ast.traverse('declarationDelimiter',
+            ast.traverseByType('declarationDelimiter',
                     function(delimiter, i, parent) {
                 // Grom user's point of view "declaration" includes semicolons
                 // and comments placed on the same line.

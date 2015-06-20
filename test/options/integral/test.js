@@ -1,4 +1,4 @@
-describe.skip('integral test', function() {
+describe('integral test', function() {
     describe('process', function() {
         it('Process result must be equal to expected.css', function() {
             var config = this.Comb.getConfig('csscomb');

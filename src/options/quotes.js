@@ -14,7 +14,7 @@ module.exports = {
     process: function(ast) {
         let value = this.value;
 
-        ast.traverse('string', function(string) {
+        ast.traverseByType('string', function(string) {
             if (string.content[0] === '"' && value === 'single') {
                 string.content = string.content
                     // Unescape all escaped double quotes
@@ -43,7 +43,7 @@ module.exports = {
     detect: function(ast) {
         let detected = [];
 
-        ast.traverse('string', function(string) {
+        ast.traverseByType('string', function(string) {
             if (string.content[0] === '"') {
                 detected.push('double');
             } else if (string.content[0] === '\'') {
