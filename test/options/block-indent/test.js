@@ -2,32 +2,32 @@ describe('options/block-indent:', function() {
     describe('process', function() {
         it('Array value => should not change anything', function() {
             this.comb.configure({ 'block-indent': ['', ' '] });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Invalid string value => should not change anything', function() {
             this.comb.configure({ 'block-indent': '  nani  ' });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Float number value => should not change anything', function() {
             this.comb.configure({ 'block-indent': 3.5 });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Integer value => should set proper number of spaces', function() {
             this.comb.configure({ 'block-indent': 0 });
-            this.shouldBeEqual('test.css', 'test.expected.css');
+            return this.shouldBeEqual('test.css', 'test.expected.css');
         });
 
         it('Valid string value => should set proper number of spaces', function() {
             this.comb.configure({ 'block-indent': '    ' });
-            this.shouldBeEqual('test.css', 'test-2.expected.css');
+            return this.shouldBeEqual('test.css', 'test-2.expected.css');
         });
 
         it('Issue 379', function() {
             this.comb.configure({ 'block-indent': 4 });
-            this.shouldBeEqual('issue-379.css', 'issue-379.expected.css');
+            return this.shouldBeEqual('issue-379.css', 'issue-379.expected.css');
         });
     });
 
@@ -66,7 +66,7 @@ describe('options/block-indent:', function() {
 
         it('Valid string value => should set proper space after combnator', function() {
             this.comb.configure({ 'block-indent': '    ', 'space-before-closing-brace': '\n' });
-            this.shouldBeEqual('test.css', 'test-3.expected.css');
+            return this.shouldBeEqual('test.css', 'test-3.expected.css');
         });
     });
 });

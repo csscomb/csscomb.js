@@ -2,37 +2,37 @@ describe('options/space-before-opening-brace:', function() {
     describe('process', function() {
         it('Array value => should not change anything', function() {
             this.comb.configure({ 'space-before-opening-brace': ['', ' '] });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Invalid string value => should not change anything', function() {
             this.comb.configure({ 'space-before-opening-brace': '  nani  ' });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Float number value => should not change anything', function() {
             this.comb.configure({ 'space-before-opening-brace': 3.5 });
-            this.shouldBeEqual('test.css');
+            return this.shouldBeEqual('test.css');
         });
 
         it('Integer value => should set proper space before {', function() {
             this.comb.configure({ 'space-before-opening-brace': 0 });
-            this.shouldBeEqual('test.css', 'test.expected.css');
+            return this.shouldBeEqual('test.css', 'test.expected.css');
         });
 
         it('Valid string value (spaces only) => should set proper space before {', function() {
             this.comb.configure({ 'space-before-opening-brace': '  ' });
-            this.shouldBeEqual('test.css', 'test-2.expected.css');
+            return this.shouldBeEqual('test.css', 'test-2.expected.css');
         });
 
         it('Valid string value (spaces and newlines) => should set proper space before {', function() {
             this.comb.configure({ 'space-before-opening-brace': '\n    ' });
-            this.shouldBeEqual('test.css', 'test-3.expected.css');
+            return this.shouldBeEqual('test.css', 'test-3.expected.css');
         });
 
         it('Issue 232', function() {
             this.comb.configure({ 'space-before-opening-brace': 1 });
-            this.shouldBeEqual('issue-232.css', 'issue-232.expected.css');
+            return this.shouldBeEqual('issue-232.css', 'issue-232.expected.css');
         });
     });
 

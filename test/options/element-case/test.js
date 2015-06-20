@@ -4,42 +4,38 @@ describe('options/element-case', function() {
     describe('process', function() {
         it('Invalid String should not change case of elements', function() {
             this.comb.configure({ 'element-case': 'foobar' });
-            assert.equal(
-                this.comb.processString(
-                    'LI a { color : red }'
-                ),
+            return this.comb.processString(
                 'LI a { color : red }'
-            );
+            ).then(function(actual) {
+                assert.equal(actual, 'LI a { color : red }');
+            });
         });
 
         it('Should switch tag name to upper case', function() {
             this.comb.configure({ 'element-case': 'upper' });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #fff }'
-                ),
-                'DIV { color: #fff }'
-            );
+            return this.comb.processString(
+                'div { color: #fff }'
+            ).then(function(actual) {
+                assert.equal(actual, 'DIV { color: #fff }');
+            });
         });
 
         it('Should switch tag name to lower case', function() {
             this.comb.configure({ 'element-case': 'lower' });
-            assert.equal(
-                this.comb.processString(
-                    'DIV { color: #FFF }'
-                ),
-                'div { color: #FFF }'
-            );
+            return this.comb.processString(
+                'DIV { color: #FFF }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #FFF }');
+            });
         });
 
         it('Should switch element-case in complex rules', function() {
             this.comb.configure({ 'element-case': 'lower' });
-            assert.equal(
-                this.comb.processString(
-                    'UL > LI > .foo:not(A) { color: red }'
-                ),
-                'ul > li > .foo:not(a) { color: red }'
-            );
+            return this.comb.processString(
+                'UL > LI > .foo:not(A) { color: red }'
+            ).then(function(actual) {
+                assert.equal(actual, 'ul > li > .foo:not(a) { color: red }');
+            });
         });
     });
 

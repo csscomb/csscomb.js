@@ -5,11 +5,11 @@ describe('options/vendor-prefix-align', function() {
 
     describe('process', function() {
         it('Should align prexied values', function() {
-            this.shouldBeEqual('value.sass', 'value.expected.sass');
+            return this.shouldBeEqual('value.sass', 'value.expected.sass');
         });
 
         it('Should not align prefixed property names', function() {
-            this.shouldBeEqual('property.sass');
+            return this.shouldBeEqual('property.sass');
         });
     });
 });
