@@ -274,9 +274,8 @@ module.exports = (function() {
          * Processes tree node.
          *
          * @param {node} ast
-         * @param {String} syntax
          */
-        process: function(ast, syntax) {
+        process: function(ast) {
             ast.traverseByType('block', function(node) {
                 oneline = true;
 
@@ -302,7 +301,7 @@ module.exports = (function() {
                     }
                 });
 
-                if (oneline && syntax !== 'sass') return;
+                if (oneline && ast.syntax !== 'sass') return;
 
                 // Update nodes
                 walk({
@@ -331,7 +330,7 @@ module.exports = (function() {
                     }
                 });
 
-                if (syntax === 'sass') return;
+                if (ast.syntax === 'sass') return;
 
                 walk({
                     node: node,
