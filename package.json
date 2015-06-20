@@ -40,8 +40,8 @@
   },
   "dependencies": {
     "minimist": "1.1.x",
-    "csscomb-core": "3.0.0-8",
-    "gonzales-pe": "3.0.0-31",
+    "csscomb-core": "csscomb/core#build-dev",
+    "gonzales-pe": "tonyganch/gonzales-pe#build-dev",
     "vow": "0.4.4"
   },
   "devDependencies": {
@@ -63,6 +63,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "coverage": "./scripts/coverage.sh",
+    "postinstall": "./scripts/postinstall.sh",
     "test": "./scripts/build.sh && ./scripts/test.sh",
     "watch": "./scripts/watch.sh"
   }
