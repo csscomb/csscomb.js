@@ -10,7 +10,7 @@ describe('options/sort-order-fallback', function() {
                 ]
             };
             this.comb.configure(config);
-            this.shouldBeEqual('test.css', 'test.expected.css');
+            return this.shouldBeEqual('test.css', 'test.expected.css');
         });
 
         it('Should sort unknown properties alphabetically if `sort-order-fallback` is set', function() {
@@ -19,7 +19,7 @@ describe('options/sort-order-fallback', function() {
                 'sort-order': ['top', 'left']
             };
             this.comb.configure(config);
-            this.shouldBeEqual('test.css', 'test-2.expected.css');
+            return this.shouldBeEqual('test.css', 'test-2.expected.css');
         });
 
         it('Should leave leftovers as is if `sort-order-fallback` is not set', function() {
@@ -27,7 +27,7 @@ describe('options/sort-order-fallback', function() {
                 'sort-order': ['top', 'left']
             };
             this.comb.configure(config);
-            this.shouldBeEqual('test.css', 'test-3.expected.css');
+            return this.shouldBeEqual('test.css', 'test-3.expected.css');
         });
     });
 });

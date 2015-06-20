@@ -4,32 +4,29 @@ describe('options/color-shorthand', function() {
     describe('process', function() {
         it('Should shrink hexadecimal colors to 3 symbols', function() {
             this.comb.configure({ 'color-shorthand': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #aabbcc }'
-                ),
-                'div { color: #abc }'
-            );
+            return this.comb.processString(
+                'div { color: #aabbcc }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #abc }');
+            });
         });
 
         it('Should expand hexadecimal colors to 6 symbols', function() {
             this.comb.configure({ 'color-shorthand': false });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #7ad }'
-                ),
-                'div { color: #77aadd }'
-            );
+            return this.comb.processString(
+                'div { color: #7ad }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #77aadd }');
+            });
         });
 
         it('Should save case while processing', function() {
             this.comb.configure({ 'color-shorthand': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { color: #fFAafF }'
-                ),
-                'div { color: #fAf }'
-            );
+            return this.comb.processString(
+                'div { color: #fFAafF }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { color: #fAf }');
+            });
         });
     });
 

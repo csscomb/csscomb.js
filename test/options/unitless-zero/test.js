@@ -4,36 +4,38 @@ describe('options/unitless-zero', function() {
     describe('process', function() {
         it('Should remove units in zero-valued dimensions', function() {
             this.comb.configure({ 'unitless-zero': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { margin: 0em; padding: 0px }'
-                ),
-                'div { margin: 0; padding: 0 }'
-            );
-            assert.equal(
-                this.comb.processString(
-                    'div { margin: 0% }'
-                ),
-                'div { margin: 0 }'
-            );
+            return this.comb.processString(
+                'div { margin: 0em; padding: 0px }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { margin: 0; padding: 0 }');
+            });
+        });
+
+        it('Should remove units in zero-valued dimensions, test 2', function() {
+            this.comb.configure({ 'unitless-zero': true });
+            return this.comb.processString(
+                'div { margin: 0% }'
+            ).then(function(actual) {
+                assert.equal(actual, 'div { margin: 0 }');
+            });
         });
 
         it('Should remove units in zero-valued media-query params', function() {
             this.comb.configure({ 'unitless-zero': true });
-            assert.equal(
-                this.comb.processString('@media all and (min-width: 0px) { div { margin: 0em; padding: 0px } }'),
-                '@media all and (min-width: 0) { div { margin: 0; padding: 0 } }'
-            );
+            return this.comb.processString(
+                '@media all and (min-width: 0px) { div { margin: 0em; padding: 0px } }'
+            ).then(function(actual) {
+                assert.equal(actual, '@media all and (min-width: 0) { div { margin: 0; padding: 0 } }');
+            });
         });
 
         it('Should not remove units (degs) in rotate property', function() {
             this.comb.configure({ 'unitless-zero': true });
-            assert.equal(
-                this.comb.processString(
-                    'div { -webkit-transform: rotate(0deg); }'
-                ),
+            return this.comb.processString(
                 'div { -webkit-transform: rotate(0deg); }'
-            );
+            ).then(function(actual) {
+                assert.equal(actual, 'div { -webkit-transform: rotate(0deg); }');
+            });
         });
     });
 

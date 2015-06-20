@@ -4,7 +4,10 @@ describe('options/remove-empty-rulesets', function() {
     describe('process', function() {
         it('Configured with invalid value, should not remove empty ruleset', function() {
             this.comb.configure({ 'remove-empty-rulesets': 'foobar' });
-            assert.equal(this.comb.processString('a { width: 10px; } b {}'), 'a { width: 10px; } b {}');
+            return this.comb.processString('a { width: 10px; } b {}')
+                .then(function(actual) {
+                    assert.equal(actual, 'a { width: 10px; } b {}');
+                });
         });
 
         describe('configured with Boolean "true" value', function() {
@@ -13,19 +16,31 @@ describe('options/remove-empty-rulesets', function() {
             });
 
             it('should remove empty ruleset', function() {
-                assert.equal(this.comb.processString(' b {} '), '  ');
+                return this.comb.processString(' b {} ')
+                    .then(function(actual) {
+                        assert.equal(actual, '  ');
+                    });
             });
 
             it('should remove ruleset with spaces', function() {
-                assert.equal(this.comb.processString(' b {   } '), '  ');
+                return this.comb.processString(' b {   } ')
+                    .then(function(actual) {
+                        assert.equal(actual, '  ');
+                    });
             });
 
             it('should leave ruleset with declarations', function() {
-                assert.equal(this.comb.processString('a { width: 10px; }\nb {} '), 'a { width: 10px; }\n ');
+                return this.comb.processString('a { width: 10px; }\nb {} ')
+                    .then(function(actual) {
+                        assert.equal(actual, 'a { width: 10px; }\n ');
+                    });
             });
 
             it('should leave ruleset with comments', function() {
-                assert.equal(this.comb.processString('a { /* comment */ }\nb {} '), 'a { /* comment */ }\n ');
+                return this.comb.processString('a { /* comment */ }\nb {} ')
+                    .then(function(actual) {
+                        assert.equal(actual, 'a { /* comment */ }\n ');
+                    });
             });
         });
     });

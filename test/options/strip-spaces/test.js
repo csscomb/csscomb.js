@@ -4,34 +4,33 @@ describe('options/strip-spaces', function() {
     describe('process', function() {
         it('Invalid value should not trim trailing spaces', function() {
             this.comb.configure({ 'strip-spaces': 'foobar' });
-            assert.equal(
-                this.comb.processString('a { color: red }  \n'),
-                'a { color: red }  \n'
-            );
+            return this.comb.processString('a { color: red }  \n')
+                .then(function(actual) {
+                    assert.equal(actual, 'a { color: red }  \n');
+                });
         });
 
         it('Boolean true value should trim all trailing spaces', function() {
             this.comb.configure({ 'strip-spaces': true });
-            assert.equal(
-                this.comb.processString(
-                    'a { color: red }   \n' +
-                    'a{color:red}\t /* foobar */\t \n' +
-                    'a {color:red}  \n   \n'
-                ),
-                'a { color: red }\n' +
-                'a{color:red}\t /* foobar */\n' +
-                'a {color:red}\n'
-            );
+            return this.comb.processString(
+                'a { color: red }   \n' +
+                'a{color:red}\t /* foobar */\t \n' +
+                'a {color:red}  \n   \n'
+            ).then(function(actual) {
+                assert.equal(actual,
+                    'a { color: red }\n' +
+                    'a{color:red}\t /* foobar */\n' +
+                    'a {color:red}\n');
+            });
         });
 
         it('Boolean true value should trim trailing spaces at eof', function() {
             this.comb.configure({ 'strip-spaces': true });
-            assert.equal(
-                this.comb.processString(
-                    'a {color:red}  '
-                ),
-                'a {color:red}'
-            );
+            return this.comb.processString(
+                'a {color:red}  '
+            ).then(function(actual) {
+                assert.equal(actual, 'a {color:red}');
+            });
         });
     });
 
