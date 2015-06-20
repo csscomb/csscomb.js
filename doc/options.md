@@ -337,11 +337,14 @@ If you sort properties in `*.scss` or `*.less` files, you can use one of 3
 keywords in your config:
 
 * `$variable` — for variable declarations (e.g. `$var` in Sass or `@var` in LESS);
-* `$include` — for included mixins (e.g. `@include ...` and `@extend ...` in Sass
-   or `.mixin()` in LESS);
+* `$include` — for all mixins except those that have been specified (e.g. `@include ...` in Sass
+  or `.mixin()` in LESS);
+* `$include mixin-name` — for mixins with specified name (e.g. `@include mixin-name` in Sass
+  or `.mixin-name()` in LESS);
+* `$extend` — for extends (e.g. `@extend .foo` in Sass or `&:extend(.foo)` in LESS);
 * `$import` — for `@import` rules.
 
-Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ] ] }`
+Example: `{ "sort-order": [ [ "$variable" ], [ "$include" ], [ "top", "padding" ], [ "$include media" ] ] }`
 
 ```scss
 /* before */
@@ -349,6 +352,9 @@ p {
     padding: 0;
     @include mixin($color);
     $color: tomato;
+    @include media("desktop") {
+        color: black;
+    }
     top: 0;
 }
 
@@ -360,6 +366,10 @@ p {
 
     top: 0;
     padding: 0;
+
+    @include media("desktop") {
+        color: black;
+    }
 }
 ```
 
