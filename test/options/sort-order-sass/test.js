@@ -56,11 +56,25 @@ describe('options/sort-order (sass)', function() {
             this.shouldBeEqual('include.sass', 'include.expected.sass');
         });
 
-        it('Should sort @extend-s', function() {
+        it.skip('Should sort @extend-s', function() {
             this.comb.configure({ 'sort-order': [
-                ['$include', 'color']
+                ['$extend', 'color']
             ] });
             this.shouldBeEqual('extend.sass', 'extend.expected.sass');
+        });
+
+        it.skip('Should sort @include-s with specified name. Test 1', function() {
+            this.comb.configure({ 'sort-order': [
+                ['$include'], ['color'], ['$include media']
+            ] });
+            this.shouldBeEqual('include-specified-1.sass', 'include-specified-1.expected.sass');
+        });
+
+        it.skip('Should sort @include-s with specified name. Test 2', function() {
+            this.comb.configure({ 'sort-order': [
+                ['$include'], ['color'], ['$include media']
+            ] });
+            this.shouldBeEqual('include-specified-2.sass', 'include-specified-2.expected.sass');
         });
 
         it('Should sort properties inside blocks passed to mixins', function() {
