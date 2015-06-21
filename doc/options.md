@@ -29,6 +29,7 @@ Here is a full list in the same order they are applied while processing css:
 - [unitless-zero](#unitless-zero)
 - [tab-size](#tab-size)
 - [vendor-prefix-align](#vendor-prefix-align)
+- [rule-delimiter](#rule-delimiter)
 
 Following options are ignored while processing `*.sass` files:
 
@@ -903,6 +904,47 @@ a
     background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
     background:         linear-gradient(to bottom, #fff 0, #eee 100%);
 }
+```
+
+## rule-delimiter
+
+Number of line breaks after a ruleset.
+
+Acceptable values:
+
+* `{Number}` — number of newlines;
+* `{String}` — string with line breaks.
+
+Example: `{ "rule-delimiter":  1}`
+
+```scss
+// Before:
+.foo {
+    background: red;
+}.bar {
+    border: 1px solid red;
+}
+
+// After:
+.foo {
+    background: red;
+}
+
+.bar {
+    border: 1px solid red;
+}
+```
+
+Example: `{ "rule-delimiter": "\n\n" }`
+
+```css
+// Before:
+.foo {background: red;}.bar{border: 1px solid red;}
+
+// After:
+.foo {background: red;}
+
+.bar{border: 1px solid red;}
 ```
 
 ## verbose
