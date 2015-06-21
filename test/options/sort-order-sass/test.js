@@ -97,5 +97,12 @@ describe('options/sort-order (sass)', function() {
             ] });
             return this.shouldBeEqual('condition.sass', 'condition.expected.sass');
         });
+
+        it.skip('Issue 332', function() {
+            this.comb.configure({ 'sort-order': [
+                ['color'], ['$include']
+            ] });
+            return this.shouldBeEqual('issue-332.sass', 'issue-332.expected.sass');
+        });
     });
 });
