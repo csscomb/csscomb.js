@@ -41,7 +41,6 @@
   "dependencies": {
     "minimist": "1.1.x",
     "csscomb-core": "csscomb/core#build-dev",
-    "gonzales-pe": "tonyganch/gonzales-pe#build-dev",
     "vow": "0.4.4"
   },
   "devDependencies": {

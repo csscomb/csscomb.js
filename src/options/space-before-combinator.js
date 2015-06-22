@@ -1,4 +1,4 @@
-var gonzales = require('gonzales-pe');
+var gonzales = require('../gonzales');
 
 module.exports = {
     name: 'space-before-combinator',
