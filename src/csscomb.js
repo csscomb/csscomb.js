@@ -1,5 +1,5 @@
 let Comb = require('csscomb-core');
-let gonzales = require('gonzales-pe');
+let gonzales = require('./gonzales');
 let fs = require('fs');
 let format = require('./format');
 let path = require('path');
