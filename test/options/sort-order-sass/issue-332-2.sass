@@ -1,0 +1,46 @@
+$contest_color: #ffc33c
+
+.winners_images_button
+  display: none
+.winners_images
+  width: 100%
+  padding-left: 0.6%
+  padding-right: 0.6%
+  height: 100px
+  .winner_cell
+    width: 85px
+    height: 100px
+    float: left
+  .winner_avatar
+    width: 85px
+    height: 75px
+    border: 1px solid lightgray
+    float: left
+    background-repeat: no-repeat
+    background-size: 100%
+  .winner_year
+    margin-bottom: 5px
+    text-align: center
+    float: left
+    width: 85px
+    height: 20px
+    font-size: 17px
+    color: black
+    font-family: bold_mic_font
+    span
+      display: none
+  .winner_info
+    display: none
+  .winner_cell:hover
+    .winner_year
+      span
+        display: block
+    .tooltip-inner
+      h6
+        text-align: center
+        margin: 0
+        font-family: bold_mic_font
+        color: white
+        font-size: 12pt
+      font-size: 10pt
+      text-align: justify
