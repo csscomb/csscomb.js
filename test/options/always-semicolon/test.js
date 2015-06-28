@@ -48,6 +48,41 @@ describe('options/always-semicolon', function() {
         });
     });
 
+    describe('lint', function() {
+        it('Should report no errors', function() {
+            return this.getErrors('lint-1.css').then(function(errors) {
+                assert.equal(errors.length, 0);
+            });
+        });
+
+        it('Error mesage should be a string', function() {
+            return this.getErrors('lint-2.css').then(function(errors) {
+                var error = errors[0];
+                assert.equal(typeof error.message, 'string');
+            });
+        });
+
+        it('Error should provide correct position info', function() {
+            return this.getErrors('lint-2.css').then(function(errors) {
+                var error = errors[0];
+                assert.equal(error.line, 1);
+                assert.equal(error.column, 16);
+            });
+        });
+
+        it('Should report multiple errors', function() {
+            return this.getErrors('lint-3.css').then(function(errors) {
+                assert.equal(errors.length, 2);
+
+                assert.equal(errors[0].line, 2);
+                assert.equal(errors[0].column, 14);
+
+                assert.equal(errors[1].line, 8);
+                assert.equal(errors[1].column, 24);
+            });
+        });
+    });
+
     describe('detect', function() {
         it('Should detect semicolon for last property. Test 1', function() {
             this.shouldDetect(
