@@ -104,5 +104,13 @@ describe('options/sort-order (sass)', function() {
             ] });
             return this.shouldBeEqual('issue-332.sass', 'issue-332.expected.sass');
         });
+
+        it('Issue 332, test 2', function() {
+            this.comb.configure({
+                'sort-order': [['...']],
+                'sort-order-fallback': 'abc'
+            });
+            return this.shouldBeEqual('issue-332-2.sass', 'issue-332-2.expected.sass');
+        });
     });
 });
