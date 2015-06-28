@@ -49,6 +49,20 @@ module.exports = {
         ast.traverseByType('block', this._processBlock.bind(this));
     },
 
+    _cleanSassLinebreaks(node) {
+        let containsOnlyLinebreaks = true;
+
+        node.forEach((space) => {
+            if (!space.is('space') || space.content !== '\n') {
+                containsOnlyLinebreaks = false;
+                return null;
+            }
+        });
+
+        if (containsOnlyLinebreaks)
+            node.content = [];
+    },
+
     _extendNode(block, i, spacesBefore) {
         let nodesToDelete = [i];
         let node = block.get(i);
@@ -229,6 +243,9 @@ module.exports = {
     },
 
     _insertSortablesToBlock(nodesToSort, node) {
+        if (node.syntax === 'sass')
+            this._cleanSassLinebreaks(node);
+
         for (let i = nodesToSort.length - 1, l = -1; i > l; i--) {
             let currentNode = nodesToSort[i];
             let prevNode = nodesToSort[i - 1];
@@ -259,7 +276,8 @@ module.exports = {
             if (currentNode.delim) {
                 node.content.unshift(currentNode.delim);
             } else if (i !== nodesToSort.length - 1 &&
-                       currentNode.node.is('declaration')) {
+                      (currentNode.node.is('declaration') ||
+                       currentNode.node.is('extend'))) {
                 let delimiter = gonzales.createNode({
                     type: 'declarationDelimiter',
                     content: currentNode.node.syntax === 'sass' ? '\n' : ';'

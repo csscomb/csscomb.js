@@ -56,21 +56,21 @@ describe('options/sort-order (sass)', function() {
             return this.shouldBeEqual('include.sass', 'include.expected.sass');
         });
 
-        it.skip('Should sort @extend-s', function() {
+        it('Should sort @extend-s', function() {
             this.comb.configure({ 'sort-order': [
                 ['$extend', 'color']
             ] });
             return this.shouldBeEqual('extend.sass', 'extend.expected.sass');
         });
 
-        it.skip('Should sort @include-s with specified name. Test 1', function() {
+        it('Should sort @include-s with specified name. Test 1', function() {
             this.comb.configure({ 'sort-order': [
                 ['$include'], ['color'], ['$include media']
             ] });
             this.shouldBeEqual('include-specified-1.sass', 'include-specified-1.expected.sass');
         });
 
-        it.skip('Should sort @include-s with specified name. Test 2', function() {
+        it('Should sort @include-s with specified name. Test 2', function() {
             this.comb.configure({ 'sort-order': [
                 ['$include'], ['color'], ['$include media']
             ] });
@@ -98,7 +98,7 @@ describe('options/sort-order (sass)', function() {
             return this.shouldBeEqual('condition.sass', 'condition.expected.sass');
         });
 
-        it.skip('Issue 332', function() {
+        it('Issue 332', function() {
             this.comb.configure({ 'sort-order': [
                 ['color'], ['$include']
             ] });
