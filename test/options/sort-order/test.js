@@ -120,5 +120,10 @@ describe('options/sort-order', function() {
                     config['sort-order'][1].splice(1, 1);
                 });
         });
+
+        it('Should add declaration delimiters if they are missing', function() {
+            this.comb.configure({ 'sort-order': ['position', 'z-index'] });
+            return this.shouldBeEqual('missing-delimiter.css', 'missing-delimiter.expected.css');
+        });
     });
 });

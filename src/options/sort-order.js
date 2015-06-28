@@ -256,8 +256,16 @@ module.exports = {
                 node.content.unshift(spacesAfterDelimiter[j]);
             }
 
-            if (currentNode.delim)
+            if (currentNode.delim) {
                 node.content.unshift(currentNode.delim);
+            } else if (i !== nodesToSort.length - 1 &&
+                       currentNode.node.is('declaration')) {
+                let delimiter = gonzales.createNode({
+                    type: 'declarationDelimiter',
+                    content: currentNode.node.syntax === 'sass' ? '\n' : ';'
+                });
+                node.content.unshift(delimiter);
+            }
 
             for (let j = 0, nl = spacesBeforeDelimiter.length; j < nl; j++) {
                 node.content.unshift(spacesBeforeDelimiter[j]);
