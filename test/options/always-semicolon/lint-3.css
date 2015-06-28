@@ -1,0 +1,9 @@
+div {
+    height: 0
+}
+
+@media screen {
+    .a {
+        color: tomato;
+        position: panda}
+}
