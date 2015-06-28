@@ -31,6 +31,12 @@ function shouldBeEqual(input, expected) {
         });
 }
 
+function getErrors(filename) {
+    var syntax = filename.split('.').pop();
+    var input = readFile.call(this, filename);
+    return this.comb.lintString(input, { syntax: syntax });
+}
+
 function sortObject(o) {
     var sorted = {};
     var key = [];
@@ -72,6 +78,7 @@ mocha.suite.beforeEach(function() {
     this.readFile = readFile;
     this.shouldBeEqual = shouldBeEqual;
     this.shouldDetect = shouldDetect;
+    this.getErrors = getErrors;
 });
 
 mocha.run(function(failures) {
