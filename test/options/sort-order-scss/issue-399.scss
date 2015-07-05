@@ -1,0 +1,15 @@
+.block {
+    color: black;
+
+    @extend .hey;
+    @extend %ho;
+
+    @include media("lap") {
+        color: green;
+    }
+    @include media("palm") {
+        color: red;
+    }
+    @include last;
+    @include hide-text;
+}

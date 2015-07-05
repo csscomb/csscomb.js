@@ -127,5 +127,10 @@ describe('options/sort-order (scss)', function() {
             this.comb.configure({ 'sort-order': ['...'] });
             return this.shouldBeEqual('issue-333.scss');
         });
+
+        it.skip('Issue 399', function() {
+            this.comb.configure({ "sort-order": [["$extend", "color"]]});
+            return this.shouldBeEqual('issue-399.expected.scss');
+        });
     });
 });
