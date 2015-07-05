@@ -10,6 +10,7 @@ describe('.use()', function() {
         var expected = [
           'always-semicolon',
           'remove-empty-rulesets',
+          'rule-delimiter',
           'color-case',
           'color-shorthand',
           'element-case',
