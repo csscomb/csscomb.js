@@ -9,6 +9,7 @@ describe.skip('.use()', function() {
         });
         var expected = [
           'always-semicolon',
+          'lines-between-rulesets',
           'remove-empty-rulesets',
           'color-case',
           'color-shorthand',

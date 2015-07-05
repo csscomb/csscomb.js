@@ -1,7 +1,7 @@
 # Configuration options
 
 There are a number of options you can use, all of them are switched off by
-default.  
+default.
 Here is a full list in the same order they are applied while processing css:
 
 - [always-semicolon](#always-semicolon)
@@ -29,6 +29,7 @@ Here is a full list in the same order they are applied while processing css:
 - [unitless-zero](#unitless-zero)
 - [tab-size](#tab-size)
 - [vendor-prefix-align](#vendor-prefix-align)
+- [lines-between-rulesets](#lines-between-rulesets)
 
 Following options are ignored while processing `*.sass` files:
 
@@ -397,8 +398,8 @@ everything would go into five groups: variables, then group with `position`, the
 ## sort-order-fallback
 
 Apply a special sort order for properties that are not specified in `sort-order`
-list.  
-Works great with [leftovers](#sort-order-vs-leftovers).  
+list.
+Works great with [leftovers](#sort-order-vs-leftovers).
 **Note:** This option is applied only if [sort order](#sort-order) list is
 provided.
 
@@ -902,6 +903,54 @@ a
     background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
     background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
     background:         linear-gradient(to bottom, #fff 0, #eee 100%);
+}
+```
+
+## lines-between-rulesets
+
+Number of line breaks between rulesets or @rules.
+
+Acceptable values:
+
+* `{Number}` — number of newlines;
+
+Example: `{ "lines-between-rulesets":  1}`
+
+```scss
+// Before:
+.foo {
+    @include border-radius(5px);
+    background: red;
+    .baz {
+        .test {
+            height: 50px;
+        }
+    }
+}.bar {
+    border: 1px solid red;
+    @media (min-width: 500px) {
+        width: 50px;
+    }
+}
+
+// After:
+.foo {
+    @include border-radius(5px);
+    background: red;
+
+    .baz {
+        .test {
+            height: 50px;
+        }
+    }
+}
+
+.bar {
+    border: 1px solid red;
+
+    @media (min-width: 500px) {
+        width: 50px;
+    }
 }
 ```
 
