@@ -1,0 +1,35 @@
+.foo {
+  .border-radius(5px);
+  background: red;
+
+  /* comment */
+  .omg {
+    .test {
+      height: 50px;
+    }
+  }
+}
+
+.bar {
+  border: 1px solid red;
+
+  /*
+  ** another comment
+  ** spanning multiple lines
+  */
+  @media (min-width: 500px) {
+    width: 50px;
+  }
+}
+
+.baz {
+  @grey: #ccc;
+
+  // a single-line comment
+  // another single-line comment
+  .wtf {
+    @media only screen {
+      background-color: @grey;
+    }
+  }
+}
