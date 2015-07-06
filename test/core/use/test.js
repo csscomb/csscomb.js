@@ -9,8 +9,8 @@ describe('.use()', function() {
         });
         var expected = [
           'always-semicolon',
+          'lines-between-rulesets',
           'remove-empty-rulesets',
-          'rule-delimiter',
           'color-case',
           'color-shorthand',
           'element-case',

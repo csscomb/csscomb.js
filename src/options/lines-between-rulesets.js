@@ -4,7 +4,6 @@ var gonzales = require('../gonzales');
 
 module.exports = (function() {
     var valueFromSettings;
-    var blockIndent;
     var value;
 
     function findAtRules(node) {
@@ -32,7 +31,15 @@ module.exports = (function() {
             var prevNode = node.get(index - 1);
             if (prevNode) {
                 if (prevNode.is('space')) {
-                    prevNode.content = value;
+                    var content = prevNode.content;
+                    var lastNewline = content.lastIndexOf('\n');
+
+                    if (lastNewline > -1) {
+                        content = content.substring(lastNewline + 2);
+                    }
+
+                    var valueStr = valueFromSettings + content;
+                    prevNode.content = valueStr;
                     return;
                 } else {
                     node.insert(index, space);
@@ -41,9 +48,8 @@ module.exports = (function() {
         });
     }
 
-    function processBlock(x, level) {
+    function processBlock(x) {
         value = valueFromSettings;
-        level = level || 0;
 
         // Check all @rules
         findAtRules(x);
@@ -53,17 +59,6 @@ module.exports = (function() {
 
         x.forEach(function(node) {
             if (!node.is('block')) return processBlock(node);
-
-            value = valueFromSettings;
-
-            level++;
-
-            if (value.indexOf('\n') > -1) {
-                // TODO: Check that it works for '' block indent value <tg>
-                if (blockIndent) {
-                    value += new Array(level).join(blockIndent);
-                }
-            }
 
             // Check all @rules
             findAtRules(node);
@@ -76,20 +71,18 @@ module.exports = (function() {
     }
 
     return {
-        name: 'rule-delimiter',
+        name: 'lines-between-rulesets',
 
         syntax: ['scss', 'css', 'less'],
 
         runBefore: 'block-indent',
 
         setValue: function(value) {
-            var regex = /^[\n]*$/;
-
             if (typeof value === 'number') {
                 value = new Array(Math.round(value) + 2).join('\n');
-            } else if (typeof value === 'string' && !value.match(regex)) {
-                var err = 'The option only accepts the newline character';
-                err += ' or numbers (\\n), you provided %s';
+            } else {
+                var err = 'The option only accepts numbers';
+                err += ' , you provided %s';
 
                 throw new Error(err, value);
             }
@@ -97,9 +90,8 @@ module.exports = (function() {
             return value;
         },
 
-        process: function(ast, config) {
+        process: function(ast) {
             valueFromSettings = this.value;
-            blockIndent = config['block-indent'];
             processBlock(ast);
         }
     };

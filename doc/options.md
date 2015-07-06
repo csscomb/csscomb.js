@@ -29,7 +29,7 @@ Here is a full list in the same order they are applied while processing css:
 - [unitless-zero](#unitless-zero)
 - [tab-size](#tab-size)
 - [vendor-prefix-align](#vendor-prefix-align)
-- [rule-delimiter](#rule-delimiter)
+- [lines-between-rulesets](#lines-between-rulesets)
 
 Following options are ignored while processing `*.sass` files:
 
@@ -906,16 +906,15 @@ a
 }
 ```
 
-## rule-delimiter
+## lines-between-rulesets
 
 Number of line breaks after a ruleset or atruleb.
 
 Acceptable values:
 
 * `{Number}` — number of newlines;
-* `{String}` — string with line breaks.
 
-Example: `{ "rule-delimiter":  1}`
+Example: `{ "lines-between-rulesets":  1}`
 
 ```scss
 // Before:
@@ -955,7 +954,7 @@ Example: `{ "rule-delimiter":  1}`
 }
 ```
 
-Example: `{ "rule-delimiter": "\n\n" }`
+Example: `{ "lines-between-rulesets": "\n\n" }`
 
 ```css
 // Before:
