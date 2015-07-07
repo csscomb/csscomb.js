@@ -5,57 +5,53 @@ var gonzales = require('../gonzales');
 module.exports = (function() {
     var valueFromSettings;
     var value;
+    var space;
+
+    function insertLines(node, index) {
+        var prevNode = node.get(index - 1);
+        if (prevNode) {
+            if (prevNode.is('space')) {
+                var content = prevNode.content;
+                var lastNewline = content.lastIndexOf('\n');
+
+                if (lastNewline > -1) {
+                    content = content.substring(lastNewline + 1);
+                }
+
+                var valueStr = valueFromSettings + content;
+                prevNode.content = valueStr;
+                return;
+            } else {
+                node.insert(index, space);
+            }
+        }
+    }
 
     function findAtRules(node) {
-        var space = gonzales.createNode({type: 'space', content: value});
-
         node.forEach('atruleb', function(atRuleNode, index) {
             // For every atruleb - check for preceding space
-            var prevNode = node.get(index - 1);
-            if (prevNode) {
-                if (prevNode.is('space')) {
-                    prevNode.content = value;
-                    return;
-                } else {
-                    node.insert(index, space);
-                }
-            }
+            insertLines(node, index);
         });
     }
 
     function findRuleSets(node) {
-        var space = gonzales.createNode({type: 'space', content: value});
-
         node.forEach('ruleset', function(ruleSetNode, index) {
             // For every ruleset - check for preceding space
-            var prevNode = node.get(index - 1);
-            if (prevNode) {
-                if (prevNode.is('space')) {
-                    var content = prevNode.content;
-                    var lastNewline = content.lastIndexOf('\n');
-
-                    if (lastNewline > -1) {
-                        content = content.substring(lastNewline + 2);
-                    }
-
-                    var valueStr = valueFromSettings + content;
-                    prevNode.content = valueStr;
-                    return;
-                } else {
-                    node.insert(index, space);
-                }
-            }
+            insertLines(node, index);
         });
     }
 
     function processBlock(x) {
         value = valueFromSettings;
+        space = gonzales.createNode({type: 'space', content: value});
 
-        // Check all @rules
-        findAtRules(x);
+        if (x.is('stylesheet')) {
+            // Check all @rules
+            findAtRules(x);
 
-        // Check all rulesets
-        findRuleSets(x);
+            // Check all rulesets
+            findRuleSets(x);
+        }
 
         x.forEach(function(node) {
             if (!node.is('block')) return processBlock(node);
