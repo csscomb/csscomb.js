@@ -912,28 +912,7 @@ Number of line breaks after a ruleset.
 
 Acceptable values:
 
-* `{Number}` — number of newlines;
 * `{String}` — string with line breaks.
-
-Example: `{ "rule-delimiter":  1}`
-
-```scss
-// Before:
-.foo {
-    background: red;
-}.bar {
-    border: 1px solid red;
-}
-
-// After:
-.foo {
-    background: red;
-}
-
-.bar {
-    border: 1px solid red;
-}
-```
 
 Example: `{ "rule-delimiter": "\n\n" }`
 

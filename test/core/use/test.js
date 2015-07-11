@@ -28,6 +28,7 @@ describe('.use()', function() {
           'space-between-declarations',
           'block-indent',
           'sort-order',
+          'rule-delimiter',
           'strip-spaces',
           'space-before-closing-brace',
           'unitless-zero',
