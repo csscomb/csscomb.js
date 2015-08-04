@@ -9,7 +9,18 @@ module.exports = (function() {
 
     function insertLines(node, index) {
         var prevNode = node.get(index - 1);
-        if (prevNode) {
+        var shouldInsert = false;
+
+        // check for previous nodes that are not a space
+        // do not insert if the ruleset is the first item
+        for (var i = 0; i < index; i++) {
+            if(!node.get(i).is('space')) {
+                shouldInsert = true;
+                break;
+            }
+        }
+
+        if (prevNode && shouldInsert) {
             if (prevNode.is('space')) {
                 var content = prevNode.content;
                 var lastNewline = content.lastIndexOf('\n');
