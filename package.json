@@ -39,6 +39,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
+    "glob": "latest",
     "minimist": "1.1.x",
     "csscomb-core": "csscomb/core#build-dev",
     "vow": "0.4.4"

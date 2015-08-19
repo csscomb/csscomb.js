@@ -1,4 +1,4 @@
-describe('LESS', function() {
+describe.skip('LESS', function() {
     beforeEach(function() {
         this.comb.configure({});
     });
