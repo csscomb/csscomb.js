@@ -1,0 +1,13 @@
+{
+    "globals": {
+        "afterEach": false,
+        "beforeEach": false,
+        "describe": false,
+        "it": false
+    },
+    "esnext": true,
+    "node": true,
+    "undef": true,
+    "unused": true,
+    "-W084": true
+}

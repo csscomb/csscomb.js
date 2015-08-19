@@ -1,5 +1,11 @@
 module.exports = {
     options: {
+        globals: {
+            afterEach: false,
+            beforeEach: false,
+            describe: false,
+            it: false
+        },
         eqeqeq: true,
         esnext: true,
         expr: true,
@@ -10,8 +16,7 @@ module.exports = {
         nonew: true,
         trailing: true,
         undef: true,
-        unused: true,
-        //varstmt: true
+        unused: true
     },
     groups: {
         src: {

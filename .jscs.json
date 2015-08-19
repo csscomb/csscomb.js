@@ -47,7 +47,7 @@
     ],
     "requireSpaceBetweenArguments": true,
     "requireSpacesInForStatement": true,
-    "validateIndentation": 4,
+    "validateIndentation": 2,
     "validateJSDoc": {
         "checkParamNames": true,
         "checkRedundantParams": true,
