@@ -1,0 +1,13 @@
+describe.skip('options/space-before-opening-brace (scss):', function() {
+    describe('process', function() {
+        it('Issue 231', function() {
+            this.comb.configure({ 'space-before-opening-brace': 1 });
+            return this.shouldBeEqual('issue-231.scss', 'issue-231.expected.scss');
+        });
+
+        it('Issue 319', function() {
+            this.comb.configure({ 'space-before-opening-brace': 1 });
+            return this.shouldBeEqual('issue-319.scss', 'issue-319.expected.scss');
+        });
+    });
+});

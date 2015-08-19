@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('csscomb methods', function() {
+describe.skip('csscomb methods', function() {
     it('getConfig()', function() {
         var config = require('../../../config/csscomb.json');
 
