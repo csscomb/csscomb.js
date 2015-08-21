@@ -1,9 +1,9 @@
 module.exports = {
-    name: 'sort-order-fallback',
+  name: 'sort-order-fallback',
 
-    syntax: ['css', 'less', 'sass', 'scss'],
+  syntax: ['css', 'less', 'sass', 'scss'],
 
-    accepts: {string: /^abc$/},
+  accepts: {string: /^abc$/},
 
-    process: function() {}
+  process: function() {}
 };
