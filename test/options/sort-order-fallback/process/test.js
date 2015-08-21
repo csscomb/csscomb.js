@@ -1,34 +1,36 @@
-describe.skip('options/sort-order-fallback', function() {
-    describe('process', function() {
-        it('Should sort leftovers alphabetically if `sort-order-fallback` is set', function() {
-            var config = {
-                'sort-order-fallback': 'abc',
-                'sort-order': [
-                    ['top', 'left'],
-                    ['...'],
-                    ['color']
-                ]
-            };
-            this.comb.configure(config);
-            return this.shouldBeEqual('test.css', 'test.expected.css');
-        });
+let Test = require('../../option_test');
 
-        it('Should sort unknown properties alphabetically if `sort-order-fallback` is set', function() {
-            var config = {
-                'sort-order-fallback': 'abc',
-                'sort-order': ['top', 'left']
-            };
-            this.comb.configure(config);
-            return this.shouldBeEqual('test.css', 'test-2.expected.css');
-        });
-
-        it('Should leave leftovers as is if `sort-order-fallback` is not set', function() {
-            var config = {
-                'sort-order': ['top', 'left']
-            };
-            this.comb.configure(config);
-            return this.shouldBeEqual('test.css', 'test-3.expected.css');
-        });
+describe('Option `sort-order-fallback`, process', function() {
+  describe('css', function() {
+    it('Should sort leftovers alphabetically if `sort-order-fallback` is set', function() {
+      let config = {
+        'sort-order-fallback': 'abc',
+        'sort-order': [
+          ['top', 'left'],
+          ['...'],
+          ['color']
+        ]
+      };
+      let test = new Test(this, config);
+      return test.shouldBeEqual('test.css', 'test.expected.css');
     });
+
+    it('Should sort unknown properties alphabetically if `sort-order-fallback` is set', function() {
+      let config = {
+        'sort-order-fallback': 'abc',
+        'sort-order': ['top', 'left']
+      };
+      let test = new Test(this, config);
+      return test.shouldBeEqual('test.css', 'test-2.expected.css');
+    });
+
+    it('Should leave leftovers as is if `sort-order-fallback` is not set', function() {
+      let config = {
+        'sort-order': ['top', 'left']
+      };
+      let test = new Test(this, config);
+      return test.shouldBeEqual('test.css', 'test-3.expected.css');
+    });
+  });
 });
 

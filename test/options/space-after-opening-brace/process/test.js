@@ -1,89 +1,41 @@
-describe.skip('options/space-after-opening-brace:', function() {
-    describe('process', function() {
-        it('Array value => should not change anything', function() {
-            this.comb.configure({ 'space-after-opening-brace': ['', ' '] });
-            return this.shouldBeEqual('test.css');
-        });
+let Test = require('../../option_test');
 
-        it('Invalid string value => should not change anything', function() {
-            this.comb.configure({ 'space-after-opening-brace': '  nani  ' });
-            return this.shouldBeEqual('test.css');
-        });
-
-        it('Float number value => should not change anything', function() {
-            this.comb.configure({ 'space-after-opening-brace': 3.5 });
-            return this.shouldBeEqual('test.css');
-        });
-
-        it('Integer value => should set proper space after {', function() {
-            this.comb.configure({ 'space-after-opening-brace': 0 });
-            return this.shouldBeEqual('test.css', 'test.expected.css');
-        });
-
-        it('Valid string value (spaces only) => should set proper space after {', function() {
-            this.comb.configure({ 'space-after-opening-brace': '  ' });
-            return this.shouldBeEqual('test.css', 'test-2.expected.css');
-        });
-
-        it('Valid string value (spaces and newlines) => should set proper space after {', function() {
-            this.comb.configure({ 'space-after-opening-brace': '\n    ' });
-            return this.shouldBeEqual('test.css', 'test-3.expected.css');
-        });
-
-        it('Issue 387', function() {
-            this.comb.configure({ 'space-after-opening-brace': '\n' });
-            return this.shouldBeEqual('issue-387.css', 'issue-387.expected.css');
-        });
+describe('Option `space-after-opening-brace`, process', function() {
+  describe('css', function() {
+    it('Array value => should not change anything', function() {
+      let test = new Test(this, {'space-after-opening-brace': ['', ' ']});
+      return test.shouldBeEqual('test.css');
     });
 
-    describe('detect', function() {
-        it('Should detect no whitespace', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{top:0}',
-                { 'space-after-opening-brace': '' }
-            );
-        });
-
-        it('Should detect whitespace', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{\n\ttop:0}',
-                { 'space-after-opening-brace': '\n\t' }
-            );
-        });
-
-        it('Should detect no whitespace (2 blocks)', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{top:0} b{\n left:0}',
-                { 'space-after-opening-brace': '' }
-            );
-        });
-
-        it('Should detect whitespace (2 blocks)', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{ top:0 } b{left:0}',
-                { 'space-after-opening-brace': ' ' }
-            );
-        });
-
-        it('Should detect no whitespace (3 blocks)', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{top:0} b { left: 0 } c{\n\tright:0}',
-                { 'space-after-opening-brace': '' }
-            );
-        });
-
-        it('Should detect whitespace (3 blocks)', function() {
-            this.shouldDetect(
-                ['space-after-opening-brace'],
-                'a{\ntop:0} b{\nleft:0} c{\n  right:0}',
-                { 'space-after-opening-brace': '\n' }
-            );
-        });
+    it('Invalid string value => should not change anything', function() {
+      let test = new Test(this, {'space-after-opening-brace': '  nani  '});
+      return test.shouldBeEqual('test.css');
     });
+
+    it('Float number value => should not change anything', function() {
+      let test = new Test(this, {'space-after-opening-brace': 3.5});
+      return test.shouldBeEqual('test.css');
+    });
+
+    it('Integer value => should set proper space after {', function() {
+      let test = new Test(this, {'space-after-opening-brace': 0});
+      return test.shouldBeEqual('test.css', 'test.expected.css');
+    });
+
+    it('Valid string value (spaces only) => should set proper space after {', function() {
+      let test = new Test(this, {'space-after-opening-brace': '  '});
+      return test.shouldBeEqual('test.css', 'test-2.expected.css');
+    });
+
+    it('Valid string value (spaces and newlines) => should set proper space after {', function() {
+      let test = new Test(this, {'space-after-opening-brace': '\n    '});
+      return test.shouldBeEqual('test.css', 'test-3.expected.css');
+    });
+
+    it('Issue 387', function() {
+      let test = new Test(this, {'space-after-opening-brace': '\n'});
+      return test.shouldBeEqual('issue-387.css', 'issue-387.expected.css');
+    });
+  });
 });
 

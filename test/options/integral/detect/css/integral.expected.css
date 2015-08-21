@@ -1,0 +1,151 @@
+/* foobar */
+@media all and (min-width:0)
+{
+    .radio-button_theme_normal .radio-button__radio:before
+    {
+        background: rgba(0,0,0,.4);
+        background: -webkit-linear-gradient(top, rgba(0,0,0,.2) 0,rgba(0,0,0,.4) 100%);
+        background:    -moz-linear-gradient(top, rgba(0,0,0,.2) 0, rgba(0,0,0,.4) 100%);
+        background:      -o-linear-gradient(top, rgba(0,0,0,.2) 0,rgba(0,0,0,.4) 100%);
+        background:         linear-gradient(to bottom, rgba(0,0,0,.2) 0,rgba(0,0,0,.4) 100%);
+        -moz-box-shadow: 0 1px 0 rgba(0,0,0,.07);
+             box-shadow: 0 1px 0 rgba(0,0,0,.07);
+    }
+
+    /* :after — фон */
+    .radio-button_theme_normal .radio-button__radio[class^='radio']:after
+    {
+        content: 'it\'s something different';
+
+        background: #fff;
+        background: -webkit-linear-gradient(top, #fff 0,#eee 100%);
+        background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
+        background:      -o-linear-gradient(top, #fff 0,#eee 100%);
+        background:         linear-gradient(to bottom, #fff 0,#eee 100%);
+    }
+
+    /* _focused_yes */
+    .radio-button_theme_normal .radio-button__radio_focused_yes:before
+    {
+        content: 'hello';
+
+        -moz-box-shadow: 0 0 6px 2px rgba(255,204,0,.7), 0 1px 0 rgba(0,0,0,.07);
+             box-shadow: 0 0 6px 2px rgba(255,204,0,.7), 0 1px 0 rgba(0,0,0,.07);
+    }
+}
+
+/* Фигурные скобки. Вариант 1 */
+a,
+b,
+i /* foobar */
+{
+    margin: 0;
+    padding: 0;
+}
+div p
+{
+    font-size: 1px;
+
+    top: 0;
+}
+div p em
+{
+    font-style: italic;
+
+    border-bottom: 1px solid red;
+}
+
+@media all and (min-width:0)
+{
+    /* В нажатом состоянии смещается вниз на 1px вся кнопка, текст не смещается */
+    .button_pressed_yes.button_shadow_yes
+    {
+        top: 1px;
+    }
+
+    .button_pressed_yes.button_shadow_yes .button__text
+    {
+        top: 0;
+    }
+}
+
+@media all /* media */
+{
+    /* foobar */
+    .input__control
+    {
+        font-size: 100%;
+
+        position: relative;
+        z-index: 3;
+
+        width: 100%;
+        margin: 0;
+
+        color: #000;
+    }
+}
+
+@media screen and (min-width: 35em) /* screen */,
+       print and (min-width: 40em) /* print */
+{
+    /* foobar */
+    .input__control
+    {
+        -moz-box-sizing: border-box;
+             box-sizing: border-box;
+        padding: .4em 0;
+
+        border: 0;
+        outline: 0;
+        background: none;
+    }
+}
+
+/* Фигурные скобки. Вариант 2 */
+div
+{
+    margin: 0;
+    padding: 0;
+}
+div p
+{
+    font-size: 1px;
+
+    top: 0;
+}
+div p em
+{
+    font-style: italic;/* inline comment*/
+
+    border-bottom: 1px solid red;
+}
+
+/* Фигурные скобки. Вариант 3 */
+div
+{
+    margin: 0;
+    padding: 0;
+}
+/* foo */  div ~ p
+{
+    font-size: 1px;
+
+    top: 0;
+}
+div > p + em
+{
+    /* upline comment*/
+    font-style: italic;
+
+    border-bottom: 1px solid red; /* trololo */ /* trololo */
+}
+
+a:not(b)
+{
+    top: 0;/* ololo */margin: 0;
+}
+b
+{
+    top: 0/* trololo */;margin: 0;
+}
