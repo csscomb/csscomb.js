@@ -1,169 +1,171 @@
+let Test = require('../../option_test');
+
 describe('Option `always-semicolon`, process', function() {
-  describe('CSS', function() {
+  describe('css', function() {
     it('Should add semicolon for last property if missing. Test 1', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('css/test-1.css', 'css/test-1.expected.css');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test-1.css', 'test-1.expected.css');
     });
 
     it('Should add semicolon for last property if missing. Test 2', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('css/test-2.css', 'css/test-2.expected.css');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test-2.css', 'test-2.expected.css');
     });
 
     it('Should add semicolon for last property if missing. Test 3', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('css/test-3.css', 'css/test-3.expected.css');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test-3.css', 'test-3.expected.css');
     });
 
     it('Should add semicolon for last property if missing. Test 4', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('css/test-4.css', 'css/test-4.expected.css');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test-4.css', 'test-4.expected.css');
     });
 
     it('Should add semicolon for last property if missing. Test 5', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('css/test-5.css', 'css/test-5.expected.css');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test-5.css', 'test-5.expected.css');
     });
   });
 
-  describe('LESS', function() {
+  describe('less', function() {
     it('Should not add semicolon to condition (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/condition.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('condition.less');
     });
 
     it('Should not add semicolon to condition (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/condition-multiline.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('condition-multiline.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 1 (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-1.less', 'less/include-1.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-1.less', 'include-1.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 1 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-1-multiline.less', 'less/include-1-multiline.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-1-multiline.less', 'include-1-multiline.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 2 (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-2.less', 'less/include-2.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-2.less', 'include-2.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 2 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-2-multiline.less', 'less/include-2-multiline.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-2-multiline.less', 'include-2-multiline.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 3 (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-3.less', 'less/include-3.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-3.less', 'include-3.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 3 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-3-multiline.less', 'less/include-3-multiline.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-3-multiline.less', 'include-3-multiline.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 4 (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-4.less', 'less/include-4.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-4.less', 'include-4.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 4 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-4-multiline.less', 'less/include-4-multiline.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-4-multiline.less', 'include-4-multiline.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 5 (single-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-5.less', 'less/include-5.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-5.less', 'include-5.expected.less');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 5 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon':true});
-      return this.shouldBeEqual('less/include-5-multiline.less', 'less/include-5-multiline.expected.less');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-5-multiline.less', 'include-5-multiline.expected.less');
     });
   });
 
-  describe('Sass', function() {
+  describe('sass', function() {
     it('Should not add semicolon', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('sass/test.sass');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('test.sass');
     });
   });
 
-  describe('SCSS', function() {
+  describe('scss', function() {
     it('Should not add semicolon if last value is block (singl-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/block-value.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('block-value.scss');
     });
 
     it('Should not add semicolon if last value is block (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/block-value-multiline.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('block-value-multiline.scss');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 1 (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/include-1.scss', 'scss/include-1.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-1.scss', 'include-1.expected.scss');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 1 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/include-1-multiline.scss', 'scss/include-1-multiline.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-1-multiline.scss', 'include-1-multiline.expected.scss');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 2 (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/include-2.scss', 'scss/include-2.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-2.scss', 'include-2.expected.scss');
     });
 
     it('Should add semicolon to last included mixin if missing. Test 2 (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/include-2-multiline.scss', 'scss/include-2-multiline.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('include-2-multiline.scss', 'include-2-multiline.expected.scss');
     });
 
     it('Should not add semicolon to last included mixin if there is a block (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/block-include.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('block-include.scss');
     });
 
     it('Should not add semicolon to last included mixin if there is a block (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/block-include-multiline.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('block-include-multiline.scss');
     });
 
     it('Should add semicolon to last extend if missing (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/extend.scss', 'scss/extend.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('extend.scss', 'extend.expected.scss');
     });
 
     it('Should add semicolon to last extend if missing (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/extend-multiline.scss', 'scss/extend-multiline.expected.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('extend-multiline.scss', 'extend-multiline.expected.scss');
     });
 
     it('Should not add semicolon to condition (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/condition.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('condition.scss');
     });
 
     it('Should not add semicolon to condition (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/condition-multiline.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('condition-multiline.scss');
     });
 
     it('Should not add semicolon to loop (single-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/loop.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('loop.scss');
     });
 
     it('Should not add semicolon to loop (multi-line style)', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.shouldBeEqual('scss/loop-multiline.scss');
+      let test = new Test(this, {'always-semicolon': true});
+      return test.shouldBeEqual('loop-multiline.scss');
     });
   });
 });

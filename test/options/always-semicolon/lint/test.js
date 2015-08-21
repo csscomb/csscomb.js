@@ -1,25 +1,26 @@
 let assert = require('assert');
+let Test = require('../../option_test');
 
 describe('Option `always-semicolon`, lint', function() {
-  describe('CSS', function() {
+  describe('css', function() {
     it('Should report no errors', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.getErrors('css/lint-1.css').then(errors => {
+      let test = new Test(this, {'always-semicolon': true});
+      return test.getErrors('lint-1.css').then(errors => {
         assert.equal(errors.length, 0);
       });
     });
 
     it('Error mesage should be a string', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.getErrors('css/lint-2.css').then(errors => {
+      let test = new Test(this, {'always-semicolon': true});
+      return test.getErrors('lint-2.css').then(errors => {
         let error = errors[0];
         assert.equal(typeof error.message, 'string');
       });
     });
 
     it('Error should provide correct position info', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.getErrors('css/lint-2.css').then(errors => {
+      let test = new Test(this, {'always-semicolon': true});
+      return test.getErrors('lint-2.css').then(errors => {
         let error = errors[0];
         assert.equal(error.line, 1);
         assert.equal(error.column, 16);
@@ -27,8 +28,8 @@ describe('Option `always-semicolon`, lint', function() {
     });
 
     it('Should report multiple errors', function() {
-      this.comb.configure({'always-semicolon': true});
-      return this.getErrors('css/lint-3.css').then(errors => {
+      let test = new Test(this, {'always-semicolon': true});
+      return test.getErrors('lint-3.css').then(errors => {
         assert.equal(errors.length, 2);
 
         assert.equal(errors[0].line, 2);
