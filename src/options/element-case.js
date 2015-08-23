@@ -1,3 +1,5 @@
+'use strict';
+
 let option = {
   /**
    * Option's name as it's used in config.

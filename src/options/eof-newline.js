@@ -1,3 +1,5 @@
+'use strict';
+
 let gonzales = require('../gonzales');
 
 let option = {

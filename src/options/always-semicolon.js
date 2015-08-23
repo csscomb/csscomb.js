@@ -1,3 +1,5 @@
+'use strict';
+
 var gonzales = require('../gonzales');
 
 let option = {
@@ -29,8 +31,9 @@ let option = {
 
   /**
    * Checks ast for code style errors.
+   *
    * @param {Node} ast
-   * @return {Array} List of found errors.
+   * @return {Array?} List of found errors.
    */
   lint(ast) {
     var errors = [];
@@ -120,7 +123,7 @@ let option = {
   /**
    * Detects the value of this option in ast.
    * @param {Node} ast
-   * @return {Array} List of detected values
+   * @return {Array?} List of detected values
    */
   detect(ast) {
     var detected = [];

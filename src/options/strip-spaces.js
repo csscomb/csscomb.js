@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (function() {
   /**
    * Trim trailing spaces on each line.

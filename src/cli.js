@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Command line implementation for CSSComb
  *
