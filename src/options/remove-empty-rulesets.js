@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (function() {
   function processNode(node) {
     removeEmptyRulesets(node);

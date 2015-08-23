@@ -1,3 +1,5 @@
+'use strict';
+
 var gonzales = require('../gonzales');
 
 module.exports = (function() {
@@ -214,8 +216,8 @@ module.exports = (function() {
   /**
    * Updates dict which contains info about items align.
    *
-   * @param {Object} info,
-   * @param {Object} dict,
+   * @param {Object} info
+   * @param {Object} dict
    */
   function updateDict(info, dict) {
     if (info.prefixLength === 0 && info.extra === 0) return;
@@ -237,8 +239,8 @@ module.exports = (function() {
   /**
    * Returns string with correct number of spaces for info.baseName property.
    *
-   * @param {Object} info,
-   * @param {Object} dict,
+   * @param {Object} info
+   * @param {Object} dict
    * @param {String} whitespaceNode
    * @returns {String}
    */

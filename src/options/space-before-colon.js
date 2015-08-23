@@ -1,3 +1,5 @@
+'use strict';
+
 var gonzales = require('../gonzales');
 
 module.exports = {

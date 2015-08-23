@@ -14,7 +14,7 @@ printf "\n\
 ----------------\n\
  Running JSHint\n\
 ----------------\n\n"
-test ./node_modules/.bin/jshint-groups
+test ./node_modules/.bin/jshint ./src
 
 printf "\n\
 --------------\n\

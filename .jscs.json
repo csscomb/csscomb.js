@@ -48,13 +48,18 @@
     "requireSpaceBetweenArguments": true,
     "requireSpacesInForStatement": true,
     "validateIndentation": 2,
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "checkRedundantParams": true,
-        "requireParamTypes": true
-    },
     "validateQuoteMarks": {
         "mark": "'",
         "escape": true
+    },
+    "jsDoc": {
+        "checkAnnotations": "closurecompiler",
+        "checkParamNames": true,
+        "checkRedundantParams": true,
+        "checkRedundantReturns": true,
+        "checkReturnTypes": true,
+        "checkTypes": true,
+        "requireParamTypes": true,
+        "requireReturnTypes": true
     }
 }
