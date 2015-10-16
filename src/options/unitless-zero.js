@@ -25,7 +25,7 @@ module.exports = {
           var unit = value.first('ident').content;
           if (value.first('number').content[0] === '0' &&
               UNITS.indexOf(unit) !== -1) {
-            value.remove(1);
+            value.removeChild(1);
           }
         } else if (value.is('percentage')) {
           var number = value.first('number').content;
@@ -46,7 +46,7 @@ module.exports = {
   detect: function(ast) {
     let detected = [];
 
-    ast.traverse(function(node, params) {
+    ast.traverse(function(node, index, parent) {
       // If we see a zero with unit and it is not degree,
       // then we don’t have an option
       if (node.is('percentage') &&
@@ -64,7 +64,6 @@ module.exports = {
 
       // If we see a zero and previous node is not percentage
       // or dimension, then we have an option
-      let parent = params.parent;
       if (node.is('number') &&
           node.content[0] === '0' &&
           !parent.is('percentage') &&

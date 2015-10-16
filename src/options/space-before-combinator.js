@@ -22,28 +22,16 @@ module.exports = {
   process: function(ast) {
     let value = this.value;
 
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach(function(simpleSelector) {
-        var notFirst = false;
-
-        simpleSelector.forEach(function(n, i) {
-          if (!n.is('space') && !n.is('combinator')) notFirst = true;
-
-          // If combinator is the first thing in selector,
-          // do not add extra spaces:
-          if (!n.is('combinator') || !notFirst) return;
-
-          if (simpleSelector.get(i - 1).is('space')) {
-            simpleSelector.get(i - 1).content = value;
-          } else {
-            var space = gonzales.createNode({
-              type: 'space',
-              content: value
-            });
-            simpleSelector.insert(i, space);
-          }
+    ast.traverseByType('combinator', function(combinator, i, parent) {
+      if (parent.get(i - 1).is('space')) {
+        parent.get(i - 1).content = value;
+      } else {
+        var space = gonzales.createNode({
+          type: 'space',
+          content: value
         });
-      });
+        parent.insert(i, space);
+      }
     });
   },
 
@@ -55,16 +43,12 @@ module.exports = {
   detect: function(ast) {
     let detected = [];
 
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach(function(simpleSelector) {
-        simpleSelector.forEach('combinator', function(combinator, i) {
-          if (simpleSelector.get(i - 1).is('space')) {
-            detected.push(simpleSelector.get(i - 1).content);
-          } else {
-            detected.push('');
-          }
-        });
-      });
+    ast.traverseByType('combinator', function(combinator, i, parent) {
+      if (parent.get(i - 1).is('space')) {
+        detected.push(parent.get(i - 1).content);
+      } else {
+        detected.push('');
+      }
     });
 
     return detected;
