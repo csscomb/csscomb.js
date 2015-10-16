@@ -22,21 +22,16 @@ module.exports = {
   process: function(ast) {
     let value = this.value;
 
-    // TODO(tonyganch): Can this be replaced with one `traverse`?
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach('simpleSelector', function(simpleSelector) {
-        simpleSelector.forEach('combinator', function(combinator, i) {
-          if (simpleSelector.get(i + 1).is('space')) {
-            simpleSelector.get(i + 1).content = value;
-          } else {
-            var space = gonzales.createNode({
-              type: 'space',
-              content: value
-            });
-            simpleSelector.insert(i + 1, space);
-          }
+    ast.traverseByType('combinator', function(combinator, i, parent) {
+      if (parent.get(i + 1).is('space')) {
+        parent.get(i + 1).content = value;
+      } else {
+        var space = gonzales.createNode({
+          type: 'space',
+          content: value
         });
-      });
+        parent.insert(i + 1, space);
+      }
     });
   },
 
@@ -48,16 +43,12 @@ module.exports = {
   detect: function(ast) {
     let detected = [];
 
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach('simpleSelector', function(simpleSelector) {
-        simpleSelector.forEach('combinator', function(combinator, i) {
-          if (simpleSelector.get(i + 1).is('space')) {
-            detected.push(simpleSelector.get(i + 1).content);
-          } else {
-            detected.push('');
-          }
-        });
-      });
+    ast.traverseByType('combinator', function(combinator, i, parent) {
+      if (parent.get(i + 1).is('space')) {
+        detected.push(parent.get(i + 1).content);
+      } else {
+        detected.push('');
+      }
     });
 
     return detected;

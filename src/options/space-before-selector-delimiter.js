@@ -22,19 +22,19 @@ module.exports = {
   process: function(ast) {
     let value = this.value;
 
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach('delimiter', function(delim, i) {
-        var previousNode = selector.get(i - 1);
-        if (previousNode.last().is('space')) {
-          previousNode.last().content = value;
-        } else {
-          var space = gonzales.createNode({
-            type: 'space',
-            content: value
-          });
-          previousNode.content.push(space);
-        }
-      });
+    ast.traverseByType('delimiter', function(delimiter, i, parent) {
+      if (parent.is('arguments')) return;
+
+      var previousNode = parent.get(i - 1);
+      if (previousNode.is('space')) {
+        previousNode.content = value;
+      } else {
+        var space = gonzales.createNode({
+          type: 'space',
+          content: value
+        });
+        parent.insert(i, space);
+      }
     });
   },
 
@@ -46,15 +46,15 @@ module.exports = {
   detect: function(ast) {
     let detected = [];
 
-    ast.traverseByType('selector', function(selector) {
-      selector.forEach('delimiter', function(delim, i) {
-        var previousNode = selector.get(i - 1);
-        if (previousNode.last().is('space')) {
-          detected.push(previousNode.last().content);
-        } else {
-          detected.push('');
-        }
-      });
+    ast.traverseByType('delimiter', function(delimiter, i, parent) {
+      if (parent.is('arguments')) return;
+
+      var previousNode = parent.get(i - 1);
+      if (previousNode.is('space')) {
+        detected.push(previousNode.content);
+      } else {
+        detected.push('');
+      }
     });
 
     return detected;

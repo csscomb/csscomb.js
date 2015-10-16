@@ -3,20 +3,6 @@
 var gonzales = require('../gonzales');
 
 module.exports = (function() {
-  /**
-   * Gets the last (the deepest) whitespace node.
-   *
-   * @param {node} node
-   * @returns {node|undefined} If no whitespace node is found, returns
-   * `undefined`
-   */
-  function getLastWhitespaceNode(node) {
-    if (typeof node !== 'object') return;
-    if (node.is('space')) return node;
-
-    return getLastWhitespaceNode(node.last());
-  }
-
   return {
     name: 'space-before-opening-brace',
 
@@ -38,27 +24,23 @@ module.exports = (function() {
       let value = this.value;
 
       // If found block node stop at the next one for space check.
-      ast.traverseByTypes(['block', 'atrulers'], function(block, i, parent) {
-        // For the pre-block node, find its last (the deepest) child:
-        // TODO: Exclude nodes with braces (for example, arguments)
+      ast.traverseByTypes(['block', 'value'], function(block, i, parent) {
+        if (block.is('value') && !block.first().is('block')) return;
+
         var previousNode = parent.get(i - 1);
-        var whitespaceNode = getLastWhitespaceNode(previousNode);
+        if (!previousNode) return;
 
         // If it's spaces, modify this node.
         // If it's something different from spaces, add a space node to
         // the end:
-        if (whitespaceNode) {
-          whitespaceNode.content = value;
+        if (previousNode.is('space')) {
+          previousNode.content = value;
         } else if (value !== '') {
           var space = gonzales.createNode({
             type: 'space',
             content: value
           });
-          if (previousNode && previousNode.is('atrulerq')) {
-            previousNode.content.push(space);
-          } else {
-            parent.insert(i, space);
-          }
+          parent.insert(i, space);
         }
       });
     },
@@ -71,17 +53,17 @@ module.exports = (function() {
     detect: function(ast) {
       var detected = [];
 
-      ast.traverseByTypes(['block', 'atrulers'], function(block, i, parent) {
-        // For the pre-block node, find its last (the deepest) child:
-        // TODO: Exclude nodes with braces (for example, arguments)
+      ast.traverseByTypes(['block', 'value'], function(block, i, parent) {
+        if (block.is('value') && !block.first().is('block')) return;
+
         var previousNode = parent.get(i - 1);
-        var whitespaceNode = getLastWhitespaceNode(previousNode);
+        if (!previousNode) return;
 
         // If it's spaces, modify this node.
         // If it's something different from spaces, add a space node to
         // the end:
-        if (whitespaceNode) {
-          detected.push(whitespaceNode.content);
+        if (previousNode.is('space')) {
+          detected.push(previousNode.content);
         } else {
           detected.push('');
         }
