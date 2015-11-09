@@ -144,13 +144,18 @@ module.exports = {
     // (e. g. `$include breakpoint`), and the rest — `$include`.
     let mixinName;
 
-    // TODO(tonyganch): explain `first.first`.
-    if (node.syntax === 'less')
-        mixinName = node.first().first().content;
-    else if (node.syntax === 'sass' && node.first().content === '+')
-        mixinName = node.get(1).first().content;
-    else
-        mixinName = node.get(2).first().content;
+    console.log(node);
+    if (node.syntax === 'less') {
+      // `node.first()` is class and `node.first().first()` is ident.
+      mixinName = node.first().first().content;
+    } else if (node.syntax === 'sass' && node.first().content === '+') {
+      // `node.first()` is `+` and `node.get(1)` is ident.
+      mixinName = node.get(1).content;
+    } else {
+      // `node.first()` is @-keyword, `node.get(1)` is space and
+      // `node.get(2)` is ident.
+      mixinName = node.get(2).content;
+    }
 
     let includeMixinName = '$include ' + mixinName;
     return this.value.hasOwnProperty(includeMixinName) ?
@@ -301,8 +306,7 @@ module.exports = {
 
   // Types of nodes that can be sorted.
   _isAcceptableNode(node) {
-    const NODES = ['atruleb', 'atruler', 'atrules',
-                   'declaration', 'extend', 'include',
+    const NODES = ['atrule', 'declaration', 'extend', 'include',
                     'multilineComment', 'singlelineComment', 'space'];
     return NODES.indexOf(node.type) !== -1;
   },
@@ -360,7 +364,7 @@ module.exports = {
 
     nodesToDelete.sort((a, b) => a - b);
     for (let x = nodesToDelete.length - 1; x > -1; x--)
-      block.remove(nodesToDelete[x]);
+      block.removeChild(nodesToDelete[x]);
 
     return sortables;
   },
