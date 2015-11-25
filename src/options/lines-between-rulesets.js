@@ -11,10 +11,10 @@ module.exports = (function() {
         var prevNode = node.get(index - 1);
         var shouldInsert = false;
 
-        // check for previous nodes that are not a space
-        // do not insert if the ruleset is the first item
+        // Check for previous nodes that are not a space
+        // Do not insert if the ruleset is the first item
         for (var i = 0; i < index; i++) {
-            if(!node.get(i).is('space')) {
+            if (!node.get(i).is('space')) {
                 shouldInsert = true;
                 break;
             }
