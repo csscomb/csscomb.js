@@ -3,8 +3,7 @@
 var gonzales = require('../gonzales');
 
 module.exports = (function() {
-    var valueFromSettings;
-    var value;
+    var newLines;
     var space;
 
     function insertLines(node, index) {
@@ -29,9 +28,8 @@ module.exports = (function() {
                     content = content.substring(lastNewline + 1);
                 }
 
-                var valueStr = valueFromSettings + content;
+                var valueStr = newLines + content;
                 prevNode.content = valueStr;
-                return;
             } else {
                 node.insert(index, space);
             }
@@ -53,9 +51,6 @@ module.exports = (function() {
     }
 
     function processBlock(x) {
-        value = valueFromSettings;
-        space = gonzales.createNode({type: 'space', content: value});
-
         if (x.is('stylesheet')) {
             // Check all @rules
             findAtRules(x);
@@ -98,7 +93,8 @@ module.exports = (function() {
         },
 
         process: function(ast) {
-            valueFromSettings = this.value;
+            newLines = this.value;
+            space = gonzales.createNode({type: 'space', content: newLines});
             processBlock(ast);
         }
     };

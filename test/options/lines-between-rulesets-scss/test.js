@@ -7,6 +7,11 @@ describe('options/lines-between-rulesets:scss', function() {
         return this.shouldBeEqual('lines-between-rulesets.scss', 'lines-between-rulesets.expected.scss');
     });
 
+    it('Numeric value => should insert multiple newlines between rulesets', function() {
+        this.comb.configure({ 'lines-between-rulesets': 2 });
+        return this.shouldBeEqual('lines-between-rulesets.scss', '2-lines-between-rulesets.expected.scss');
+    });
+
     it('Invalid string value => should should not change anything', function() {
         this.comb.configure({ 'lines-between-rulesets': '\n' });
         return this.shouldBeEqual('lines-between-rulesets.scss');
