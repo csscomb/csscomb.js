@@ -954,18 +954,6 @@ Example: `{ "lines-between-rulesets":  1}`
 }
 ```
 
-Example: `{ "lines-between-rulesets": "\n\n" }`
-
-```css
-// Before:
-.foo {background: red;}.bar{border: 1px solid red;}
-
-// After:
-.foo {background: red;}
-
-.bar{border: 1px solid red;}
-```
-
 ## verbose
 
 Whether to use `--verbose` option in CLI.
