@@ -8,4 +8,6 @@ a {
     -webkit-float: left;
     -moz-color: zebra;
     float: right;
+    width: fit-content;
+    width: auto;
     }
