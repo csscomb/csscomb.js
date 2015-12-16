@@ -368,25 +368,28 @@ module.exports = {
         let prefixesRegExp = /^(-webkit-|-moz-|-ms-|-o-)(.*)$/;
 
         // Get property name (i.e. `color`, `-o-animation`):
-        a = a.node.first().first().content;
-        b = b.node.first().first().content;
+        let aRule = a.node.first().first().content;
+        let bRule = b.node.first().first().content;
 
         // Get prefix and unprefixed part. For example:
         // ['-o-animation', '-o-', 'animation']
         // ['color', '', 'color']
-        a = a.match(prefixesRegExp) || [a, '', a];
-        b = b.match(prefixesRegExp) || [b, '', b];
+        aRule = aRule.match(prefixesRegExp) || [aRule, '', aRule];
+        bRule = bRule.match(prefixesRegExp) || [bRule, '', bRule];
 
-        if (a[2] !== b[2]) {
+        if (aRule[2] !== bRule[2]) {
             // If unprefixed parts are different (i.e. `border` and
             // `color`), compare them:
-            return a[2] < b[2] ? -1 : 1;
-        } else {
+            return aRule[2] < bRule[2] ? -1 : 1;
+        } else if (aRule[1] !== bRule[1]) {
             // If unprefixed parts are identical (i.e. `border` in
             // `-moz-border` and `-o-border`), compare prefixes.
             // They should go in the same order they are set
             // in `prefixes` array.
-            return prefixes.indexOf(a[1]) < prefixes.indexOf(b[1]) ? -1 : 1;
+            return prefixes.indexOf(aRule[1]) <
+                prefixes.indexOf(bRule[1]) ? -1 : 1;
+        } else {
+            return a.i - b.i;
         }
     },
 
