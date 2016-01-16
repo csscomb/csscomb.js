@@ -1,0 +1,16 @@
+{
+    "eqeqeq": true,
+    "esnext": true,
+    "freeze": true,
+    "globals": {
+        "afterEach": false,
+        "beforeEach": false,
+        "describe": false,
+        "it": false
+    },
+    "node": true,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "-W084": true
+}

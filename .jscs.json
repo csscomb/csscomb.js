@@ -47,14 +47,19 @@
     ],
     "requireSpaceBetweenArguments": true,
     "requireSpacesInForStatement": true,
-    "validateIndentation": 4,
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "checkRedundantParams": true,
-        "requireParamTypes": true
-    },
+    "validateIndentation": 2,
     "validateQuoteMarks": {
         "mark": "'",
         "escape": true
+    },
+    "jsDoc": {
+        "checkAnnotations": "closurecompiler",
+        "checkParamNames": true,
+        "checkRedundantParams": true,
+        "checkRedundantReturns": true,
+        "checkReturnTypes": true,
+        "checkTypes": true,
+        "requireParamTypes": true,
+        "requireReturnTypes": true
     }
 }
