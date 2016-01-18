@@ -38,5 +38,17 @@ describe('Option `unitless-zero`, process', function() {
         assert.equal(actual, 'div { -webkit-transform: rotate(0deg); }');
       });
     });
+
+    it('Issue 394', function() {
+      let test = new Test(this, {'unitless-zero': true});
+      return test.shouldBeEqual('issue-394.css', 'issue-394.expected.css');
+    });
+  });
+
+  describe('less', function() {
+    it('Issue 389', function() {
+      let test = new Test(this, {'unitless-zero': true});
+      return test.shouldBeEqual('issue-389.less');
+    });
   });
 });
