@@ -7,5 +7,7 @@ module.exports = {
 
   accepts: {string: /^abc$/},
 
-  process: function() {}
+  process: function() {},
+
+  detect: () => []
 };

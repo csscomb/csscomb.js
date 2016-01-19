@@ -144,7 +144,6 @@ module.exports = {
     // (e. g. `$include breakpoint`), and the rest — `$include`.
     let mixinName;
 
-    console.log(node);
     if (node.syntax === 'less') {
       // `node.first()` is class and `node.first().first()` is ident.
       mixinName = node.first().first().content;
@@ -421,5 +420,7 @@ module.exports = {
       // they were in original array:
       return a.i - b.i;
     });
-  }
+  },
+
+  detect: () => []
 };
