@@ -37,7 +37,7 @@ let option = {
     ast.traverse((node) => {
       if (!node.is('selector') && !node.is('arguments')) return;
 
-      node.forEach('simpleSelector', (selector) => {
+      node.forEach('typeSelector', (selector) => {
         selector.forEach('ident', (ident) => {
           ident.content = value === 'lower' ?
               ident.content.toLowerCase() :
@@ -58,7 +58,7 @@ let option = {
     ast.traverse((node) => {
       if (!node.is('selector') && !node.is('arguments')) return;
 
-      node.forEach('simpleSelector', (selector) => {
+      node.forEach('typeSelector', (selector) => {
         selector.forEach('ident', (ident) => {
           if (ident.content.match(/^[a-z]+$/)) {
             detected.push('lower');
