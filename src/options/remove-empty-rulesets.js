@@ -10,7 +10,7 @@ module.exports = (function() {
     stylesheet.forEach('ruleset', function(ruleset, i) {
       var block = ruleset.first('block');
       processNode(block);
-      if (isEmptyBlock(block)) stylesheet.remove(i);
+      if (isEmptyBlock(block)) stylesheet.removeChild(i);
     });
   }
 
@@ -27,7 +27,7 @@ module.exports = (function() {
     while (i-- > 0) {
       if (node.get(i).is('space') && node.get(i + 1).is('space')) {
         node.get(i).content += node.get(i + 1).content;
-        node.remove(i + 1);
+        node.removeChild(i + 1);
       }
     }
   }
