@@ -1,6 +1,6 @@
 let Test = require('../../option_test');
 
-describe('Option `element-case`, process', function() {
+describe('Option `element-case`, detect', function() {
   describe('css', function() {
     it('Should detect lowercase elements', function() {
       let test = new Test(this);
@@ -57,4 +57,3 @@ describe('Option `element-case`, process', function() {
     });
   });
 });
-
