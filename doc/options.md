@@ -41,7 +41,7 @@ Following options are ignored while processing `*.sass` files:
 
 ## always-semicolon
 
-Whether to add a semicolon after the last value/mixin.
+Whether to add a semicolon after the *last* value/mixin.
 
 Acceptable value: `true`.
 
@@ -49,10 +49,10 @@ Example: `{ "always-semicolon": true }`
 
 ```css
 /* before */
-a { color: red }
+a { color: red; text-decoration: underline }
 
 /* after */
-a { color: red; }
+a { color: red; text-decoration: underline; }
 ```
 
 ### always-semicolon vs. preprocessors
