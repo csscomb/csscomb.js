@@ -63,9 +63,17 @@
             "clip",
             "zoom",
             "flex-direction",
-            "flex-order",
-            "flex-pack",
-            "flex-align"
+            "flex-wrap",
+            "flex-flow",
+            "justify-content",
+            "align-items",
+            "align-content",
+            "order",
+            "flex",
+            "flex-grow",
+            "flex-shrink",
+            "flex-basis",
+            "align-self"
         ],
         [
             "-webkit-box-sizing",
