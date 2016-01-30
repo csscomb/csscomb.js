@@ -24,6 +24,15 @@ describe('Option `sort-order-fallback`, process', function() {
       return test.shouldBeEqual('test.css', 'test-2.expected.css');
     });
 
+    it('Properties of the same name should stay in the same order', function() {
+      let config = {
+        'sort-order': ['...'],
+        'sort-order-fallback': 'abc'
+      };
+      let test = new Test(this, config);
+      return test.shouldBeEqual('same-property.css');
+    });
+
     it('Should leave leftovers as is if `sort-order-fallback` is not set', function() {
       let config = {
         'sort-order': ['top', 'left']
@@ -33,4 +42,3 @@ describe('Option `sort-order-fallback`, process', function() {
     });
   });
 });
-
