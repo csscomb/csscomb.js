@@ -41,7 +41,8 @@
   "dependencies": {
     "glob": "latest",
     "minimist": "1.1.x",
-    "csscomb-core": "csscomb/core#build-dev",
+    "csscomb-core": "csscomb/core#dev",
+    "gonzales-pe": "sodatea/gonzales-pe#dev",
     "vow": "0.4.4"
   },
   "devDependencies": {
@@ -60,7 +61,6 @@
     "csscomb": "./bin/csscomb"
   },
   "scripts": {
-    "preinstall": "./scripts/preinstall.sh",
     "build": "./scripts/build.sh",
     "coverage": "./scripts/coverage.sh",
     "test": "./scripts/build.sh && ./scripts/test.sh",
