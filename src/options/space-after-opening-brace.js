@@ -1,6 +1,6 @@
 'use strict';
 
-var gonzales = require('../gonzales');
+var gonzales = require('gonzales-pe');
 
 module.exports = {
   name: 'space-after-opening-brace',

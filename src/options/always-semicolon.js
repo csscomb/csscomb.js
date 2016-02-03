@@ -1,6 +1,6 @@
 'use strict';
 
-var gonzales = require('../gonzales');
+var gonzales = require('gonzales-pe');
 
 let option = {
   /**
