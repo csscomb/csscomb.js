@@ -117,7 +117,7 @@ function getConfig(options) {
   }
 
   if (!config) {
-    let message = `Configuration file ${configPath} was not found.`;
+    let message = `Error parsing configuration file ${configPath}.`;
     process.stderr.write(format(message));
     process.exit(1);
   }
