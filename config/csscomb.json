@@ -65,7 +65,8 @@
             "flex-direction",
             "flex-order",
             "flex-pack",
-            "flex-align"
+            "flex-align",
+            "flex"
         ],
         [
             "-webkit-box-sizing",
