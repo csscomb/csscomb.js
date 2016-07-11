@@ -12,29 +12,6 @@
       "web": "http://tonyganch.com/"
     }
   ],
-  "contributors": [
-    {
-      "name": "Igor Novak",
-      "email": "bezengi@gmail.com"
-    },
-    {
-      "name": "Roman Komarov",
-      "email": "kizmarh@ya.ru"
-    },
-    {
-      "name": "Denis Payase",
-      "email": "lostsoul@yandex-team.ru"
-    },
-    {
-      "name": "Mikhail Troshev",
-      "email": "mishanga@yandex-team.ru",
-      "web": "http://mishanga.pro/"
-    },
-    {
-      "name": "Sergey Puzankov",
-      "email": "puzankov@yandex-team.ru"
-    }
-  ],
   "engines": {
     "node": ">= 0.10.0"
   },
