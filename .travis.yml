@@ -3,11 +3,13 @@ language: node_js
 node_js:
   - "0.10"
   - "0.12"
-  - "1"
-  - "2"
-  - "3"
-  - "4"
-  - "5"
+  - "1.8"
+  - "2.5"
+  - "3.3"
+  - "4.2"
+
+before_install:
+  - ./scripts/beforeinstall.sh
 
 matrix:
   allow_failures:
