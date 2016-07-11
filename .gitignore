@@ -3,8 +3,6 @@ lib-cov
 node_modules
 test/test-coverage.html
 
-csscomb-core/
-
 .idea
 *.iml
 
