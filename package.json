@@ -5,6 +5,7 @@
   "homepage": "http://csscomb.com/",
   "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
   "repository": "https://github.com/csscomb/csscomb.js",
+  "license": "MIT",
   "maintainers": [
     {
       "name": "Tony Ganch",
