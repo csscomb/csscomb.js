@@ -291,7 +291,7 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('import.sass', 'import.expected.sass');
     });
 
-    it.skip('Should sort @include-s', function() {
+    it('Should sort @include-s', function() {
       let test = new Test(this, {
         'sort-order': [['$include', 'color']]
       });
@@ -305,14 +305,14 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('extend.sass', 'extend.expected.sass');
     });
 
-    it.skip('Should sort @include-s with specified name. Test 1', function() {
+    it('Should sort @include-s with specified name. Test 1', function() {
       let test = new Test(this, {
         'sort-order': [['$include'], ['color'], ['$include media']]
       });
       return test.shouldBeEqual('include-specified-1.sass', 'include-specified-1.expected.sass');
     });
 
-    it.skip('Should sort @include-s with specified name. Test 2', function() {
+    it('Should sort @include-s with specified name. Test 2', function() {
       let test = new Test(this, {
         'sort-order': [['$include'], ['color'], ['$include media']]
       });
@@ -420,14 +420,14 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('import.scss', 'import.expected.scss');
     });
 
-    it.skip('Should sort @include-s', function() {
+    it('Should sort @include-s', function() {
       let test = new Test(this, {
         'sort-order': [['$include', 'color']]
       });
       return test.shouldBeEqual('include.scss', 'include.expected.scss');
     });
 
-    it.skip('Should sort @include-s with specified name', function() {
+    it('Should sort @include-s with specified name', function() {
       let test = new Test(this, {
         'sort-order': [['$include'], ['color'], ['$include media']]
       });
@@ -462,7 +462,7 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('condition.scss', 'condition.expected.scss');
     });
 
-    it.skip('Should sort complex case with leftovers', function() {
+    it('Should sort complex case with leftovers', function() {
       let test = new Test(this, {
         'sort-order': [
           ['$variable'],
@@ -475,7 +475,7 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('leftovers.scss', 'leftovers.expected.scss');
     });
 
-    it.skip('Issue 317', function() {
+    it('Issue 317', function() {
       let test = new Test(this, {'sort-order': ['...']});
       return test.shouldBeEqual('issue-317.scss');
     });
@@ -485,7 +485,7 @@ describe('Option `sort-order`, process', function() {
       return test.shouldBeEqual('issue-333.scss');
     });
 
-    it.skip('Issue 399', function() {
+    it('Issue 399', function() {
       let test = new Test(this, {'sort-order': [['$extend', 'color']]});
       return test.shouldBeEqual('issue-399.expected.scss');
     });

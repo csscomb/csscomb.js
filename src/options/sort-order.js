@@ -95,13 +95,14 @@ module.exports = {
     extendedNode.spacesBeforeDelimiter =
         this._getNodesByIndex(block, spacesBeforeDelimiter);
 
-    i += spacesBeforeDelimiter.length + 1;
-    node = block.get(i);
+    i += spacesBeforeDelimiter.length;
 
     // Spaces after delimiter.
     // If there is `;` right after the declaration, save it with the
     // declaration and mark it for removing from parent node:
-    if (node && node.is('declarationDelimiter')) {
+    if (block.get(i + 1) && block.get(i + 1).is('declarationDelimiter')) {
+      i += 1;
+      node = block.get(i);
       nodesToDelete.push(i);
       extendedNode.delim = node;
 
@@ -258,6 +259,11 @@ module.exports = {
       let spacesBeforeNode = currentNode.spacesBeforeNode || [];
       let spacesBeforeDelimiter = currentNode.spacesBeforeDelimiter || [];
       let spacesAfterDelimiter = currentNode.spacesAfterDelimiter || [];
+
+      if (node.syntax === 'sass' && spacesBeforeNode.length) {
+        let space = spacesBeforeNode[0];
+        space.content = space.content.replace(/\n/, '');
+      }
 
       spacesBeforeNode.reverse().map(this._removeEmptyLines);
       spacesBeforeDelimiter.reverse().map(this._removeEmptyLines);

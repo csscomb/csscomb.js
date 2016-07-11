@@ -6,7 +6,7 @@ a {
     leftover: yay;
     border: 1px solid;
 
-    @include .nani;
+    @include nani;
 
     font: 20px/16px Arial, sans-serif;
 }
@@ -18,7 +18,7 @@ b {
     leftover: yay;
     border: 1px solid;
 
-    @include .nani;
+    @include nani;
 
     font: 20px/16px Arial, sans-serif;
 }
@@ -30,7 +30,7 @@ c {
     leftover: yay;
     border: 1px solid;
 
-    @include .nani;
+    @include nani;
 
     font: 20px/16px Arial, sans-serif;
 }

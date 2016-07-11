@@ -1,10 +1,12 @@
 var assert = require('assert');
+let Test = require('../core_test');
 
-describe.skip('.use()', function() {
+describe('.use()', function() {
     it('Should set predefined options in correct order', function() {
-        var config = this.Comb.getConfig('csscomb');
-        this.comb.configure(config);
-        var options = this.comb.plugins.map(function(plugin) {
+        let test = new Test(this);
+        var config = test.Comb.getConfig('csscomb');
+        test.comb.configure(config);
+        var options = test.comb.plugins.map(function(plugin) {
             return plugin.name;
         });
         var expected = [

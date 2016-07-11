@@ -1,51 +1,63 @@
 var assert = require('assert');
+let Test = require('../core_test');
 
-describe.skip('csscomb methods', function() {
+describe('csscomb methods', function() {
     it('getConfig()', function() {
+        let test = new Test(this);
         var config = require('../../../config/csscomb.json');
 
-        assert.equal(this.Comb.getConfig(), config);
+        assert.equal(test.Comb.getConfig(), config);
     });
 
     it('getConfig(number)', function() {
+        let test = new Test(this);
+
         assert.throws(function() {
-            this.Comb.getConfig(16);
+            test.Comb.getConfig(16);
         });
     });
 
     it('getConfig(boolean)', function() {
+        let test = new Test(this);
+
         assert.throws(function() {
-            this.Comb.getConfig(true);
+            test.Comb.getConfig(true);
         });
     });
 
     it('getConfig(empty string)', function() {
+        let test = new Test(this);
         var config = require('../../../config/csscomb.json');
 
-        assert.equal(this.Comb.getConfig(''), config);
+        assert.equal(test.Comb.getConfig(''), config);
     });
 
     it('getConfig(invalid string)', function() {
+        let test = new Test(this);
+
         assert.throws(function() {
-            this.Comb.getConfig('nani');
+            test.Comb.getConfig('nani');
         });
     });
 
     it('getConfig(csscomb)', function() {
+        let test = new Test(this);
         var config = require('../../../config/csscomb.json');
 
-        assert.equal(this.Comb.getConfig('csscomb'), config);
+        assert.equal(test.Comb.getConfig('csscomb'), config);
     });
 
     it('getConfig(zen)', function() {
+        let test = new Test(this);
         var config = require('../../../config/zen.json');
 
-        assert.equal(this.Comb.getConfig('zen'), config);
+        assert.equal(test.Comb.getConfig('zen'), config);
     });
 
     it('getConfig(yandex)', function() {
+        let test = new Test(this);
         var config = require('../../../config/yandex.json');
 
-        assert.equal(this.Comb.getConfig('yandex'), config);
+        assert.equal(test.Comb.getConfig('yandex'), config);
     });
 });

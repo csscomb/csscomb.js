@@ -29,12 +29,12 @@ describe('Option `always-semicolon`, process', function() {
   });
 
   describe('less', function() {
-    it('Should not add semicolon to condition (single-line style)', function() {
+    it.skip('Should not add semicolon to condition (single-line style)', function() {
       let test = new Test(this, {'always-semicolon': true});
       return test.shouldBeEqual('condition.less');
     });
 
-    it('Should not add semicolon to condition (multi-line style)', function() {
+    it.skip('Should not add semicolon to condition (multi-line style)', function() {
       let test = new Test(this, {'always-semicolon': true});
       return test.shouldBeEqual('condition-multiline.less');
     });

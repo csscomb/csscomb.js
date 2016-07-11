@@ -31,10 +31,5 @@ describe('Option `space-before-combinator`, process', function() {
       let test = new Test(this, {'space-before-combinator': '\n    '});
       return test.shouldBeEqual('test.css', 'test-3.expected.css');
     });
-
-    it.skip('Issue 381', function() {
-      let test = new Test(this, {'space-before-combinator': ' '});
-      return test.shouldBeEqual('issue-381.css');
-    });
   });
 });
