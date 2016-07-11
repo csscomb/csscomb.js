@@ -18,8 +18,8 @@
   "dependencies": {
     "glob": "latest",
     "minimist": "1.1.x",
-    "csscomb-core": "csscomb/core#dev",
-    "gonzales-pe": "sodatea/gonzales-pe#dev",
+    "csscomb-core": "^3.0.0",
+    "gonzales-pe": "^3.3.6",
     "vow": "0.4.4"
   },
   "devDependencies": {
