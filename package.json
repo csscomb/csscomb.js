@@ -24,7 +24,9 @@
     "vow": "0.4.4"
   },
   "devDependencies": {
-    "babel": "^5.5.3",
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-es2015-destructuring": "^6.9.0",
+    "babel-plugin-transform-strict-mode": "^6.11.3",
     "jscs": "2.1.0",
     "jshint": "2.8.0",
     "mocha": "1.20.1"

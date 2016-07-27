@@ -27,7 +27,7 @@ printf "\n\
 ---------------\n\
  Running Mocha\n\
 ---------------\n\n"
-test ./node_modules/.bin/babel-node ./test/mocha
+test ./node_modules/.bin/babel-node --plugins transform-strict-mode ./test/mocha
 
 if [ $EXIT_CODE -ne 0 ]; then
 printf "\n\
