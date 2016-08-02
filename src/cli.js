@@ -14,6 +14,28 @@ var vow = require('vow');
 var Comb = require('./csscomb');
 var comb = new Comb();
 
+function displayHelp() {
+  var help = [
+    'NAME',
+    '    csscomb — Lint and fix style errors in css files',
+    '',
+    'SYNOPSIS',
+    '    csscomb [options] file.css',
+    '    cat file.css | csscomb [options] -',
+    '',
+    'OPTIONS',
+    '    -c, --config [path]',
+    '        Path to configuration file.',
+    '    -d, --detect',
+    '        Run the tool in detect mode, returning detected options.',
+    '    -l, --lint',
+    '        Run the tool in linter mode, without modifying files.',
+    '    -v, --verbose',
+    '        Whether to print logging info.',
+  ];
+  console.log(help.join('\n'));
+}
+
 var getInputData = new vow.Promise(function(resolve) {
   var input = '';
   process.stdin.resume();
@@ -139,6 +161,11 @@ function detectConfig(file) {
 console.time('Time spent');
 
 var options = getOptions();
+
+if (options.help) {
+  displayHelp();
+  process.exit(0);
+}
 
 if (options.detect) {
   detectConfig(options.detect);
