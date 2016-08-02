@@ -27,13 +27,13 @@ var getInputData = new vow.Promise(function(resolve) {
 });
 
 function processInputData(input) {
-  try {
-    process.stdout.write(comb.processString(input));
-    process.exit(0);
-  } catch (e) {
-    process.stderr.write(e.message);
-    process.exit(1);
-  }
+    comb.processString(input).catch(e => {
+      process.stderr.write(e.message);
+      process.exit(1);
+    }).then(output => {
+      process.stdout.write(comb.processString(input));
+      process.exit(0);
+    });
 }
 
 function processSTDIN() {
