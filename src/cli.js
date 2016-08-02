@@ -31,7 +31,7 @@ function displayHelp() {
     '    -l, --lint',
     '        Run the tool in linter mode, without modifying files.',
     '    -v, --verbose',
-    '        Whether to print logging info.',
+    '        Whether to print logging info.'
   ];
   console.log(help.join('\n'));
 }
@@ -49,13 +49,13 @@ var getInputData = new vow.Promise(function(resolve) {
 });
 
 function processInputData(input) {
-    comb.processString(input).catch(e => {
-      process.stderr.write(e.message);
-      process.exit(1);
-    }).then(output => {
-      process.stdout.write(comb.processString(input));
-      process.exit(0);
-    });
+  comb.processString(input).catch(e => {
+    process.stderr.write(e.message);
+    process.exit(1);
+  }).then(output => {
+    process.stdout.write(output);
+    process.exit(0);
+  });
 }
 
 function processSTDIN() {
