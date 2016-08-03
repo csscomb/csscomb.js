@@ -1,8 +1,8 @@
 'use strict';
 
-let Comb = require('csscomb-core');
 let gonzales = require('gonzales-pe');
 let fs = require('fs');
+let Comb = require('./core');
 let format = require('./format');
 let path = require('path');
 

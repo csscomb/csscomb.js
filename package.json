@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "glob": "latest",
-    "minimist": "1.1.x",
-    "csscomb-core": "^3.0.0",
     "gonzales-pe": "^3.3.6",
-    "vow": "0.4.4"
+    "minimatch": "3.0.2",
+    "minimist": "1.1.x",
+    "vow": "0.4.4",
+    "vow-fs": "0.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
