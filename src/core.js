@@ -185,20 +185,22 @@ class Comb {
 
     if (!this._shouldProcessFile(path)) return;
 
-    return vfs.read(path, 'utf8').then(function(data) {
-      let syntax = that._extractSyntax(path);
-      that.processString(data, {
-        syntax: syntax,
-        filename: path
-      }).then(function(processedData) {
-        if (data === processedData) {
-          if (that.verbose) console.log(' ', path);
-          return 0;
-        }
+    return new Promise(resolve => {
+      vfs.read(path, 'utf8').then(function(data) {
+        let syntax = that._extractSyntax(path);
+        that.processString(data, {
+          syntax: syntax,
+          filename: path
+        }).then(function(processedData) {
+          if (data === processedData) {
+            if (that.verbose) console.log(' ', path);
+            resolve(0);
+          }
 
-        return vfs.write(path, processedData, 'utf8').then(function() {
-          if (that.verbose) console.log('✓', path);
-          return 1;
+          return vfs.write(path, processedData, 'utf8').then(function() {
+            if (that.verbose) console.log('✓', path);
+            resolve(1);
+          });
         });
       });
     });

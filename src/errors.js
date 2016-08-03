@@ -4,6 +4,10 @@
 let format = require('./format');
 
 module.exports = {
+  configParsingError(configPath) {
+    return `Error parsing configuration file ${configPath}.`;
+  },
+
   implementSetValue(valueType) {
     if (typeof valueType === 'undefined') throw new Error();
 
@@ -25,6 +29,11 @@ module.exports = {
 
   missingSyntax() {
     return 'Plugin must list supported syntaxes.';
+  },
+
+  missingTemplateFile(file) {
+    return format(`Template configuration file ${file}
+                   was not found.`);
   },
 
   twoPluginsWithSameName(pluginName) {
