@@ -53,8 +53,12 @@ function processInputData(input) {
     process.stderr.write(e.message);
     process.exit(1);
   }).then(output => {
-    process.stdout.write(output);
-    process.exit(0);
+    if (!output.length) {
+      process.exit(0);
+    } else {
+      process.stdout.write(output);
+      process.exit(1);
+    }
   });
 }
 
@@ -62,18 +66,46 @@ function processSTDIN() {
   getInputData.then(processInputData);
 }
 
-function processFiles(files, config) {
+function processFiles(files) {
+  let anyErrorsFound = false;
+
   const promises = files.map(file => {
-    return comb.lintPath(file);
+    return comb.lintPath(file).then(errors => {
+      if (!errors.length) {
+        return;
+      }
+
+      anyErrorsFound = true;
+      const message = formatErrors(file, errors);
+      process.stdout.write(message);
+    });
   });
 
   Promise.all(promises).catch(error => {
     process.stderr.write(error.message);
     process.exit(1);
-  }).then(function(c) {
-    console.log(c);
-    process.exit(0);
+  }).then(function() {
+    if (anyErrorsFound) {
+      process.exit(1);
+    } else {
+      process.exit(0);
+    }
   });
+}
+
+function formatErrors(fileName, errors) {
+  let message = [];
+
+  errors.forEach(error => {
+    message.push(
+        error.message + ' at ' + fileName + ':' + error.line,
+        error.context,
+        '',
+        ''
+        );
+  });
+
+  return message.join('\n');
 }
 
 function getOptions() {
@@ -157,7 +189,7 @@ var config = getConfig(options);
 comb.configure(config);
 
 if (process.stdin.isTTY) {
-  processFiles(options._, config);
+  processFiles(options._);
 } else {
   processSTDIN();
 }
