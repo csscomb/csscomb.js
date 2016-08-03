@@ -28,8 +28,8 @@ function displayHelp() {
     '        Path to configuration file.',
     '    -d, --detect',
     '        Run the tool in detect mode, returning detected options.',
-    '    -l, --lint',
-    '        Run the tool in linter mode, without modifying files.',
+    '    -f, --fix',
+    '        Run the tool in fixer mode, modifying files when possible.',
     '    -v, --verbose',
     '        Whether to print logging info.'
   ];
@@ -49,7 +49,7 @@ var getInputData = new vow.Promise(function(resolve) {
 });
 
 function processInputData(input) {
-  comb.processString(input).catch(e => {
+  comb.lintString(input).catch(e => {
     process.stderr.write(e.message);
     process.exit(1);
   }).then(output => {
@@ -63,33 +63,16 @@ function processSTDIN() {
 }
 
 function processFiles(files, config) {
-  vow.all(files.map(comb.processPath.bind(comb))).then(function(c) {
-    c = c.filter(function(isChanged) {
-      return isChanged !== undefined;
-    });
+  const promises = files.map(file => {
+    return comb.lintPath(file);
+  });
 
-    var tbchanged = c.reduce(function(a, b) {
-      return a + b;
-    }, 0);
-
-    var changed = config.lint ? 0 : tbchanged;
-
-    if (config.verbose) {
-      let message = `\n
-          ${c.length} file${c.length === 1 ? '' : 's'} processed\n
-          ${changed} file${changed === 1 ? '' : 's'} fixed\n`;
-      process.stdout.write(format(message));
-      console.timeEnd('Time spent');
-    }
-
-    if (config.lint && tbchanged) {
-      process.exit(1);
-    }
-
-    process.exit(0);
-  }).fail(function(e) {
-    process.stderr.write(e.stack);
+  Promise.all(promises).catch(error => {
+    process.stderr.write(error.message);
     process.exit(1);
+  }).then(function(c) {
+    console.log(c);
+    process.exit(0);
   });
 }
 
@@ -146,7 +129,6 @@ function getConfig(options) {
 
   applyTemplate(config);
   if (options.verbose) config.verbose = options.verbose;
-  if (options.lint) config.lint = options.lint;
 
   return config;
 }
