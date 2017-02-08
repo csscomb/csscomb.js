@@ -43,24 +43,20 @@ if (options.detect) {
 var config = getConfig();
 comb.configure(config);
 
-if (options.fix && process.stdin.isTTY) {
+if (process.stdin.isTTY) {
   processFiles(options._);
-} else if (options.fix) {
-  processSTDIN();
-} else if (process.stdin.isTTY) {
-  lintFiles(options._);
 } else {
-  lintSTDIN();
+  processSTDIN();
 }
 
 
 function getOptions() {
   var parserOptions = {
-    boolean: ['help', 'fix', 'verbose'],
+    boolean: ['help', 'lint', 'verbose'],
     alias: {
       config: 'c',
       detect: 'd',
-      fix: 'f',
+      lint: 'l',
       help: 'h',
       verbose: 'v'
     }
@@ -82,8 +78,8 @@ function displayHelp() {
     '        Path to configuration file.',
     '    -d, --detect',
     '        Run the tool in detect mode, returning detected options.',
-    '    -f, --fix',
-    '        Run the tool in fixer mode, modifying files when possible.',
+    '    -l, --lint',
+    '        Run the tool in linter mode, without modifying files.',
     '    -h, --help',
     '        Display help message.',
     '    -v, --verbose',
@@ -119,6 +115,7 @@ function getConfig() {
 
   applyTemplate(config);
   if (options.verbose) config.verbose = options.verbose;
+  if (options.lint) config.lint = options.lint;
 
   return config;
 }
@@ -155,13 +152,19 @@ function processFiles(files) {
       return a + b;
     }, 0);
 
-    if (config.verbose) {
+    var changed = options.lint ? 0 : tbchanged;
+
+    if (options.verbose) {
       let message = [
           `${c.length} file${c.length === 1 ? '' : 's'} processed`,
-          `${tbchanged} file${tbchanged === 1 ? '' : 's'} fixed`,
+          `${changed} file${changed === 1 ? '' : 's'} fixed`,
           ''
           ].join('\n');
       process.stdout.write(message);
+    }
+
+    if (options.lint && tbchanged) {
+      process.exit(1);
     }
 
     process.exit(0);
@@ -179,65 +182,5 @@ function processInputData(input) {
   }).then(output => {
     process.stdout.write(output);
     process.exit(0);
-  });
-}
-
-function lintFiles(files) {
-  let anyErrorsFound = false;
-
-  const promises = files.map(file => {
-    return comb.lintPath(file).then(errors => {
-      if (!errors.length) {
-        return;
-      }
-
-      anyErrorsFound = true;
-      const message = formatErrors(file, errors);
-      process.stdout.write(message);
-    });
-  });
-
-  Promise.all(promises).catch(error => {
-    process.stderr.write(error.message);
-    process.exit(1);
-  }).then(function() {
-    if (anyErrorsFound) {
-      process.exit(1);
-    } else {
-      process.exit(0);
-    }
-  });
-}
-
-function formatErrors(fileName, errors) {
-  let message = [];
-
-  errors.forEach(error => {
-    message.push(
-        error.message + ' at ' + fileName + ':' + error.line,
-        error.context,
-        '',
-        ''
-        );
-  });
-
-  return message.join('\n');
-}
-
-function lintSTDIN() {
-  getInputData.then(lintInputData);
-}
-
-function lintInputData(input) {
-  comb.lintString(input).catch(e => {
-    process.stderr.write(e.message);
-    process.exit(1);
-  }).then(output => {
-    if (!output.length) {
-      process.exit(0);
-    } else {
-      process.stdout.write(output);
-      process.exit(1);
-    }
   });
 }

@@ -197,10 +197,16 @@ class Comb {
             resolve(0);
           }
 
-          return vfs.write(path, processedData, 'utf8').then(function() {
-            if (that.verbose) console.log('✓', path);
+          let tick = that.lint ? '!' : '✓';
+          if (that.lint) {
+            if (that.verbose) console.log(tick, path);
             resolve(1);
-          });
+          } else {
+            return vfs.write(path, processedData, 'utf8').then(function() {
+              if (that.verbose) console.log(tick, path);
+              resolve(1);
+            });
+          }
         });
       });
     });
