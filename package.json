@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "glob": "latest",
-    "gonzales-pe": "^3.3.6",
+    "gonzales-pe": "^3.4.7",
     "minimatch": "3.0.2",
     "minimist": "1.1.x",
     "vow": "0.4.4",
