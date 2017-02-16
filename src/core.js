@@ -195,6 +195,7 @@ class Comb {
           if (data === processedData) {
             if (that.verbose) console.log(' ', path);
             resolve(0);
+            return;
           }
 
           let tick = that.lint ? '!' : '✓';
