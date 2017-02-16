@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.0 - 2017-02-16
+
+- Added note about maintenance mode
+- Updated GPE to v3.4.7, which fixed a number of errors
+- Added `lines-between-rulesets` option
+- Added support for stdin in cli
+- For `sort-order` option, divided `$include` into `$extend`, `$include name` and `$include`
+
 ## 3.1.7 - 2015-06-09
 
 - Do not remove units from values starting from zeroes, like `0.5em` (#394)
