@@ -14,6 +14,14 @@ It was inspired by [@miripiruni](https://github.com/miripiruni)'s
 This is the new JavaScript version, based on the powerful CSS parser
 [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
+## 0. Maintenance mode
+
+The tool is no longer being developed though we may still fix parsing errors and critical bugs.  
+That means that you should not expect any new features or options.  
+
+If you'd like to become a maintainer of this project, please ping
+[@tonyganch](https://github.com/tonyganch).
+
 ## 1. Install
 
 Global installation (for use as a command-line tool):
