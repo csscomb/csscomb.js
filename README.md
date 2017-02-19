@@ -73,6 +73,14 @@ var comb = new Comb('zen');
 comb.processPath('assets/css');
 ```
 
+### [less.js plugin](https://github.com/bassjobsen/less-plugin-csscomb/)
+
+```
+npm install less
+npm install less-plugin-csscomb
+lessc file.less --csscomb="yandex"
+```
+
 ## 4. Contribute
 
 Anyone and everyone is welcome to contribute.
