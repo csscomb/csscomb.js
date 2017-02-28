@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1 - 2017-02-28
+
+- Added `babel-polyfill` to dependencies.
+
 ## 4.0.0 - 2017-02-16
 
 - Added note about maintenance mode
