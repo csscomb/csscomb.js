@@ -17,6 +17,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
+    "babel-polyfill": "6.23.0",
     "glob": "latest",
     "gonzales-pe": "^3.4.7",
     "minimatch": "3.0.2",
