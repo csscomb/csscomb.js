@@ -37,6 +37,7 @@ csscomb -h
     -c, --config [path]  configuration file path
     -d, --detect         detect mode (would return detected options)
     -l, --lint           in case some fixes needed returns an error
+    -t, --tty-mode       execution in TTY mode (useful, when running tool using external app, e.g. IDE)
 ```
 
 ### config
