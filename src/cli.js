@@ -43,7 +43,7 @@ if (options.detect) {
 var config = getConfig();
 comb.configure(config);
 
-if (process.stdin.isTTY) {
+if (options.ttymode || process.stdin.isTTY) {
   processFiles(options._);
 } else {
   processSTDIN();
@@ -58,7 +58,8 @@ function getOptions() {
       detect: 'd',
       lint: 'l',
       help: 'h',
-      verbose: 'v'
+      verbose: 'v',
+      'tty-mode': 't'
     }
   };
   return parseArgs(process.argv.slice(2), parserOptions);
@@ -83,7 +84,9 @@ function displayHelp() {
     '    -h, --help',
     '        Display help message.',
     '    -v, --verbose',
-    '        Whether to print logging info.'
+    '        Whether to print logging info.',
+    '    -t, --tty-mode',
+    '        Run the tool in TTY mode using external app (e.g. IDE).'
   ];
   process.stdout.write(help.join('\n'));
 }
