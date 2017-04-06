@@ -26,6 +26,7 @@ module.exports = {
       if (parent.is('arguments')) return;
 
       var nextNode = parent.get(i + 1);
+      if (!nextNode) return;
 
       if (nextNode.is('space')) {
         nextNode.content = value;

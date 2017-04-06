@@ -26,7 +26,8 @@ module.exports = {
       if (parent.is('arguments')) return;
 
       var previousNode = parent.get(i - 1);
-      if (previousNode.is('space')) {
+
+      if (previousNode && previousNode.is('space')) {
         previousNode.content = value;
       } else {
         var space = gonzales.createNode({
@@ -50,7 +51,8 @@ module.exports = {
       if (parent.is('arguments')) return;
 
       var previousNode = parent.get(i - 1);
-      if (previousNode.is('space')) {
+
+      if (previousNode && previousNode.is('space')) {
         detected.push(previousNode.content);
       } else {
         detected.push('');

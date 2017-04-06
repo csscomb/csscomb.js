@@ -25,7 +25,8 @@ module.exports = (function() {
   function mergeAdjacentWhitespace(node) {
     var i = node.content.length - 1;
     while (i-- > 0) {
-      if (node.get(i).is('space') && node.get(i + 1).is('space')) {
+      if (node.get(i).is('space') &&
+          node.get(i + 1) && node.get(i + 1).is('space')) {
         node.get(i).content += node.get(i + 1).content;
         node.removeChild(i + 1);
       }
