@@ -43,7 +43,7 @@ if (options.detect) {
 var config = getConfig();
 comb.configure(config);
 
-if (options.ttymode || process.stdin.isTTY) {
+if (options['tty-mode'] || process.stdin.isTTY) {
   processFiles(options._);
 } else {
   processSTDIN();
