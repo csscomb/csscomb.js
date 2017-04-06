@@ -51,8 +51,10 @@ module.exports = {
     let detected = [];
 
     ast.traverseByType('propertyDelimiter', function(delimiter, i, parent) {
-      if (parent.get(i - 1).is('space')) {
-        detected.push(parent.get(i - 1).content);
+      var previousNode = parent.get(i - 1);
+
+      if (previousNode && previousNode.is('space')) {
+        detected.push(previousNode.content);
       } else {
         detected.push('');
       }

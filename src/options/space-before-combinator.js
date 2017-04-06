@@ -23,8 +23,9 @@ module.exports = {
     let value = this.value;
 
     ast.traverseByType('combinator', function(combinator, i, parent) {
-      if (parent.get(i - 1).is('space')) {
-        parent.get(i - 1).content = value;
+      var previousNode = parent.get(i - 1);
+      if (previousNode && previousNode.is('space')) {
+        previousNode.content = value;
       } else {
         var space = gonzales.createNode({
           type: 'space',
@@ -44,8 +45,10 @@ module.exports = {
     let detected = [];
 
     ast.traverseByType('combinator', function(combinator, i, parent) {
-      if (parent.get(i - 1).is('space')) {
-        detected.push(parent.get(i - 1).content);
+      var previousNode = parent.get(i - 1);
+
+      if (previousNode && previousNode.is('space')) {
+        detected.push(previousNode.content);
       } else {
         detected.push('');
       }

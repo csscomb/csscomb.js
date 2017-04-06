@@ -82,7 +82,7 @@ module.exports = (function() {
         }
 
         var nextNode = parent.get(i + 1);
-        if (nextNode.is('space')) {
+        if (nextNode && nextNode.is('space')) {
           nextNode.content = value;
         } else {
           var space = gonzales.createNode({

@@ -27,7 +27,7 @@ module.exports = {
         return null;
 
       // Remove any spaces after colon:
-      if (parent.get(i + 1).is('space'))
+      if (parent.get(i + 1) && parent.get(i + 1).is('space'))
           parent.removeChild(i + 1);
       // If the value set in config is not empty, add spaces:
       if (value !== '') {
@@ -51,8 +51,10 @@ module.exports = {
     let detected = [];
 
     ast.traverseByType('propertyDelimiter', function(delimiter, i, parent) {
-      if (parent.get(i + 1).is('space')) {
-        detected.push(parent.get(i + 1).content);
+      var nextNode = parent.get(i + 1);
+
+      if (nextNode.is('space')) {
+        detected.push(nextNode.content);
       } else {
         detected.push('');
       }
