@@ -88,7 +88,7 @@ function displayHelp() {
     '    -t, --tty-mode',
     '        Run the tool in TTY mode using external app (e.g. IDE).'
   ];
-  process.stdout.write(help.join('\n'));
+  process.stdout.write(help.join('\n') + '\n');
 }
 
 function detectConfig() {
