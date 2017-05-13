@@ -238,10 +238,12 @@ let option = {
         prevChild = node.get(lastNonCommentIndex);
       }
 
-      if (prevChild.is('space')) {
-        this.insertNewlinesAsString(prevChild);
-      } else {
-        this.insertNewlinesAsNode(prevChild);
+      if (prevChild) {
+        if (prevChild.is('space')) {
+          this.insertNewlinesAsString(prevChild);
+        } else {
+          this.insertNewlinesAsNode(prevChild);
+        }
       }
     }
   }
