@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.1.0 - 2017-05-16
+
+- Added new `--tty-mode` option for cli.
+- Fixed an issue with calling gpe methods on non-existing nodes.
+
 ## 4.0.1 - 2017-02-28
 
 - Added `babel-polyfill` to dependencies.
