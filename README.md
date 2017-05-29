@@ -14,14 +14,6 @@ It was inspired by [@miripiruni](https://github.com/miripiruni)'s
 This is the new JavaScript version, based on the powerful CSS parser
 [Gonzales PE](https://github.com/tonyganch/gonzales-pe).
 
-## 0. Maintenance mode
-
-The tool is no longer being developed though we may still fix parsing errors and critical bugs.  
-That means that you should not expect any new features or options.  
-
-If you'd like to become a maintainer of this project, please ping
-[@tonyganch](https://github.com/tonyganch).
-
 ## 1. Install
 
 Global installation (for use as a command-line tool):
@@ -75,8 +67,11 @@ comb.processPath('assets/css');
 
 ## 4. Contribute
 
-Anyone and everyone is welcome to contribute.
+This project is actively mantained. But anyone and everyone is welcome to contribute.
 Please take a moment to review the [guidelines for contributing](CONTRIBUTING.md).
+
+Also you can become a mantainer. To do that please ping
+[@tonyganch](https://github.com/tonyganch).
 
 ## Authors
 
