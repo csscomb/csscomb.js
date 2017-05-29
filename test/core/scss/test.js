@@ -169,6 +169,13 @@ describe('scss', function() {
         return test.shouldBeEqual('content.scss');
     });
 
+    it('Should parse an empty file', function() {
+      let test = new Test(this);
+      test.comb.configure({});
+
+      return test.shouldBeEqual('empty.scss');
+    });
+
     it('Should parse functions', function() {
         let test = new Test(this);
         test.comb.configure({});

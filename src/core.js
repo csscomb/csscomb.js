@@ -346,8 +346,11 @@ class Comb {
     let filename = options && options.filename || '';
     let context = options && options.context;
     let tree;
+    const lint = this.lint;
 
-    if (!text) return this.lint ? [] : text;
+    if (!text) return new Promise(function(resolve) {
+      resolve(lint ? [] : text);
+    });
 
     if (!syntax) syntax = 'css';
     this.syntax = syntax;
