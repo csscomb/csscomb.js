@@ -9,6 +9,8 @@ describe('Option `integral`, detect', function() {
       let expected = JSON.parse(JSON.stringify(test.Comb.getConfig('csscomb')));
       delete expected['sort-order'];
       delete expected.exclude;
+      // The default csscomb.json has no tab-size option.
+      expected['tab-size'] = 4;
       test.shouldDetect(undefined, input, expected);
     });
   });

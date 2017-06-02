@@ -32,26 +32,43 @@ module.exports = {
   detect(ast) {
     var detected = [];
 
-    ast.traverseByType('block', block => {
-      var spaces = 0;
-      var tabs = 0;
+    ast.forEach(node => {
+      if (node.is('ruleset') || node.is('atrule')) {
+        var spaces = 0;
+        var tabs = 0;
+        var tabsize;
 
-      block.forEach(blockContent => {
-        if (blockContent.is('space')) {
-          spaces = blockContent.content.replace(/\n/g, '');
-          tabs = spaces.match(/\t/g);
-          // It is very rare case when tabs are used in a file instead of
-          // whitespaces and it requires a lot of efforts to find the tab size
-          // in a particular environment, ... so we imply that tab size = 2.
-          tabs = tabs ? tabs.length * 2 : 0;
-          spaces = spaces.match(/( )/g);
-          spaces = spaces ? spaces.length + tabs : tabs;
-
-        } else if (spaces && blockContent.is('declaration')) {
-          detected.push(spaces);
-          spaces = 0;
-        }
-      });
+        node.forEach(block => {
+          if (block && block.is('block')) {
+            block.forEach(blockContent => {
+              // The indent before the very first property declaration in the
+              // block usually has a length of one tab or the number of
+              // whitespaces set for a tab. Because there might be nested
+              // blocks having incremented indent, we continue to the next root
+              // block in the each ruleset where tabsize is not detected yet.
+              if (tabsize !== 'detected') {
+                if (blockContent.is('space')) {
+                  spaces = blockContent.content.replace(/\n/g, '');
+                  tabs = spaces.match(/\t/g);
+                  spaces = spaces.match(/( )/g);
+                  if (tabs) {
+                    // It is a very rare case when tabs are used in a file
+                    // instead of whitespaces and it requires a lot of efforts
+                    // to find the tab size in a particular environment. So we
+                    // imply that tab size = 2.
+                    tabsize = 2;
+                  } else if (spaces) {
+                    tabsize = spaces.length;
+                  }
+                } else if (tabsize && blockContent.is('declaration')) {
+                  detected.push(tabsize);
+                  tabsize = 'detected';
+                }
+              }
+            });
+          }
+        });
+      }
     });
 
     return detected;
