@@ -1,0 +1,17 @@
+{
+    "sort-order": [
+        [
+            "position",
+            "z-index",
+            "top",
+            "right",
+            "bottom",
+            "left"
+        ],
+        [
+
+            "border",
+            "border-color"
+        ]
+    ]
+}
