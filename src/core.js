@@ -4,6 +4,7 @@
 require('babel-polyfill');
 
 let fs = require('fs');
+var os = require('os');
 let gonzales = require('gonzales-pe');
 let minimatch = require('minimatch');
 let Errors = require('./errors');
@@ -145,7 +146,7 @@ class Comb {
         result.push(ln + ' | ' + line);
       }
     }
-    return result.join('\n');
+    return result.join(os.EOL);
   }
 
   /**
@@ -364,7 +365,7 @@ class Comb {
         let message = filename ? [filename] : [];
         message.push(e.message);
         message.push('CSScomb Core version: ' + version);
-        e.stack = e.message = message.join('\n');
+        e.stack = e.message = message.join(os.EOL);
         throw e;
       }
     });

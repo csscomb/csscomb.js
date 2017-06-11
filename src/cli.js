@@ -9,6 +9,7 @@
 var fs = require('fs');
 var parseArgs = require('minimist');
 var path = require('path');
+var os = require('os');
 
 var Comb = require('./csscomb');
 var Errors = require('./errors');
@@ -86,9 +87,10 @@ function displayHelp() {
     '    -v, --verbose',
     '        Whether to print logging info.',
     '    -t, --tty-mode',
-    '        Run the tool in TTY mode using external app (e.g. IDE).'
+    '        Run the tool in TTY mode using external app (e.g. IDE).',
+    ''
   ];
-  process.stdout.write(help.join('\n') + '\n');
+  process.stdout.write(help.join(os.EOL));
 }
 
 function detectConfig() {
@@ -162,7 +164,7 @@ function processFiles(files) {
           `${c.length} file${c.length === 1 ? '' : 's'} processed`,
           `${changed} file${changed === 1 ? '' : 's'} fixed`,
           ''
-          ].join('\n');
+          ].join(os.EOL);
       process.stdout.write(message);
     }
 
