@@ -7,50 +7,55 @@
 
 ## Pull requests
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
+#### 1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
 
-    ```bash
-# Clone your fork of the repo into the current directory
+a. Clone your fork of the repo into the current directory
+```bash
 git clone https://github.com/<your-username>/csscomb.js
-# Navigate to the newly cloned directory
+```
+
+b. Navigate to the newly cloned directory
+```bash
 cd csscomb.js
-# Assign the original repo to a remote called `upstream`
+```
+
+c. Assign the original repo to a remote called `upstream`
+```bash
 git remote add upstream https://github.com/csscomb/csscomb.js
 ```
 
-2. If you cloned a while ago, get the latest changes from upstream:
+#### 2. If you cloned a while ago, get the latest changes from upstream:
 
-    ```bash
+```bash
 git checkout dev
 git pull upstream dev
 ```
 
-    **IMPORTANT**: We are using `dev` branch for development, not `master`.
+> **IMPORTANT**: We are using `dev` branch for development, not `master`.
 
-3. Create a topic branch for your feature, change, or fix:
+#### 3. Create a topic branch for your feature, change, or fix:
 
-    ```bash
+```bash
 git checkout -b <topic-branch-name>
 ```
 
-4. Patches and features will not be accepted without tests.
-   Run `npm test` to check that all tests pass after you've made changes.
+#### 4. Patches and features will not be accepted without tests.
+Run `npm test` to check that all tests pass after you've made changes.
 
-5. Update the `README.md` or [docs](https://github.com/csscomb/csscomb.js/tree/master/doc) if there were corresponding changes or new options.
+#### 5. Update the `README.md` or [docs](https://github.com/csscomb/csscomb.js/tree/master/doc) if there were corresponding changes or new options.
 
-6. Locally rebase the upstream development branch into your topic branch:
+#### 6. Locally rebase the upstream development branch into your topic branch:
 
-    ```bash
+```bash
 git pull --rebase upstream dev
 ```
 
-7. Push your topic branch up to your fork:
-
-    ```bash
+#### 7. Push your topic branch up to your fork:
+```bash
 git push origin <topic-branch-name>
 ```
 
-8. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) to a `dev` branch with a clear title and description.
+#### 8. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) to a `dev` branch with a clear title and description.
 
 ## For maintainers
 
