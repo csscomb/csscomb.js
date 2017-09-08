@@ -53,7 +53,7 @@ if (options['tty-mode'] || process.stdin.isTTY) {
 
 function getOptions() {
   var parserOptions = {
-    boolean: ['help', 'lint', 'verbose'],
+    boolean: ['help', 'lint', 'verbose', 'tty-mode'],
     alias: {
       config: 'c',
       detect: 'd',
