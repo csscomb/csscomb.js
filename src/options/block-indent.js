@@ -45,7 +45,7 @@ let option = {
       var spaces = whitespaceNode.content.replace(/\n[ \t]+/gm, '\n');
 
       if (spaces === '') {
-        ast.remove(i);
+        ast.removeChild(i);
       } else {
         whitespaceNode.content = spaces;
       }
