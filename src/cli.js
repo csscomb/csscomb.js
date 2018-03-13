@@ -10,6 +10,7 @@ var fs = require('fs');
 var parseArgs = require('minimist');
 var path = require('path');
 var os = require('os');
+var flatten = require('array.prototype.flatten');
 
 var Comb = require('./csscomb');
 var Errors = require('./errors');
@@ -151,6 +152,7 @@ function processFiles(files) {
     process.stderr.write(error.stack);
     process.exit(1);
   }).then(c => {
+    c = flatten(c, 1);
     var tbchanged = c.filter(isChanged => {
       return isChanged !== undefined;
     }).reduce((a, b) => {
