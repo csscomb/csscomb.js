@@ -19,7 +19,7 @@
   "dependencies": {
     "babel-polyfill": "6.23.0",
     "glob": "latest",
-    "gonzales-pe": "^3.4.7",
+    "gonzales-pe": "^4.2.3",
     "minimatch": "3.0.2",
     "minimist": "1.1.x",
     "vow": "0.4.4",
