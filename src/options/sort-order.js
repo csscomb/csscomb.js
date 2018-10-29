@@ -171,7 +171,8 @@ module.exports = {
 
   _getSortablePropertyName(node) {
     if (node.is('declaration')) {
-      let property = node.first('property').first();
+      let property =
+        node.first('property') ? node.first('property').first() : node.first();
       return property.is('variable') ? '$variable' : property.content;
     }
 
