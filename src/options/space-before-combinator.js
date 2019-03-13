@@ -24,7 +24,10 @@ module.exports = {
 
     ast.traverseByType('combinator', function(combinator, i, parent) {
       var previousNode = parent.get(i - 1);
-      if (previousNode && previousNode.is('space')) {
+
+      if (!previousNode) return;
+
+      if (previousNode.is('space')) {
         previousNode.content = value;
       } else {
         var space = gonzales.createNode({

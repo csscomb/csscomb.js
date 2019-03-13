@@ -32,4 +32,11 @@ describe('Option `space-before-combinator`, process', function() {
       return test.shouldBeEqual('test.css', 'test-3.expected.css');
     });
   });
+
+  describe('scss', function() {
+    it('Should not touch leading combinators', function() {
+      let test = new Test(this, {'space-before-combinator': '  '});
+      return test.shouldBeEqual('test.scss', 'test.expected.scss');
+    });
+  });
 });
