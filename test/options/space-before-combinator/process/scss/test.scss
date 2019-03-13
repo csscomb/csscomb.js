@@ -1,0 +1,15 @@
+a>b {
+  color: red;
+
+  &>c {
+    color: red;
+  }
+}
+
+a {
+  color: red;
+
+  >c {
+    color: red;
+  }
+}
