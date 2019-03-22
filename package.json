@@ -14,7 +14,7 @@
     }
   ],
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 6.0.0"
   },
   "dependencies": {
     "babel-polyfill": "6.23.0",
