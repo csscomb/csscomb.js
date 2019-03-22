@@ -151,6 +151,7 @@ function processFiles(files) {
     process.stderr.write(error.stack);
     process.exit(1);
   }).then(c => {
+    c = [].concat.apply([], c);
     var tbchanged = c.filter(isChanged => {
       return isChanged !== undefined;
     }).reduce((a, b) => {
