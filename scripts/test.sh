@@ -16,18 +16,12 @@ printf "\n\
 ----------------\n\n"
 test ./node_modules/.bin/jshint ./src
 
-printf "\n\
---------------\n\
- Running JSCS\n\
---------------\n\n"
-test ./node_modules/.bin/jscs ./src
-
 # Run tests
 printf "\n\
 ---------------\n\
  Running Mocha\n\
 ---------------\n\n"
-test ./node_modules/.bin/babel-node --plugins transform-strict-mode ./test/mocha
+test ./node_modules/.bin/babel-node --plugins @babel/plugin-transform-strict-mode ./test/mocha
 
 if [ $EXIT_CODE -ne 0 ]; then
 printf "\n\

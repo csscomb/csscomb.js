@@ -1,7 +1,7 @@
 'use strict';
 
 if (!global._babelPolyfill)
-  require('babel-polyfill');
+  require('@babel/polyfill');
 
 let fs = require('fs');
 var os = require('os');
