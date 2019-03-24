@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.3.0 - 2019-03-24
+
+- Updated GPE to v4.2.4
+- Updated list of supported Node version to reflect https://nodejs.org/en/about/releases/
+- Fixed #551
+- [cli] Fixed parsing of tty-mode option as boolean
+
 ## 4.2.0 - 2017-06-12
 
 - Fixed - align for flexbox properies (#507)
