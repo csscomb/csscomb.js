@@ -59,12 +59,16 @@ describe('Option `sort-order`, process', function() {
       let input = test.readFile('multiple-groups-2.css');
       let expected = test.readFile('multiple-groups-2.expected.css');
 
-      test.comb.processString(input)
-          .then(test.comb.processString)
-          .then(test.comb.processString)
-          .then(test.comb.processString)
-          .then(test.comb.processString)
-          .then(test.comb.processString)
+      const processStringAgain = () => {
+        return test.comb.processString(input);
+      };
+
+      return test.comb.processString(input)
+          .then(processStringAgain)
+          .then(processStringAgain)
+          .then(processStringAgain)
+          .then(processStringAgain)
+          .then(processStringAgain)
           .then(function(actual) {
             assert.equal(actual, expected);
           });
