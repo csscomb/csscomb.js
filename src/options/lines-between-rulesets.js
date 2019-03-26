@@ -236,6 +236,10 @@ let option = {
       if (this.prevLineIsComment(node, index) || this.isComment(prevChild)) {
         let lastNonCommentIndex = this.findLatestNonCommentNode(node, index);
         prevChild = node.get(lastNonCommentIndex);
+
+        if (!prevChild) {
+          return;
+        }
       }
 
       if (prevChild.is('space')) {
