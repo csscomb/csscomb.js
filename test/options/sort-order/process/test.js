@@ -59,8 +59,8 @@ describe('Option `sort-order`, process', function() {
       let input = test.readFile('multiple-groups-2.css');
       let expected = test.readFile('multiple-groups-2.expected.css');
 
-      const processStringAgain = () => {
-        return test.comb.processString(input);
+      const processStringAgain = (processed) => {
+        return test.comb.processString(processed);
       };
 
       return test.comb.processString(input)
