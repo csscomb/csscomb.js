@@ -1,7 +1,7 @@
 {
   "name": "csscomb",
   "description": "CSS coding style formatter",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "homepage": "http://csscomb.com/",
   "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
   "repository": "https://github.com/csscomb/csscomb.js",

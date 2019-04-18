@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.3.0 - 2019-04-17
+
+- Updated GPE to v4.2.4
+- Updated list of supported Node version to reflect https://nodejs.org/en/about/releases/
+- Fixed `lines-between-rulesets` when file starts with a comment (#525)
+- Fixed `space-before-combinator` handling of leading/lone combinators (#551)
+- Fixed parsing of cli `--tty-mode` option as boolean
+
 ## 4.2.0 - 2017-06-12
 
 - Fixed - align for flexbox properies (#507)
