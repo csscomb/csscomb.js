@@ -11,7 +11,7 @@ module.exports = {
 
   accepts: {
     number: true,
-    string: /^[ \t\n]*$/
+    string: /^(?:[ \t]|\r?\n)*$/
   },
 
   /**

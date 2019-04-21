@@ -86,13 +86,14 @@ CSScomb.detectInString = function detectInString(text, options) {
   result = getDetectedOptions(detectedOptions, handlers);
 
   // Handle conflicting options with spaces around braces:
+  var match;
   var blockIndent = result['block-indent'];
   var spaceAfterOpeningBrace = result['space-after-opening-brace'];
 
   if (typeof blockIndent === 'string' &&
     spaceAfterOpeningBrace &&
-    spaceAfterOpeningBrace.indexOf('\n') > -1) {
-    result['space-after-opening-brace'] = '\n';
+    (match = /\r?\n/.exec(spaceAfterOpeningBrace)) !== null) {
+    result['space-after-opening-brace'] = match[0];
   }
 
   return result;

@@ -8,7 +8,7 @@ module.exports = (function() {
    * @returns {String}
    */
   function trim(string) {
-    return string.replace(/[ \t]+\n/g, '\n');
+    return string.replace(/[ \t]+(\r?\n)/g, '$1');
   }
 
   return {
@@ -29,7 +29,7 @@ module.exports = (function() {
       if (lastChild.is('space')) {
         lastChild.content = trim(lastChild.content)
             .replace(/[ \t]+$/, '')
-            .replace(/[\n]+/g, '\n');
+            .replace(/(\r?\n)+/g, '$1');
       }
 
       ast.traverseByType('space', function(space) {
@@ -52,12 +52,12 @@ module.exports = (function() {
       var lastChild = ast.last();
       if (lastChild.is('space') &&
           lastChild.content !== '\n' &&
-          lastChild.content.match(/^[ \n\t]+$/)) {
+          lastChild.content.match(/^(?:[ \t]|\r?\n)+$/)) {
         detected.push(false);
       }
 
       ast.traverseByType('space', function(space) {
-        if (space.content.match(/[ \t]\n/)) detected.push(false);
+        if (space.content.match(/[ \t]\r?\n/)) detected.push(false);
       });
 
       return detected;

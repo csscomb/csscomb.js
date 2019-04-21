@@ -134,7 +134,7 @@ class Comb {
     var result = [];
     var start = currentLineNumber - 1 - LINES_AROUND;
     var end = currentLineNumber + LINES_AROUND;
-    var lines = text.split(/\r\n|\r|\n/);
+    var lines = text.split(/\r?\n/);
 
     for (var i = start; i < end; i++) {
       var line = lines[i];

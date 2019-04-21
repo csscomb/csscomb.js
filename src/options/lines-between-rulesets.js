@@ -1,6 +1,7 @@
 'use strict';
 
 let gonzales = require('gonzales-pe');
+let os = require('os');
 
 let option = {
   newLinesString: '',
@@ -70,7 +71,7 @@ let option = {
     numNewLines = Math.round(this.value) + newLinesOffset;
 
     for (var i = 0; i < numNewLines; i++) {
-      spacing += '\n';
+      spacing += os.EOL;
     }
 
     return spacing;
@@ -136,7 +137,9 @@ let option = {
     if (!node) {
       return false;
     }
-    return (node.content === '\n');
+
+    var content = node.content;
+    return (content === '\n' || content === '\r\n');
   },
 
   prevLineIsComment(parent, index) {

@@ -42,7 +42,7 @@ let option = {
    */
   process(ast) {
     ast.eachFor('space', function(whitespaceNode, i) {
-      var spaces = whitespaceNode.content.replace(/\n[ \t]+/gm, '\n');
+      var spaces = whitespaceNode.content.replace(/(\r?\n)[ \t]+/g, '$1');
 
       if (spaces === '') {
         ast.removeChild(i);
@@ -72,7 +72,7 @@ let option = {
         var lastIndex = spaces.lastIndexOf('\n');
 
         // Do not continue if there is no line break:
-        if (lastIndex < 0) return;
+        if (lastIndex === -1) return;
 
         // Number of spaces from beginning of line:
         var spacesLength = spaces.slice(lastIndex + 1).length + 1;
@@ -114,9 +114,11 @@ let option = {
     var value = this.value;
 
     node.eachFor('space', function(whitespaceNode) {
-      if (whitespaceNode.content === '\n') return;
+      var spaces = whitespaceNode.content;
 
-      var spaces = whitespaceNode.content.replace(/[ \t]/gm, '');
+      if (spaces === '\n' || spaces === '\r\n') return;
+
+      spaces = spaces.replace(/[ \t]/g, '');
       spaces += new Array(level + 2).join(value);
       whitespaceNode.content = spaces;
     });
@@ -130,7 +132,7 @@ let option = {
     var value = this.value;
 
     // Remove all whitespaces and tabs, leave only new lines:
-    var spaces = node.content.replace(/[ \t]/gm, '');
+    var spaces = node.content.replace(/[ \t]/g, '');
 
     if (!spaces) return;
 

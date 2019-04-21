@@ -1,6 +1,7 @@
 'use strict';
 
 let gonzales = require('gonzales-pe');
+let os = require('os');
 
 let option = {
   /**
@@ -41,8 +42,8 @@ let option = {
       ast.content.push(lastChild);
     }
 
-    lastChild.content = lastChild.content.replace(/\n$/, '');
-    if (this.value) lastChild.content += '\n';
+    lastChild.content = lastChild.content.replace(/\r?\n$/, '');
+    if (this.value) lastChild.content += os.EOL;
   },
 
   /**
