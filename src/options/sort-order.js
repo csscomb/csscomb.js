@@ -385,6 +385,14 @@ module.exports = {
     a = a.node.first().first().content;
     b = b.node.first().first().content;
 
+    if (Array.isArray(a)) {
+      a = a[0].content;
+    }
+
+    if (Array.isArray(b)) {
+      b = b[0].content;
+    }
+
     // Get prefix and unprefixed part. For example:
     // ['-o-animation', '-o-', 'animation']
     // ['color', '', 'color']
