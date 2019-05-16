@@ -41,4 +41,15 @@ describe('Option `sort-order-fallback`, process', function() {
       return test.shouldBeEqual('test.css', 'test-3.expected.css');
     });
   });
+
+  describe('scss', function() {
+    it('Should sort leftover variables alphabetically', function() {
+      let config = {
+        'sort-order': [],
+        'sort-order-fallback': 'abc'
+      };
+      let test = new Test(this, config);
+      return test.shouldBeEqual('leftovers-variable.scss', 'leftovers-variable.expected.scss');
+    });
+  });
 });
