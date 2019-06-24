@@ -70,7 +70,7 @@ comb.processPath('assets/css');
 This project is actively mantained. But anyone and everyone is welcome to contribute.
 Please take a moment to review the [guidelines for contributing](CONTRIBUTING.md).
 
-Also you can become a mantainer. To do that please ping
+Also you can become a maintainer. To do that please ping
 [@tonyganch](https://github.com/tonyganch).
 
 ## Authors
