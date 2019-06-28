@@ -1,6 +1,7 @@
 'use strict';
 
 var gonzales = require('gonzales-pe');
+var os = require('os');
 
 module.exports = {
   get name() {
@@ -55,7 +56,9 @@ module.exports = {
     let containsOnlyLinebreaks = true;
 
     node.forEach((space) => {
-      if (!space.is('space') || space.content !== '\n') {
+      var content = space.content;
+
+      if (!space.is('space') || (content !== '\n' && content !== '\r\n')) {
         containsOnlyLinebreaks = false;
         return null;
       }
@@ -265,7 +268,7 @@ module.exports = {
 
       if (node.syntax === 'sass' && spacesBeforeNode.length) {
         let space = spacesBeforeNode[0];
-        space.content = space.content.replace(/\n/, '');
+        space.content = space.content.replace(/\r?\n/, '');
       }
 
       spacesBeforeNode.reverse().map(this._removeEmptyLines);
@@ -275,12 +278,14 @@ module.exports = {
       // Divide declarations from different groups with
       // an empty line:
       if (prevNode && currentNode.groupIndex > prevNode.groupIndex) {
+        let matches;
         let space = spacesBeforeNode[0];
+
         if (space && space.is('space') &&
             (space.syntax === 'sass' ||
-            space.content.match(/\n/g) &&
-            space.content.match(/\n/g).length < 2)) {
-          space.content = '\n' + space.content;
+            ((matches = space.content.match(/\r?\n/g)) !== null && matches.length === 1))) {
+          let eol = matches == null ? os.EOL : matches[0]; // jshint ignore:line
+          space.content = eol + space.content;
         }
       }
 
@@ -295,7 +300,7 @@ module.exports = {
           currentNode.node.is('extend'))) {
         let delimiter = gonzales.createNode({
           type: 'declarationDelimiter',
-          content: currentNode.node.syntax === 'sass' ? '\n' : ';'
+          content: currentNode.node.syntax === 'sass' ? os.EOL : ';'
         });
         node.content.unshift(delimiter);
       }
@@ -341,7 +346,7 @@ module.exports = {
    * @param {node} node Space node.
    */
   _removeEmptyLines(node) {
-    node.content = node.content.replace(/\n[\s\t\n\r]*\n/, '\n');
+    node.content = node.content.replace(/(\r?\n)\s*\1/, '$1');
   },
 
   _separateSortablesFromBlock(block) {

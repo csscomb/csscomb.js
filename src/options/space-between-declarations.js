@@ -59,7 +59,7 @@ module.exports = (function() {
 
     accepts: {
       number: true,
-      string: /^[ \t\n]*$/
+      string: /^(?:[ \t]|\r?\n)*$/
     },
 
     /**

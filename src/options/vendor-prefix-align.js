@@ -434,7 +434,7 @@ module.exports = (function() {
           payload: function(info, i) {
             if (node.get(i - 1) && node.get(i - 1).content) {
               let nodeLength = node.get(i - 1).content
-                  .replace(/^[ \t]*\n+/, '').length;
+                  .replace(/^[ \t]*(?:\r?\n)+/, '').length;
               var sum = nodeLength + info.prefixLength;
               getResult({node: node, sum: sum, info: info, i: i});
             }
@@ -452,7 +452,7 @@ module.exports = (function() {
 
             if (node.get(i).get(x - 1)) {
               let nodeLength = node.get(i).get(x - 1).content
-                  .replace(/^[ \t]*\n+/, '').length;
+                  .replace(/^[ \t]*(?:\r?\n)+/, '').length;
               var sum = nodeLength + info.prefixLength;
               getResult({node: node, sum: sum, info: info, i: i});
             }
