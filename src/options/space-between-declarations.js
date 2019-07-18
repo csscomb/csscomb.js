@@ -92,6 +92,49 @@ module.exports = (function() {
           parent.insert(i + 1, space);
         }
       });
+    },
+
+    /**
+    * Detects the value of this option in ast.
+    * @param {Node} ast
+    * @return {Array?} List of detected values
+    */
+    detect(ast) {
+      var detected = [];
+
+      ast.traverseByType('block', block => {
+        var prevDeclaration = false;
+        var nextDeclaration = false;
+
+        block.forEach(blockContent => {
+          if (blockContent.is('declaration')) {
+            if (prevDeclaration) {
+              prevDeclaration = false;
+              nextDeclaration = true;
+            } else {
+              prevDeclaration = true;
+              nextDeclaration = false;
+            }
+          } else if (prevDeclaration) {
+            if (blockContent.is('multilineComment')) {
+              // If there is comments between two declarations, then we need
+              // to clean up whitespace and new line characters before each
+              // comment keeping up the same characters after the comment.
+              detected.splice(-1);
+            } else if (blockContent.is('space')) {
+              detected.push(blockContent.content);
+            }
+          }
+        });
+
+        if (!nextDeclaration) {
+          // Remove the last detected space content after the property
+          // declaration which does not have a pair for it in a block.
+          detected.splice(-1);
+        }
+      });
+
+      return detected;
     }
   };
 })();
