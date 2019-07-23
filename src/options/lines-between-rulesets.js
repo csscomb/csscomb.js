@@ -248,6 +248,34 @@ let option = {
         this.insertNewlinesAsNode(prevChild);
       }
     }
+  },
+
+  /**
+   * Detects the value of this option in ast.
+   * @param {Node} ast
+   * @return {Array?} List of detected values
+   */
+  detect(ast) {
+    var detected = [];
+    var ruleNode = false;
+
+    ast.forEach((node, index) => {
+      if (ruleNode && node.is('space')) {
+        if (node.end.line && node.start.line) {
+          var lines = node.end.line - node.start.line;
+          if (lines > 0) {
+            detected.push(lines);
+          }
+        }
+        ruleNode = false;
+      }
+
+      if (node.is('ruleset') || node.is('atrule')) {
+        ruleNode = true;
+      }
+    });
+
+    return detected;
   }
 };
 
