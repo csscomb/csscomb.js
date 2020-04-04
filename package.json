@@ -20,7 +20,7 @@
     "@babel/polyfill": "^7.4.0",
     "gonzales-pe": "4.2.4",
     "minimatch": "3.0.4",
-    "minimist": "1.2.0",
+    "minimist": "1.2.3",
     "vow": "0.4.19",
     "vow-fs": "0.3.6"
   },
