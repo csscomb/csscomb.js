@@ -60,6 +60,7 @@ function getOptions() {
       lint: 'l',
       help: 'h',
       verbose: 'v',
+      'stdin-filepath': '',
       'tty-mode': 't'
     }
   };
@@ -88,6 +89,8 @@ function displayHelp() {
     '        Whether to print logging info.',
     '    -t, --tty-mode',
     '        Run the tool in TTY mode using external app (e.g. IDE).',
+    '    --stdin-filepath',
+    '        Path to the file to pretend that stdin comes from.',
     ''
   ];
   process.stdout.write(help.join(os.EOL));
@@ -182,7 +185,14 @@ function processSTDIN() {
 }
 
 function processInputData(input) {
-  comb.processString(input).catch(e => {
+  var opt
+  if (options["stdin-filepath"]) {
+    opt = {
+      syntax: comb._extractSyntax(options["stdin-filepath"])
+    }
+  }
+
+  comb.processString(input, opt).catch(e => {
     process.stderr.write(e.message);
     process.exit(1);
   }).then(output => {
