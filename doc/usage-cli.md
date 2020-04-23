@@ -18,6 +18,19 @@ If you installed the package locally, use local bin file instead:
 ./node_modules/.bin/csscomb assets/css public/styles.css
 ```
 
+`csscomb` also support `stdin` 
+
+```bash
+cat file.css | csscomb [options]
+```
+
+Which would output the result to `stdout`. Note that if the input content is not CSS, you should use `stdin-filepath` option.
+
+```bash
+cat style.less | csscomb --stdin-filepath style.less
+```
+
+
 ## Options
 
 ### help
@@ -38,6 +51,8 @@ csscomb -h
     -d, --detect         detect mode (would return detected options)
     -l, --lint           in case some fixes needed returns an error
     -t, --tty-mode       execution in TTY mode (useful, when running tool using external app, e.g. IDE)
+    --stdin-filepath
+        Path to the file to pretend that stdin comes from.
 ```
 
 ### config
@@ -99,4 +114,13 @@ csscomb -v assets/css
 4 files processed
 3 files fixed
 spent: 33ms
+```
+
+
+### stdin-filepath
+
+By default, `csscomb` would process content from `stdin` as css file. However, if your input is in different syntax (i.e `less`), you need to specify the file type information via the `stdin-filepath` options.
+
+```bash
+cat style.less | csscomb --stdin-filepath style.less
 ```
