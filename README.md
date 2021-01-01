@@ -67,7 +67,7 @@ comb.processPath('assets/css');
 
 ## 4. Contribute
 
-This project is actively mantained. But anyone and everyone is welcome to contribute.
+This project is actively maintained. But anyone and everyone is welcome to contribute.
 Please take a moment to review the [guidelines for contributing](CONTRIBUTING.md).
 
 Also you can become a maintainer. To do that please ping
