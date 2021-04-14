@@ -188,7 +188,7 @@ class Comb {
     return new Promise(resolve => {
       vfs.read(path, 'utf8').then(function(data) {
         let syntax = that._extractSyntax(path);
-        that.processString(data, {
+        return that.processString(data, {
           syntax: syntax,
           filename: path
         }).then(function(processedData) {
