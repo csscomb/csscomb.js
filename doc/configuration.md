@@ -131,3 +131,19 @@ This config will:
 1. then use `"leading-zero":  false` instead of anything detected,
 1. then use `"vendor-prefix-align": true` even if there were no prefixed
 properties or values inside the `example.css`.
+
+
+## Custom syntax map
+
+By default CSScomb process `*.css`, `*.less`, `*.sass` and `*.scss` files in matched syntax.
+You can custom syntax map by `syntax` config. e.g. Using `css` syntax to handle `*.wxss` files
+
+```json
+{
+    "syntax": {
+        ".wxss": "css"
+    }
+}
+```
+
+WXSS (WeiXin Style Sheets) is very similar to CSS but a little different
